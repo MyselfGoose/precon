@@ -7,6 +7,23 @@ export const BRAND = {
   email: 'Project conversations start with the request form',
 };
 
+export const SITE_COPY = {
+  cta: {
+    primary: 'Send your plans',
+    secondary: 'Talk through your scope',
+  },
+  process: {
+    eyebrow: 'How it works',
+    title: 'From project information to coordinated decisions',
+    steps: [
+      ['STEP 01', 'Share the project', 'Send drawings, specifications, scope notes, and the project location.'],
+      ['STEP 02', 'Align the scope', 'We review the information, clarify the deliverable, and establish a clear path forward.'],
+      ['STEP 03', 'Build the package', 'Our team develops quantities, pricing, drawings, engineering support, or coordination documentation.'],
+      ['STEP 04', 'Review and move forward', 'You receive organized deliverables and a responsive partner for revisions and next decisions.'],
+    ],
+  },
+} as const;
+
 export type ContentService = {
   slug: string;
   code: string;

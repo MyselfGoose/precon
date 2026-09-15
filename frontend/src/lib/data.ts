@@ -277,6 +277,9 @@ export const AUDIENCES = [
 export const NAV_ITEMS = [
   ['Services','/services'],['Trades','/trades'],['How It Works','/how-it-works'],['Who We Serve','/who-we-serve'],['About','/about'],['Contact','/contact']
 ] as const;
+export const FOOTER_NAV_ITEMS = [
+  ['About', '/about'], ['How it works', '/how-it-works'], ['Who we serve', '/who-we-serve'], ['Contact', '/contact'], ['Send your plans', '/quote'],
+] as const;
 export const LEGAL = {
   "privacy": [
     [

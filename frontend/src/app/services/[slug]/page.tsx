@@ -4,8 +4,17 @@ import { CONTENT_SERVICES } from '@/lib/content';
 import { SERVICES } from '@/lib/data';
 import { ICO } from '@/lib/illustrations';
 import { CTA, PageHead, ServiceCard } from '../../components';
+import { createMetadata } from '@/lib/metadata';
+import type { Metadata } from 'next';
 
 export function generateStaticParams(){return [...SERVICES.map(s=>({slug:s.slug})), ...CONTENT_SERVICES.map(s=>({slug:s.slug}))];}
+export async function generateMetadata({params}:{params:Promise<{slug:string}>}):Promise<Metadata>{
+  const {slug}=await params;
+  const content=CONTENT_SERVICES.find(s=>s.slug===slug);
+  const legacy=SERVICES.find(s=>s.slug===slug);
+  const item=content ? { name: content.name, summary: content.summary } : legacy ? { name: legacy.name, summary: legacy.short } : null;
+  return createMetadata({ title: item ? item.name : 'Service not found', description: item ? item.summary : 'Explore PreCon Ext project support services.', path: `/services/${slug}` });
+}
 
 export default async function ServicePage({params}:{params:Promise<{slug:string}>}){
   const {slug}=await params;
