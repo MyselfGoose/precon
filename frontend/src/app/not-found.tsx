@@ -1,0 +1,2 @@
+import Link from 'next/link'; import { PageHead } from './components';
+export default function NotFound(){return <><PageHead eyebrow="404" title="Page not found" lede="That link doesn’t match anything on the site."/><section className="band"><div className="wrap"><div className="btn-row"><Link className="btn btn-primary" href="/">Back to home</Link><Link className="btn btn-ghost" href="/trades">See all trades</Link></div></div></section></>}
