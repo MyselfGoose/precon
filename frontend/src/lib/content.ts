@@ -10,6 +10,7 @@ export const BRAND = {
 export type ContentService = {
   slug: string;
   code: string;
+  ico: string;
   name: string;
   summary: string;
   details: string;
@@ -20,6 +21,7 @@ export const CONTENT_SERVICES: ContentService[] = [
   {
     slug: 'estimating',
     code: 'EST',
+    ico: 'estimate',
     name: 'Estimating & quantity takeoffs',
     summary: 'CSI-organized quantities, market-aware pricing, and bid-ready workbooks for every major construction discipline.',
     details:
@@ -29,6 +31,7 @@ export const CONTENT_SERVICES: ContentService[] = [
   {
     slug: 'architectural-drawings',
     code: 'ARC',
+    ico: 'draft',
     name: 'Architectural drawings',
     summary: 'Coordinated drawing packages that respect the project vision, construction budget, applicable codes, and permitting path.',
     details:
@@ -38,6 +41,7 @@ export const CONTENT_SERVICES: ContentService[] = [
   {
     slug: 'mep-engineering',
     code: 'MEP',
+    ico: 'precon',
     name: 'MEP drafting & engineering',
     summary: 'Coordinated mechanical, electrical, and plumbing documentation for efficient, code-conscious construction.',
     details:
@@ -47,6 +51,7 @@ export const CONTENT_SERVICES: ContentService[] = [
   {
     slug: 'structural-engineering',
     code: 'STR',
+    ico: 'takeoff',
     name: 'Structural drawings & engineering',
     summary: 'Clear structural systems, details, and technical documentation coordinated with the architectural and construction plan.',
     details:
@@ -56,6 +61,7 @@ export const CONTENT_SERVICES: ContentService[] = [
   {
     slug: 'bim-visualization',
     code: 'BIM',
+    ico: 'draft',
     name: 'BIM, 3D modeling & visualization',
     summary: 'Models, renderings, and walkthroughs that make design intent, coordination, and constructability easier to understand.',
     details:
@@ -65,6 +71,7 @@ export const CONTENT_SERVICES: ContentService[] = [
   {
     slug: 'acquisitions-investments',
     code: 'INV',
+    ico: 'bid',
     name: 'Acquisitions & investment analysis',
     summary: 'Property evaluation supported by estimating, design, engineering, and renovation expertise.',
     details:
@@ -74,11 +81,11 @@ export const CONTENT_SERVICES: ContentService[] = [
 ];
 
 export const AUDIENCE_CONTENT = [
-  { name: 'General contractors', code: 'GC', intro: 'One trusted partner for takeoffs, estimating, BIM coordination, and construction documentation.', details: 'Bid with confidence, reduce coordination risk, and keep more qualified opportunities moving through your pipeline.', items: ['Complete bid support', 'Trade-by-trade quantities', 'Addenda and revision coordination', 'Construction-ready documentation'] },
-  { name: 'Subcontractors', code: 'SUB', intro: 'Precise trade-specific estimates that help specialty contractors price accurately under tight deadlines.', details: 'Protect margins and focus on execution while PreCon Ext organizes quantities, scope, and pricing for your discipline.', items: ['Single-trade takeoffs', 'Labor and material breakdowns', 'Scope clarifications', 'Competitive bid support'] },
-  { name: 'Heavy civil & infrastructure', code: 'CIV', intro: 'Accurate estimating support for roads, bridges, utilities, airports, and public infrastructure.', details: 'We organize complex civil scopes so contractors can bid competitively and execute with a clear understanding of the work.', items: ['Roads and bridges', 'Utilities and public works', 'Excavation and sitework', 'Government tender support'] },
-  { name: 'Architects, owners & developers', code: 'AOD', intro: 'Design and cost intelligence that connects project vision to a realistic construction path.', details: 'Use coordinated drawings, engineering support, visualization, and early estimates to make informed decisions before construction.', items: ['Concept and feasibility budgets', 'Drawing and code coordination', 'Value-focused design review', 'Development planning'] },
-  { name: 'MEP, structural & specialty teams', code: 'TECH', intro: 'Technical documentation and estimating support for complex building systems and specialty scopes.', details: 'Bring discipline-specific clarity to coordination, pricing, and project documentation.', items: ['MEP documentation', 'Structural systems', 'HVAC and energy support', 'Trade-specific estimates'] },
+  { name: 'General contractors', code: 'GC', icon: 'gc', intro: 'One trusted partner for takeoffs, estimating, BIM coordination, and construction documentation.', details: 'Bid with confidence, reduce coordination risk, and keep more qualified opportunities moving through your pipeline.', items: ['Complete bid support', 'Trade-by-trade quantities', 'Addenda and revision coordination', 'Construction-ready documentation'] },
+  { name: 'Subcontractors', code: 'SUB', icon: 'sub', intro: 'Precise trade-specific estimates that help specialty contractors price accurately under tight deadlines.', details: 'Protect margins and focus on execution while PreCon Ext organizes quantities, scope, and pricing for your discipline.', items: ['Single-trade takeoffs', 'Labor and material breakdowns', 'Scope clarifications', 'Competitive bid support'] },
+  { name: 'Heavy civil & infrastructure', code: 'CIV', icon: 'precon', intro: 'Accurate estimating support for roads, bridges, utilities, airports, and public infrastructure.', details: 'We organize complex civil scopes so contractors can bid competitively and execute with a clear understanding of the work.', items: ['Roads and bridges', 'Utilities and public works', 'Excavation and sitework', 'Government tender support'] },
+  { name: 'Architects, owners & developers', code: 'AOD', icon: 'arch', intro: 'Design and cost intelligence that connects project vision to a realistic construction path.', details: 'Use coordinated drawings, engineering support, visualization, and early estimates to make informed decisions before construction.', items: ['Concept and feasibility budgets', 'Drawing and code coordination', 'Value-focused design review', 'Development planning'] },
+  { name: 'MEP, structural & specialty teams', code: 'TECH', icon: 'draft', intro: 'Technical documentation and estimating support for complex building systems and specialty scopes.', details: 'Bring discipline-specific clarity to coordination, pricing, and project documentation.', items: ['MEP documentation', 'Structural systems', 'HVAC and energy support', 'Trade-specific estimates'] },
 ];
 
 export const TRADE_CONTENT = [
