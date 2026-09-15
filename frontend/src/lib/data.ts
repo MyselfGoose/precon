@@ -18,7 +18,7 @@ export const TRADES: Trade[] =
     {group:'Embeds & misc.',unit:'EA · LF',items:[['Anchor bolts and embed plates','EA'],['Waterstop at cold joints','LF'],['Expansion joint material','LF'],['Weld plates and column base plates','EA'],['Housekeeping pads and curbs','EA / LF'],['Concrete washout and testing allowance','LS']]}],
   sample:{title:'Warehouse shell — 18,650 SF',cols:['Description','Qty','Unit','Sheet','Material','Labor','Total'],rows:[
     ['Continuous footings — 24"×12"','1,240','LF','S-101','18,600','14,880','33,480'],['Foundation walls — 8" CIP','3,420','SF','S-102','27,360','30,780','58,140'],['Wall formwork — two sides','6,840','SFCA','S-102','10,260','27,360','37,620'],['Slab on grade — 5" w/ 6×6 WWF','18,650','SF','S-103','74,600','46,625','121,225'],['Reinforcing steel — #5, laps incl.','24,800','LB','S-105','22,320','14,880','37,200'],['Placement, finish & cure','742','CY','—','—','51,940','51,940']],
-    total:['Division 03 subtotal','153,140','186,465','339,605'],basis:'Quantities measured from sheets S-101 through S-108 dated [DATE]. Pricing at [REGION] labor rates. 4,000 PSI mix per Spec 03 30 00. Illustrative figures.'},
+    total:['Division 03 subtotal','153,140','186,465','339,605'],basis:'Quantities measured from sheets S-101 through S-108 in the issued plan set. Pricing is illustrative and should be aligned to the project location. 4,000 PSI mix per Spec 03 30 00.'},
   exclusions:['Testing and special inspection','Dewatering, shoring and underpinning','Winter protection and heated enclosures','Precast concrete (Division 03 40 00)','Sitework concrete beyond the building line (Division 32)','Permit and impact fees'],
   faq:[['Do you include laps, hooks and waste in the rebar weight?','Yes. Reinforcing is reported by weight with laps, hooks and bends calculated in per ACI 318 and the structural general notes, so the tonnage matches what a fabricator will quote rather than the theoretical bar length on the schedule. A stated waste percentage is applied to WWF and stock bar.'],
        ['Can you price to my own crew productivity?','Send your production rates and we build labor around them. Labor is carried in its own column precisely so your numbers can be substituted without touching the quantities.'],
@@ -39,7 +39,7 @@ export const TRADES: Trade[] =
     {group:'Labor & equipment',unit:'SF · LS',items:[['Laying by wall type and height','SF'],['Scaffolding by wall area and height','SF / LS'],['Mortar mixer and grout pump','DAY'],['Cold-weather protection where required','LS'],['Cleaning and pointing','SF'],['Sample panel / mock-up','EA']]}],
   sample:{title:'Retail shell — CMU back-up with brick veneer',cols:['Description','Qty','Unit','Sheet','Material','Labor','Total'],rows:[
     ['8" CMU, running bond, normal weight','14,200','EA','A-201','21,300','35,500','56,800'],['Modular brick veneer, 6.75 / SF','9,450','SF','A-202','37,800','56,700','94,500'],['Grout, cells @ 32" O.C. + bond beams','38','CY','S-401','7,600','9,120','16,720'],['#5 vertical @ 32" O.C., laps incl.','3,640','LB','S-401','3,276','2,548','5,824'],['9 ga ladder reinf. @ 16" O.C.','6,300','LF','A-301','2,520','1,890','4,410'],['Flashing, weeps, ties, control joints','1','LS','A-301','6,800','4,200','11,000']],
-    total:['Division 04 subtotal','79,296','109,958','189,254'],basis:'Quantities from A-201 through A-302 and S-401 dated [DATE]. Type S mortar per Spec 04 20 00. 5% waste on brick, 3% on CMU. Illustrative figures.'},
+    total:['Division 04 subtotal','79,296','109,958','189,254'],basis:'Quantities from A-201 through A-302 and S-401 in the issued plan set. Type S mortar per Spec 04 20 00. 5% waste on brick, 3% on CMU.'},
   exclusions:['Structural steel lintels and shelf angles (Division 05)','Stone veneer unless specifically detailed','Foundation dowels (Division 03)','Scaffolding beyond stated allowance','Winter protection unless required by schedule','Cleaning of adjacent surfaces'],
   faq:[['What waste factor do you apply?','Typically 3% on CMU and 5% on brick, adjusted for cut-heavy patterns, curved walls, or special shapes. The percentage used is stated on the estimate so you can change it.'],
        ['How do you calculate grout quantity?','From the cell spacing on the structural drawings and the unit\'s published core volume, plus bond beams and lintels at their full section. We state whether the estimate assumes high-lift or low-lift grouting because the labor differs.'],
@@ -59,7 +59,7 @@ export const TRADES: Trade[] =
     {group:'Erection',unit:'TON · PICK',items:[['Erection by tonnage','TON'],['Crane by size and duration','DAY'],['Field welding and bolting','allowance'],['Plumb, align and shim','LS'],['Deck installation and fastening','SF'],['Safety cable and edge protection','LF']]}],
   sample:{title:'Single-story warehouse — 66,000 SF',cols:['Description','Qty','Unit','Sheet','Material','Labor','Total'],rows:[
     ['W10×33 columns, 22\' — 12 EA','4.4','TON','S-601','12,320','4,400','16,720'],['W16×31 beams, 30\' — 24 EA','11.2','TON','S-201','31,360','11,200','42,560'],['24K7 joists @ 5\'-0" — 132 EA','3,960','LF','S-201','43,560','19,800','63,360'],['1½" Type B roof deck, 20 ga','66,000','SF','S-201','118,800','59,400','178,200'],['Connections — 12% of weight','1.9','TON','—','7,600','—','7,600'],['Erection — crane, crew, 8 days','19.5','TON','—','—','27,300','27,300']],
-    total:['Division 05 subtotal','213,640','122,100','335,740'],basis:'Members from S-201 and S-601 dated [DATE]. A992 W-shapes, K-series joists per SJI. Connection allowance at 12%. Illustrative figures.'},
+    total:['Division 05 subtotal','213,640','122,100','335,740'],basis:'Members from S-201 and S-601 in the issued plan set. A992 W-shapes, K-series joists per SJI. Connection allowance at 12%.'},
   exclusions:['Fireproofing and intumescent coatings (Division 07 / 09)','Shop drawings unless requested','Field testing and inspection','Ornamental metals and architectural railings unless detailed','Pre-engineered metal buildings (Division 13)','Crane mats and access road improvements'],
   faq:[['How do you handle connections?','As a percentage of main member weight, typically 10 to 15% depending on connection type, stated on the estimate. Moment connections are counted individually because they price very differently from shear tabs.'],
        ['Do you count pieces as well as tonnage?','Yes. Piece count drives erection productivity and crane time. A building with many light members costs more to erect per ton than one with fewer heavy ones, and the estimate reflects that.'],
@@ -79,7 +79,7 @@ export const TRADES: Trade[] =
     {group:'Millwork & casework',unit:'LF · EA',items:[['Base and wall cabinets by elevation','LF'],['Countertops by material','LF / SF'],['Reception desks and custom units','EA'],['Laminate vs. wood veneer by finish schedule','SF'],['Hardware — pulls, hinges, slides','EA'],['Installation labor by unit','LF / EA']]}],
   sample:{title:'Two-story wood-frame office — 9,600 SF',cols:['Description','Qty','Unit','Sheet','Material','Labor','Total'],rows:[
     ['2×6 studs @ 16" O.C., 9\'-1⅛"','1,480','EA','S-201','13,320','11,840','25,160'],['Plates, headers, blocking — 2× material','9,800','BF','S-201','9,310','5,880','15,190'],['11⅞" I-joists @ 16" O.C.','4,320','LF','S-202','15,120','8,640','23,760'],['7/16" OSB wall sheathing','8,900','SF','A-301','6,230','4,450','10,680'],['Roof trusses, 32\' span, 4:12','62','EA','S-203','24,800','9,300','34,100'],['Hangers, straps, hold-downs, fasteners','1','LS','S-501','5,400','2,700','8,100']],
-    total:['Division 06 subtotal','74,180','42,810','116,990'],basis:'Quantities from S-201 through S-203 and A-301 dated [DATE]. SPF #2 framing, 10% waste on studs, 8% on sheathing. Illustrative figures.'},
+    total:['Division 06 subtotal','74,180','42,810','116,990'],basis:'Quantities from S-201 through S-203 and A-301 in the issued plan set. SPF #2 framing, 10% waste on studs, 8% on sheathing.'},
   exclusions:['Doors, windows and hardware (Division 08)','Insulation and weather barrier (Division 07)','Gypsum board (Division 09)','Structural steel members within wood framing (Division 05)','Truss engineering and stamped drawings','Temporary bracing and shoring beyond standard practice'],
   faq:[['Why report both board feet and piece count?','Suppliers quote framing by the thousand board feet, but crews order and carry pieces. You need the board-foot number to price material and the piece count to order it and estimate handling labor.'],
        ['What waste factor do you use on studs?','Typically 10% on studs and plates, 8% on sheathing, adjusted for complex layouts or non-standard heights. The percentage is stated on the estimate.'],
@@ -99,7 +99,7 @@ export const TRADES: Trade[] =
     {group:'Fire, sealants & cladding',unit:'SF · LF · EA',items:[['Spray fireproofing by hour rating','SF'],['Firestopping at penetrations and joints','EA / LF'],['Joint sealants by location and type','LF'],['Metal wall panels and siding','SF'],['Soffit and fascia','SF / LF'],['Expansion joint covers','LF']]}],
   sample:{title:'Single-story warehouse — 66,000 SF roof',cols:['Description','Qty','Unit','Sheet','Material','Labor','Total'],rows:[
     ['60 mil TPO, fully adhered','660','SQ','A-110','92,400','66,000','158,400'],['(2) 2.6" polyiso — R-30, mech. fastened','66,000','SF','A-511','118,800','33,000','151,800'],['Tapered polyiso crickets, ¼"/ft','4,200','SF','A-110','9,240','2,520','11,760'],['½" HD cover board','66,000','SF','A-511','36,300','19,800','56,100'],['Base flashing at parapet & curbs','1,240','LF','A-521','12,400','18,600','31,000'],['Roof drains, overflows, curbs — 14 EA','14','EA','A-110','8,400','4,200','12,600']],
-    total:['Division 07 subtotal','277,540','144,120','421,660'],basis:'Roof area from A-110 dated [DATE]. Assembly per A-511. 20-year NDL manufacturer warranty assumed. Illustrative figures.'},
+    total:['Division 07 subtotal','277,540','144,120','421,660'],basis:'Roof area from A-110 in the issued plan set. Assembly per A-511. 20-year NDL manufacturer warranty assumed.'},
   exclusions:['Rooftop equipment curbs furnished by mechanical (coordinate)','Wood blocking and nailers (Division 06)','Roof deck repairs or replacement','Lightning protection','Snow retention and fall protection anchors unless detailed','Warranty inspections beyond manufacturer standard'],
   faq:[['Why squares and square feet both?','Roofing suppliers and crews price by the square (100 SF); everyone else on the job thinks in square feet. We report both so the number reconciles across trades.'],
        ['How is tapered insulation quantified?','By average thickness across the tapered area, converted to board feet for purchasing, with crickets and saddles counted separately. The tapered manufacturer\'s layout is the basis when one is included in the set.'],
@@ -119,7 +119,7 @@ export const TRADES: Trade[] =
     {group:'Paint & coatings',unit:'SF · EA',items:[['Walls by paint system and coats','SF'],['Ceilings','SF'],['Doors and frames','EA'],['Exposed structure and deck','SF'],['Exterior paint and stain','SF'],['Wall coverings and specialty finishes','SF / LY']]}],
   sample:{title:'Tenant improvement — 12,400 SF office',cols:['Description','Qty','Unit','Sheet','Material','Labor','Total'],rows:[
     ['3⅝" 20 ga studs @ 16" O.C. + track','9,600','LF','A-600','7,680','9,600','17,280'],['5/8" Type X GWB, both sides, Level 4','24,800','SF','A-600','13,640','29,760','43,400'],['2×4 ACT, 15/16" grid','10,900','SF','A-120','27,250','16,350','43,600'],['Carpet tile, 24×24','1,020','SY','A-601','35,700','9,180','44,880'],['LVT at break rooms and corridors','1,850','SF','A-601','8,325','5,550','13,875'],['Paint P-1 walls, 2 coats + doors & frames','26,400','SF','A-601','6,600','19,800','26,400']],
-    total:['Division 09 subtotal','99,195','90,240','189,435'],basis:'Quantities from A-100, A-120, A-600 and A-601 dated [DATE]. Finish products per basis of design; alternates not priced. Illustrative figures.'},
+    total:['Division 09 subtotal','99,195','90,240','189,435'],basis:'Quantities from A-100, A-120, A-600 and A-601 in the issued plan set. Finish products per basis of design; alternates not priced.'},
   exclusions:['Floor prep beyond stated allowance','Moisture mitigation unless test results provided','Furniture, fixtures and equipment','Signage and graphics','Window treatments','Access flooring'],
   faq:[['What finish level is assumed on gypsum board?','Whatever the specification calls for by location — commonly Level 4 at painted walls and Level 5 where critical lighting or high-gloss finishes are scheduled. If the spec is silent, we assume Level 4 and say so.'],
        ['What waste do you apply on flooring?','Carpet tile 5 to 8%, broadloom 10 to 15% depending on pattern repeat, LVT 8 to 10%, ceramic tile 10% plus extra at diagonal layouts. The percentage is stated per product.'],
@@ -139,7 +139,7 @@ export const TRADES: Trade[] =
     {group:'Rough-in & labor',unit:'LF · LS',items:[['Underslab trenching and backfill','LF / CY'],['Sleeves, inserts and hangers','EA'],['Fixture carriers and supports','EA'],['Pressure testing and disinfection','LS'],['Core drilling and firestopping','EA'],['Permit and inspection allowance','LS']]}],
   sample:{title:'Three-story office — 36,000 SF',cols:['Description','Qty','Unit','Sheet','Material','Labor','Total'],rows:[
     ['Fixtures — WC, urinal, lav, sink, EWC — 48 EA','48','EA','P-601','38,400','19,200','57,600'],['Sanitary waste & vent, PVC, 1½"–4"','2,860','LF','P-501','20,020','42,900','62,920'],['Domestic CW/HW, Type L copper, ½"–2"','3,120','LF','P-502','34,320','46,800','81,120'],['Pipe insulation, 1" fiberglass','2,400','LF','P-502','9,600','7,200','16,800'],['Water heaters (2), circ pump, exp. tank','1','LS','P-601','14,800','4,400','19,200'],['Roof drains & storm leaders, 4"–6"','620','LF','P-100','9,300','12,400','21,700']],
-    total:['Division 22 subtotal','126,440','132,900','259,340'],basis:'Fixtures per P-601 and P-100 series dated [DATE]. Piping measured from plans and P-501/P-502 risers. Fittings at 18% of pipe. Illustrative figures.'},
+    total:['Division 22 subtotal','126,440','132,900','259,340'],basis:'Fixtures per P-601 and P-100 series in the issued plan set. Piping measured from plans and P-501/P-502 risers. Fittings at 18% of pipe.'},
   exclusions:['Site utilities beyond 5\'-0" from building (Division 33)','Fire protection sprinklers and standpipes (Division 21)','Medical gas and lab gas systems unless shown','Owner-furnished equipment connections beyond stub-outs','Electrical connections to equipment (Division 26)','Utility tap and connection fees'],
   faq:[['Do you measure vertical piping from the risers?','Yes. Plans show horizontal runs; riser diagrams show the vertical. Both are measured and reconciled so stacks and risers are not under-counted.'],
        ['How are fittings and hangers handled?','As a stated percentage of pipe length by system, typically 15 to 20% for fittings, with hangers by count from the support spacing in the specification. Both are visible and adjustable on the estimate.'],
@@ -159,7 +159,7 @@ export const TRADES: Trade[] =
     {group:'Installation',unit:'LS · EA',items:[['Rigging and crane for rooftop equipment','EA / DAY'],['Roof curbs and supports (coordinate Div 07)','EA'],['Startup and manufacturer services','EA'],['Duct pressure testing and cleaning','LS'],['Core drilling, sleeves and firestopping','EA'],['Permits and inspections allowance','LS']]}],
   sample:{title:'Single-story retail — 18,650 SF',cols:['Description','Qty','Unit','Sheet','Material','Labor','Total'],rows:[
     ['RTU-1 through RTU-4, 7.5–15 ton, gas heat','4','EA','M-601','96,000','12,000','108,000'],['Rectangular duct, 26 ga galv., 8"–24"','6,850','LB','M-101','27,400','41,100','68,500'],['Flex duct 8"Ø, max 5\'-0"','620','LF','M-101','2,480','3,720','6,200'],['Diffusers, grilles, dampers — 96 EA','96','EA','M-101','9,600','5,760','15,360'],['Duct wrap, 1½" — supply & return','5,200','SF','M-101','6,240','7,800','14,040'],['Controls, thermostats, TAB, startup','1','LS','M-500','14,500','9,800','24,300']],
-    total:['Division 23 subtotal','156,220','80,180','236,400'],basis:'Equipment per M-601 dated [DATE]. Ductwork measured from M-101 and converted to pounds per SMACNA gauge schedule. Fittings at 25% of straight duct. Illustrative figures.'},
+    total:['Division 23 subtotal','156,220','80,180','236,400'],basis:'Equipment per M-601 in the issued plan set. Ductwork measured from M-101 and converted to pounds per SMACNA gauge schedule. Fittings at 25% of straight duct.'},
   exclusions:['Electrical power and disconnects to equipment (Division 26)','Structural supports and roof openings','Gas piping to equipment (Division 22)','Fire and smoke damper wiring to fire alarm (Division 28)','Utility company service upgrades','Extended warranties beyond manufacturer standard'],
   faq:[['Why is ductwork priced by the pound?','Sheet metal shops fabricate by weight — gauge, size and length convert to pounds of galvanized steel. Linear feet are reported alongside so field labor productivity can be checked, but the pound is the purchasing unit.'],
        ['How are fittings handled?','As a percentage of straight duct weight, typically 20 to 30% depending on layout complexity, stated on the estimate. Runs with many elbows and transitions get the higher end.'],
@@ -179,7 +179,7 @@ export const TRADES: Trade[] =
     {group:'Systems & misc.',unit:'EA · LF · LS',items:[['Fire alarm devices and rough-in','EA'],['Data, voice and AV rough-in','EA / LF'],['Security and access control rough-in','EA'],['Grounding and bonding electrode system','LS'],['Lightning protection where shown','LS'],['Temporary power and testing','LS']]}],
   sample:{title:'Single-story retail — 18,650 SF',cols:['Description','Qty','Unit','Sheet','Material','Labor','Total'],rows:[
     ['400A 208Y/120V service, CT cabinet, MDP','1','LS','E-501','28,000','9,600','37,600'],['Feeders — 4#3 to 4#500 kcmil, EMT/PVC','1,120','LF','E-501','22,400','16,800','39,200'],['Panelboards LP-1/2/3, 75 kVA xfmr','4','EA','E-502','18,400','6,400','24,800'],['Branch circuits, ¾" EMT + #12 THHN','9,600','LF','E-201','19,200','43,200','62,400'],['Devices — recept., switches, sensors — 214 EA','214','EA','E-201','6,420','12,840','19,260'],['Lighting — 2×4 LED troffers, EM, exit — 148 EA','148','EA','E-601','37,000','17,760','54,760']],
-    total:['Division 26 subtotal','131,420','106,600','238,020'],basis:'Gear per E-501/E-502 dated [DATE]. Branch lengths measured from E-201 with home runs from panel locations. Copper at [DATE] pricing. Illustrative figures.'},
+    total:['Division 26 subtotal','131,420','106,600','238,020'],basis:'Gear per E-501/E-502 in the issued plan set. Branch lengths measured from E-201 with home runs from panel locations. Pricing should be aligned to current project conditions.'},
   exclusions:['Utility company fees and primary service','Telecommunications cabling and termination (Division 27) unless included','Fire alarm system design and programming','Owner-furnished equipment beyond connection','Site lighting foundations and trenching (coordinate Div 31/33)','Temporary lighting beyond stated allowance'],
   faq:[['How do you estimate home-run lengths?','From the panel location on the plans to each circuit\'s first device, measured along the likely conduit route, grouped into length bands. The method is stated so it can be checked against your own routing.'],
        ['Are lighting fixtures priced or by others?','Priced from the fixture schedule when a basis of design is listed. When the schedule is a performance spec or the fixture package is owner-furnished, we carry installation only and say so.'],
@@ -199,7 +199,7 @@ export const TRADES: Trade[] =
     {group:'Erosion & sediment control',unit:'LF · EA',items:[['Silt fence','LF'],['Inlet protection','EA'],['Stabilized construction entrance','EA'],['Sediment basins and traps','EA / CY'],['Seeding, mulch and matting for stabilization','SF / SY'],['SWPPP inspections and maintenance','MO']]}],
   sample:{title:'Warehouse site — 5.2 acres',cols:['Description','Qty','Unit','Sheet','Material','Labor','Total'],rows:[
     ['Clearing & grubbing, light brush','4.1','AC','C-201','—','14,350','14,350'],['Topsoil strip, 6", stockpile on site','3,420','CY','C-301','—','10,260','10,260'],['Cut to grade, bank measure','12,400','CY','C-301','—','37,200','37,200'],['Fill, on-site, compacted 95%','8,600','CY','C-301','—','34,400','34,400'],['Export, 20% swell, 8 mi haul','4,560','CY','C-301','—','41,040','41,040'],['Silt fence, inlet protection, entrance','1','LS','C-501','8,900','7,600','16,500']],
-    total:['Division 31 subtotal','8,900','144,850','153,750'],basis:'Cut/fill by DTM comparison of C-101 and C-301 dated [DATE]. Shrink 15%, swell 20%. No rock assumed per geotech dated [DATE]. Illustrative figures.'},
+    total:['Division 31 subtotal','8,900','144,850','153,750'],basis:'Cut/fill by DTM comparison of C-101 and C-301 in the issued plan set. Shrink 15%, swell 20%. No rock assumed where geotechnical information is not provided.'},
   exclusions:['Rock excavation unless indicated on the drawings or geotech','Contaminated or hazardous soil handling','Dewatering beyond sump pumping','Unsuitable soils beyond stated allowance','Off-site improvements and right-of-way work','Survey, staking and testing fees'],
   faq:[['How do you calculate cut and fill?','By comparing existing and proposed surfaces — a grid method on simple sites, a digital terrain model where the civil set provides surfaces. The method is stated on the estimate with the shrink and swell factors applied.'],
        ['What if there is no geotechnical report?','We estimate to the drawings and flag pad preparation, over-excavation and fill quality as assumptions. When the report arrives, those lines are revised.'],
@@ -219,7 +219,7 @@ export const TRADES: Trade[] =
     {group:'Irrigation & furnishings',unit:'ZONE · EA',items:[['Irrigation by zone and head count','ZONE / EA'],['Mainline, laterals and controller','LF / EA'],['Backflow and point of connection','EA'],['Benches, bike racks, receptacles','EA'],['Site lighting bases (coordinate Div 26)','EA'],['Maintenance period and warranty','MO']]}],
   sample:{title:'Warehouse site — 5.2 acres',cols:['Description','Qty','Unit','Sheet','Material','Labor','Total'],rows:[
     ['8" aggregate base, compacted','3,860','TON','C-401','61,760','23,160','84,920'],['3" HMA — 2" binder + 1" surface','1,540','TON','C-401','138,600','46,200','184,800'],['6" concrete curb & gutter','2,180','LF','C-402','26,160','30,520','56,680'],['5" concrete sidewalk w/ ADA ramps','6,400','SF','C-402','25,600','22,400','48,000'],['Striping, symbols, signs, wheel stops','1','LS','C-101','6,200','4,800','11,000'],['Trees, shrubs, sod, mulch, irrigation','1','LS','L-101','48,500','32,000','80,500']],
-    total:['Division 32 subtotal','306,820','159,080','465,900'],basis:'Paving areas from C-101 and sections from C-401 dated [DATE]. HMA at 110 lb/SY-in. Planting per L-101 schedule. Illustrative figures.'},
+    total:['Division 32 subtotal','306,820','159,080','465,900'],basis:'Paving areas from C-101 and sections from C-401 in the issued plan set. HMA at 110 lb/SY-in. Planting per L-101 schedule.'},
   exclusions:['Site lighting fixtures and wiring (Division 26)','Site utilities (Division 33)','Off-site and right-of-way improvements','Permit, bond and inspection fees','Soil amendment beyond specification','Plant establishment beyond stated maintenance period'],
   faq:[['How is asphalt tonnage calculated?','Area in square yards multiplied by thickness in inches multiplied by 110 pounds per square yard-inch, adjusted for the mix density in the specification. The factor is stated so it can be checked against your supplier.'],
        ['Are ADA ramps and detectable warnings separated?','Yes, by the each. They carry significantly more labor and material than the equivalent area of plain sidewalk and are a frequent inspection item.'],
@@ -239,7 +239,7 @@ export const TRADES: Trade[] =
     {group:'Restoration & testing',unit:'SF · LS',items:[['Pavement cut and patch','SF'],['Curb, walk and landscape restoration','LF / SF'],['Pressure testing and disinfection','LS'],['CCTV inspection of gravity lines','LF'],['Mandrel and air testing','LF'],['As-built survey','LS']]}],
   sample:{title:'Warehouse site — 5.2 acres',cols:['Description','Qty','Unit','Sheet','Material','Labor','Total'],rows:[
     ['12" DIP water main, 4\'–6\' depth','640','LF','C-401','44,800','32,000','76,800'],['Hydrants (2), valves (4), tapping sleeve','1','LS','C-601','21,400','9,800','31,200'],['8" PVC sanitary @ 0.5%, 6\'–10\' depth','820','LF','C-411','16,400','45,100','61,500'],['Sanitary manholes, 48" dia. — 4 EA, 32 VF','32','VF','C-601','12,800','9,600','22,400'],['15" RCP storm, 3\'–5\' depth','1,140','LF','C-501','31,920','39,900','71,820'],['Catch basins & storm structures — 9 EA','9','EA','C-501','27,000','13,500','40,500']],
-    total:['Division 33 subtotal','154,320','149,900','304,220'],basis:'Pipe lengths from C-401/C-501 with depths from C-411 profiles dated [DATE]. Class B bedding, native backfill. Rock not assumed. Illustrative figures.'},
+    total:['Division 33 subtotal','154,320','149,900','304,220'],basis:'Pipe lengths from C-401/C-501 with depths from C-411 profiles in the issued plan set. Class B bedding, native backfill. Rock not assumed.'},
   exclusions:['Utility company tap, connection and capacity fees','Rock excavation unless indicated','Dewatering beyond stated allowance','Work within public right-of-way requiring traffic control','Building plumbing within 5\'-0" of the structure (Division 22)','Easement acquisition and permitting'],
   faq:[['Why are pipes banded by depth?','Because trench cost rises sharply with depth — more excavation, more shoring, more backfill, slower production. A 10-foot-deep sanitary run costs far more per foot than a 4-foot water line of the same diameter.'],
        ['Are connection fees included?','No. Tap fees, capacity charges and utility company work are owner costs that vary by jurisdiction. They are listed as exclusions so they are not forgotten in the owner\'s budget.'],
@@ -281,11 +281,11 @@ export const LEGAL = {
   "privacy": [
     [
       "1. Who we are",
-      "[Company Name] (“we,” “us”) provides construction estimating, quantity takeoff and related preconstruction services to contractors, suppliers, design professionals and owners in the United States. Our business address is [Address]. This policy applies to our website at [domain] and to information we collect when you request or receive our services."
+      "PreCon Ext (“we,” “us”) provides construction estimating, quantity takeoff and related preconstruction services to contractors, suppliers, design professionals and owners. This policy applies to our website and to information we collect when you request or receive our services."
     ],
     [
       "2. Information we collect",
-      "We collect information you provide directly: your name, company, email address, phone number, project location, bid dates, scope notes and any files you upload or link. We collect information automatically when you visit the website, such as IP address, browser type, pages viewed and referring site, through standard server logs and analytics tools described in Section 7. We do not collect payment card numbers on the website; invoices are paid through [payment processor], which has its own privacy policy."
+      "We collect information you provide directly: your name, company, email address, phone number, project location, bid dates, scope notes and any files you upload or link. We collect information automatically when you visit the website, such as IP address, browser type, pages viewed and referring site, through standard server logs and analytics tools described in Section 7. We do not collect payment card numbers on the website."
     ],
     [
       "3. How we use information",
@@ -293,11 +293,11 @@ export const LEGAL = {
     ],
     [
       "4. Plan sets and project documents",
-      "Drawings, specifications, pricing and other project documents you send us are confidential business information. We use them only to produce the services you request. We do not sell, license, publish or share them with any third party other than personnel and contractors working on your engagement under confidentiality obligations. We retain them as described in Section 8. On request, we will sign your NDA or provide ours. [Confirm policy.]"
+      "Drawings, specifications, pricing and other project documents you send us are treated as confidential business information. We use them only to understand and produce the services you request, and do not sell or publish them."
     ],
     [
       "5. Text messaging (SMS)",
-      "If you check the SMS consent box on our quote form, you agree to receive text messages from [Company Name] at the mobile number you provide about your quote and project status, including messages sent by automated technology. Consent is not a condition of purchasing any service. Message frequency varies. Message and data rates may apply. You can opt out at any time by replying STOP, and get help by replying HELP. We do not share your mobile number or SMS consent with third parties for their marketing. Full terms are in the <a href=\"#/terms#sms\">SMS section of our Terms & Conditions</a>."
+      "This website does not currently request SMS consent or send text messages. If that changes, the privacy and consent language will be updated before the feature is enabled."
     ],
     [
       "6. How we share information",
@@ -305,11 +305,11 @@ export const LEGAL = {
     ],
     [
       "7. Cookies and analytics",
-      "The website uses essential cookies to function and may use analytics tools (such as [Google Analytics]) to understand how visitors use the site. You can control cookies through your browser settings. We honor Global Privacy Control signals where required by law."
+      "The website uses essential cookies to function and may use analytics tools to understand how visitors use the site. You can control cookies through your browser settings."
     ],
     [
       "8. Data retention",
-      "We retain quote requests and contact information for [X years] after last contact. We retain project documents and estimates for [X years] after delivery to support revisions, disputes and our own records, unless you request earlier deletion, which we honor except where retention is required by law or an active engagement."
+      "We retain quote requests, contact information, project documents, and estimates only as long as needed to respond, support an engagement, satisfy legal obligations, resolve disputes, or maintain appropriate business records."
     ],
     [
       "9. Security",
@@ -317,7 +317,7 @@ export const LEGAL = {
     ],
     [
       "10. Your rights — including California residents",
-      "You may ask us to access, correct or delete personal information we hold about you, and to opt out of marketing email or SMS at any time. California residents have additional rights under the CCPA/CPRA, including the right to know what personal information we collect and how it is used, the right to delete, the right to correct, and the right to opt out of sale or sharing. We do not sell or share personal information as those terms are defined under California law, so there is no opt-out to exercise, but you may still submit a request. To exercise any right, contact us at [email] or [phone]. We will verify your request and respond within the time required by law. We do not discriminate against you for exercising your rights. Residents of other states with privacy laws (including Virginia, Colorado, Connecticut, Utah, Texas and Oregon) have similar rights and may use the same contact methods."
+      "You may ask us to access, correct, or delete personal information we hold about you, and to opt out of marketing communications. Use the project request form to make a request; we will verify it and respond within the time required by law."
     ],
     [
       "11. Children",
@@ -329,7 +329,7 @@ export const LEGAL = {
     ],
     [
       "13. Contact",
-      "[Company Name]<br>[Address]<br>[email] · [phone]"
+      "Use the project request form to contact PreCon Ext about privacy questions or requests."
     ]
   ],
   "terms": [
@@ -347,7 +347,7 @@ export const LEGAL = {
     ],
     [
       "4. Nature of estimates — no guarantee",
-      "An estimate is a professional opinion of probable quantities and cost based on the documents provided and the assumptions stated in the deliverable. It is not a guarantee of actual quantities, costs, bid results, or project outcomes. Market prices, labor availability, site conditions, design changes and bidding strategy are outside our control. You are solely responsible for reviewing the deliverable, verifying it against your own knowledge and the bid documents, applying your own markups and judgment, and deciding whether and how to bid. [Accuracy commitments, if any, to be inserted here after counsel review.]"
+      "An estimate is a professional opinion of probable quantities and cost based on the documents provided and the assumptions stated in the deliverable. It is not a guarantee of actual quantities, costs, bid results, or project outcomes. Market prices, labor availability, site conditions, design changes and bidding strategy are outside our control. You are responsible for reviewing the deliverable, verifying it against your own knowledge and the bid documents, applying your own markups and judgment, and deciding whether and how to bid."
     ],
     [
       "5. Revisions and addenda",
@@ -355,11 +355,11 @@ export const LEGAL = {
     ],
     [
       "6. Fees and payment",
-      "Fees are fixed per engagement as stated in the quote. Invoices are issued on delivery [or as stated in the quote] and are due within [X] days. Late payments accrue interest at [X]% per month or the maximum permitted by law, whichever is less, plus reasonable collection costs. We may suspend work or withhold deliverables on accounts more than [X] days past due. Fees exclude applicable taxes."
+      "Fees and payment timing are stated in the applicable written quote or agreement. Fees exclude applicable taxes unless the agreement says otherwise."
     ],
     [
       "7. Confidentiality",
-      "Each party will keep the other’s non-public information confidential and use it only for the engagement. Your drawings, specifications, pricing and bid information are your confidential information. Our methods, templates, pricing databases and workbook structures are ours. These obligations survive the engagement for [X] years and do not apply to information that is public, independently developed, or required to be disclosed by law. On request we will sign your NDA or provide ours."
+      "Each party will keep the other’s non-public information confidential and use it only for the engagement. Your drawings, specifications, pricing and bid information are your confidential information; our methods, templates, pricing databases, and workbook structures remain ours. These obligations do not apply to information that is public, independently developed, or required to be disclosed by law."
     ],
     [
       "8. Intellectual property and deliverables",
@@ -375,7 +375,7 @@ export const LEGAL = {
     ],
     [
       "11. SMS terms",
-      "<b>Program description.</b> When you opt in on our quote form, [Company Name] sends text messages about your quote request, estimate status, delivery and follow-up questions. Messages may be sent using automated technology. <b>Consent is not a condition of purchase.</b> <b>Frequency:</b> varies by engagement; typically [X–X] messages per project. <b>Cost:</b> message and data rates may apply per your carrier plan. <b>Opt out:</b> reply STOP to any message to cancel; you will receive one confirmation message. <b>Help:</b> reply HELP or contact [phone] / [email]. <b>Carriers</b> are not liable for delayed or undelivered messages. <b>Privacy:</b> mobile numbers and SMS consent are not shared with third parties for marketing; see our <a href=\"#/privacy#sms\">Privacy Policy</a>. [Confirm carrier-required language with your SMS provider before launch.]"
+      "This website does not currently offer SMS messaging. No text-message consent is collected through the project request form."
     ],
     [
       "12. Website use",
@@ -383,7 +383,7 @@ export const LEGAL = {
     ],
     [
       "13. Governing law and disputes",
-      "These Terms are governed by the laws of the State of [State], without regard to conflict-of-law rules. Disputes will be resolved [in the state or federal courts located in [County, State] / by binding arbitration under the rules of [AAA/JAMS] in [City, State]], and each party consents to that forum. Either party may seek injunctive relief to protect confidential information or intellectual property in any court of competent jurisdiction. [Counsel to select forum and arbitration terms.]"
+      "These Terms are governed by applicable law. Any engagement-specific dispute process or forum will be stated in the applicable written agreement."
     ],
     [
       "14. General",

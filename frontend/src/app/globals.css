@@ -41,9 +41,6 @@
   .band-dark h2,.band-dark h3,.band-dark h4{color:#fff;}
   .band-dark .prose,.band-dark .lede{color:#B9CBDC;}
 
-  /* preview strip */
-  .preview-note{background:var(--marker);color:#3A2E05;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.04em;text-align:center;padding:7px 20px;line-height:1.45;}
-
   /* nav */
   .site-nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule-soft);}
   .nav-inner{display:flex;align-items:center;gap:26px;min-height:74px;}

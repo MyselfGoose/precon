@@ -1,10 +1,10 @@
 export const BRAND = {
   name: 'PreCon Ext',
-  descriptor: 'Preconstruction intelligence',
+  descriptor: 'Bid confidence, built in',
   description:
-    'Integrated estimating, drafting, engineering, coordination, and acquisition support for teams moving projects from concept to construction.',
+    'Bid smarter. Reduce uncertainty. Win more work with confidence.',
   phone: '(800) 555-0100',
-  email: '[email@placeholder.com]',
+  email: 'Project conversations start with the request form',
 };
 
 export type ContentService = {
@@ -125,7 +125,7 @@ export const PRIVACY_SECTIONS: [string, string][] = [
   ['10. Marketing Communications', 'You may unsubscribe from marketing messages using the link or instructions in the message. Service-related communications may still be sent when necessary to respond to a request or manage an engagement.'],
   ['11. Children’s Privacy', 'This Site is not directed to children and we do not knowingly collect personal information from children.'],
   ['12. Policy Changes', 'We may update this policy as our practices or legal obligations change. The updated version will be posted on this page with a revised effective date.'],
-  ['13. Contact', 'For privacy questions or requests, contact PreCon Ext using the contact information published on this Site. Specific company address, email, and effective-date fields remain pending confirmation.'],
+  ['13. Contact', 'For privacy questions or requests, use the project request form to share your name and contact details. We will use that information only to respond to your request and manage the conversation that follows.'],
 ];
 
 export const TERMS_SECTIONS: [string, string][] = [
