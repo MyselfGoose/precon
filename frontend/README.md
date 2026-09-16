@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## PreCon Ext frontend
 
-## Getting Started
+This is a lightweight Next.js App Router site for PreCon Ext, a construction estimating and preconstruction support consultancy.
 
-First, run the development server:
+## Development
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Before shipping, run the project checks:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+## Where things live
 
-To learn more about Next.js, take a look at the following resources:
+- `src/app/**/page.tsx` owns route composition and metadata. Dynamic service and trade pages are generated from route data.
+- `src/lib/content.ts` owns current buyer-facing copy, brand language, process copy, and legal page sections.
+- `src/lib/data.ts` owns trade measurements, workbook samples, navigation arrays, and legacy service records still supported by the dynamic service route.
+- `src/app/components.tsx` owns shared UI primitives such as `PageHead`, `CTA`, `FAQ`, `ServiceSummaryCard`, `TradeTile`, `Spec`, and `Workbook`.
+- `src/app/globals.css` owns the visual system, responsive breakpoints, and shared interaction states.
+- `src/lib/illustrations.ts` generates the lightweight inline SVG drawings used by the homepage and trade/contact surfaces. Keep them dependency-free and deterministic.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The mobile navigation and project brief form are the only intentionally client-side interactions. The inquiry form currently prepares information in the browser; it does not send email or upload files. Keep copy and privacy disclosures aligned with that limitation until a server submission path is added.
