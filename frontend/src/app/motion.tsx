@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, type HTMLMotionProps, useReducedMotion } from 'framer-motion';
-import type { ReactNode } from 'react';
+import { motion, type HTMLMotionProps, useInView, useReducedMotion } from 'framer-motion';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -92,5 +92,47 @@ export function MotionButton({
     >
       {children}
     </motion.div>
+  );
+}
+
+export function CountUp({
+  value,
+  suffix = '',
+  className,
+  label,
+}: {
+  value: number;
+  suffix?: string;
+  className?: string;
+  label?: string;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.8 });
+  const reduced = useReducedMotion();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!inView || reduced) {
+      return;
+    }
+
+    let frame = 0;
+    const started = performance.now();
+    const duration = 1100;
+    const tick = (now: number) => {
+      const progress = Math.min((now - started) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCurrent(Math.round(value * eased));
+      if (progress < 1) frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [inView, reduced, value]);
+
+  return (
+    <span ref={ref} className={className} aria-label={label ?? `${value}${suffix}`}>
+      {reduced ? value : current}
+      {suffix}
+    </span>
   );
 }
