@@ -7,42 +7,41 @@ import { NAV_ITEMS } from '@/lib/data';
 import { SITE_COPY } from '@/lib/content';
 
 const STORAGE_KEY = 'precon-mobile-menu-position';
-const DEFAULT_POSITION = { x: 0, y: 0 };
+const DEFAULT_CORNER = 'bottom-right' as const;
+type Corner = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
-function readPosition() {
+function readCorner(): Corner {
   try {
     const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (!saved) return DEFAULT_POSITION;
-    const parsed = JSON.parse(saved);
-    if (typeof parsed.x !== 'number' || typeof parsed.y !== 'number') return DEFAULT_POSITION;
-    return parsed;
+    if (saved === 'top-left' || saved === 'top-right' || saved === 'bottom-left' || saved === 'bottom-right') {
+      return saved;
+    }
+    const parsed = saved ? JSON.parse(saved) : null;
+    if (parsed?.corner && ['top-left', 'top-right', 'bottom-left', 'bottom-right'].includes(parsed.corner)) {
+      return parsed.corner;
+    }
+    return DEFAULT_CORNER;
   } catch {
-    return DEFAULT_POSITION;
+    return DEFAULT_CORNER;
   }
 }
 
-function clampPosition(position: { x: number; y: number }) {
-  return {
-    x: Math.max(-window.innerWidth + 86, Math.min(18, position.x)),
-    y: Math.max(-window.innerHeight + 170, Math.min(84, position.y)),
-  };
+function nearestCorner(x: number, y: number): Corner {
+  const horizontal = x < window.innerWidth / 2 ? 'left' : 'right';
+  const vertical = y < window.innerHeight / 2 ? 'top' : 'bottom';
+  return `${vertical}-${horizontal}` as Corner;
 }
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
-  const [position, setPosition] = useState(DEFAULT_POSITION);
+  const [corner, setCorner] = useState<Corner>(DEFAULT_CORNER);
   const closeRef = useRef<HTMLButtonElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const reduced = useReducedMotion();
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => setPosition(clampPosition(readPosition())));
-    const onResize = () => setPosition((current) => clampPosition(current));
-    window.addEventListener('resize', onResize);
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener('resize', onResize);
-    };
+    const frame = requestAnimationFrame(() => setCorner(readCorner()));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   useEffect(() => {
@@ -80,12 +79,11 @@ export default function MobileNav() {
     requestAnimationFrame(() => toggleRef.current?.focus());
   }
 
-  function savePosition(_: unknown, info: { offset: { x: number; y: number } }) {
-    const next = { x: position.x + info.offset.x, y: position.y + info.offset.y };
-    const bounded = clampPosition(next);
-    setPosition(bounded);
+  function savePosition(_: unknown, info: { point: { x: number; y: number } }) {
+    const nextCorner = nearestCorner(info.point.x, info.point.y);
+    setCorner(nextCorner);
     try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(bounded));
+      window.localStorage.setItem(STORAGE_KEY, nextCorner);
     } catch {
       // Storage is optional; the control remains usable for this visit.
     }
@@ -106,19 +104,18 @@ export default function MobileNav() {
         )}
       </AnimatePresence>
       <motion.div
-        className="floating-nav-shell"
+        className={`floating-nav-shell floating-nav-${corner}`}
         drag
         dragMomentum={false}
-        dragElastic={0.08}
+        dragElastic={0}
         onDragEnd={savePosition}
-        animate={{ x: position.x, y: position.y }}
         transition={reduced ? { duration: 0 } : { type: 'spring', stiffness: 500, damping: 32 }}
       >
         <AnimatePresence>
           {open && (
             <motion.nav
               id="mobile-links"
-              className={`floating-nav-panel${position.y < -window.innerHeight / 2 ? ' panel-below' : ''}`}
+              className={`floating-nav-panel ${corner.startsWith('top-') ? 'panel-below' : 'panel-above'}`}
               aria-label="Mobile navigation"
               role="dialog"
               aria-modal="true"
