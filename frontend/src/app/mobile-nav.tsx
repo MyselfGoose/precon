@@ -21,6 +21,13 @@ function readPosition() {
   }
 }
 
+function clampPosition(position: { x: number; y: number }) {
+  return {
+    x: Math.max(-window.innerWidth + 86, Math.min(18, position.x)),
+    y: Math.max(-window.innerHeight + 170, Math.min(84, position.y)),
+  };
+}
+
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
   const [position, setPosition] = useState(DEFAULT_POSITION);
@@ -29,8 +36,13 @@ export default function MobileNav() {
   const reduced = useReducedMotion();
 
   useEffect(() => {
-    const frame = requestAnimationFrame(() => setPosition(readPosition()));
-    return () => cancelAnimationFrame(frame);
+    const frame = requestAnimationFrame(() => setPosition(clampPosition(readPosition())));
+    const onResize = () => setPosition((current) => clampPosition(current));
+    window.addEventListener('resize', onResize);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('resize', onResize);
+    };
   }, []);
 
   useEffect(() => {
@@ -38,8 +50,21 @@ export default function MobileNav() {
     closeRef.current?.focus();
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        setOpen(false);
-        toggleRef.current?.focus();
+        closeMenu();
+      }
+      if (event.key === 'Tab') {
+        const focusable = Array.from(
+          document.querySelectorAll<HTMLElement>('#mobile-links a, #mobile-links button'),
+        );
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
       }
     };
     document.addEventListener('keydown', onKeyDown);
@@ -50,12 +75,14 @@ export default function MobileNav() {
     };
   }, [open]);
 
+  function closeMenu() {
+    setOpen(false);
+    requestAnimationFrame(() => toggleRef.current?.focus());
+  }
+
   function savePosition(_: unknown, info: { offset: { x: number; y: number } }) {
     const next = { x: position.x + info.offset.x, y: position.y + info.offset.y };
-    const bounded = {
-      x: Math.max(-window.innerWidth + 86, Math.min(18, next.x)),
-      y: Math.max(-window.innerHeight + 170, Math.min(84, next.y)),
-    };
+    const bounded = clampPosition(next);
     setPosition(bounded);
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(bounded));
@@ -71,7 +98,7 @@ export default function MobileNav() {
           <motion.button
             className="floating-nav-backdrop"
             aria-label="Close navigation"
-            onClick={() => setOpen(false)}
+            onClick={closeMenu}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -85,20 +112,22 @@ export default function MobileNav() {
         dragElastic={0.08}
         onDragEnd={savePosition}
         animate={{ x: position.x, y: position.y }}
-        transition={{ type: 'spring', stiffness: 500, damping: 32 }}
+        transition={reduced ? { duration: 0 } : { type: 'spring', stiffness: 500, damping: 32 }}
       >
         <AnimatePresence>
           {open && (
             <motion.nav
               id="mobile-links"
-              className="floating-nav-panel"
+              className={`floating-nav-panel${position.y < -window.innerHeight / 2 ? ' panel-below' : ''}`}
               aria-label="Mobile navigation"
+              role="dialog"
+              aria-modal="true"
               initial={reduced ? { opacity: 1 } : { opacity: 0, scale: 0.7, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.7, y: 20 }}
               transition={{ duration: reduced ? 0.1 : 0.36, ease: [0.22, 1, 0.36, 1] }}
             >
-              <button ref={closeRef} className="floating-nav-close" type="button" onClick={() => setOpen(false)}>
+              <button ref={closeRef} className="floating-nav-close" type="button" onClick={closeMenu}>
                 Close menu
               </button>
               {NAV_ITEMS.map(([name, href], index) => (
@@ -124,11 +153,11 @@ export default function MobileNav() {
         aria-controls="mobile-links"
         aria-label={open ? 'Close navigation' : 'Open navigation'}
         onClick={() => setOpen((value) => !value)}
-        whileTap={{ scale: 0.9 }}
+        whileTap={reduced ? undefined : { scale: 0.9 }}
       >
-        <motion.span animate={{ rotate: open ? 45 : 0, y: open ? 6 : 0 }} />
-        <motion.span animate={{ opacity: open ? 0 : 1, scaleX: open ? 0 : 1 }} />
-        <motion.span animate={{ rotate: open ? -45 : 0, y: open ? -6 : 0 }} />
+        <motion.span animate={reduced ? undefined : { rotate: open ? 45 : 0, y: open ? 6 : 0 }} />
+        <motion.span animate={reduced ? undefined : { opacity: open ? 0 : 1, scaleX: open ? 0 : 1 }} />
+        <motion.span animate={reduced ? undefined : { rotate: open ? -45 : 0, y: open ? -6 : 0 }} />
       </motion.button>
       </motion.div>
     </>
