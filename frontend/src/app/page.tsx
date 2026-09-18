@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { TRADES } from '@/lib/data';
 import { ICO } from '@/lib/illustrations';
-import { Button, CTA, Photo } from './components';
+import { Button, CTA, DarkProcess, FAQ, Photo, TradeTile, Workbook } from './components';
 import {
-  ACQUISITION_LIST,
+  ABOUT_CONTENT,
   BRAND,
-  ESTIMATION_DESIGN_LIST,
+  CONTENT_SERVICES,
   HOME_DIVISIONS,
   HOME_PILLARS,
   HOME_STATS,
@@ -20,13 +21,40 @@ export const metadata = createMetadata({
   path: '/',
 });
 
+const homeFaq: [string, string][] = [
+  [
+    'How do you make an estimate defensible?',
+    'Every quantity is tied to a drawing, scale, or stated assumption. Exclusions and open questions are visible in the deliverable, so your team can explain the number instead of guessing when a bid is reviewed.',
+  ],
+  [
+    'What do I need to send you?',
+    'Start with the PDF plan set and specifications you have. Include the trades, project location, and important date. If the set is incomplete, say so — we will identify what needs to be confirmed.',
+  ],
+  [
+    'How quickly can you help?',
+    'Timing depends on the size and completeness of the set. Share the bid or decision date in your request and we will confirm a practical next step after reviewing the scope.',
+  ],
+  [
+    'How do you price the work?',
+    'We scope the work from your files and explain the fee before anything starts. You get a clear engagement rather than an open-ended subscription or software commitment.',
+  ],
+  [
+    'What if the drawings change?',
+    'Addenda and revisions during the bid period can be coordinated with the original scope. A redesign or materially changed project after award is reviewed as new work.',
+  ],
+  [
+    'How are project files handled?',
+    'We use the information you share to understand and respond to your request, then coordinate the agreed work. Do not send information that is not needed for the project conversation.',
+  ],
+];
+
 export default function Home() {
   return (
     <>
       <section className="hero">
         <MotionReveal className="wrap hero-grid" y={28}>
           <div className="stack">
-            <div className="eyebrow">Precision · Insight · Results</div>
+            <div className="eyebrow">{BRAND.descriptor}</div>
             <h1>
               Preconstruction Solutions for a Stronger <span className="accent-word">Tomorrow.</span>
             </h1>
@@ -69,29 +97,18 @@ export default function Home() {
 
       <section className="band band-dark on-dark">
         <div className="wrap stack-lg">
-          <MotionReveal className="split" y={18}>
-            <div className="stack">
-              <div className="eyebrow">Our Divisions</div>
-              <h2>Two Paths. One Strategic Advantage.</h2>
-              <p className="prose">
-                Estimation and design give you buildable clarity. Property acquisition turns the right assets into
-                long-term value. Together, they create a single partner for decisions that matter.
-              </p>
-              <div className="btn-row">
-                <Link className="btn btn-on-dark" href="/services">
-                  Learn More →
-                </Link>
-              </div>
-            </div>
-            <div />
+          <MotionReveal className="stack" y={18}>
+            <div className="eyebrow">Our Divisions</div>
+            <h2>Two Paths. One Strategic Advantage.</h2>
+            <p className="prose">
+              Estimation and design give you buildable clarity. Property acquisition turns the right assets into
+              long-term value. Together, they create a single partner for decisions that matter.
+            </p>
           </MotionReveal>
           <MotionStagger className="division-grid">
             {HOME_DIVISIONS.map((division, index) => (
               <MotionItem key={division.title}>
-                <Link
-                  className={`division-card ${index === 0 ? 'cherry' : 'rose'}`}
-                  href={division.href}
-                >
+                <Link className={`division-card ${index === 0 ? 'cherry' : 'rose'}`} href={division.href}>
                   <Image
                     src={division.image}
                     alt={division.title}
@@ -133,58 +150,112 @@ export default function Home() {
 
       <section className="band">
         <div className="wrap stack-lg">
-          <MotionReveal className="stack" y={16}>
-            <div className="eyebrow">What We Deliver</div>
-            <h2>Estimation, design, and acquisition — clearly defined.</h2>
-          </MotionReveal>
-          <div className="service-lists">
-            <article className="service-list-card">
-              <div className="media">
-                <Photo
-                  src="/images/divisions/estimation-design.jpg"
-                  alt="Construction site representing estimation and design"
-                  fill
-                  sizes="(max-width: 1000px) 100vw, 50vw"
-                />
-              </div>
-              <div className="body">
-                <h3>Estimation &amp; Design</h3>
-                <ul>
-                  {ESTIMATION_DESIGN_LIST.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <Link className="btn btn-primary" href="/quote" style={{ alignSelf: 'flex-start' }}>
-                  Request an Estimate →
-                </Link>
-              </div>
-            </article>
-            <article className="service-list-card">
-              <div className="media">
-                <Photo
-                  src="/images/divisions/property-acquisition.jpg"
-                  alt="Modern residential property for acquisition"
-                  fill
-                  sizes="(max-width: 1000px) 100vw, 50vw"
-                />
-              </div>
-              <div className="body">
-                <h3>Property Acquisition</h3>
-                <ul>
-                  {ACQUISITION_LIST.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <Link
-                  className="btn btn-primary"
-                  href="/services/acquisitions-investments"
-                  style={{ alignSelf: 'flex-start', background: 'var(--ebony)', borderColor: 'var(--ebony)' }}
-                >
-                  Discuss Opportunities →
-                </Link>
-              </div>
-            </article>
+          <div className="stack">
+            <div className="eyebrow">Services</div>
+            <h2>What we bring together</h2>
+            <p className="prose">
+              From estimating and quantity takeoffs to drawings, engineering, visualization, and property acquisition —
+              every essential preconstruction service under one roof.
+            </p>
           </div>
+          <MotionStagger className="grid-3">
+            {CONTENT_SERVICES.map((s) => (
+              <MotionItem className="motion-fill" key={s.slug}>
+                <Link className="card card-link" href={`/services/${s.slug}`}>
+                  <div className="ico" dangerouslySetInnerHTML={{ __html: ICO[s.ico as keyof typeof ICO] }} />
+                  <div className="code">{s.code}</div>
+                  <h3>{s.name}</h3>
+                  <p>{s.summary}</p>
+                </Link>
+              </MotionItem>
+            ))}
+          </MotionStagger>
+        </div>
+      </section>
+
+      <DarkProcess />
+
+      <section className="band">
+        <div className="wrap stack-lg">
+          <div className="stack">
+            <div className="eyebrow">What you receive</div>
+            <h2>A deliverable your team can use immediately.</h2>
+            <p className="prose">
+              Not a summary number. A line-item workbook you can open, edit, review, and hand to a project manager —
+              organized around the way your team makes decisions.
+            </p>
+          </div>
+          <Workbook
+            sample={TRADES[0].sample}
+            tabs={['Summary', 'Div 03', 'Div 04', 'Div 05', 'Div 09', 'Exclusions']}
+          />
+          <div className="grid-2">
+            <div className="stack">
+              <h3>Every line traces back</h3>
+              <p className="prose">
+                Quantities reference the sheet they came from, so a number questioned in a bid review takes a minute to
+                verify rather than an afternoon.
+              </p>
+            </div>
+            <div className="stack">
+              <h3>Fits the tools you already use</h3>
+              <p className="prose">
+                Takeoffs in Bluebeam Revu, Planswift and On-Screen Takeoff. Estimates arrive as editable Excel workbooks
+                with formulas intact — ready for your review, not locked away.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="band band-ground">
+        <div className="wrap stack-lg">
+          <div className="stack">
+            <div className="eyebrow">Trades</div>
+            <h2>Estimating by division</h2>
+            <p className="prose">
+              Twelve CSI divisions, each with its own page covering exactly what we measure, in what units, and what we
+              exclude by default.
+            </p>
+          </div>
+          <MotionStagger className="trades">
+            {TRADES.map((t) => (
+              <TradeTile trade={t} key={t.slug} />
+            ))}
+          </MotionStagger>
+        </div>
+      </section>
+
+      <section className="band">
+        <div className="wrap stack-lg">
+          <div className="stack">
+            <div className="eyebrow">Why {BRAND.name}</div>
+            <h2>{ABOUT_CONTENT.lede}</h2>
+            <p className="prose">{ABOUT_CONTENT.paragraphs[0]}</p>
+          </div>
+          <div className="grid-3">
+            {ABOUT_CONTENT.benefits.map(([code, title, text]) => (
+              <div className="card" key={code}>
+                <div className="code">{code}</div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+            ))}
+          </div>
+          <p className="prose">
+            Explore <Link href="/estimation">estimation by project type and trade</Link>, or review our{' '}
+            <Link href="/markets">markets &amp; sectors</Link>.
+          </p>
+        </div>
+      </section>
+
+      <section className="band band-ground">
+        <div className="wrap stack-lg">
+          <div className="stack">
+            <div className="eyebrow">Common questions</div>
+            <h2>Before you send a set</h2>
+          </div>
+          <FAQ items={homeFaq} />
         </div>
       </section>
 

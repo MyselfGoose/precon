@@ -9,7 +9,7 @@ export default function NavLinks() {
   return (
     <nav className="nav-links" aria-label="Main navigation">
       {NAV_ITEMS.map(([name, href]) => (
-        <Link key={href} href={href} aria-current={path === href || (href !== '/' && path.startsWith(`${href}/`)) ? 'page' : undefined}>
+        <Link key={href} href={href} aria-current={path === href || path.startsWith(`${href}/`) ? 'page' : undefined}>
           {name}
         </Link>
       ))}

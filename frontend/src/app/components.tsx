@@ -150,22 +150,22 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h5>Explore</h5>
+            <h5>Estimation</h5>
             <ul>
               <li>
-                <Link href="/estimation">Estimation</Link>
+                <Link href="/estimation/general-construction">General construction</Link>
               </li>
               <li>
-                <Link href="/trades">Trades</Link>
+                <Link href="/estimation/industrial">Industrial projects</Link>
               </li>
               <li>
-                <Link href="/markets">Markets</Link>
+                <Link href="/estimation/public-projects">Public projects</Link>
               </li>
               <li>
-                <Link href="/how-it-works">How it works</Link>
+                <Link href="/estimation/trades">Trade contractors</Link>
               </li>
               <li>
-                <Link href="/who-we-serve">Who we serve</Link>
+                <Link href="/markets">Markets &amp; sectors</Link>
               </li>
             </ul>
           </div>

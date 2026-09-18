@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { NAV_ITEMS } from '@/lib/data';
-import { SITE_COPY } from '@/lib/content';
+import { BRAND, SITE_COPY } from '@/lib/content';
 
 const STORAGE_KEY = 'csi-mobile-menu-position';
 const DEFAULT_CORNER = 'bottom-right' as const;
@@ -237,11 +237,11 @@ export default function MobileNav() {
               <Link className="btn btn-primary btn-sm" href="/quote" onClick={() => setOpen(false)}>
                 {SITE_COPY.cta.primary} →
               </Link>
-              <a className="nav-tel" href="tel:+12272049141" onClick={() => setOpen(false)} style={{ padding: '12px 14px' }}>
-                Call +1 (227) 204-9141
+              <a className="nav-tel" href={`tel:${BRAND.phoneRaw}`} onClick={() => setOpen(false)} style={{ padding: '12px 14px' }}>
+                Call {BRAND.phoneDisplay}
               </a>
               <a
-                href="https://wa.me/12272049141"
+                href={`https://wa.me/${BRAND.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
