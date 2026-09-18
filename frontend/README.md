@@ -11,6 +11,15 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+If localhost does not show recent work (but deploy does), you are almost certainly on a stale Next cache or looking at a different git checkout than the one that was edited. Use:
+
+```bash
+npm run whereami   # confirms primary checkout + worktrees
+npm run fresh      # kills :3000, clears .next, starts a clean dev server
+```
+
+Always develop from `/home/goose/goose/projects/hassan/client` — not from `copilot-worktrees/` clones. Agents have previously committed in worktrees that got pushed/deployed while local `main` stayed behind.
+
 Before shipping, run the project checks:
 
 ```bash

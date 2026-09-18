@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "fresh": "bash scripts/fresh-dev.sh",
+    "dev:clean": "rm -rf .next && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "whereami": "bash -lc 'echo ROOT=$(git rev-parse --show-toplevel); git status -sb; git worktree list'"
   },
   "dependencies": {
     "framer-motion": "^13.4.0",

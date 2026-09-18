@@ -5,6 +5,35 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+/**
+ * Prefer animate-when-in-view without leaving SSR/hydration content stuck at
+ * opacity:0. Parent overflow:clip can break whileInView IntersectionObserver;
+ * a short fallback forces visibility so local preview never looks "empty".
+ */
+function useRevealSafe(y: number) {
+  const reduced = useReducedMotion();
+  const [forcedVisible, setForcedVisible] = useState(false);
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setForcedVisible(true), 900);
+    return () => window.clearTimeout(id);
+  }, []);
+
+  if (reduced || forcedVisible) {
+    return {
+      initial: false as const,
+      whileInView: undefined,
+      animate: { opacity: 1, y: 0 },
+    };
+  }
+
+  return {
+    initial: { opacity: 0, y },
+    whileInView: { opacity: 1, y: 0 },
+    animate: undefined,
+  };
+}
+
 export function MotionReveal({
   children,
   className,
@@ -15,13 +44,14 @@ export function MotionReveal({
   delay?: number;
   y?: number;
 }) {
-  const reduced = useReducedMotion();
+  const reveal = useRevealSafe(y);
 
   return (
     <motion.div
       className={className}
-      initial={reduced ? false : { opacity: 0, y }}
-      whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
+      initial={reveal.initial}
+      whileInView={reveal.whileInView}
+      animate={reveal.animate}
       viewport={{ once: true, amount: 0.14 }}
       transition={{ duration: 0.65, delay, ease }}
       {...props}
@@ -42,7 +72,7 @@ export function MotionItem({
     <motion.div
       className={className}
       variants={{
-        hidden: reduced ? { opacity: 1 } : { opacity: 0, y: 18 },
+        hidden: reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 },
         show: { opacity: 1, y: 0 },
       }}
       transition={{ duration: 0.55, ease }}
@@ -59,12 +89,19 @@ export function MotionStagger({
   ...props
 }: HTMLMotionProps<'div'> & { children: ReactNode }) {
   const reduced = useReducedMotion();
+  const [forcedShow, setForcedShow] = useState(false);
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setForcedShow(true), 900);
+    return () => window.clearTimeout(id);
+  }, []);
 
   return (
     <motion.div
       className={className}
       initial="hidden"
       whileInView="show"
+      animate={forcedShow || reduced ? 'show' : undefined}
       viewport={{ once: true, amount: 0.12 }}
       variants={{
         hidden: {},

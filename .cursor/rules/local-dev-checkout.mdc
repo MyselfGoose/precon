@@ -1,0 +1,34 @@
+---
+description: Prevent local/dev checkout drift so completed work is always visible on localhost
+alwaysApply: true
+---
+
+# Local checkout and visibility
+
+## The failure mode this project has hit repeatedly
+
+Work appears on the deployed site after push, but **localhost does not show it**. That is almost never a Next.js bug. It happens when:
+
+1. An agent commits in a **git worktree** under `copilot-worktrees/` (or another clone)
+2. That commit is pushed / merged to `origin/main` (deploy updates)
+3. The user's primary checkout at `/home/goose/goose/projects/hassan/client` — where `npm run dev` runs — never received those commits
+4. Later, "fix git" merges remote into local main, and the user finally sees the work
+
+## Mandatory rules for agents
+
+1. **Do all file edits in the primary workspace** that Cursor has open (this repo root). Do **not** create or switch to git worktrees for routine feature work unless the user explicitly asks.
+2. Before finishing a task that changes UI, confirm the edited files exist under the primary path:
+   - `frontend/src/...` inside `/home/goose/goose/projects/hassan/client`
+3. If a worktree already exists for this repo, **merge or cherry-pick its commits into the primary `main` checkout** before telling the user the work is done. Never leave the only copy of the work on a worktree or remote-only branch.
+4. After adding new routes or large content changes, tell the user to run `npm run fresh` from `frontend/` (clears `.next` and restarts). A multi-day `next dev` process can serve stale route graphs.
+5. Do not run `git pull` / reset / checkout that discards primary-checkout work just to "make local match remote" without explaining divergence and preserving both sides.
+
+## Quick verification
+
+```bash
+# Must be the primary checkout, on main, with your latest commit present
+pwd   # .../hassan/client or .../hassan/client/frontend
+git rev-parse --show-toplevel
+git worktree list   # only the primary path should remain for day-to-day work
+curl -s http://localhost:3000/about | head  # should reflect latest copy
+```
