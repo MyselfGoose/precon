@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { CTA, PageHead, Spec } from '../../../components';
+import { CTA, PageHead, Spec, Workbook } from '../../../components';
 import { createMetadata } from '@/lib/metadata';
 import { getTradeEstimation, TRADE_ESTIMATION_PAGES } from '@/lib/estimation';
+import { TRADES } from '@/lib/data';
 import type { Metadata } from 'next';
 
 export function generateStaticParams() {
@@ -27,6 +28,7 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
   const idx = TRADE_ESTIMATION_PAGES.findIndex((t) => t.slug === trade);
   const prev = TRADE_ESTIMATION_PAGES[(idx + TRADE_ESTIMATION_PAGES.length - 1) % TRADE_ESTIMATION_PAGES.length];
   const next = TRADE_ESTIMATION_PAGES[(idx + 1) % TRADE_ESTIMATION_PAGES.length];
+  const sample = TRADES[idx % TRADES.length]?.sample ?? TRADES[0].sample;
 
   return (
     <>
@@ -42,17 +44,15 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
       />
       <section className="band">
         <div className="wrap stack-lg">
-          <div className="stack">
-            <p className="prose">{page.lede}</p>
-            {page.intro.map((p) => (
-              <p className="prose" key={p.slice(0, 48)}>
-                {p}
-              </p>
-            ))}
-          </div>
+          <p className="prose">{page.lede}</p>
           <div className="grid-2">
             <Spec title="What we estimate" unit="SCOPE" items={page.whatWeEstimate} />
             <Spec title="What's included" unit="DELIVERABLE" items={page.whatsIncluded} />
+          </div>
+          <div className="stack">
+            <div className="eyebrow">Sample deliverable</div>
+            <h2>Organized the way your team reviews numbers</h2>
+            <Workbook sample={sample} tabs={['Summary', 'Scope', 'Exclusions']} active="Scope" />
           </div>
           <div className="stack">
             <div className="eyebrow">Why contractors choose us</div>
@@ -63,7 +63,11 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
             <div className="eyebrow">All trade estimation pages</div>
             <div className="trade-nav">
               {TRADE_ESTIMATION_PAGES.map((t) => (
-                <Link key={t.slug} href={`/estimation/trades/${t.slug}`} aria-current={t.slug === trade ? 'page' : undefined}>
+                <Link
+                  key={t.slug}
+                  href={`/estimation/trades/${t.slug}`}
+                  aria-current={t.slug === trade ? 'page' : undefined}
+                >
                   {t.name.replace(' Estimation Services', '').replace(' Estimating Services', '')}
                 </Link>
               ))}

@@ -48,7 +48,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <div className="btn-row">
                 <Button href="/contact">Get in Touch →</Button>
                 <a className="btn btn-ghost" href="#approach">
-                  Learn More →
+                  See our approach →
                 </a>
               </div>
             </div>
@@ -75,6 +75,32 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </MotionItem>
               ))}
             </MotionStagger>
+          </div>
+        </section>
+
+        <section className="band band-ground">
+          <div className="wrap stack-lg">
+            <MotionReveal className="stack" y={16}>
+              <div className="eyebrow">Key Property Types</div>
+              <h2>Assets we evaluate and acquire.</h2>
+            </MotionReveal>
+            <div className="property-types">
+              {ACQUISITION_CONTENT.propertyTypes.map((type) => (
+                <article className="property-type" key={type.title}>
+                  <div className="media">
+                    <Image
+                      src={type.image}
+                      alt={type.title}
+                      fill
+                      sizes="(max-width: 1000px) 50vw, 25vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                  <h4>{type.title}</h4>
+                  <p>{type.subtitle}</p>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -106,38 +132,23 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
 
-        <section className="band band-ground">
-          <div className="wrap stack-lg">
-            <MotionReveal className="stack" y={16}>
-              <div className="eyebrow">Key Property Types</div>
-              <h2>Assets we evaluate and acquire.</h2>
-            </MotionReveal>
-            <div className="property-types">
-              {ACQUISITION_CONTENT.propertyTypes.map((type) => (
-                <article className="property-type" key={type.title}>
-                  <div className="media">
-                    <Image
-                      src={type.image}
-                      alt={type.title}
-                      fill
-                      sizes="(max-width: 1000px) 50vw, 25vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                  <h4>{type.title}</h4>
-                  <p>{type.subtitle}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="band band-dark on-dark">
           <div className="wrap stack-lg">
             <MotionReveal className="stack" y={16}>
-              <div className="eyebrow">The Value We Bring</div>
-              <h2>Insight, network, and a clear path to close.</h2>
+              <div className="eyebrow">Process</div>
+              <h2>{ACQUISITION_CONTENT.stepsTitle}</h2>
+              <p className="lede" style={{ color: '#C9BBB3' }}>
+                {ACQUISITION_CONTENT.stepsBody}
+              </p>
             </MotionReveal>
+            <div className="stat-strip" style={{ gridTemplateColumns: 'repeat(5, 1fr)' }}>
+              {ACQUISITION_CONTENT.steps.map((step, i) => (
+                <div className="stat" key={step}>
+                  <b>{String(i + 1).padStart(2, '0')}</b>
+                  <small>{step}</small>
+                </div>
+              ))}
+            </div>
             <MotionStagger className="value-grid">
               {ACQUISITION_CONTENT.values.map((value) => (
                 <MotionItem className="value-card" key={value.title}>
@@ -146,52 +157,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </MotionItem>
               ))}
             </MotionStagger>
-          </div>
-        </section>
-
-        <section className="band">
-          <div className="wrap stack-lg">
-            <div className="stack">
-              {ACQUISITION_CONTENT.intro.map((p) => (
-                <p className="prose" key={p.slice(0, 48)}>
-                  {p}
-                </p>
-              ))}
-            </div>
-            <div className="grid-2">
-              <div className="stack">
-                <h2 style={{ fontSize: 'var(--s2)' }}>{ACQUISITION_CONTENT.offerTitle}</h2>
-                {ACQUISITION_CONTENT.offerBody.map((p) => (
-                  <p className="prose" key={p.slice(0, 48)}>
-                    {p}
-                  </p>
-                ))}
-              </div>
-              <div className="stack">
-                <h2 style={{ fontSize: 'var(--s2)' }}>{ACQUISITION_CONTENT.advantageTitle}</h2>
-                <p className="prose">{ACQUISITION_CONTENT.advantageIntro}</p>
-                <p className="prose">We can evaluate:</p>
-                <ul className="check-list">
-                  {ACQUISITION_CONTENT.advantageItems.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <p className="prose">{ACQUISITION_CONTENT.advantageClose}</p>
-              </div>
-            </div>
-            <div className="stack">
-              <div className="eyebrow">Process</div>
-              <h2>{ACQUISITION_CONTENT.stepsTitle}</h2>
-              <div className="stat-strip" style={{ marginTop: 8, gridTemplateColumns: 'repeat(5, 1fr)' }}>
-                {ACQUISITION_CONTENT.steps.map((step, i) => (
-                  <div className="stat" key={step}>
-                    <b>{String(i + 1).padStart(2, '0')}</b>
-                    <small>{step}</small>
-                  </div>
-                ))}
-              </div>
-              <p className="prose">{ACQUISITION_CONTENT.stepsBody}</p>
-            </div>
           </div>
         </section>
 
@@ -204,9 +169,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <div className="contact-actions">
                 <PhoneLink className="btn btn-primary">Call {BRAND.phoneDisplay}</PhoneLink>
                 <WhatsAppLink className="btn btn-ghost">WhatsApp Us →</WhatsAppLink>
-                <Link className="btn btn-text" href="/contact">
-                  Contact Us →
-                </Link>
               </div>
             </div>
             <div className="grid-2" style={{ gap: 44, alignItems: 'start' }}>
@@ -249,19 +211,27 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 <h2 style={{ fontSize: 'var(--s2)' }}>What this supports</h2>
                 <p className="prose">{content.details}</p>
               </div>
-              <div className="spec">
-                <div className="spec-h">
-                  <h4>Included work</h4>
-                  <span className="u">SCOPE</span>
-                </div>
-                <ul>
-                  {content.points.map((p) => (
-                    <li key={p}>
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className="media project-photo">
+                <Photo
+                  src="/images/hero/engineering-hero.jpg"
+                  alt={`${content.name} — CSI & Design`}
+                  fill
+                  sizes="(max-width: 1000px) 100vw, 48vw"
+                />
               </div>
+            </div>
+            <div className="spec">
+              <div className="spec-h">
+                <h4>Included work</h4>
+                <span className="u">SCOPE</span>
+              </div>
+              <ul>
+                {content.points.map((p) => (
+                  <li key={p}>
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {content.sections && content.sections.length > 0 && (
@@ -296,12 +266,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   <div className="eyebrow">Engineering calculations</div>
                   <h2>Our Engineering Calculation Services</h2>
                 </div>
-                <div className="grid-2">
+                <div className="calc-list">
                   {content.calculations.map((calc) => (
-                    <div className="card" key={calc.title}>
-                      <h3>{calc.title}</h3>
+                    <article key={calc.title}>
+                      <h4>{calc.title}</h4>
                       <p>{calc.description}</p>
-                    </div>
+                    </article>
                   ))}
                 </div>
               </div>
@@ -313,13 +283,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   <div className="eyebrow">Structural systems</div>
                   <h2>Structural Systems We Design</h2>
                 </div>
-                <div className="grid-3">
+                <ul className="check-list">
                   {content.systems.map((system) => (
-                    <div className="card" key={system}>
-                      <h3 style={{ fontSize: '1.05rem' }}>{system}</h3>
-                    </div>
+                    <li key={system}>{system}</li>
                   ))}
-                </div>
+                </ul>
               </div>
             )}
 

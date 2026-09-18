@@ -7,6 +7,7 @@ import {
   ABOUT_CONTENT,
   BRAND,
   CONTENT_SERVICES,
+  FEATURED_PROJECTS,
   HOME_DIVISIONS,
   HOME_PILLARS,
   HOME_STATS,
@@ -55,6 +56,7 @@ export default function Home() {
         <MotionReveal className="wrap hero-grid" y={28}>
           <div className="stack">
             <div className="eyebrow">{BRAND.descriptor}</div>
+            <p className="brand-hero-name">{BRAND.shortName}</p>
             <h1>
               Preconstruction Solutions for a Stronger <span className="accent-word">Tomorrow.</span>
             </h1>
@@ -173,7 +175,37 @@ export default function Home() {
         </div>
       </section>
 
-      <DarkProcess />
+      <DarkProcess teaser />
+
+      <section className="band band-ground">
+        <div className="wrap stack-lg">
+          <div className="stack">
+            <div className="eyebrow">Markets we support</div>
+            <h2>Built across the projects that shape communities</h2>
+            <p className="prose">
+              Industrial, residential and commercial, and public work — photographed American job sites that match the
+              scopes we estimate and design for.
+            </p>
+          </div>
+          <MotionStagger className="grid-3">
+            {FEATURED_PROJECTS.map((project) => (
+              <MotionItem className="motion-fill" key={project.title}>
+                <div className="project-card">
+                  <div className="media project-photo">
+                    <Photo
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 1000px) 100vw, 33vw"
+                    />
+                  </div>
+                  <h3>{project.title}</h3>
+                </div>
+              </MotionItem>
+            ))}
+          </MotionStagger>
+        </div>
+      </section>
 
       <section className="band">
         <div className="wrap stack-lg">
@@ -234,8 +266,8 @@ export default function Home() {
             <p className="prose">{ABOUT_CONTENT.paragraphs[0]}</p>
           </div>
           <div className="grid-3">
-            {ABOUT_CONTENT.benefits.map(([code, title, text]) => (
-              <div className="card" key={code}>
+            {ABOUT_CONTENT.benefits.slice(0, 3).map(([code, title, text]) => (
+              <div className="card" key={code} style={{ boxShadow: 'none' }}>
                 <div className="code">{code}</div>
                 <h3>{title}</h3>
                 <p>{text}</p>
@@ -243,7 +275,8 @@ export default function Home() {
             ))}
           </div>
           <p className="prose">
-            Explore <Link href="/estimation">estimation by project type and trade</Link>, or review our{' '}
+            See all five advantages on our <Link href="/about">About</Link> page, explore{' '}
+            <Link href="/estimation">estimation by project type and trade</Link>, or review our{' '}
             <Link href="/markets">markets &amp; sectors</Link>.
           </p>
         </div>

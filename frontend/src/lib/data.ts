@@ -279,11 +279,22 @@ export const NAV_ITEMS = [
   ['Estimation', '/estimation'],
   ['Trades', '/trades'],
   ['Markets', '/markets'],
+  ['About', '/about'],
+  ['Contact', '/contact'],
+] as const;
+
+/** Full destinations for floating mobile panel (includes routes moved off primary nav). */
+export const MOBILE_NAV_ITEMS = [
+  ['Services', '/services'],
+  ['Estimation', '/estimation'],
+  ['Trades', '/trades'],
+  ['Markets', '/markets'],
   ['How It Works', '/how-it-works'],
   ['Who We Serve', '/who-we-serve'],
   ['About', '/about'],
   ['Contact', '/contact'],
 ] as const;
+
 export const FOOTER_NAV_ITEMS = [
   ['About', '/about'],
   ['Estimation', '/estimation'],

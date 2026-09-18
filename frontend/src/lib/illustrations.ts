@@ -476,16 +476,17 @@ export const ICO = {
 
 export function flowArt(){
   const id=++_uid, W=920, H=150; let s='';
-  const doc=(x,y,label,inner)=>`<g transform="translate(${x} ${y})">${inner}${t(0,66,label,{a:'middle',f:9,w:600,c:'#DCE7F1'})}</g>`;
-  const sheets=`<rect x="-26" y="-4" width="44" height="54" fill="#1B3A58" stroke="#8FB0CC" stroke-width="1.2"/><rect x="-20" y="-10" width="44" height="54" fill="#1B3A58" stroke="#8FB0CC" stroke-width="1.2"/><rect x="-14" y="-16" width="44" height="54" fill="#24507A" stroke="#DCE7F1" stroke-width="1.4"/><path d="M-6 -2h28M-6 6h28M-6 14h18" stroke="#8FB0CC"/><path d="M-6 22h22v10h-22z" fill="${C.mark}"/>`;
-  const quote=`<rect x="-22" y="-16" width="44" height="54" fill="#24507A" stroke="#DCE7F1" stroke-width="1.4"/><path d="M-14 -4h28M-14 4h28M-14 12h16" stroke="#8FB0CC"/><rect x="-14" y="18" width="28" height="12" fill="${C.copper}"/><text x="0" y="27" font-family="IBM Plex Mono" font-size="7" font-weight="600" fill="#fff" text-anchor="middle">$ FIXED</text>`;
-  const work=`<rect x="-24" y="-16" width="48" height="54" fill="#24507A" stroke="#DCE7F1" stroke-width="1.4"/><path d="M-16 -6h32v20h-32z" fill="none" stroke="#8FB0CC"/><path d="M-16 2h32M-8 -6v20M4 -6v20" stroke="#8FB0CC" stroke-width=".8"/><rect x="-8" y="2" width="12" height="12" fill="${C.mark}" opacity=".85"/><path d="M-16 24h32M-16 30h20" stroke="#8FB0CC"/><path d="M18 -20l8 8" stroke="${C.copper}" stroke-width="3"/>`;
-  const book=`<rect x="-26" y="-14" width="52" height="50" fill="#24507A" stroke="#DCE7F1" stroke-width="1.4"/><rect x="-26" y="-14" width="52" height="8" fill="#1B3A58"/><path d="M-26 2h52M-26 10h52M-26 18h52M-26 26h52M-14 -6v42M4 -6v42" stroke="#8FB0CC" stroke-width=".8"/><rect x="4" y="26" width="22" height="8" fill="${C.mark}"/><rect x="18" y="-24" width="14" height="14" fill="${C.copper}"/><text x="25" y="-14" font-family="IBM Plex Mono" font-size="7" font-weight="700" fill="#fff" text-anchor="middle">PDF</text>`;
+  const panel='#3A2A2A', panelDeep='#2B1F1F', stroke='#E8DFD8', muted='#B7A9A1';
+  const doc=(x,y,label,inner)=>`<g transform="translate(${x} ${y})">${inner}${t(0,66,label,{a:'middle',f:9,w:600,c:stroke})}</g>`;
+  const sheets=`<rect x="-26" y="-4" width="44" height="54" fill="${panelDeep}" stroke="${muted}" stroke-width="1.2"/><rect x="-20" y="-10" width="44" height="54" fill="${panelDeep}" stroke="${muted}" stroke-width="1.2"/><rect x="-14" y="-16" width="44" height="54" fill="${panel}" stroke="${stroke}" stroke-width="1.4"/><path d="M-6 -2h28M-6 6h28M-6 14h18" stroke="${muted}"/><path d="M-6 22h22v10h-22z" fill="${C.line}"/>`;
+  const quote=`<rect x="-22" y="-16" width="44" height="54" fill="${panel}" stroke="${stroke}" stroke-width="1.4"/><path d="M-14 -4h28M-14 4h28M-14 12h16" stroke="${muted}"/><rect x="-14" y="18" width="28" height="12" fill="${C.line}"/><text x="0" y="27" font-family="IBM Plex Mono" font-size="7" font-weight="600" fill="#fff" text-anchor="middle">$ FIXED</text>`;
+  const work=`<rect x="-24" y="-16" width="48" height="54" fill="${panel}" stroke="${stroke}" stroke-width="1.4"/><path d="M-16 -6h32v20h-32z" fill="none" stroke="${muted}"/><path d="M-16 2h32M-8 -6v20M4 -6v20" stroke="${muted}" stroke-width=".8"/><rect x="-8" y="2" width="12" height="12" fill="${C.mark}" opacity=".85"/><path d="M-16 24h32M-16 30h20" stroke="${muted}"/><path d="M18 -20l8 8" stroke="${C.line}" stroke-width="3"/>`;
+  const book=`<rect x="-26" y="-14" width="52" height="50" fill="${panel}" stroke="${stroke}" stroke-width="1.4"/><rect x="-26" y="-14" width="52" height="8" fill="${panelDeep}"/><path d="M-26 2h52M-26 10h52M-26 18h52M-26 26h52M-14 -6v42M4 -6v42" stroke="${muted}" stroke-width=".8"/><rect x="4" y="26" width="22" height="8" fill="${C.line}"/><rect x="18" y="-24" width="14" height="14" fill="${C.line}"/><text x="25" y="-14" font-family="IBM Plex Mono" font-size="7" font-weight="700" fill="#fff" text-anchor="middle">PDF</text>`;
   const xs=[110,340,570,800];
   s+=doc(xs[0],60,'PLAN SET + BID DATE',sheets)+doc(xs[1],60,'FIXED QUOTE — APPROVE',quote)+doc(xs[2],60,'TAKEOFF & PRICING',work)+doc(xs[3],60,'EXCEL WORKBOOK + PDF',book);
-  for(let i=0;i<3;i++){ s+=`<path d="M${xs[i]+48} 74H${xs[i+1]-48}" stroke="${C.mark}" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#arr${id})"/>`; }
-  s+=`<defs><marker id="arr${id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="${C.mark}"/></marker></defs>`;
-  const lbl=['01','02','03','04']; xs.forEach((x,i)=>s+=t(x,20,'STEP '+lbl[i],{a:'middle',f:9,w:600,c:C.mark}));
+  for(let i=0;i<3;i++){ s+=`<path d="M${xs[i]+48} 74H${xs[i+1]-48}" stroke="${C.line}" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#arr${id})"/>`; }
+  s+=`<defs><marker id="arr${id}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10z" fill="${C.line}"/></marker></defs>`;
+  const lbl=['01','02','03','04']; xs.forEach((x,i)=>s+=t(x,20,'STEP '+lbl[i],{a:'middle',f:9,w:600,c:C.line}));
   return svg(W,H,s);
 }
 

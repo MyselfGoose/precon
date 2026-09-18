@@ -1,11 +1,11 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { FOOTER_NAV_ITEMS, type Service, type Trade, type Sample } from '@/lib/data';
-import { D, ICO } from '@/lib/illustrations';
+import { D, ICO, flowArt } from '@/lib/illustrations';
 import MobileNav from './mobile-nav';
 import NavLinks from './nav-links';
 import { BRAND, CONTENT_SERVICES, SITE_COPY } from '@/lib/content';
 import { MotionButton, MotionItem, MotionReveal, MotionStagger } from './motion';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const WHATSAPP_ICON = (
   <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
@@ -30,10 +30,7 @@ export function Brand() {
           CS
         </text>
       </svg>
-      <span className="brand-text">
-        <span className="brand-name">{BRAND.shortName}</span>
-        <span className="brand-tag">{BRAND.descriptor}</span>
-      </span>
+      <span className="brand-name">{BRAND.shortName}</span>
     </Link>
   );
 }
@@ -50,9 +47,17 @@ export function Header() {
   );
 }
 
-export function PhoneLink({ className, children }: { className?: string; children?: React.ReactNode }) {
+export function PhoneLink({
+  className,
+  children,
+  style,
+}: {
+  className?: string;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
+}) {
   return (
-    <a className={className} href={`tel:${BRAND.phoneRaw}`}>
+    <a className={className} href={`tel:${BRAND.phoneRaw}`} style={style}>
       {children ?? BRAND.phoneDisplay}
     </a>
   );
@@ -62,16 +67,18 @@ export function WhatsAppLink({
   className,
   children,
   message,
+  style,
 }: {
   className?: string;
   children?: React.ReactNode;
   message?: string;
+  style?: React.CSSProperties;
 }) {
   const url = message
     ? `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(message)}`
     : `https://wa.me/${BRAND.whatsapp}`;
   return (
-    <a className={className} href={url} target="_blank" rel="noopener noreferrer">
+    <a className={className} href={url} target="_blank" rel="noopener noreferrer" style={style}>
       {children ?? (
         <>
           <span aria-hidden="true" style={{ display: 'inline-flex', width: 18, height: 18 }}>
@@ -417,14 +424,24 @@ export function Spec({ title, unit, items }: { title: string; unit: string; item
   );
 }
 
-export function DarkProcess() {
+export function DarkProcess({ teaser = false }: { teaser?: boolean }) {
   return (
-    <section className="band band-dark on-dark">
+    <section className={`band band-dark on-dark${teaser ? ' process-teaser' : ''}`}>
       <div className="wrap stack-lg">
         <MotionReveal className="stack" y={16}>
           <div className="eyebrow">{SITE_COPY.process.eyebrow}</div>
           <h2>{SITE_COPY.process.title}</h2>
+          {teaser && (
+            <p className="lede" style={{ color: '#C9BBB3', maxWidth: '52ch' }}>
+              From the working set to a review-ready package — four clear steps.
+            </p>
+          )}
         </MotionReveal>
+        {!teaser && (
+          <MotionReveal className="flow" y={14}>
+            <Svg markup={flowArt()} />
+          </MotionReveal>
+        )}
         <MotionStagger className="steps">
           {SITE_COPY.process.steps.map(([n, h, p], i) => (
             <MotionItem className="step" key={n}>
@@ -441,6 +458,13 @@ export function DarkProcess() {
             </MotionItem>
           ))}
         </MotionStagger>
+        {teaser && (
+          <MotionReveal y={12}>
+            <Link className="process-link" href="/how-it-works">
+              See the full path →
+            </Link>
+          </MotionReveal>
+        )}
       </div>
     </section>
   );

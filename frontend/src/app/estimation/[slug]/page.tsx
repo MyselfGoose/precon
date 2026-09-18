@@ -1,11 +1,17 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { CTA, PageHead } from '../../components';
+import { CTA, PageHead, Photo } from '../../components';
 import { createMetadata } from '@/lib/metadata';
 import { ESTIMATION_HUBS, getEstimationHub } from '@/lib/estimation';
 import type { Metadata } from 'next';
 
 const HUB_SLUGS = ['general-construction', 'industrial', 'public-projects'] as const;
+
+const HUB_IMAGES: Record<(typeof HUB_SLUGS)[number], string> = {
+  'general-construction': '/images/projects/residential-commercial.jpg',
+  industrial: '/images/projects/industrial.jpg',
+  'public-projects': '/images/projects/public-institutional.jpg',
+};
 
 export function generateStaticParams() {
   return HUB_SLUGS.map((slug) => ({ slug }));
@@ -41,12 +47,22 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
       />
       <section className="band">
         <div className="wrap stack-lg">
-          <div className="stack">
-            {hub.intro.map((p) => (
-              <p className="prose" key={p.slice(0, 48)}>
-                {p}
-              </p>
-            ))}
+          <div className="split">
+            <div className="stack">
+              {hub.intro.slice(0, 2).map((p) => (
+                <p className="prose" key={p.slice(0, 48)}>
+                  {p}
+                </p>
+              ))}
+            </div>
+            <div className="media project-photo">
+              <Photo
+                src={HUB_IMAGES[slug as (typeof HUB_SLUGS)[number]]}
+                alt={`${hub.name} estimation`}
+                fill
+                sizes="(max-width: 1000px) 100vw, 48vw"
+              />
+            </div>
           </div>
           {hub.categories && hub.categories.length > 0 && (
             <>
@@ -87,7 +103,10 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
           </div>
         </div>
       </section>
-      <CTA title={`Request your ${hub.name.toLowerCase()} estimate`} text="Send the drawings, bid documents, and deadline. We will confirm a clear scope and delivery plan." />
+      <CTA
+        title={`Request your ${hub.name.toLowerCase()} estimate`}
+        text="Send the drawings, bid documents, and deadline. We will confirm a clear scope and delivery plan."
+      />
     </>
   );
 }

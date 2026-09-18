@@ -15,13 +15,13 @@ export const BRAND = {
 export const SITE_COPY = {
   cta: {
     primary: 'Request a Quote',
-    secondary: 'Learn More',
+    secondary: 'Call +1 (227) 204-9141',
     reviewTrade: 'Review this trade',
     reviewService: 'Review this service',
   },
   process: {
     eyebrow: 'How it works',
-    title: 'A disciplined path from project files to the next decision',
+    title: 'A coordinated path from project information to action',
     steps: [
       ['STEP 01', 'Send the working set', 'Share the drawings, specifications, scope notes, location, and date that drive the decision.'],
       ['STEP 02', 'Confirm the brief', 'We identify the requested service, available information, open questions, and the deliverable that will be useful.'],

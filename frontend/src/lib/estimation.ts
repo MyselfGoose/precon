@@ -920,3 +920,45 @@ export function getEstimationHub(slug: string): EstimationHub | undefined {
 export function getTradeEstimation(slug: string): TradeEstimationPage | undefined {
   return TRADE_ESTIMATION_PAGES.find((t) => t.slug === slug);
 }
+
+/** Maps client CSI trade list labels to /estimation/trades/[slug] when a dedicated page exists. */
+const CSI_TRADE_ESTIMATION_SLUGS: Record<string, string> = {
+  Remodeling: 'remodeling',
+  Restoration: 'restoration',
+  Glazing: 'glazing',
+  Paving: 'paving',
+  Roofing: 'roofing',
+  'Metal framing': 'metal-framing',
+  'HVAC-Heating cooling and ventilation': 'hvac',
+  'MEP-Mechanical Electrical Plumbing': 'mep',
+  Insulation: 'insulation',
+  Structural: 'structural',
+  Excavation: 'sitework-earthwork',
+  Flooring: 'flooring',
+  'Bath & Tiles': 'bath-tile',
+  'Lumber wood work': 'lumber-woodwork',
+};
+
+export type CsiTradeNavItem = {
+  label: string;
+  href: string | null;
+  shortLabel: string;
+};
+
+function shortTradeLabel(label: string): string {
+  if (label.includes('-')) {
+    return label.split('-')[0] ?? label;
+  }
+  return label;
+}
+
+export function getCsiTradeNavItems(labels: readonly string[]): CsiTradeNavItem[] {
+  return labels.map((label) => {
+    const slug = CSI_TRADE_ESTIMATION_SLUGS[label];
+    return {
+      label,
+      shortLabel: shortTradeLabel(label),
+      href: slug ? `/estimation/trades/${slug}` : null,
+    };
+  });
+}

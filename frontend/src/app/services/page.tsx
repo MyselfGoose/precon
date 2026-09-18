@@ -18,7 +18,7 @@ export default function ServicesPage() {
       <PageHead
         eyebrow="Services"
         title="Every essential preconstruction service under one roof"
-        lede="From quantity takeoffs and cost estimating to BIM coordination, construction drawings, engineering support, and code-compliant documentation — a single, trusted partner for planning, estimating, design coordination, and construction documentation."
+        lede="Estimating, drawings, engineering, visualization, and property acquisition — one partner for planning, documentation, and the decisions before construction."
       />
       <section className="band">
         <div className="wrap stack-lg">

@@ -1,7 +1,8 @@
-import { CTA, PageHead } from '../components';
+import Link from 'next/link';
+import { CTA, PageHead, Photo } from '../components';
 import { createMetadata } from '@/lib/metadata';
-import { ABOUT_CONTENT } from '@/lib/content';
-import { MotionItem, MotionStagger } from '../motion';
+import { ABOUT_CONTENT, BRAND } from '@/lib/content';
+import { MotionItem, MotionReveal, MotionStagger } from '../motion';
 
 export const metadata = createMetadata({
   title: 'About',
@@ -13,41 +14,62 @@ export const metadata = createMetadata({
 export default function About() {
   return (
     <>
-      <PageHead eyebrow="About CSI & Design" title="One roof for the work before construction" lede={ABOUT_CONTENT.lede} />
+      <PageHead
+        eyebrow={`About ${BRAND.name}`}
+        title="One roof for the work before construction"
+        lede={ABOUT_CONTENT.lede}
+      />
       <section className="band">
         <div className="wrap stack-lg">
-          <div className="grid-2">
-            {ABOUT_CONTENT.paragraphs.slice(0, 2).map((p) => (
-              <p className="prose" key={p.slice(0, 48)}>
-                {p}
-              </p>
-            ))}
+          <div className="split">
+            <MotionReveal className="stack" y={16}>
+              <p className="prose">{ABOUT_CONTENT.paragraphs[0]}</p>
+              <p className="prose">{ABOUT_CONTENT.paragraphs[1]}</p>
+            </MotionReveal>
+            <MotionReveal className="media project-photo" delay={0.08} y={18}>
+              <Photo
+                src="/images/approach/building.jpg"
+                alt="CSI & Design preconstruction partnership"
+                fill
+                sizes="(max-width: 1000px) 100vw, 48vw"
+              />
+            </MotionReveal>
           </div>
+
           <div className="stack">
             <div className="eyebrow">Why contractors choose us</div>
             <h2>Built around accuracy, speed, and accountability</h2>
           </div>
-          <MotionStagger className="grid-3">
+          <MotionStagger className="reasons">
             {ABOUT_CONTENT.benefits.map(([code, title, text]) => (
-              <MotionItem className="card motion-fill" key={code}>
+              <MotionItem className="reason" key={code}>
                 <div className="code">{code}</div>
                 <h3>{title}</h3>
                 <p>{text}</p>
               </MotionItem>
             ))}
           </MotionStagger>
+
           <div className="grid-2">
             <div className="stack">
               <h3>How we work</h3>
               <p className="prose">{ABOUT_CONTENT.paragraphs[2]}</p>
+              <p className="prose">
+                Explore <Link href="/estimation">estimation</Link>, <Link href="/services">services</Link>, or{' '}
+                <Link href="/how-it-works">how it works</Link>.
+              </p>
             </div>
             <div className="note">
-              <b>Built around your project.</b> Whether you are bidding, planning a development, evaluating a property, or coordinating a technical package, we shape the support around the decisions in front of you.
+              <b>Built around your project.</b> Whether you are bidding, planning a development, evaluating a property,
+              or coordinating a technical package, we shape the support around the decisions in front of you.
             </div>
           </div>
         </div>
       </section>
-      <CTA title="Bring the next project into focus" text="Share the information you have and we will help identify the right starting point." />
+      <CTA
+        title="Bring the next project into focus"
+        text="Share the information you have and we will help identify the right starting point."
+      />
     </>
   );
 }

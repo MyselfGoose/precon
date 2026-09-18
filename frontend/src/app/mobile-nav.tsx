@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { NAV_ITEMS } from '@/lib/data';
+import { MOBILE_NAV_ITEMS } from '@/lib/data';
 import { BRAND, SITE_COPY } from '@/lib/content';
 
 const STORAGE_KEY = 'csi-mobile-menu-position';
@@ -224,7 +224,7 @@ export default function MobileNav() {
               <button ref={closeRef} className="floating-nav-close" type="button" onClick={closeMenu}>
                 Close menu
               </button>
-              {NAV_ITEMS.map(([name, href], index) => (
+              {MOBILE_NAV_ITEMS.map(([name, href], index) => (
                 <motion.div
                   key={href}
                   initial={reduced ? false : { opacity: 0, x: 16 }}
