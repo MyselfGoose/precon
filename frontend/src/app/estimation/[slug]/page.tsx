@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const hub = getEstimationHub(slug);
   return createMetadata({
     title: hub ? hub.name : 'Estimation',
-    description: hub ? hub.lede : 'Explore PreCon Ext estimation services.',
+    description: hub ? hub.lede : 'Explore CSI & Design estimation services.',
     path: `/estimation/${slug}`,
   });
 }

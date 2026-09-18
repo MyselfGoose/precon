@@ -275,23 +275,21 @@ export const AUDIENCES = [
   { slug:'architects-owners', code:'DESIGN', icon:'arch', name:'Architects & owners', intro:'Cost input during design, before the bids reveal the problem.', details:'Square-foot budgets from program and massing, updated at each design phase, with value-engineering options priced so decisions can be made on numbers rather than instinct.', items:['Conceptual budgets from program','Schematic and DD estimate updates','System and material comparisons','Value engineering with cost deltas','Bid reconciliation when bids arrive','Independent cost checks on proposals'] },
 ] as const;
 export const NAV_ITEMS = [
+  ['Home', '/'],
   ['Services', '/services'],
-  ['Estimation', '/estimation'],
   ['Trades', '/trades'],
-  ['Markets', '/markets'],
-  ['How It Works', '/how-it-works'],
-  ['Who We Serve', '/who-we-serve'],
   ['About', '/about'],
+  ['Insights', '/insights'],
   ['Contact', '/contact'],
 ] as const;
 export const FOOTER_NAV_ITEMS = [
+  ['Home', '/'],
+  ['Services', '/services'],
+  ['Trades', '/trades'],
   ['About', '/about'],
-  ['Estimation', '/estimation'],
-  ['Markets', '/markets'],
-  ['How it works', '/how-it-works'],
-  ['Who we serve', '/who-we-serve'],
+  ['Insights', '/insights'],
   ['Contact', '/contact'],
-  ['Send your plans', '/quote'],
+  ['Request a Quote', '/quote'],
 ] as const;
 export const CSI_TRADE_LIST = [
   'General Construction-GC',
@@ -323,7 +321,7 @@ export const LEGAL = {
   "privacy": [
     [
       "1. Who we are",
-      "PreCon Ext (“we,” “us”) provides construction estimating, quantity takeoff and related preconstruction services to contractors, suppliers, design professionals and owners. This policy applies to our website and to information we collect when you request or receive our services."
+      "CSI & Design (“we,” “us”) provides construction estimating, quantity takeoff and related preconstruction services to contractors, suppliers, design professionals and owners. This policy applies to our website and to information we collect when you request or receive our services."
     ],
     [
       "2. Information we collect",
@@ -371,7 +369,7 @@ export const LEGAL = {
     ],
     [
       "13. Contact",
-      "Use the project request form to contact PreCon Ext about privacy questions or requests."
+      "Use the project request form to contact CSI & Design about privacy questions or requests."
     ]
   ],
   "terms": [

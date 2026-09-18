@@ -7,7 +7,7 @@ import { MotionItem, MotionStagger } from '../motion';
 export const metadata = createMetadata({
   title: 'Markets & Sectors',
   description:
-    'PreCon Ext delivers coordinated architectural, structural, MEP, and estimating solutions across residential, commercial, industrial, government, infrastructure, and hospitality markets.',
+    'CSI & Design delivers coordinated architectural, structural, MEP, and estimating solutions across residential, commercial, industrial, government, infrastructure, and hospitality markets.',
   path: '/markets',
 });
 

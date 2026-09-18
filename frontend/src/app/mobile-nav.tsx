@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { NAV_ITEMS } from '@/lib/data';
 import { SITE_COPY } from '@/lib/content';
 
-const STORAGE_KEY = 'precon-mobile-menu-position';
+const STORAGE_KEY = 'csi-mobile-menu-position';
 const DEFAULT_CORNER = 'bottom-right' as const;
 const EDGE_INSET = 18;
 const DRAG_THRESHOLD = 6;
@@ -235,8 +235,20 @@ export default function MobileNav() {
                 </motion.div>
               ))}
               <Link className="btn btn-primary btn-sm" href="/quote" onClick={() => setOpen(false)}>
-                {SITE_COPY.cta.primary}
+                {SITE_COPY.cta.primary} →
               </Link>
+              <a className="nav-tel" href="tel:+12272049141" onClick={() => setOpen(false)} style={{ padding: '12px 14px' }}>
+                Call +1 (227) 204-9141
+              </a>
+              <a
+                href="https://wa.me/12272049141"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                style={{ padding: '12px 14px', color: 'var(--cherry)', fontWeight: 600 }}
+              >
+                WhatsApp us
+              </a>
             </motion.nav>
           )}
         </AnimatePresence>

@@ -56,7 +56,7 @@ export default function PropertyForm() {
         <h2>Your property brief is prepared.</h2>
         <p>
           Your information has been organized in this browser, but no message or file has been sent yet. Keep this brief available for your conversation with our acquisitions team, or call{' '}
-          <a href="tel:+18005550100">{BRAND.phone}</a>.
+          <a href="tel:+12272049141">{BRAND.phone}</a>.
         </p>
         <Link className="btn btn-primary" href="/">
           Back to home
@@ -141,7 +141,7 @@ export default function PropertyForm() {
             <label htmlFor="p-consent">
               <span className="req">Required</span>
               <br />
-              <b>I agree to be contacted about this property.</b> PreCon Ext may email or call me to discuss the opportunity.
+              <b>I agree to be contacted about this property.</b> CSI & Design may email or call me to discuss the opportunity.
             </label>
           </div>
           <p className="consent-fine">

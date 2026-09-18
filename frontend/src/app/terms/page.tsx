@@ -4,7 +4,7 @@ import { BRAND, TERMS_EFFECTIVE_DATE, TERMS_SECTIONS, type LegalSection } from '
 
 export const metadata = createMetadata({
   title: 'Terms of Service',
-  description: 'Review the terms for using the PreCon Ext website and understanding our professional construction support services.',
+  description: 'Review the terms for using the CSI & Design website and understanding our professional construction support services.',
   path: '/terms',
 });
 

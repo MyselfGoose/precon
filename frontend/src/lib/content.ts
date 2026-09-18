@@ -1,17 +1,21 @@
 export const BRAND = {
-  name: 'PreCon Ext',
-  descriptor: 'Construction decisions, made clearer',
+  name: 'CSI & Design',
+  shortName: 'CSI & DESIGN',
+  descriptor: 'Estimation · Design · Acquisition',
   description:
-    'Preconstruction support built around clear scope, traceable quantities, and usable project documentation.',
-  phone: '(800) 555-0100',
-  email: 'hello@preconext.com',
-  website: 'https://preconext.com',
+    'Estimation, design, and property acquisition under one roof — clear scope, coordinated documentation, and strategic opportunities.',
+  phone: '(227) 204-9141',
+  phoneDisplay: '+1 (227) 204-9141',
+  phoneRaw: '+12272049141',
+  whatsapp: '12272049141',
+  email: 'hello@csianddesign.com',
+  website: 'https://csianddesign.com',
 };
 
 export const SITE_COPY = {
   cta: {
-    primary: 'Send your plans',
-    secondary: 'Talk through your scope',
+    primary: 'Request a Quote',
+    secondary: 'Learn More',
     reviewTrade: 'Review this trade',
     reviewService: 'Review this service',
   },
@@ -66,7 +70,7 @@ export const CONTENT_SERVICES: ContentService[] = [
       'Professional bid proposals and editable workbooks',
     ],
     ctaTitle: 'Request your estimate',
-    ctaText: 'Send your plans and tell us which trades or project type you need estimated.',
+    ctaText: 'Request a Quote and tell us which trades or project type you need estimated.',
   },
   {
     slug: 'architectural-drawings',
@@ -305,16 +309,18 @@ export const CONTENT_SERVICES: ContentService[] = [
     slug: 'acquisitions-investments',
     code: 'INV',
     ico: 'bid',
-    name: 'Acquisitions & investments',
+    name: 'Property Acquisition',
     summary:
-      'Turning property opportunities into real value — evaluating properties where renovation, design, and execution can unlock significant upside.',
+      'Strategic property acquisition — identifying and evaluating high-potential assets through discreet, relationship-driven opportunities.',
     details:
       'We look at property differently. Every opportunity begins with understanding the property, the numbers, and the circumstances behind it. From there, our team evaluates the opportunity and determines whether there is a path forward that makes sense. For property owners, that means having the opportunity to explore a direct transaction based on the property\'s actual condition, potential, and underlying fundamentals. For us, it means identifying properties where thoughtful renovation, design, and execution can unlock significant value.',
     points: [
-      'Understand the property first, then determine what makes sense',
-      'Evaluate renovation needs, investment required, and finished-asset potential',
-      'Acquisition structures built around the property\'s fundamentals',
-      'Evaluate → Acquire → Design → Renovate → Create Value',
+      'Distressed Properties',
+      'Off-Market Deals',
+      'Seller Advisory',
+      'Investor Partnerships',
+      'Property Acquisition',
+      'Market Analysis',
     ],
     whyUs: [
       'Once an opportunity fits our criteria, our construction and design expertise becomes a major part of the equation. We can evaluate what needs to be renovated, what it will realistically cost, how the property can be improved, and what the finished asset could become.',
@@ -453,19 +459,46 @@ export const ABOUT_CONTENT = {
 };
 
 export const ACQUISITION_CONTENT = {
-  eyebrow: 'Acquisitions & Investments',
-  title: 'Turning Property Opportunities Into Real Value',
-  lede: 'We look at property differently.',
+  eyebrow: 'Property Acquisition',
+  title: 'Strategic Properties. Long-Term Value.',
+  lede:
+    'We identify and acquire high-potential properties through discreet, strategic, and relationship-driven opportunities — focusing on assets where renovation, design, and execution unlock lasting value.',
   intro: [
     'Every opportunity begins with understanding the property, the numbers, and the circumstances behind it. From there, our team evaluates the opportunity and determines whether there is a path forward that makes sense.',
     'For property owners, that means having the opportunity to explore a direct transaction based on the property\'s actual condition, potential, and underlying fundamentals.',
     'For us, it means identifying properties where thoughtful renovation, design, and execution can unlock significant value.',
   ],
+  features: [
+    { title: 'Off-Market Opportunities', description: 'Discreet sourcing through trusted relationships' },
+    { title: 'Distressed & Motivated Owners', description: 'Situations where timing and clarity matter' },
+    { title: 'Investor Partnerships', description: 'Aligned capital for the right assets' },
+    { title: 'Value-Add & Redevelopment', description: 'Upside through design and execution' },
+  ] as const,
+  approachTitle: 'Discreet. Strategic. Focused.',
+  approachItems: [
+    'Residential & Commercial Properties',
+    'Distressed Sales / Motivated Sellers',
+    'Foreclosure & Value-Add Opportunities',
+    'Investor & Hedge Fund Partnerships',
+    'Property Acquisition Strategies',
+  ] as const,
+  propertyTypes: [
+    { title: 'Residential', subtitle: 'Single-family, multi-family, and value-add homes', image: '/images/properties/residential.jpg' },
+    { title: 'Commercial', subtitle: 'Office, retail, mixed-use, and income assets', image: '/images/properties/commercial.jpg' },
+    { title: 'Land & Development', subtitle: 'Sites positioned for growth and entitlements', image: '/images/properties/land-development.jpg' },
+    { title: 'Special Situations', subtitle: 'Divorce, probate, abandonment, and unique circumstances', image: '/images/properties/special-situations.jpg' },
+  ] as const,
+  values: [
+    { title: 'Market Insight', description: 'Data-backed evaluation of condition, cost, and upside.' },
+    { title: 'Trusted Network', description: 'Relationships that surface opportunities before they hit the market.' },
+    { title: 'Streamlined Process', description: 'Clear steps from evaluation to acquisition decision.' },
+    { title: 'Win-Win Outcomes', description: 'Structures built around the property and the people involved.' },
+  ] as const,
   offerTitle: 'An Offer Built Around the Property',
   offerBody: [
     'We don\'t believe every property should be approached the same way.',
     'Our team evaluates the property, considers its current condition, estimates the investment required to improve it, and analyzes its potential.',
-    'From that evaluation, we can determine an appropriate acquisition structure and present the opportunity for consideration.',
+    'From that evaluation, we can determine an appropriate acquisition approach and present the opportunity for consideration.',
     'The objective is simple: understand the property first, then determine what makes sense.',
   ],
   advantageTitle: 'Where Our Advantage Begins',
@@ -483,10 +516,100 @@ export const ACQUISITION_CONTENT = {
   steps: ['Evaluate', 'Acquire', 'Design', 'Renovate', 'Create Value'] as const,
   stepsBody:
     'We look for properties where the right combination of acquisition discipline, construction expertise, and thoughtful design can transform an existing asset into something substantially better. That is where we see opportunity.',
-  ctaTitle: 'Have a Property to Discuss?',
+  ctaTitle: "Let's Find the Right Opportunity.",
   ctaText:
     'If you\'re considering your options for a property, we\'d be happy to take a look. Provide us with the available information, and our team will evaluate the property and its potential.',
 };
+
+export const HOME_PILLARS = [
+  {
+    title: 'Accurate Estimates',
+    description: 'CSI MasterFormat takeoffs and cost estimates grounded in real market data.',
+    icon: 'estimate',
+  },
+  {
+    title: 'Integrated Design',
+    description: 'Architectural, structural, MEP, and BIM coordinated under one roof.',
+    icon: 'draft',
+  },
+  {
+    title: 'Construction Intelligence',
+    description: 'Labor, material, and market insight that strengthens every decision.',
+    icon: 'precon',
+  },
+  {
+    title: 'Strategic Acquisitions',
+    description: 'Off-market opportunities and property acquisition with long-term value.',
+    icon: 'bid',
+  },
+] as const;
+
+export const HOME_DIVISIONS = [
+  {
+    title: 'Estimation & Design',
+    description:
+      'Cost estimation, architectural drawings, structural and MEP engineering, BIM coordination, and visualization — buildable packages for contractors and developers.',
+    href: '/services',
+    image: '/images/divisions/estimation-design.jpg',
+    cta: 'Request an Estimate',
+  },
+  {
+    title: 'Property Acquisition',
+    description:
+      'Distressed assets, off-market deals, seller advisory, investor partnerships, and market analysis — discreet sourcing with construction-backed diligence.',
+    href: '/services/acquisitions-investments',
+    image: '/images/divisions/property-acquisition.jpg',
+    cta: 'Discuss Opportunities',
+  },
+] as const;
+
+export const HOME_STATS = [
+  { value: '16+', label: 'Trades & Disciplines' },
+  { value: '10+', label: 'Years of Data' },
+  { value: 'U.S. & Canada', label: 'Code Compliance' },
+  { value: '100%', label: 'Client Focused' },
+] as const;
+
+export const ESTIMATION_DESIGN_LIST = [
+  'Cost Estimation',
+  'CSI MasterFormat',
+  'Architectural Drawings',
+  'Structural Design & Calcs',
+  'MEP Drafting',
+  'BIM Coordination',
+  'Renderings & Walkthroughs',
+] as const;
+
+export const ACQUISITION_LIST = [
+  'Distressed Properties',
+  'Off-Market Deals',
+  'Seller Advisory',
+  'Investor Partnerships',
+  'Property Acquisition',
+  'Market Analysis',
+] as const;
+
+export const ENGINEERING_SERVICES = [
+  { title: 'Architectural Drawings', icon: 'draft' },
+  { title: 'Structural Design & Calculations', icon: 'takeoff' },
+  { title: 'MEP Drafting', icon: 'precon' },
+  { title: 'BIM Coordination & Modeling', icon: 'draft' },
+  { title: 'Renderings & Walkthroughs', icon: 'estimate' },
+  { title: 'Code Compliance (USA & Canada)', icon: 'bid' },
+] as const;
+
+export const WHY_WORK_WITH_US = [
+  { title: 'Code Compliant', description: 'U.S. and Canada standards built into every deliverable.' },
+  { title: 'Data Driven', description: 'Market pricing and production factors you can defend.' },
+  { title: 'Experienced Team', description: 'Estimators, designers, and engineers under one roof.' },
+  { title: 'On Time. Every Time.', description: 'Clear scopes and deadlines you can plan around.' },
+] as const;
+
+export const FEATURED_PROJECTS = [
+  { title: 'Industrial', image: '/images/projects/industrial.jpg' },
+  { title: 'Residential & Commercial', image: '/images/projects/residential-commercial.jpg' },
+  { title: 'Public / Institutional', image: '/images/projects/public-institutional.jpg' },
+] as const;
 
 export const MARKET_SECTORS = [
   {
@@ -558,7 +681,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     id: 'introduction',
     title: '1. Introduction',
     paragraphs: [
-      'PreCon Ext ("we," "us," or "our") is committed to protecting your privacy and handling your personal data with transparency. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at preconext.com (the "Site") or engage with our professional construction support services.',
+      'CSI & Design ("we," "us," or "our") is committed to protecting your privacy and handling your personal data with transparency. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at csianddesign.com (the "Site") or engage with our professional construction support services.',
       'We believe in keeping things clear and straightforward. This policy applies to all information collected through our Site, email correspondence, and any related services or communications.',
     ],
     subsections: [
@@ -763,7 +886,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     id: 'third-party-links',
     title: '10. Third-Party Links',
     paragraphs: [
-      'Our Site may contain links to third-party websites, applications, or services that are not owned or controlled by PreCon Ext. These links are provided for your convenience and informational purposes.',
+      'Our Site may contain links to third-party websites, applications, or services that are not owned or controlled by CSI & Design. These links are provided for your convenience and informational purposes.',
       'We have no control over — and assume no responsibility for — the content, privacy policies, or practices of any third-party sites. We encourage you to review the privacy policies of any external websites you visit through links on our Site.',
     ],
   },
@@ -810,7 +933,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'acceptance',
     title: '1. Acceptance of Terms',
     paragraphs: [
-      `By accessing and using the website at ${BRAND.website} (the "Site"), operated by PreCon Ext ("we," "us," or "our"), you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and all applicable laws and regulations.`,
+      `By accessing and using the website at ${BRAND.website} (the "Site"), operated by CSI & Design ("we," "us," or "our"), you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and all applicable laws and regulations.`,
       'These Terms apply to all visitors, users, and others who access or use the Site. We may update these Terms from time to time, and your continued use of the Site constitutes acceptance of any modifications.',
     ],
     subsections: [
@@ -826,7 +949,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'services',
     title: '2. Services Overview',
     paragraphs: [
-      'PreCon Ext provides professional construction support services to contractors, architects, engineers, and developers across the United States. Our services include:',
+      'CSI & Design provides professional construction support services to contractors, architects, engineers, and developers across the United States. Our services include:',
     ],
     bullets: [
       'Construction cost estimating and quantity takeoffs across all CSI divisions',
@@ -841,7 +964,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
       {
         title: 'Informational Purposes',
         paragraphs: [
-          'All information presented on this Site is for general informational purposes only and does not constitute a binding offer, contract, or guarantee of services. Specific service agreements are governed by separate written contracts between PreCon Ext and the client.',
+          'All information presented on this Site is for general informational purposes only and does not constitute a binding offer, contract, or guarantee of services. Specific service agreements are governed by separate written contracts between CSI & Design and the client.',
         ],
       },
     ],
@@ -855,7 +978,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     bullets: [
       'Provide accurate and truthful information when submitting forms or communicating with us',
       'Use the Site for lawful purposes only',
-      'Respect the intellectual property and proprietary rights of PreCon Ext',
+      'Respect the intellectual property and proprietary rights of CSI & Design',
       'Not misrepresent your identity or affiliation when contacting us',
     ],
     subsections: [
@@ -879,8 +1002,8 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'ip',
     title: '4. Intellectual Property',
     paragraphs: [
-      'All content on this Site — including but not limited to text, graphics, logos, images, photographs, illustrations, software, and design elements — is the exclusive property of PreCon Ext or its content suppliers and is protected by United States and international copyright, trademark, and intellectual property laws.',
-      'Without prior written consent from PreCon Ext, you may not:',
+      'All content on this Site — including but not limited to text, graphics, logos, images, photographs, illustrations, software, and design elements — is the exclusive property of CSI & Design or its content suppliers and is protected by United States and international copyright, trademark, and intellectual property laws.',
+      'Without prior written consent from CSI & Design, you may not:',
     ],
     bullets: [
       'Reproduce, distribute, or publicly display any content from this Site',
@@ -901,8 +1024,8 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'links',
     title: '5. Third-Party Links',
     paragraphs: [
-      'Our Site may contain links to third-party websites, resources, or services that are not owned, operated, or controlled by PreCon Ext. These links are provided solely for your convenience and reference.',
-      'PreCon Ext does not endorse, guarantee, or assume responsibility for the content, privacy policies, or practices of any third-party websites. You acknowledge and agree that PreCon Ext is not responsible or liable — directly or indirectly — for any damage or loss caused or alleged to be caused by or in connection with your use of or reliance on any third-party content, products, or services.',
+      'Our Site may contain links to third-party websites, resources, or services that are not owned, operated, or controlled by CSI & Design. These links are provided solely for your convenience and reference.',
+      'CSI & Design does not endorse, guarantee, or assume responsibility for the content, privacy policies, or practices of any third-party websites. You acknowledge and agree that CSI & Design is not responsible or liable — directly or indirectly — for any damage or loss caused or alleged to be caused by or in connection with your use of or reliance on any third-party content, products, or services.',
       'We encourage you to review the terms and privacy policies of any third-party sites you visit.',
     ],
   },
@@ -926,7 +1049,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'disclaimer',
     title: '7. Disclaimer of Warranties',
     paragraphs: [
-      'This Site and its contents are provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, either express or implied. To the fullest extent permitted by law, PreCon Ext disclaims all warranties, including but not limited to:',
+      'This Site and its contents are provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, either express or implied. To the fullest extent permitted by law, CSI & Design disclaims all warranties, including but not limited to:',
     ],
     bullets: [
       'Implied warranties of merchantability and fitness for a particular purpose',
@@ -947,7 +1070,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'liability',
     title: '8. Limitation of Liability',
     paragraphs: [
-      'To the fullest extent permitted by applicable law, PreCon Ext, its officers, directors, employees, agents, and affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or related to:',
+      'To the fullest extent permitted by applicable law, CSI & Design, its officers, directors, employees, agents, and affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or related to:',
     ],
     bullets: [
       'Your use of or inability to use this Site',
@@ -961,7 +1084,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
       {
         title: '',
         paragraphs: [
-          'This limitation applies even if PreCon Ext has been advised of the possibility of such damages. In jurisdictions that do not allow the exclusion or limitation of certain damages, our liability shall be limited to the greatest extent permitted by law.',
+          'This limitation applies even if CSI & Design has been advised of the possibility of such damages. In jurisdictions that do not allow the exclusion or limitation of certain damages, our liability shall be limited to the greatest extent permitted by law.',
         ],
       },
     ],

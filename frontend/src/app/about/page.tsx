@@ -6,14 +6,14 @@ import { MotionItem, MotionStagger } from '../motion';
 export const metadata = createMetadata({
   title: 'About',
   description:
-    'Learn how PreCon Ext brings every essential preconstruction service under one roof — estimating, design coordination, and construction documentation.',
+    'Learn how CSI & Design brings every essential preconstruction service under one roof — estimating, design coordination, and construction documentation.',
   path: '/about',
 });
 
 export default function About() {
   return (
     <>
-      <PageHead eyebrow="About PreCon Ext" title="One roof for the work before construction" lede={ABOUT_CONTENT.lede} />
+      <PageHead eyebrow="About CSI & Design" title="One roof for the work before construction" lede={ABOUT_CONTENT.lede} />
       <section className="band">
         <div className="wrap stack-lg">
           <div className="grid-2">
