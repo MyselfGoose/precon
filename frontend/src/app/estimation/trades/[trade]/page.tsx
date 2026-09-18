@@ -1,0 +1,85 @@
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { CTA, PageHead, Spec } from '../../../components';
+import { createMetadata } from '@/lib/metadata';
+import { getTradeEstimation, TRADE_ESTIMATION_PAGES } from '@/lib/estimation';
+import type { Metadata } from 'next';
+
+export function generateStaticParams() {
+  return TRADE_ESTIMATION_PAGES.map((t) => ({ trade: t.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ trade: string }> }): Promise<Metadata> {
+  const { trade } = await params;
+  const page = getTradeEstimation(trade);
+  return createMetadata({
+    title: page ? page.name : 'Trade estimation',
+    description: page ? page.lede : 'Explore PreCon Ext trade estimation services.',
+    path: `/estimation/trades/${trade}`,
+  });
+}
+
+export default async function TradeEstimationPage({ params }: { params: Promise<{ trade: string }> }) {
+  const { trade } = await params;
+  const page = getTradeEstimation(trade);
+  if (!page) notFound();
+
+  const idx = TRADE_ESTIMATION_PAGES.findIndex((t) => t.slug === trade);
+  const prev = TRADE_ESTIMATION_PAGES[(idx + TRADE_ESTIMATION_PAGES.length - 1) % TRADE_ESTIMATION_PAGES.length];
+  const next = TRADE_ESTIMATION_PAGES[(idx + 1) % TRADE_ESTIMATION_PAGES.length];
+
+  return (
+    <>
+      <PageHead
+        eyebrow="Estimation · Trade"
+        title={page.name}
+        lede={page.headline}
+        crumb={
+          <>
+            <Link href="/estimation">Estimation</Link> / <Link href="/estimation/trades">Trades</Link> / {page.name}
+          </>
+        }
+      />
+      <section className="band">
+        <div className="wrap stack-lg">
+          <div className="stack">
+            <p className="prose">{page.lede}</p>
+            {page.intro.map((p) => (
+              <p className="prose" key={p.slice(0, 48)}>
+                {p}
+              </p>
+            ))}
+          </div>
+          <div className="grid-2">
+            <Spec title="What we estimate" unit="SCOPE" items={page.whatWeEstimate} />
+            <Spec title="What's included" unit="DELIVERABLE" items={page.whatsIncluded} />
+          </div>
+          <div className="stack">
+            <div className="eyebrow">Why contractors choose us</div>
+            <h2>Built for competitive, profitable bids</h2>
+            <p className="prose">{page.whyUs}</p>
+          </div>
+          <div className="stack">
+            <div className="eyebrow">All trade estimation pages</div>
+            <div className="trade-nav">
+              {TRADE_ESTIMATION_PAGES.map((t) => (
+                <Link key={t.slug} href={`/estimation/trades/${t.slug}`} aria-current={t.slug === trade ? 'page' : undefined}>
+                  {t.name.replace(' Estimation Services', '').replace(' Estimating Services', '')}
+                </Link>
+              ))}
+            </div>
+            <div className="btn-row">
+              <Link className="btn btn-ghost btn-sm" href={`/estimation/trades/${prev.slug}`}>
+                ← {prev.name.replace(' Estimation Services', '').replace(' Estimating Services', '')}
+              </Link>
+              <Link className="btn btn-ghost btn-sm" href={`/estimation/trades/${next.slug}`}>
+                {next.name.replace(' Estimation Services', '').replace(' Estimating Services', '')} →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+      <CTA title={page.ctaTitle} text={page.ctaText} />
+    </>
+  );
+}
