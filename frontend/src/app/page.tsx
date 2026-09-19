@@ -74,7 +74,7 @@ export default function Home() {
           <MotionReveal className="hero-art media hero-photo" delay={0.12} y={18}>
             <Photo
               src="/images/hero/home-hero.jpg"
-              alt="Modern American commercial architecture at sunset"
+              alt="American suburban home with wraparound porch and lawn"
               fill
               priority
               sizes="(max-width: 1000px) 100vw, 55vw"

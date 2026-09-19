@@ -47,7 +47,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <div className="media hero-photo">
               <Photo
                 src="/images/hero/acquisition-hero.jpg"
-                alt="Luxury modern residence representing strategic property acquisition"
+                alt="Malibu California beachfront homes representing US property acquisition"
                 fill
                 priority
                 sizes="(max-width: 1000px) 100vw, 55vw"
@@ -102,7 +102,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <div className="media" style={{ minHeight: 360, position: 'relative' }}>
                 <Photo
                   src="/images/approach/building.jpg"
-                  alt="Property investment opportunity documentation and site context"
+                  alt="American Colonial-style home representing property evaluation and acquisition"
                   fill
                   sizes="(max-width: 1000px) 100vw, 50vw"
                 />

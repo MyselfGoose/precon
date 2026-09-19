@@ -43,7 +43,7 @@ export default function TradesPage() {
             <MotionReveal className="media project-photo" delay={0.08} y={18}>
               <Photo
                 src="/images/divisions/estimation-design.jpg"
-                alt="Construction estimating and design coordination"
+                alt="US construction crew estimating and coordinating on a job site"
                 fill
                 sizes="(max-width: 1000px) 100vw, 48vw"
               />

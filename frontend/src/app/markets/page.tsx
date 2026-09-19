@@ -74,7 +74,7 @@ export default function MarketsPage() {
             <MotionReveal className="media project-photo" delay={0.08} y={18}>
               <Photo
                 src="/images/projects/public-institutional.jpg"
-                alt="Public and institutional construction market"
+                alt="US public and institutional construction — American civic architecture"
                 fill
                 sizes="(max-width: 1000px) 100vw, 48vw"
               />

@@ -29,7 +29,7 @@ export default function About() {
             <MotionReveal className="media project-photo" delay={0.08} y={18}>
               <Photo
                 src="/images/approach/building.jpg"
-                alt="CSI & Design preconstruction partnership"
+                alt="American Colonial-style home — CSI & Design preconstruction partnership"
                 fill
                 sizes="(max-width: 1000px) 100vw, 48vw"
               />
