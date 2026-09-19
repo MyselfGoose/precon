@@ -1,4 +1,4 @@
-import { FOOTER_NAV_ITEMS, type Service, type Trade, type Sample } from '@/lib/data';
+import { FOOTER_NAV_ITEMS, type Trade, type Sample } from '@/lib/data';
 import { D, ICO, flowArt } from '@/lib/illustrations';
 import MobileNav from './mobile-nav';
 import NavLinks from './nav-links';
@@ -292,15 +292,21 @@ export function CTA({
   );
 }
 
-export function ServiceCard({ service, full = false }: { service: Service; full?: boolean }) {
+export function ServiceCard({
+  service,
+  full = false,
+}: {
+  service: { slug: string; code: string; ico: string; name: string; summary: string; details?: string; points?: string[] };
+  full?: boolean;
+}) {
   return (
     <MotionItem className="motion-fill">
       <Link className="card card-link" href={`/services/${service.slug}`}>
         <div className="ico" dangerouslySetInnerHTML={{ __html: ICO[service.ico as keyof typeof ICO] }} />
         <div className="code">{service.code}</div>
         <h3>{service.name}</h3>
-        <p>{full ? service.desc : service.short}</p>
-        {full && (
+        <p>{full ? service.details ?? service.summary : service.summary}</p>
+        {full && service.points && (
           <ul>
             {service.points.slice(0, 3).map((p) => (
               <li key={p}>{p}</li>

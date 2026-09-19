@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CTA, PageHead, Photo } from '../../components';
 import { createMetadata } from '@/lib/metadata';
-import { ESTIMATION_HUBS, getEstimationHub } from '@/lib/estimation';
+import { categoryAnchorId, ESTIMATION_HUBS, getEstimationHub } from '@/lib/estimation';
 import type { Metadata } from 'next';
 
 const HUB_SLUGS = ['general-construction', 'industrial', 'public-projects'] as const;
@@ -72,7 +72,7 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
               </div>
               <div className="grid-2">
                 {hub.categories.map((cat) => (
-                  <div className="card" key={cat.name}>
+                  <div className="card" key={cat.name} id={categoryAnchorId(cat.name)}>
                     <h3>{cat.name}</h3>
                     <p>{cat.description}</p>
                     {cat.name === 'Industrial Projects' && slug === 'general-construction' ? (

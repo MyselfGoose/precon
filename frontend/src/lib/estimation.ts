@@ -23,6 +23,8 @@ export type TradeEstimationPage = {
   whyUs: string;
   ctaTitle: string;
   ctaText: string;
+  /** Matching MasterFormat division slug from `TRADES` when a sample workbook is appropriate. */
+  sampleDivisionSlug?: string;
 };
 
 export const ESTIMATION_HUBS: EstimationHub[] = [
@@ -346,6 +348,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Glazing Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you secure more glazing projects.',
+    sampleDivisionSlug: 'exterior',
   },
   {
     slug: 'paving',
@@ -381,6 +384,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Paving Estimate',
     ctaText:
       'Win more paving projects with accurate takeoffs, data-driven pricing, and professional bid proposals tailored to your project.',
+    sampleDivisionSlug: 'exterior',
   },
   {
     slug: 'roofing',
@@ -416,6 +420,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Roofing Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, data-driven pricing, and professional bid proposals to help you win more roofing projects.',
+    sampleDivisionSlug: 'thermal',
   },
   {
     slug: 'metal-framing',
@@ -451,6 +456,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Metal Framing Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you secure more metal framing projects.',
+    sampleDivisionSlug: 'metals',
   },
   {
     slug: 'hvac',
@@ -486,6 +492,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your HVAC Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you win more HVAC projects.',
+    sampleDivisionSlug: 'hvac',
   },
   {
     slug: 'mep',
@@ -521,6 +528,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your MEP Estimate',
     ctaText:
       'Partner with a team that delivers coordinated takeoffs, market-driven pricing, BIM-enabled estimating, and professional bid proposals to help you secure more MEP projects.',
+    sampleDivisionSlug: 'plumbing',
   },
   {
     slug: 'masonry',
@@ -556,6 +564,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Masonry Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you secure more masonry projects.',
+    sampleDivisionSlug: 'masonry',
   },
   {
     slug: 'concrete',
@@ -593,6 +602,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Concrete Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you secure more concrete projects.',
+    sampleDivisionSlug: 'concrete',
   },
   {
     slug: 'insulation',
@@ -628,6 +638,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Insulation Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you secure more insulation projects.',
+    sampleDivisionSlug: 'thermal',
   },
   {
     slug: 'structural',
@@ -663,6 +674,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Structural Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, BIM-enabled coordination, and professional bid proposals to help you secure more structural projects.',
+    sampleDivisionSlug: 'metals',
   },
   {
     slug: 'sitework-earthwork',
@@ -700,6 +712,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Sitework & Earthwork Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you secure more sitework and earthwork projects.',
+    sampleDivisionSlug: 'earthwork',
   },
   {
     slug: 'flooring',
@@ -737,6 +750,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Flooring Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you secure more flooring projects.',
+    sampleDivisionSlug: 'finishes',
   },
   {
     slug: 'bath-tile',
@@ -774,6 +788,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Bath & Tile Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you secure more bath and tile projects.',
+    sampleDivisionSlug: 'finishes',
   },
   {
     slug: 'lumber-woodwork',
@@ -811,6 +826,135 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Lumber & Woodwork Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you secure more lumber and woodwork projects.',
+    sampleDivisionSlug: 'wood',
+  },
+  {
+    slug: 'demolition',
+    name: 'Demolition Estimation Services',
+    headline: 'Accurate Demolition Takeoffs for Safer, Clearer Bids.',
+    lede:
+      'Selective demolition, gut-outs, and structural removal demand careful sequencing and quantity clarity. Our demolition estimates quantify what comes out, what stays protected, and how the work is staged so contractors can price risk and productivity with confidence.',
+    intro: [
+      'Demolition scopes are often underdefined on bid day. We measure removal quantities from the plan set and existing-conditions notes, separate selective demolition from structural demolition, and call out protection, haul-off, and disposal assumptions so your bid is defensible.',
+    ],
+    whatWeEstimate: [
+      'Selective interior demolition and gut-outs',
+      'Structural demolition and saw-cutting',
+      'Protection of adjacent finishes and systems',
+      'Debris haul-off and disposal allowances',
+      'Temporary shoring coordination notes (as indicated)',
+      'Hazardous-material exclusions and clarifications',
+    ],
+    whatsIncluded: [
+      'Detailed Quantity Takeoffs',
+      'CSI Format Estimates',
+      'Labor & Productivity Analysis',
+      'Disposal / Haul Assumptions Stated',
+      'Scope Clarifications & Exclusions',
+      'Professional Bid Proposals',
+    ],
+    whyUs:
+      'Demolition pricing fails when quantities and protection scope are vague. We organize removal work by area and system, document assumptions, and deliver CSI Format estimates that help you bid competitively while protecting margin against unforeseen field conditions.',
+    ctaTitle: 'Request Your Demolition Estimate',
+    ctaText:
+      'Share the demolition plans, existing-conditions notes, and bid date — we will return an organized takeoff and bid-ready estimate.',
+  },
+  {
+    slug: 'ceiling-drywall',
+    name: 'Ceiling & Drywall Estimation Services',
+    headline: 'Framing, Board, Finish — Quantified by System.',
+    lede:
+      'Ceiling and drywall packages live or die on accurate framing, board counts, finish levels, and opening deductions. We deliver trade-specific takeoffs organized for metal stud, gypsum board, ACT, and related finish scopes.',
+    intro: [
+      'Our ceiling and drywall estimates measure walls, ceilings, soffits, and specialty assemblies from architectural and reflected ceiling plans. Quantities are organized so you can apply your production rates and finish levels without rebuilding the takeoff.',
+    ],
+    whatWeEstimate: [
+      'Metal stud and gypsum board partitions',
+      'Ceiling framing and gypsum ceilings',
+      'Acoustic ceiling tile (ACT) systems',
+      'Shaft walls, rated assemblies, and specialty boards',
+      'Corner bead, trim, and accessory counts',
+      'Finish levels and texture allowances (as specified)',
+    ],
+    whatsIncluded: [
+      'Detailed Quantity Takeoffs',
+      'CSI Format Estimates',
+      'Real-Time Material Pricing Support',
+      'Labor Cost Analysis',
+      'Opening Deductions Documented',
+      'Professional Bid Proposals',
+      'Scope Review & Clarifications',
+    ],
+    whyUs:
+      'Ceiling and drywall bids require consistent measurement rules and clear finish assumptions. We produce organized CSI Format takeoffs that subcontractors can price quickly, revise cleanly, and defend in scope reviews.',
+    ctaTitle: 'Request Your Ceiling & Drywall Estimate',
+    ctaText:
+      'Send the architectural and RCP set with your bid date — we will deliver a trade-ready ceiling and drywall package.',
+    sampleDivisionSlug: 'finishes',
+  },
+  {
+    slug: 'landscaping',
+    name: 'Landscaping Estimation Services',
+    headline: 'Site Landscape Quantities That Match the Field.',
+    lede:
+      'Planting, hardscape, irrigation, and site amenities need quantities tied to the civil and landscape drawings. Our landscaping estimates organize material and installation scope so outdoor packages bid cleanly and profitably.',
+    intro: [
+      'We measure planting schedules, sod and seeding areas, hardscape paving, edging, and irrigation components from the landscape and civil set. Assumptions for soil prep, mulch depth, and plant sizes are stated so your number stays aligned with the specification.',
+    ],
+    whatWeEstimate: [
+      'Trees, shrubs, and groundcover from planting schedules',
+      'Sod, seed, and soil preparation areas',
+      'Mulch, edging, and landscape finishes',
+      'Hardscape paving and site amenities (as shown)',
+      'Irrigation heads, laterals, and controllers (as shown)',
+      'Erosion control and temporary seeding allowances',
+    ],
+    whatsIncluded: [
+      'Detailed Quantity Takeoffs',
+      'CSI Format Estimates',
+      'Material & Installation Breakdown',
+      'Schedule-Based Plant Counts',
+      'Scope Clarifications & Exclusions',
+      'Professional Bid Proposals',
+    ],
+    whyUs:
+      'Landscape packages are easy to under-measure when schedules and plans disagree. We reconcile both, document assumptions, and deliver CSI Format estimates that help landscape contractors price competitively with clear scope.',
+    ctaTitle: 'Request Your Landscaping Estimate',
+    ctaText:
+      'Share the landscape and civil drawings with the bid date — we will return organized planting, hardscape, and irrigation quantities.',
+    sampleDivisionSlug: 'exterior',
+  },
+  {
+    slug: 'fencing',
+    name: 'Fencing Estimation Services',
+    headline: 'Perimeter and Specialty Fence Packages, Measured Cleanly.',
+    lede:
+      'Fencing scopes need accurate lineal quantities, post and gate counts, and specification-driven material callouts. We prepare fencing estimates that contractors can price by system without guessing from incomplete site notes.',
+    intro: [
+      'From chain-link and ornamental metal to wood privacy and temporary construction fencing, we measure fence runs from the civil and architectural site plans, count gates and posts, and organize the estimate by system and height.',
+    ],
+    whatWeEstimate: [
+      'Chain-link, ornamental, and wood fence systems',
+      'Post, rail, and fabric / panel quantities',
+      'Pedestrian and vehicle gates',
+      'Hardware, tension wire, and accessories',
+      'Temporary construction fencing (when shown)',
+      'Footings and footing assumptions (as indicated)',
+    ],
+    whatsIncluded: [
+      'Detailed Quantity Takeoffs',
+      'CSI Format Estimates',
+      'Gate & Post Schedules',
+      'Material & Labor Breakdown',
+      'Scope Clarifications & Exclusions',
+      'Professional Bid Proposals',
+    ],
+    whyUs:
+      'Fencing bids go wrong when runs, heights, and gate types are inferred instead of measured. We deliver clear lineal and count-based takeoffs in CSI Format so fence contractors can submit competitive, complete proposals.',
+    ctaTitle: 'Request Your Fencing Estimate',
+    ctaText:
+      'Send the site and fence details with your bid date — we will prepare a measured fencing estimate ready for pricing.',
+    sampleDivisionSlug: 'exterior',
   },
 ];
 
@@ -911,6 +1055,30 @@ export const TRADE_BUBBLE_SUMMARIES: { slug: string; name: string; summary: stri
     summary:
       'Our wood estimating services optimize material procurement while minimizing waste through detailed quantity takeoffs.',
   },
+  {
+    slug: 'demolition',
+    name: 'Demolition Estimation Services',
+    summary:
+      'Selective and structural demolition estimates with clear protection, haul-off, and disposal assumptions for defensible bids.',
+  },
+  {
+    slug: 'ceiling-drywall',
+    name: 'Ceiling & Drywall Estimation Services',
+    summary:
+      'Framing, gypsum board, ACT, and finish-level takeoffs organized for ceiling and drywall subcontractors.',
+  },
+  {
+    slug: 'landscaping',
+    name: 'Landscaping Estimation Services',
+    summary:
+      'Planting, hardscape, irrigation, and site amenity quantities measured from landscape and civil drawings.',
+  },
+  {
+    slug: 'fencing',
+    name: 'Fencing Estimation Services',
+    summary:
+      'Fence runs, posts, gates, and accessories measured by system for clean, competitive fencing proposals.',
+  },
 ];
 
 export function getEstimationHub(slug: string): EstimationHub | undefined {
@@ -921,27 +1089,45 @@ export function getTradeEstimation(slug: string): TradeEstimationPage | undefine
   return TRADE_ESTIMATION_PAGES.find((t) => t.slug === slug);
 }
 
-/** Maps client CSI trade list labels to /estimation/trades/[slug] when a dedicated page exists. */
-const CSI_TRADE_ESTIMATION_SLUGS: Record<string, string> = {
-  Remodeling: 'remodeling',
-  Restoration: 'restoration',
-  Glazing: 'glazing',
-  Paving: 'paving',
-  Roofing: 'roofing',
-  'Metal framing': 'metal-framing',
-  'HVAC-Heating cooling and ventilation': 'hvac',
-  'MEP-Mechanical Electrical Plumbing': 'mep',
-  Insulation: 'insulation',
-  Structural: 'structural',
-  Excavation: 'sitework-earthwork',
-  Flooring: 'flooring',
-  'Bath & Tiles': 'bath-tile',
-  'Lumber wood work': 'lumber-woodwork',
+export function categoryAnchorId(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/** Maps every client CSI trade list label to a real destination (trade page or hub anchor). */
+const CSI_TRADE_HREFS: Record<string, string> = {
+  'General Construction-GC': '/estimation/general-construction',
+  Remodeling: '/estimation/trades/remodeling',
+  Restoration: '/estimation/trades/restoration',
+  'Marine work': `/estimation/public-projects#${categoryAnchorId('Marine & Port Facilities')}`,
+  Glazing: '/estimation/trades/glazing',
+  Paving: '/estimation/trades/paving',
+  Roofing: '/estimation/trades/roofing',
+  'Metal framing': '/estimation/trades/metal-framing',
+  'Government Infrastructure': `/estimation/public-projects#${categoryAnchorId('Municipal Buildings')}`,
+  'HVAC-Heating cooling and ventilation': '/estimation/trades/hvac',
+  'MEP-Mechanical Electrical Plumbing': '/estimation/trades/mep',
+  'Ceiling/drywall': '/estimation/trades/ceiling-drywall',
+  Excavation: '/estimation/trades/sitework-earthwork',
+  Insulation: '/estimation/trades/insulation',
+  Demolition: '/estimation/trades/demolition',
+  Structural: '/estimation/trades/structural',
+  Landscaping: '/estimation/trades/landscaping',
+  'Bridge work': `/estimation/public-projects#${categoryAnchorId('Bridges')}`,
+  'Airport construction': `/estimation/public-projects#${categoryAnchorId('Aviation Infrastructure')}`,
+  'Roads & Tenders Governmental': `/estimation/public-projects#${categoryAnchorId('Roads & Highways')}`,
+  Flooring: '/estimation/trades/flooring',
+  'Bath & Tiles': '/estimation/trades/bath-tile',
+  'Lumber wood work': '/estimation/trades/lumber-woodwork',
+  Fencing: '/estimation/trades/fencing',
 };
 
 export type CsiTradeNavItem = {
   label: string;
-  href: string | null;
+  href: string;
   shortLabel: string;
 };
 
@@ -954,11 +1140,14 @@ function shortTradeLabel(label: string): string {
 
 export function getCsiTradeNavItems(labels: readonly string[]): CsiTradeNavItem[] {
   return labels.map((label) => {
-    const slug = CSI_TRADE_ESTIMATION_SLUGS[label];
+    const href = CSI_TRADE_HREFS[label];
+    if (!href) {
+      throw new Error(`CSI trade "${label}" is missing a navigation destination.`);
+    }
     return {
       label,
       shortLabel: shortTradeLabel(label),
-      href: slug ? `/estimation/trades/${slug}` : null,
+      href,
     };
   });
 }

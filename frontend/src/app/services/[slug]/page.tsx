@@ -2,30 +2,23 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { BRAND, CONTENT_SERVICES, ACQUISITION_CONTENT } from '@/lib/content';
-import { SERVICES } from '@/lib/data';
 import { ICO } from '@/lib/illustrations';
-import { Button, CTA, PageHead, PhoneLink, Photo, ServiceCard, WhatsAppLink } from '../../components';
+import { Button, CTA, PageHead, PhoneLink, Photo, WhatsAppLink } from '../../components';
 import { createMetadata } from '@/lib/metadata';
 import type { Metadata } from 'next';
 import PropertyForm from '../acquisitions-form';
 import { MotionItem, MotionReveal, MotionStagger } from '../../motion';
 
 export function generateStaticParams() {
-  return [...SERVICES.map((s) => ({ slug: s.slug })), ...CONTENT_SERVICES.map((s) => ({ slug: s.slug }))];
+  return CONTENT_SERVICES.map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const content = CONTENT_SERVICES.find((s) => s.slug === slug);
-  const legacy = SERVICES.find((s) => s.slug === slug);
-  const item = content
-    ? { name: content.name, summary: content.summary }
-    : legacy
-      ? { name: legacy.name, summary: legacy.short }
-      : null;
   return createMetadata({
-    title: item ? item.name : 'Service not found',
-    description: item ? item.summary : 'Explore CSI & Design project support services.',
+    title: content ? content.name : 'Service not found',
+    description: content ? content.summary : 'Explore CSI & Design project support services.',
     path: `/services/${slug}`,
   });
 }
@@ -33,10 +26,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const content = CONTENT_SERVICES.find((s) => s.slug === slug);
-  const legacy = SERVICES.find((s) => s.slug === slug);
-  if (!content && !legacy) notFound();
+  if (!content) notFound();
 
-  if (content?.slug === 'acquisitions-investments') {
+  if (content.slug === 'acquisitions-investments') {
     return (
       <>
         <section className="hero">
@@ -185,8 +177,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     );
   }
 
-  if (content) {
-    return (
+  return (
       <>
         <PageHead
           eyebrow={`${content.code} · Service`}
@@ -353,55 +344,5 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           }
         />
       </>
-    );
-  }
-
-  return (
-    <>
-      <PageHead
-        eyebrow={`${legacy!.code} · Service`}
-        title={legacy!.name}
-        lede={legacy!.short}
-        crumb={
-          <>
-            <Link href="/services">Services</Link> / {legacy!.name}
-          </>
-        }
-      />
-      <section className="band">
-        <div className="wrap stack-lg">
-          <div className="split" style={{ alignItems: 'start' }}>
-            <div className="stack">
-              <h2 style={{ fontSize: 'var(--s2)' }}>What this supports</h2>
-              <p className="prose">{legacy!.desc}</p>
-              <h3>Best fit when</h3>
-              <p className="prose">{legacy!.who}</p>
-            </div>
-            <div className="spec">
-              <div className="spec-h">
-                <h4>Included work</h4>
-                <span className="u">SCOPE</span>
-              </div>
-              <ul>
-                {legacy!.points.map((p) => (
-                  <li key={p}>
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="grid-2">
-            {SERVICES.filter((x) => x.slug !== legacy!.slug).map((o) => (
-              <ServiceCard service={o} key={o.slug} />
-            ))}
-          </div>
-        </div>
-      </section>
-      <CTA
-        title={`Need ${legacy!.name.toLowerCase()}?`}
-        text="Send the project information and we will come back with a clear scope and next step."
-      />
-    </>
   );
 }

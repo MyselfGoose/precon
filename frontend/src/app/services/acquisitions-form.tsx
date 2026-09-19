@@ -9,6 +9,12 @@ type FormErrors = Record<string, string>;
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phonePattern = /^[+()\d\s.-]{7,}$/;
 
+type ApiErrorBody = {
+  ok?: boolean;
+  message?: string;
+  errors?: FormErrors;
+};
+
 function validate(form: HTMLFormElement): FormErrors {
   const data = new FormData(form);
   const errors: FormErrors = {};
@@ -21,7 +27,7 @@ function validate(form: HTMLFormElement): FormErrors {
   if (phone && !phonePattern.test(phone)) errors.phone = 'Enter a valid phone number or leave this field blank.';
   if (!address) errors.address = 'Add the property address or location.';
   if (notes.length < 20) errors.notes = 'Add at least 20 characters describing the property and your situation.';
-  if (!data.get('contact-consent')) errors['contact-consent'] = 'Consent is required before preparing this brief.';
+  if (!data.get('contact-consent')) errors['contact-consent'] = 'Consent is required before submitting.';
   return errors;
 }
 
@@ -29,22 +35,36 @@ export default function PropertyForm() {
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const nextErrors = validate(form);
     setErrors(nextErrors);
+    setSubmitError(null);
     if (Object.keys(nextErrors).length) {
       const first = form.elements.namedItem(Object.keys(nextErrors)[0]) as HTMLElement | null;
       first?.focus();
       return;
     }
+
     setSubmitting(true);
-    window.setTimeout(() => {
-      setSubmitting(false);
+    try {
+      const body = new FormData(form);
+      const response = await fetch('/api/leads/acquisition', { method: 'POST', body });
+      const payload = (await response.json().catch(() => null)) as ApiErrorBody | null;
+      if (!response.ok || !payload?.ok) {
+        if (payload?.errors) setErrors(payload.errors);
+        setSubmitError(payload?.message ?? 'We could not send your request. Please try again or call us.');
+        return;
+      }
       setSent(true);
-    }, 350);
+    } catch {
+      setSubmitError('Network error. Check your connection and try again, or call us directly.');
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (sent) {
@@ -53,10 +73,10 @@ export default function PropertyForm() {
         <div className="ico" aria-hidden="true">
           ✓
         </div>
-        <h2>Your property brief is prepared.</h2>
+        <h2>Your property inquiry has been sent.</h2>
         <p>
-          Your information has been organized in this browser, but no message or file has been sent yet. Keep this brief available for your conversation with our acquisitions team, or call{' '}
-          <a href="tel:+12272049141">{BRAND.phone}</a>.
+          Our acquisitions team received your details and will evaluate the opportunity. Prefer to talk sooner? Call{' '}
+          <a href={`tel:${BRAND.phoneRaw}`}>{BRAND.phoneDisplay}</a>.
         </p>
         <Link className="btn btn-primary" href="/">
           Back to home
@@ -67,21 +87,48 @@ export default function PropertyForm() {
 
   return (
     <form className="form" onSubmit={submit} noValidate aria-describedby="property-form-status">
+      <div className="field" aria-hidden="true" style={{ position: 'absolute', left: '-9999px', height: 0, overflow: 'hidden' }}>
+        <label htmlFor="p-website">Website</label>
+        <input id="p-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+      </div>
       <div className="field">
         <label htmlFor="p-name">Your name</label>
-        <input id="p-name" name="name" required type="text" autoComplete="name" placeholder="Full name" aria-invalid={Boolean(errors.name)} />
+        <input
+          id="p-name"
+          name="name"
+          required
+          type="text"
+          autoComplete="name"
+          placeholder="Full name"
+          aria-invalid={Boolean(errors.name)}
+        />
         {errors.name && <span className="form-error">{errors.name}</span>}
       </div>
       <div className="field">
         <label htmlFor="p-email">Email</label>
-        <input id="p-email" name="email" required type="email" autoComplete="email" placeholder="you@email.com" aria-invalid={Boolean(errors.email)} />
+        <input
+          id="p-email"
+          name="email"
+          required
+          type="email"
+          autoComplete="email"
+          placeholder="you@email.com"
+          aria-invalid={Boolean(errors.email)}
+        />
         {errors.email && <span className="form-error">{errors.email}</span>}
       </div>
       <div className="field">
         <label htmlFor="p-phone">
           Phone <span className="optional">(optional)</span>
         </label>
-        <input id="p-phone" name="phone" type="tel" autoComplete="tel" placeholder="(555) 555-5555" aria-invalid={Boolean(errors.phone)} />
+        <input
+          id="p-phone"
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          placeholder="(555) 555-5555"
+          aria-invalid={Boolean(errors.phone)}
+        />
         {errors.phone && <span className="form-error">{errors.phone}</span>}
       </div>
       <div className="field">
@@ -95,7 +142,14 @@ export default function PropertyForm() {
       </div>
       <div className="field full">
         <label htmlFor="p-address">Property address or location</label>
-        <input id="p-address" name="address" required type="text" placeholder="Street, City, State" aria-invalid={Boolean(errors.address)} />
+        <input
+          id="p-address"
+          name="address"
+          required
+          type="text"
+          placeholder="Street, City, State"
+          aria-invalid={Boolean(errors.address)}
+        />
         {errors.address && <span className="form-error">{errors.address}</span>}
       </div>
       <div className="field">
@@ -135,32 +189,34 @@ export default function PropertyForm() {
       </div>
       <div className="field full">
         <div className="consent">
-          <div className="consent-title">Consent — required before preparing</div>
+          <div className="consent-title">Consent — required before submitting</div>
           <div className="check">
             <input required type="checkbox" id="p-consent" name="contact-consent" />
             <label htmlFor="p-consent">
               <span className="req">Required</span>
               <br />
-              <b>I agree to be contacted about this property.</b> CSI & Design may email or call me to discuss the opportunity.
+              <b>I agree to be contacted about this property.</b> CSI & Design may email or call me to discuss the
+              opportunity.
             </label>
           </div>
           <p className="consent-fine">
-            By preparing this brief you agree to our <Link href="/privacy">Privacy Policy</Link> and <Link href="/terms">Terms of Service</Link>. No message is sent by this browser-only form.
+            By submitting you agree to our <Link href="/privacy">Privacy Policy</Link> and{' '}
+            <Link href="/terms">Terms of Service</Link>. Your inquiry is emailed to our acquisitions team.
           </p>
         </div>
         {errors['contact-consent'] && <span className="form-error">{errors['contact-consent']}</span>}
       </div>
       <div className="field full" id="property-form-status" aria-live="polite">
-        {Object.keys(errors).length > 0 && (
+        {(Object.keys(errors).length > 0 || submitError) && (
           <p className="form-error" role="alert">
-            Review the highlighted fields before continuing.
+            {submitError ?? 'Review the highlighted fields before continuing.'}
           </p>
         )}
         <button className="btn btn-primary" type="submit" disabled={submitting} style={{ width: '100%' }}>
-          {submitting ? 'Preparing your brief…' : 'Submit property for evaluation'}
+          {submitting ? 'Sending…' : 'Submit property for evaluation'}
         </button>
         <span className="hint" style={{ textAlign: 'center' }}>
-          This prepares information locally; it does not send an email or upload files.
+          We email your inquiry to {BRAND.email}. Or call {BRAND.phoneDisplay}.
         </span>
       </div>
     </form>

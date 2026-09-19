@@ -16,8 +16,8 @@ export default function About() {
     <>
       <PageHead
         eyebrow={`About ${BRAND.name}`}
-        title="One roof for the work before construction"
-        lede={ABOUT_CONTENT.lede}
+        title={ABOUT_CONTENT.lede}
+        lede="A single, trusted partner for planning, estimating, design coordination, and construction documentation."
       />
       <section className="band">
         <div className="wrap stack-lg">

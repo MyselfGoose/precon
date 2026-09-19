@@ -1,7 +1,6 @@
 export type MeasureGroup = { group: string; unit: string; items: [string, string][] };
 export type Sample = { title: string; cols: string[]; rows: string[][]; total: string[]; basis: string };
 export type Trade = { slug: string; art: string; noun: string; div: string; name: string; short: string; lede: string; intro: [string,string]; sheets: string; measure: MeasureGroup[]; sample: Sample; exclusions: string[]; faq: [string,string][] };
-export type Service = { slug: string; code: string; ico: string; name: string; short: string; desc: string; points: string[]; who: string };
 export const TRADES: Trade[] =
 [
 { slug:'concrete', art:'a', noun:'concrete', div:'03', name:'Concrete', short:'Footings, slabs, walls, formwork, rebar, finishes',
@@ -245,45 +244,17 @@ export const TRADES: Trade[] =
        ['Are connection fees included?','No. Tap fees, capacity charges and utility company work are owner costs that vary by jurisdiction. They are listed as exclusions so they are not forgotten in the owner\'s budget.'],
        ['Do you read the profiles or just the plan?','Both. The plan gives horizontal length; the profiles give invert elevations, depth and slope. Estimating from the plan alone under-prices deep runs.']] }
 ];
-export const SERVICES: Service[] =
-[
-{ slug:'takeoffs', code:'SVC-01', ico:'takeoff', name:'Material takeoffs', short:'Quantities measured from your drawings, organized by CSI division or your own cost codes.',
-  desc:'Every quantity in the plan set, measured digitally and organized the way your team reads an estimate — by CSI MasterFormat division, by location, or by your own cost code structure. Each line carries the sheet and detail it came from.',
-  points:['Digital measurement from PDF or CAD backgrounds in Bluebeam, Planswift or On-Screen Takeoff','Waste, lap and overage factors applied by material and stated on the estimate','Openings deducted at the unit level, not by blanket percentage','Sheet and detail reference on every line','Delivered as an editable Excel workbook with formulas intact'],
-  who:'Subcontractors who price their own labor and just need accurate quantities; suppliers building material quotes; general contractors checking sub bids.' },
-{ slug:'estimating', code:'SVC-02', ico:'estimate', name:'Cost estimating', short:'Takeoff quantities priced with material, labor and equipment broken out separately.',
-  desc:'Quantities become a priced estimate with material, labor and equipment in separate columns, so you can substitute your own rates without rebuilding anything. Regional labor rates, current material pricing, crew productivity and stated overhead and profit assumptions.',
-  points:['Material priced at current supplier or published cost, dated on the estimate','Labor by crew productivity and regional wage rates — union, prevailing or open shop as specified','Equipment by duration and type','General conditions, overhead and profit as visible, adjustable lines','Exclusions, assumptions and clarifications documented on every estimate'],
-  who:'Contractors bidding work who need a complete, defensible number; owners and developers checking budgets; contractors validating an in-house estimate.' },
-{ slug:'bid-prep', code:'SVC-03', ico:'bid', name:'Bid preparation', short:'Bid-ready documents formatted to the owner\'s or GC\'s requirements.',
-  desc:'The paperwork around the number. We format the submission to the bid documents\' requirements so nothing gets thrown out on a technicality — bid forms, schedules of values, unit price sheets, scope letters, alternates and bid-day pricing updates.',
-  points:['Bid forms and schedules of values completed to the bid instructions','Scope letters defining inclusions, exclusions and clarifications','Base bid, alternates and voluntary alternates priced separately','Unit prices and allowances as required','Bid-day support for addenda and last-minute quote changes'],
-  who:'Contractors submitting formal bids to GCs, owners or public agencies where format compliance matters.' },
-{ slug:'precon', code:'SVC-04', ico:'precon', name:'Preconstruction budgets', short:'Order-of-magnitude and design-phase budgets before drawings are complete.',
-  desc:'Numbers before there are complete drawings — so an owner can decide whether a project is viable before spending more on design, and so the design team can be steered toward the budget rather than surprised by it at bid.',
-  points:['Conceptual and square-foot budgeting from program and massing','Budget updates at schematic, design development and construction documents','Value engineering options with cost deltas','Cost comparison between design alternatives and systems','Budget-to-bid reconciliation when bids come in'],
-  who:'Design-build contractors, developers, owners and architects who need cost input during design.' },
-{ slug:'drafting', code:'SVC-05', ico:'draft', name:'Drafting support', short:'Shop drawings, as-builts and markups when the estimate needs drawings that don\'t exist yet.',
-  desc:'Sometimes the estimate needs a drawing that does not exist — a shop drawing to confirm a fabrication quantity, a marked-up plan for the field, an as-built for a change order. We produce them in AutoCAD or Revit to your standards.',
-  points:['Shop and fabrication drawings for steel, millwork and specialty items','Redline incorporation and as-built drawings','Takeoff markups exported for field use','Coordination drawings for MEP conflicts','Sketch-to-CAD conversion for change orders'],
-  who:'Subcontractors and fabricators needing submittals; contractors documenting changes; anyone whose estimate depends on a drawing the design team has not produced.' }
-];
-export const AUDIENCES = [
-  { slug:'general-contractors', code:'GC', icon:'gc', name:'General contractors', intro:'Full-building budgets and multi-division estimates when your in-house team is already committed to another pursuit.', details:'We produce the complete estimate — every division, general conditions and markups — organized so you can drop subcontractor quotes in as they arrive and see where they land against our number.', items:['Complete hard-bid estimates, all divisions','Conceptual and design-development budgets','Sub bid leveling and scope gap analysis','Self-perform trade takeoffs (concrete, carpentry)','Change order pricing and quantity verification','Overflow capacity during heavy bid seasons'] },
-  { slug:'subcontractors', code:'SUB', icon:'sub', name:'Subcontractors', intro:'Single-trade takeoffs priced to your own labor rates and production factors, not generic book values.', details:'You know what your crews produce; we measure the work and build the estimate around your numbers so the result is a bid you can actually execute.', items:['Trade-specific takeoffs from any of our twelve divisions','Estimates priced to your labor and productivity rates','Quantity-only takeoffs when you price in-house','Scope letters and bid form preparation','Recurring capacity — a set number of bids per month','Second-opinion review before bid day'] },
-  { slug:'suppliers-fabricators', code:'SUPPLY', icon:'supplier', name:'Suppliers & fabricators', intro:'Material quantity lists pulled straight from the plan set so your quote goes out with the bid instead of after it.', details:'Rebar by size and weight, lumber by piece and board foot, steel by member, roofing by square, finishes by product — organized the way your order desk needs it.', items:['Rebar takeoffs with bar lists','Lumber and panel packages','Structural steel and joist packages','Roofing and insulation material lists','Flooring, tile and ceiling quantities','Site pipe and structure lists'] },
-  { slug:'architects-owners', code:'DESIGN', icon:'arch', name:'Architects & owners', intro:'Cost input during design, before the bids reveal the problem.', details:'Square-foot budgets from program and massing, updated at each design phase, with value-engineering options priced so decisions can be made on numbers rather than instinct.', items:['Conceptual budgets from program','Schematic and DD estimate updates','System and material comparisons','Value engineering with cost deltas','Bid reconciliation when bids arrive','Independent cost checks on proposals'] },
-] as const;
 export const NAV_ITEMS = [
   ['Services', '/services'],
   ['Estimation', '/estimation'],
   ['Trades', '/trades'],
-  ['Markets', '/markets'],
+  ['How It Works', '/how-it-works'],
+  ['Who We Serve', '/who-we-serve'],
   ['About', '/about'],
   ['Contact', '/contact'],
 ] as const;
 
-/** Full destinations for floating mobile panel (includes routes moved off primary nav). */
+/** Full destinations for floating mobile panel. */
 export const MOBILE_NAV_ITEMS = [
   ['Services', '/services'],
   ['Estimation', '/estimation'],
@@ -301,7 +272,6 @@ export const FOOTER_NAV_ITEMS = [
   ['Markets', '/markets'],
   ['How it works', '/how-it-works'],
   ['Who we serve', '/who-we-serve'],
-  ['Insights', '/insights'],
   ['Contact', '/contact'],
   ['Request a Quote', '/quote'],
 ] as const;
@@ -331,117 +301,3 @@ export const CSI_TRADE_LIST = [
   'Lumber wood work',
   'Fencing',
 ] as const;
-export const LEGAL = {
-  "privacy": [
-    [
-      "1. Who we are",
-      "CSI & Design (“we,” “us”) provides construction estimating, quantity takeoff and related preconstruction services to contractors, suppliers, design professionals and owners. This policy applies to our website and to information we collect when you request or receive our services."
-    ],
-    [
-      "2. Information we collect",
-      "We collect information you provide directly: your name, company, email address, phone number, project location, bid dates, scope notes and any files you upload or link. We collect information automatically when you visit the website, such as IP address, browser type, pages viewed and referring site, through standard server logs and analytics tools described in Section 7. We do not collect payment card numbers on the website."
-    ],
-    [
-      "3. How we use information",
-      "We use your information to respond to quote requests, produce and deliver estimates, communicate about your projects, invoice for services, improve the website and our services, and comply with legal obligations. If you opt in, we use your email to send occasional updates about our services; every such email includes an unsubscribe link."
-    ],
-    [
-      "4. Plan sets and project documents",
-      "Drawings, specifications, pricing and other project documents you send us are treated as confidential business information. We use them only to understand and produce the services you request, and do not sell or publish them."
-    ],
-    [
-      "5. Text messaging (SMS)",
-      "This website does not currently request SMS consent or send text messages. If that changes, the privacy and consent language will be updated before the feature is enabled."
-    ],
-    [
-      "6. How we share information",
-      "We share information with service providers who help us operate — hosting, email delivery, SMS delivery, file storage, analytics, invoicing and payment processing — each bound to use it only on our behalf. We may disclose information to comply with law, enforce our agreements, or protect rights and safety. If the business is sold or merged, information may transfer to the successor under this policy. We do not sell personal information and we do not share it for cross-context behavioral advertising."
-    ],
-    [
-      "7. Cookies and analytics",
-      "The website uses essential cookies to function and may use analytics tools to understand how visitors use the site. You can control cookies through your browser settings."
-    ],
-    [
-      "8. Data retention",
-      "We retain quote requests, contact information, project documents, and estimates only as long as needed to respond, support an engagement, satisfy legal obligations, resolve disputes, or maintain appropriate business records."
-    ],
-    [
-      "9. Security",
-      "We protect information with access controls, encryption in transit, and confidentiality obligations on our personnel. No system is perfectly secure; if we learn of a breach affecting your information, we will notify you as required by law."
-    ],
-    [
-      "10. Your rights — including California residents",
-      "You may ask us to access, correct, or delete personal information we hold about you, and to opt out of marketing communications. Use the project request form to make a request; we will verify it and respond within the time required by law."
-    ],
-    [
-      "11. Children",
-      "Our services are for businesses and are not directed to anyone under 18. We do not knowingly collect information from minors."
-    ],
-    [
-      "12. Changes to this policy",
-      "We may update this policy. The effective date at the top reflects the latest version. Material changes will be noted on the website."
-    ],
-    [
-      "13. Contact",
-      "Use the project request form to contact CSI & Design about privacy questions or requests."
-    ]
-  ],
-  "terms": [
-    [
-      "1. Acceptance",
-      "By requesting a quote, approving a quote, or using this website, you agree to these Terms. If you are acting for a company, you represent that you are authorized to bind it. If you do not agree, do not use the services or the website."
-    ],
-    [
-      "2. Services and quotes",
-      "We provide construction quantity takeoffs, cost estimates, bid preparation, preconstruction budgets and drafting support (“Services”) as described on this website. Each engagement begins with a written quote stating scope, price and delivery date. Work begins only after you approve the quote in writing (email is sufficient). The quote and these Terms together form the agreement for that engagement. If they conflict, the quote controls for that engagement."
-    ],
-    [
-      "3. Client responsibilities",
-      "You are responsible for providing complete and current drawings, specifications, addenda and project information, and for telling us the bid due date, project location and any scope you want included or excluded. Delays or errors caused by incomplete or outdated documents are not our responsibility, and revisions required by documents provided after quote approval may be charged as additional work."
-    ],
-    [
-      "4. Nature of estimates — no guarantee",
-      "An estimate is a professional opinion of probable quantities and cost based on the documents provided and the assumptions stated in the deliverable. It is not a guarantee of actual quantities, costs, bid results, or project outcomes. Market prices, labor availability, site conditions, design changes and bidding strategy are outside our control. You are responsible for reviewing the deliverable, verifying it against your own knowledge and the bid documents, applying your own markups and judgment, and deciding whether and how to bid."
-    ],
-    [
-      "5. Revisions and addenda",
-      "Addenda and revisions issued during the bid period for the same project are included in the engagement at no additional charge, provided they are sent to us promptly and do not materially change the scope quoted. Changes after bid, redesigns, or requests to re-scope the estimate are new work and will be quoted separately. Rush revisions may carry a rush fee stated at the time of request."
-    ],
-    [
-      "6. Fees and payment",
-      "Fees and payment timing are stated in the applicable written quote or agreement. Fees exclude applicable taxes unless the agreement says otherwise."
-    ],
-    [
-      "7. Confidentiality",
-      "Each party will keep the other’s non-public information confidential and use it only for the engagement. Your drawings, specifications, pricing and bid information are your confidential information; our methods, templates, pricing databases, and workbook structures remain ours. These obligations do not apply to information that is public, independently developed, or required to be disclosed by law."
-    ],
-    [
-      "8. Intellectual property and deliverables",
-      "On payment in full, you own the deliverable for the project it was prepared for and may use it for bidding, budgeting and construction of that project. We retain ownership of our templates, methods, pricing data, software and any pre-existing materials incorporated into the deliverable, and may reuse them for other clients. You may not resell or redistribute the deliverable as a stand-alone product or represent it as prepared by another estimator."
-    ],
-    [
-      "9. Limitation of liability",
-      "To the fullest extent permitted by law, our total liability for any claim arising from an engagement is limited to the fees paid for that engagement. We are not liable for lost profits, lost bids, consequential, incidental, special or punitive damages, or for costs arising from your reliance on the estimate in bidding or performing work. Some jurisdictions do not allow certain limitations; in those, our liability is limited to the extent permitted."
-    ],
-    [
-      "10. Indemnification",
-      "You will defend and indemnify us against third-party claims arising from your bids, contracts, or construction work, except to the extent caused by our gross negligence or willful misconduct."
-    ],
-    [
-      "11. SMS terms",
-      "This website does not currently offer SMS messaging. No text-message consent is collected through the project request form."
-    ],
-    [
-      "12. Website use",
-      "The website and its content are ours or our licensors’ and are for your business use in evaluating and requesting our services. Do not scrape, copy for republication, reverse-engineer, or use the site to send spam or unlawful content. Sample estimates, figures and drawings on the site are illustrative and are not offers or guarantees. Links to third-party sites are provided for convenience; we are not responsible for their content."
-    ],
-    [
-      "13. Governing law and disputes",
-      "These Terms are governed by applicable law. Any engagement-specific dispute process or forum will be stated in the applicable written agreement."
-    ],
-    [
-      "14. General",
-      "These Terms and the applicable quote are the entire agreement for an engagement and supersede prior discussions. If any provision is unenforceable, the rest remains in effect. Our failure to enforce a provision is not a waiver. You may not assign the agreement without our consent; we may assign to a successor. Notices go to the addresses in the quote or on the Contact page. We may update these Terms for future engagements by posting the revised version with a new effective date."
-    ]
-  ]
-} as const;

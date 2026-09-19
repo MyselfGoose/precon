@@ -94,11 +94,11 @@ export const CONTENT_SERVICES: ContentService[] = [
       },
       {
         title: 'Exterior Design',
-        items: ['Building Elevations', 'Exterior Finish Details', 'Door & Window Schedules', 'Building Sections'],
+        items: ['Building Elevations', 'Exterior Finish Details', 'Door & Window Schedules'],
       },
       {
         title: 'Building Sections',
-        items: ['Wall Sections', 'Stair Section'],
+        items: ['Building Sections', 'Wall Sections', 'Stair Section'],
       },
       {
         title: 'Construction Details',
@@ -222,6 +222,7 @@ export const CONTENT_SERVICES: ContentService[] = [
     whyUs: [
       'Successful MEP design depends on coordination. Our integrated Mechanical, Electrical, and Plumbing team works together under one roof to ensure every system is carefully coordinated before construction begins, minimizing clashes, reducing costly revisions, and improving installation efficiency on site.',
       'We take ownership of the coordination process, treating every project as our responsibility rather than simply delivering drawings. By proactively identifying conflicts, optimizing system layouts, and ensuring compliance with applicable codes and project requirements, we help contractors, developers, and engineers move confidently from permitting to construction.',
+      'Our commitment to accuracy, accountability, and seamless collaboration allows us to deliver coordinated MEP documentation that reduces the margin for error, streamlines project execution, and supports successful outcomes on projects of every size.',
     ],
     ctaTitle: 'Discuss MEP drawings & engineering',
     ctaText: 'Share your project type, jurisdiction, and required calculations so we can define a coordinated MEP package.',
@@ -438,7 +439,7 @@ export const ABOUT_CONTENT = {
     [
       'ACCURACY',
       'Accuracy of Data',
-      'We\'ll provide you with accurate data according to the instructions you give. We\'ll make sure that you don\'t have to rush after receiving the text.',
+      'We\'ll provide you with accurate data according to the instructions you give. We\'ll make sure that you don\'t have to rush after receiving the work.',
     ],
     [
       'BID EDGE',
@@ -460,45 +461,44 @@ export const ABOUT_CONTENT = {
 
 export const ACQUISITION_CONTENT = {
   eyebrow: 'Property Acquisition',
-  title: 'Strategic Properties. Long-Term Value.',
-  lede:
-    'We identify and acquire high-potential properties through discreet, strategic, and relationship-driven opportunities — focusing on assets where renovation, design, and execution unlock lasting value.',
+  title: 'Turning Property Opportunities Into Real Value',
+  lede: 'We look at property differently.',
   intro: [
     'Every opportunity begins with understanding the property, the numbers, and the circumstances behind it. From there, our team evaluates the opportunity and determines whether there is a path forward that makes sense.',
     'For property owners, that means having the opportunity to explore a direct transaction based on the property\'s actual condition, potential, and underlying fundamentals.',
     'For us, it means identifying properties where thoughtful renovation, design, and execution can unlock significant value.',
   ],
   features: [
-    { title: 'Off-Market Opportunities', description: 'Discreet sourcing through trusted relationships' },
-    { title: 'Distressed & Motivated Owners', description: 'Situations where timing and clarity matter' },
-    { title: 'Investor Partnerships', description: 'Aligned capital for the right assets' },
-    { title: 'Value-Add & Redevelopment', description: 'Upside through design and execution' },
+    { title: 'Property-First Evaluation', description: 'Understand condition, potential, and fundamentals before structure' },
+    { title: 'Direct Conversations', description: 'Explore options based on the property’s actual situation' },
+    { title: 'Construction Advantage', description: 'Estimating, architecture, and engineering inform the plan' },
+    { title: 'Value Through Execution', description: 'Renovation and design that unlock lasting asset value' },
   ] as const,
-  approachTitle: 'Discreet. Strategic. Focused.',
+  approachTitle: 'An Offer Built Around the Property',
   approachItems: [
-    'Residential & Commercial Properties',
-    'Distressed Sales / Motivated Sellers',
-    'Foreclosure & Value-Add Opportunities',
-    'Investor & Hedge Fund Partnerships',
-    'Property Acquisition Strategies',
+    'Evaluate current condition and investment required',
+    'Analyze potential before proposing a path forward',
+    'Determine an appropriate acquisition structure',
+    'Present the opportunity for consideration',
+    'Understand the property first — then what makes sense',
   ] as const,
   propertyTypes: [
     { title: 'Residential', subtitle: 'Single-family, multi-family, and value-add homes', image: '/images/properties/residential.jpg' },
     { title: 'Commercial', subtitle: 'Office, retail, mixed-use, and income assets', image: '/images/properties/commercial.jpg' },
     { title: 'Land & Development', subtitle: 'Sites positioned for growth and entitlements', image: '/images/properties/land-development.jpg' },
-    { title: 'Special Situations', subtitle: 'Divorce, probate, abandonment, and unique circumstances', image: '/images/properties/special-situations.jpg' },
+    { title: 'Special Situations', subtitle: 'Unique circumstances where timing and clarity matter', image: '/images/properties/special-situations.jpg' },
   ] as const,
   values: [
     { title: 'Market Insight', description: 'Data-backed evaluation of condition, cost, and upside.' },
-    { title: 'Trusted Network', description: 'Relationships that surface opportunities before they hit the market.' },
+    { title: 'Trusted Network', description: 'Relationships that surface opportunities for thoughtful review.' },
     { title: 'Streamlined Process', description: 'Clear steps from evaluation to acquisition decision.' },
-    { title: 'Win-Win Outcomes', description: 'Structures built around the property and the people involved.' },
+    { title: 'Aligned Outcomes', description: 'Structures built around the property and the people involved.' },
   ] as const,
   offerTitle: 'An Offer Built Around the Property',
   offerBody: [
     'We don\'t believe every property should be approached the same way.',
     'Our team evaluates the property, considers its current condition, estimates the investment required to improve it, and analyzes its potential.',
-    'From that evaluation, we can determine an appropriate acquisition approach and present the opportunity for consideration.',
+    'From that evaluation, we can determine an appropriate acquisition structure and present the opportunity for consideration.',
     'The objective is simple: understand the property first, then determine what makes sense.',
   ],
   advantageTitle: 'Where Our Advantage Begins',
@@ -516,7 +516,7 @@ export const ACQUISITION_CONTENT = {
   steps: ['Evaluate', 'Acquire', 'Design', 'Renovate', 'Create Value'] as const,
   stepsBody:
     'We look for properties where the right combination of acquisition discipline, construction expertise, and thoughtful design can transform an existing asset into something substantially better. That is where we see opportunity.',
-  ctaTitle: "Let's Find the Right Opportunity.",
+  ctaTitle: 'Have a Property to Discuss?',
   ctaText:
     'If you\'re considering your options for a property, we\'d be happy to take a look. Provide us with the available information, and our team will evaluate the property and its potential.',
 };
@@ -1117,7 +1117,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     title: '11. Governing Law',
     paragraphs: [
       'These Terms of Service are governed by and construed in accordance with the laws of the United States, without regard to its conflict of law provisions.',
-      'Any disputes arising from or relating to these Terms or your use of the Site shall be resolved in the appropriate federal or state courts within the United States. You consent to the personal jurisdiction and venue of such courts and waive any objections based on forum non conveniens.',
+      'Any disputes arising from or relating to these Terms or your use of the Site shall be resolved in the appropriate federal or state courts within the United States (jurisdiction to be confirmed with counsel for the operating entity). You consent to the personal jurisdiction and venue of such courts and waive any objections based on forum non conveniens.',
     ],
   },
   {

@@ -1,8 +1,16 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
   reactCompiler: true,
+  async redirects() {
+    return [
+      { source: '/services/takeoffs', destination: '/services/estimating', permanent: true },
+      { source: '/services/bid-prep', destination: '/services/estimating', permanent: true },
+      { source: '/services/precon', destination: '/services/estimating', permanent: true },
+      { source: '/services/drafting', destination: '/services/architectural-drawings', permanent: true },
+      { source: '/insights', destination: '/contact', permanent: false },
+    ];
+  },
 };
 
 export default nextConfig;

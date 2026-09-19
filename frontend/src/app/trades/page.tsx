@@ -13,8 +13,6 @@ export const metadata = createMetadata({
 });
 
 const specialtyTrades = getCsiTradeNavItems(CSI_TRADE_LIST);
-const linkedSpecialties = specialtyTrades.filter((t) => t.href);
-const coveredSpecialties = specialtyTrades.filter((t) => !t.href);
 
 export default function TradesPage() {
   return (
@@ -30,15 +28,15 @@ export default function TradesPage() {
           <div className="split">
             <MotionReveal className="stack" y={16}>
               <div className="eyebrow">Two ways in</div>
-              <h2>Specialty estimation pages, plus CSI division takeoffs</h2>
+              <h2>Specialty estimation pages, plus CSI MasterFormat division takeoffs</h2>
               <p className="prose">
-                Use a dedicated trade estimation page when you are pricing a specialty scope, or open a MasterFormat
-                division page for measured units, sheet references, sample output, and exclusions.
+                Use a specialty estimation page when you are pricing a trade scope from our CSI expertise list, or open a
+                MasterFormat division page for measured units, sheet references, sample output, and exclusions.
               </p>
               <div className="btn-row">
                 <Button href="/estimation/trades">Browse specialty estimation →</Button>
                 <Link className="btn btn-ghost" href="#divisions">
-                  Jump to divisions
+                  Jump to division takeoffs
                 </Link>
               </div>
             </MotionReveal>
@@ -57,47 +55,31 @@ export default function TradesPage() {
       <section className="band band-ground">
         <div className="wrap stack-lg">
           <div className="stack">
-            <div className="eyebrow">Specialty estimation</div>
-            <h2>Disciplines with dedicated estimate pages</h2>
+            <div className="eyebrow">CSI specialty estimation</div>
+            <h2>Every trade in our expertise window</h2>
             <p className="prose">
-              Each linked trade opens What we estimate, what&apos;s included, and why contractors choose CSI &amp; Design
-              for that scope.
+              Each chip opens a dedicated estimation page or the matching public-project / general-construction category.
+              Infrastructure specialties deep-link into Public Projects categories where that content already lives.
             </p>
           </div>
-          <div className="trade-nav" aria-label="Specialty estimation trades">
-            {linkedSpecialties.map((trade) => (
-              <Link key={trade.label} href={trade.href!} className="trade-chip trade-chip-link" title={trade.label}>
+          <div className="trade-nav" aria-label="CSI specialty estimation trades">
+            {specialtyTrades.map((trade) => (
+              <Link key={trade.label} href={trade.href} className="trade-chip trade-chip-link" title={trade.label}>
                 {trade.shortLabel}
               </Link>
             ))}
           </div>
-          {coveredSpecialties.length > 0 && (
-            <div className="stack">
-              <h3 style={{ fontSize: '1.05rem' }}>Also supported in full-building and division takeoffs</h3>
-              <p className="prose">
-                These CSI specialties are covered through multi-division estimates and the MasterFormat pages below —
-                request a quote and name the trade.
-              </p>
-              <div className="trade-nav" aria-label="Additional CSI trades we support">
-                {coveredSpecialties.map((trade) => (
-                  <span key={trade.label} className="trade-chip trade-chip-muted" title={trade.label}>
-                    {trade.shortLabel}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </section>
 
       <section className="band" id="divisions">
         <div className="wrap stack-lg">
           <div className="stack">
-            <div className="eyebrow">Division takeoffs</div>
+            <div className="eyebrow">MasterFormat division takeoffs</div>
             <h2>Detailed CSI division pages</h2>
             <p className="prose">
-              Each division page shows the work measured, the units reported, the sheets typically used, a sample
-              output, exclusions, and questions to resolve before pricing.
+              Separate from the specialty estimation pages above: each division page shows the work measured, the units
+              reported, the sheets typically used, a sample output, exclusions, and questions to resolve before pricing.
             </p>
           </div>
           <MotionStagger className="trades">

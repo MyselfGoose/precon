@@ -28,7 +28,9 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
   const idx = TRADE_ESTIMATION_PAGES.findIndex((t) => t.slug === trade);
   const prev = TRADE_ESTIMATION_PAGES[(idx + TRADE_ESTIMATION_PAGES.length - 1) % TRADE_ESTIMATION_PAGES.length];
   const next = TRADE_ESTIMATION_PAGES[(idx + 1) % TRADE_ESTIMATION_PAGES.length];
-  const sample = TRADES[idx % TRADES.length]?.sample ?? TRADES[0].sample;
+  const sample = page.sampleDivisionSlug
+    ? TRADES.find((t) => t.slug === page.sampleDivisionSlug)?.sample
+    : undefined;
 
   return (
     <>
@@ -49,11 +51,13 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
             <Spec title="What we estimate" unit="SCOPE" items={page.whatWeEstimate} />
             <Spec title="What's included" unit="DELIVERABLE" items={page.whatsIncluded} />
           </div>
-          <div className="stack">
-            <div className="eyebrow">Sample deliverable</div>
-            <h2>Organized the way your team reviews numbers</h2>
-            <Workbook sample={sample} tabs={['Summary', 'Scope', 'Exclusions']} active="Scope" />
-          </div>
+          {sample ? (
+            <div className="stack">
+              <div className="eyebrow">Sample deliverable</div>
+              <h2>Organized the way your team reviews numbers</h2>
+              <Workbook sample={sample} tabs={['Summary', 'Scope', 'Exclusions']} active="Scope" />
+            </div>
+          ) : null}
           <div className="stack">
             <div className="eyebrow">Why contractors choose us</div>
             <h2>Built for competitive, profitable bids</h2>
