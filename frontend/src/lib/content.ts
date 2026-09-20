@@ -15,7 +15,7 @@ export const BRAND = {
 export const SITE_COPY = {
   cta: {
     primary: 'Request a Quote',
-    secondary: 'Call +1 (227) 204-9141',
+    secondary: `Call ${BRAND.phoneDisplay}`,
     reviewTrade: 'Review this trade',
     reviewService: 'Review this service',
   },
@@ -551,7 +551,7 @@ export const HOME_DIVISIONS = [
       'Cost estimation, architectural drawings, structural and MEP engineering, BIM coordination, and visualization — buildable packages for contractors and developers.',
     href: '/services',
     image: '/images/divisions/estimation-design.jpg',
-    cta: 'Request an Estimate',
+    cta: 'Explore Our Services',
   },
   {
     title: 'Property Acquisition',
@@ -1116,8 +1116,8 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'governing-law',
     title: '11. Governing Law',
     paragraphs: [
-      'These Terms of Service are governed by and construed in accordance with the laws of the United States, without regard to its conflict of law provisions.',
-      'Any disputes arising from or relating to these Terms or your use of the Site shall be resolved in the appropriate federal or state courts within the United States (jurisdiction to be confirmed with counsel for the operating entity). You consent to the personal jurisdiction and venue of such courts and waive any objections based on forum non conveniens.',
+      'These Terms of Service are governed by and construed in accordance with the laws of ( ADD LOCATION ), without regard to its conflict of law provisions.',
+      'Any disputes arising from or relating to these Terms or your use of the Site shall be resolved in the appropriate federal or state courts located in ( ADD LOCATION ). You consent to the personal jurisdiction and venue of such courts and waive any objections based on forum non conveniens.',
     ],
   },
   {

@@ -13,6 +13,12 @@ const phonePattern = /^[+()\d\s.-]{7,}$/;
 const MAX_FILE_BYTES = 8 * 1024 * 1024;
 const MAX_TOTAL_BYTES = 20 * 1024 * 1024;
 
+const ESTIMATION_HUB_OPTIONS = [
+  'General construction estimate',
+  'Industrial projects',
+  'Public / infrastructure projects',
+] as const;
+
 type ApiErrorBody = {
   ok?: boolean;
   message?: string;
@@ -61,6 +67,7 @@ export default function QuoteForm() {
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -69,8 +76,15 @@ export default function QuoteForm() {
     setErrors(nextErrors);
     setSubmitError(null);
     if (Object.keys(nextErrors).length) {
-      const first = form.elements.namedItem(Object.keys(nextErrors)[0]) as HTMLElement | null;
-      first?.focus();
+      const firstKey = Object.keys(nextErrors)[0];
+      if (firstKey === 'trade') {
+        form.querySelector<HTMLInputElement>('input[name="trade"]')?.focus();
+      } else if (firstKey === 'contact-consent') {
+        form.querySelector<HTMLInputElement>('#c-contact')?.focus();
+      } else {
+        const first = form.elements.namedItem(firstKey) as HTMLElement | null;
+        first?.focus();
+      }
       return;
     }
 
@@ -165,7 +179,7 @@ export default function QuoteForm() {
           name="phone"
           type="tel"
           autoComplete="tel"
-          placeholder="(555) 555-5555"
+          placeholder="+1 (555) 000-0000"
           aria-invalid={Boolean(errors.phone)}
           aria-describedby={errors.phone ? 'error-phone' : undefined}
         />
@@ -210,46 +224,67 @@ export default function QuoteForm() {
           <option>Acquisition review</option>
         </select>
       </div>
-      <div className="field">
-        <label htmlFor="q-trade">Services or trades needed</label>
-        <select
-          id="q-trade"
-          name="trade"
-          multiple
-          size={6}
+      <div className="field full">
+        <fieldset
+          className="trade-fieldset"
           aria-invalid={Boolean(errors.trade)}
           aria-describedby={errors.trade ? 'error-trade' : 'hint-trade'}
         >
-          <optgroup label="Services">
-            {CONTENT_SERVICES.map((s) => (
-              <option key={s.slug} value={s.name}>
-                {s.name}
-              </option>
-            ))}
-          </optgroup>
-          <optgroup label="Estimation hubs">
-            <option>General construction estimate</option>
-            <option>Industrial projects</option>
-            <option>Public / infrastructure projects</option>
-          </optgroup>
-          <optgroup label="Specialty trades">
-            {TRADE_ESTIMATION_PAGES.map((t) => (
-              <option key={t.slug} value={t.name}>
-                {t.name}
-              </option>
-            ))}
-          </optgroup>
-          <optgroup label="CSI MasterFormat divisions">
-            {TRADES.map((t) => (
-              <option key={t.slug} value={`Div ${t.div} — ${t.name}`}>
-                Div {t.div} — {t.name}
-              </option>
-            ))}
-          </optgroup>
-          <option>Full project support</option>
-        </select>
+          <legend>Services or trades needed</legend>
+          <div className="trade-checkboxes">
+            <div className="trade-group">
+              <div className="trade-group-label">Services</div>
+              {CONTENT_SERVICES.map((s) => (
+                <div className="check" key={s.slug}>
+                  <input type="checkbox" id={`q-trade-${s.slug}`} name="trade" value={s.name} />
+                  <label htmlFor={`q-trade-${s.slug}`}>{s.name}</label>
+                </div>
+              ))}
+            </div>
+            <div className="trade-group">
+              <div className="trade-group-label">Estimation hubs</div>
+              {ESTIMATION_HUB_OPTIONS.map((label) => (
+                <div className="check" key={label}>
+                  <input type="checkbox" id={`q-trade-hub-${label}`} name="trade" value={label} />
+                  <label htmlFor={`q-trade-hub-${label}`}>{label}</label>
+                </div>
+              ))}
+            </div>
+            <div className="trade-group">
+              <div className="trade-group-label">Specialty trades</div>
+              {TRADE_ESTIMATION_PAGES.map((t) => (
+                <div className="check" key={t.slug}>
+                  <input type="checkbox" id={`q-trade-${t.slug}`} name="trade" value={t.name} />
+                  <label htmlFor={`q-trade-${t.slug}`}>{t.name}</label>
+                </div>
+              ))}
+            </div>
+            <div className="trade-group">
+              <div className="trade-group-label">CSI MasterFormat divisions</div>
+              {TRADES.map((t) => (
+                <div className="check" key={t.slug}>
+                  <input
+                    type="checkbox"
+                    id={`q-trade-div-${t.slug}`}
+                    name="trade"
+                    value={`Div ${t.div} — ${t.name}`}
+                  />
+                  <label htmlFor={`q-trade-div-${t.slug}`}>
+                    Div {t.div} — {t.name}
+                  </label>
+                </div>
+              ))}
+            </div>
+            <div className="trade-group">
+              <div className="check">
+                <input type="checkbox" id="q-trade-full" name="trade" value="Full project support" />
+                <label htmlFor="q-trade-full">Full project support</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
         <span className="hint" id="hint-trade">
-          Hold Ctrl / Cmd to select several.
+          Select every service or trade that applies.
         </span>
         {errors.trade && (
           <span className="form-error" id="error-trade">
@@ -310,8 +345,24 @@ export default function QuoteForm() {
           multiple
           hidden
           aria-invalid={Boolean(errors.files)}
+          aria-describedby={errors.files ? 'error-files' : selectedFiles.length ? 'q-file-list' : undefined}
+          onChange={(event) => {
+            const files = event.currentTarget.files;
+            setSelectedFiles(files ? Array.from(files).map((file) => file.name) : []);
+          }}
         />
-        {errors.files && <span className="form-error">{errors.files}</span>}
+        {selectedFiles.length > 0 && (
+          <ul className="file-list" id="q-file-list">
+            {selectedFiles.map((name) => (
+              <li key={name}>{name}</li>
+            ))}
+          </ul>
+        )}
+        {errors.files && (
+          <span className="form-error" id="error-files">
+            {errors.files}
+          </span>
+        )}
       </div>
       <div className="field full">
         <label htmlFor="q-notes">Scope notes</label>
@@ -345,7 +396,14 @@ export default function QuoteForm() {
         <div className="consent">
           <div className="consent-title">Consent — required before submitting</div>
           <div className="check">
-            <input required type="checkbox" id="c-contact" name="contact-consent" />
+            <input
+              required
+              type="checkbox"
+              id="c-contact"
+              name="contact-consent"
+              aria-invalid={Boolean(errors['contact-consent'])}
+              aria-describedby={errors['contact-consent'] ? 'error-contact-consent' : undefined}
+            />
             <label htmlFor="c-contact">
               <span className="req">Required</span>
               <br />
@@ -379,7 +437,7 @@ export default function QuoteForm() {
           </p>
         )}
         <button className="btn btn-primary" type="submit" disabled={submitting} style={{ width: '100%' }}>
-          {submitting ? 'Sending your request…' : 'Send my project brief'}
+          {submitting ? 'Sending…' : 'Submit request'}
         </button>
         <span className="hint" style={{ textAlign: 'center' }}>
           We email your brief to {BRAND.email}. Prefer to talk? Call {BRAND.phoneDisplay}.

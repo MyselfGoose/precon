@@ -248,6 +248,7 @@ export const NAV_ITEMS = [
   ['Services', '/services'],
   ['Estimation', '/estimation'],
   ['Trades', '/trades'],
+  ['Markets', '/markets'],
   ['How It Works', '/how-it-works'],
   ['About', '/about'],
   ['Contact', '/contact'],
@@ -268,6 +269,7 @@ export const MOBILE_NAV_ITEMS = [
 export const FOOTER_NAV_ITEMS = [
   ['About', '/about'],
   ['Estimation', '/estimation'],
+  ['Trades', '/trades'],
   ['Markets', '/markets'],
   ['How it works', '/how-it-works'],
   ['Who we serve', '/who-we-serve'],

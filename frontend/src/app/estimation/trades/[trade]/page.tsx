@@ -47,6 +47,11 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
       <section className="band">
         <div className="wrap stack-lg">
           <p className="prose">{page.lede}</p>
+          {page.intro.map((paragraph) => (
+            <p className="prose" key={paragraph.slice(0, 48)}>
+              {paragraph}
+            </p>
+          ))}
           <div className="grid-2">
             <Spec title="What we estimate" unit="SCOPE" items={page.whatWeEstimate} />
             <Spec title="What's included" unit="DELIVERABLE" items={page.whatsIncluded} />

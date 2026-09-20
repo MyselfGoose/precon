@@ -24,10 +24,10 @@ export function Brand() {
           textAnchor="middle"
           fill="#F5F0E6"
           fontFamily="Playfair Display, Georgia, serif"
-          fontSize="14"
+          fontSize="12"
           fontWeight="700"
         >
-          CS
+          CSI
         </text>
       </svg>
       <span className="brand-name">{BRAND.shortName}</span>

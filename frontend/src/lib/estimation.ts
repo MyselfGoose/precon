@@ -353,7 +353,6 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Glazing Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you secure more glazing projects.',
-    sampleDivisionSlug: 'exterior',
   },
   {
     slug: 'paving',
@@ -461,7 +460,6 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Metal Framing Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you secure more metal framing projects.',
-    sampleDivisionSlug: 'metals',
   },
   {
     slug: 'hvac',

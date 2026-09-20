@@ -45,6 +45,7 @@ export default function Who() {
                   <div className="code">{a.code}</div>
                   <h2 style={{ fontSize: 'var(--s2)' }}>{a.name}</h2>
                   <p className="prose">{a.intro}</p>
+                  <p className="prose">{a.details}</p>
                   <Spec title="Typical support" unit={a.code} items={a.items} />
                 </div>
                 <div className="media project-photo">

@@ -27,14 +27,18 @@ export default function TradeEstimationIndex() {
       />
       <section className="band">
         <div className="wrap stack-lg">
-          {hub?.intro[0] && <p className="prose">{hub.intro[0]}</p>}
+          {hub?.intro.map((paragraph) => (
+            <p className="prose" key={paragraph.slice(0, 48)}>
+              {paragraph}
+            </p>
+          ))}
           <MotionStagger className="grid-2">
             {TRADE_BUBBLE_SUMMARIES.map((trade) => (
               <MotionItem className="motion-fill" key={trade.slug}>
                 <Link className="card card-link" href={`/estimation/trades/${trade.slug}`}>
                   <h3>{trade.name}</h3>
                   <p>{trade.summary}</p>
-                  <span className="card-action">Open separate page →</span>
+                  <span className="card-action">View details →</span>
                 </Link>
               </MotionItem>
             ))}

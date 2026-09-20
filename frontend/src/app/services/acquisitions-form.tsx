@@ -8,6 +8,8 @@ type FormErrors = Record<string, string>;
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phonePattern = /^[+()\d\s.-]{7,}$/;
+const MAX_FILE_BYTES = 8 * 1024 * 1024;
+const MAX_TOTAL_BYTES = 20 * 1024 * 1024;
 
 type ApiErrorBody = {
   ok?: boolean;
@@ -28,6 +30,20 @@ function validate(form: HTMLFormElement): FormErrors {
   if (!address) errors.address = 'Add the property address or location.';
   if (notes.length < 20) errors.notes = 'Add at least 20 characters describing the property and your situation.';
   if (!data.get('contact-consent')) errors['contact-consent'] = 'Consent is required before submitting.';
+  const files = form.elements.namedItem('files') as HTMLInputElement | null;
+  if (files?.files?.length) {
+    let total = 0;
+    for (const file of Array.from(files.files)) {
+      total += file.size;
+      if (file.size > MAX_FILE_BYTES) {
+        errors.files = `Each file must be smaller than ${MAX_FILE_BYTES / (1024 * 1024)} MB for email delivery. Paste a plan-room link in the notes for larger sets.`;
+        break;
+      }
+    }
+    if (!errors.files && total > MAX_TOTAL_BYTES) {
+      errors.files = `Total attachments must be under ${MAX_TOTAL_BYTES / (1024 * 1024)} MB. Paste a plan-room link in the notes for larger sets.`;
+    }
+  }
   return errors;
 }
 
@@ -36,6 +52,7 @@ export default function PropertyForm() {
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -44,8 +61,15 @@ export default function PropertyForm() {
     setErrors(nextErrors);
     setSubmitError(null);
     if (Object.keys(nextErrors).length) {
-      const first = form.elements.namedItem(Object.keys(nextErrors)[0]) as HTMLElement | null;
-      first?.focus();
+      const firstKey = Object.keys(nextErrors)[0];
+      if (firstKey === 'contact-consent') {
+        form.querySelector<HTMLInputElement>('#p-consent')?.focus();
+      } else if (firstKey === 'files') {
+        form.querySelector<HTMLInputElement>('#p-files')?.focus();
+      } else {
+        const first = form.elements.namedItem(firstKey) as HTMLElement | null;
+        first?.focus();
+      }
       return;
     }
 
@@ -209,6 +233,40 @@ export default function PropertyForm() {
         {errors.notes && (
           <span className="form-error" id="error-p-notes">
             {errors.notes}
+          </span>
+        )}
+      </div>
+      <div className="field full">
+        <label htmlFor="p-files">
+          Supporting files <span className="optional">(optional)</span>
+        </label>
+        <label className="dropzone" htmlFor="p-files">
+          <b>Share photos, surveys, or documents</b> PDF, ZIP, or DWG up to 8 MB each (20 MB total) — or <u>browse files</u>
+        </label>
+        <input
+          id="p-files"
+          name="files"
+          type="file"
+          accept=".pdf,.zip,.dwg"
+          multiple
+          hidden
+          aria-invalid={Boolean(errors.files)}
+          aria-describedby={errors.files ? 'error-p-files' : selectedFiles.length ? 'p-file-list' : undefined}
+          onChange={(event) => {
+            const files = event.currentTarget.files;
+            setSelectedFiles(files ? Array.from(files).map((file) => file.name) : []);
+          }}
+        />
+        {selectedFiles.length > 0 && (
+          <ul className="file-list" id="p-file-list">
+            {selectedFiles.map((name) => (
+              <li key={name}>{name}</li>
+            ))}
+          </ul>
+        )}
+        {errors.files && (
+          <span className="form-error" id="error-p-files">
+            {errors.files}
           </span>
         )}
       </div>

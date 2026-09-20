@@ -38,7 +38,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <h1>{ACQUISITION_CONTENT.title}</h1>
               <p className="lede">{ACQUISITION_CONTENT.lede}</p>
               <div className="btn-row">
-                <Button href="/contact">Get in Touch →</Button>
+                <Button href="#discuss-property">Get in Touch →</Button>
                 <a className="btn btn-ghost" href="#approach">
                   See our approach →
                 </a>
@@ -54,6 +54,16 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               />
             </div>
           </MotionReveal>
+        </section>
+
+        <section className="band">
+          <div className="wrap stack-lg">
+            {ACQUISITION_CONTENT.intro.map((paragraph) => (
+              <p className="prose" key={paragraph.slice(0, 48)}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </section>
 
         <section className="band band-ground">
@@ -109,17 +119,34 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               </div>
               <div className="stack">
                 <div className="eyebrow">Our Acquisition Approach</div>
-                <h2>{ACQUISITION_CONTENT.approachTitle}</h2>
-                <p className="prose">
-                  We evaluate each property on its fundamentals — condition, investment required, and finished-asset
-                  potential — then pursue opportunities that create meaningful value.
-                </p>
+                <h2>{ACQUISITION_CONTENT.offerTitle}</h2>
+                {ACQUISITION_CONTENT.offerBody.map((paragraph) => (
+                  <p className="prose" key={paragraph.slice(0, 48)}>
+                    {paragraph}
+                  </p>
+                ))}
                 <ul className="check-list">
                   {ACQUISITION_CONTENT.approachItems.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="band band-ground">
+          <div className="wrap stack-lg">
+            <div className="stack">
+              <div className="eyebrow">Construction advantage</div>
+              <h2>{ACQUISITION_CONTENT.advantageTitle}</h2>
+              <p className="prose">{ACQUISITION_CONTENT.advantageIntro}</p>
+              <ul className="check-list">
+                {ACQUISITION_CONTENT.advantageItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <p className="prose">{ACQUISITION_CONTENT.advantageClose}</p>
             </div>
           </div>
         </section>
@@ -133,7 +160,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {ACQUISITION_CONTENT.stepsBody}
               </p>
             </MotionReveal>
-            <div className="stat-strip" style={{ gridTemplateColumns: 'repeat(5, 1fr)' }}>
+            <div className="stat-strip acquisition-steps">
               {ACQUISITION_CONTENT.steps.map((step, i) => (
                 <div className="stat" key={step}>
                   <b>{String(i + 1).padStart(2, '0')}</b>
@@ -172,7 +199,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
         </section>
-        <CTA title={ACQUISITION_CONTENT.ctaTitle} text={ACQUISITION_CONTENT.ctaText} />
       </>
     );
   }

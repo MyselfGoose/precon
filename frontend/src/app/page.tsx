@@ -11,6 +11,8 @@ import {
   HOME_DIVISIONS,
   HOME_PILLARS,
   HOME_STATS,
+  MARKETS_CONTENT,
+  SITE_COPY,
 } from '@/lib/content';
 import { createMetadata } from '@/lib/metadata';
 import { MotionHeroItem, MotionItem, MotionReveal, MotionStagger, CountUp } from './motion';
@@ -74,7 +76,7 @@ export default function Home() {
             </MotionHeroItem>
             <MotionHeroItem delay={0.3}>
               <div className="btn-row">
-                <Button href="/quote">Request an Estimate →</Button>
+                <Button href="/quote">{SITE_COPY.cta.primary} →</Button>
                 <Link className="btn btn-ghost" href="/services">
                   Explore Our Services
                 </Link>
@@ -201,10 +203,7 @@ export default function Home() {
           <div className="stack">
             <div className="eyebrow">Markets we support</div>
             <h2>Built across the projects that shape communities</h2>
-            <p className="prose">
-              Industrial, residential and commercial, and public work — photographed American job sites that match the
-              scopes we estimate and design for.
-            </p>
+            <p className="prose">{MARKETS_CONTENT.lede}</p>
           </div>
           <MotionStagger className="grid-3">
             {FEATURED_PROJECTS.map((project) => (

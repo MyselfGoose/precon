@@ -33,7 +33,7 @@ export default function EstimationPage() {
                   <div className="code">{hub.code}</div>
                   <h3>{hub.name}</h3>
                   <p>{hub.lede}</p>
-                  <span className="card-action">Open section →</span>
+                  <span className="card-action">View details →</span>
                 </Link>
               </MotionItem>
             ))}
