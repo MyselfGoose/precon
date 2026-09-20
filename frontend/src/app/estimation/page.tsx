@@ -30,7 +30,7 @@ export default function EstimationPage() {
             {hubs.map((hub) => (
               <MotionItem className="motion-fill" key={hub.slug}>
                 <Link className="card card-link" href={`/estimation/${hub.slug}`}>
-                  <div className="code">{hub.slug.toUpperCase().slice(0, 8)}</div>
+                  <div className="code">{hub.code}</div>
                   <h3>{hub.name}</h3>
                   <p>{hub.lede}</p>
                   <span className="card-action">Open section →</span>

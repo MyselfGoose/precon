@@ -101,8 +101,13 @@ export default function PropertyForm() {
           autoComplete="name"
           placeholder="Full name"
           aria-invalid={Boolean(errors.name)}
+          aria-describedby={errors.name ? 'error-p-name' : undefined}
         />
-        {errors.name && <span className="form-error">{errors.name}</span>}
+        {errors.name && (
+          <span className="form-error" id="error-p-name">
+            {errors.name}
+          </span>
+        )}
       </div>
       <div className="field">
         <label htmlFor="p-email">Email</label>
@@ -114,8 +119,13 @@ export default function PropertyForm() {
           autoComplete="email"
           placeholder="you@email.com"
           aria-invalid={Boolean(errors.email)}
+          aria-describedby={errors.email ? 'error-p-email' : undefined}
         />
-        {errors.email && <span className="form-error">{errors.email}</span>}
+        {errors.email && (
+          <span className="form-error" id="error-p-email">
+            {errors.email}
+          </span>
+        )}
       </div>
       <div className="field">
         <label htmlFor="p-phone">
@@ -128,8 +138,13 @@ export default function PropertyForm() {
           autoComplete="tel"
           placeholder="(555) 555-5555"
           aria-invalid={Boolean(errors.phone)}
+          aria-describedby={errors.phone ? 'error-p-phone' : undefined}
         />
-        {errors.phone && <span className="form-error">{errors.phone}</span>}
+        {errors.phone && (
+          <span className="form-error" id="error-p-phone">
+            {errors.phone}
+          </span>
+        )}
       </div>
       <div className="field">
         <label htmlFor="p-role">I am a</label>
@@ -149,8 +164,13 @@ export default function PropertyForm() {
           type="text"
           placeholder="Street, City, State"
           aria-invalid={Boolean(errors.address)}
+          aria-describedby={errors.address ? 'error-p-address' : undefined}
         />
-        {errors.address && <span className="form-error">{errors.address}</span>}
+        {errors.address && (
+          <span className="form-error" id="error-p-address">
+            {errors.address}
+          </span>
+        )}
       </div>
       <div className="field">
         <label htmlFor="p-type">Property type</label>
@@ -184,14 +204,26 @@ export default function PropertyForm() {
           rows={4}
           placeholder="Describe the property, its condition, why you are exploring options, and any information that would help us evaluate the opportunity."
           aria-invalid={Boolean(errors.notes)}
+          aria-describedby={errors.notes ? 'error-p-notes' : undefined}
         />
-        {errors.notes && <span className="form-error">{errors.notes}</span>}
+        {errors.notes && (
+          <span className="form-error" id="error-p-notes">
+            {errors.notes}
+          </span>
+        )}
       </div>
       <div className="field full">
         <div className="consent">
           <div className="consent-title">Consent — required before submitting</div>
           <div className="check">
-            <input required type="checkbox" id="p-consent" name="contact-consent" />
+            <input
+              required
+              type="checkbox"
+              id="p-consent"
+              name="contact-consent"
+              aria-invalid={Boolean(errors['contact-consent'])}
+              aria-describedby={errors['contact-consent'] ? 'error-p-consent' : undefined}
+            />
             <label htmlFor="p-consent">
               <span className="req">Required</span>
               <br />
@@ -204,7 +236,11 @@ export default function PropertyForm() {
             <Link href="/terms">Terms of Service</Link>. Your inquiry is emailed to our acquisitions team.
           </p>
         </div>
-        {errors['contact-consent'] && <span className="form-error">{errors['contact-consent']}</span>}
+        {errors['contact-consent'] && (
+          <span className="form-error" id="error-p-consent">
+            {errors['contact-consent']}
+          </span>
+        )}
       </div>
       <div className="field full" id="property-form-status" aria-live="polite">
         {(Object.keys(errors).length > 0 || submitError) && (

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CTA, PageHead, PhoneLink, WhatsAppLink } from '../components';
+import { CTA, PageHead, PhoneLink, Photo, WhatsAppLink } from '../components';
 import { BRAND } from '@/lib/content';
 import { createMetadata } from '@/lib/metadata';
 
@@ -51,12 +51,12 @@ export default function Contact() {
               the scope, service, timing, and gaps in one place — or WhatsApp us at {BRAND.phoneDisplay}.
             </div>
           </div>
-          <div className="media" style={{ minHeight: 420, position: 'relative', borderRadius: 4 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+          <div className="media project-photo" style={{ minHeight: 420 }}>
+            <Photo
               src="/images/hero/home-hero.jpg"
               alt="American suburban home — CSI & Design estimation, design, and acquisition"
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+              fill
+              sizes="(max-width: 1000px) 100vw, 48vw"
             />
           </div>
         </div>

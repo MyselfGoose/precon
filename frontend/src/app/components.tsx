@@ -122,28 +122,13 @@ export function Footer() {
             <p className="mono" style={{ marginTop: 6 }}>
               <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>
             </p>
-            <div className="foot-social" aria-label="Contact and social">
+            <div className="foot-social" aria-label="Contact">
               <WhatsAppLink className="wa-link">
                 <span style={{ width: 20, height: 20, display: 'inline-flex' }} aria-hidden="true">
                   {WHATSAPP_ICON}
                 </span>
                 <span className="sr-only">WhatsApp</span>
               </WhatsAppLink>
-              <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.8v2h.05c.53-1 1.82-2.05 3.75-2.05 4.01 0 4.75 2.64 4.75 6.07V23h-4v-6.6c0-1.57-.03-3.59-2.19-3.59-2.19 0-2.53 1.71-2.53 3.48V23h-4V8.5z" />
-                </svg>
-              </a>
-              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.75 15.5v-7l6.5 3.5-6.5 3.5z" />
-                </svg>
-              </a>
-              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 3.2-1.6 4.8-4.9 4.9-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.7 2.2 15.3 2.2 12s0-3.6.1-4.9c.1-3.2 1.6-4.8 4.9-4.9C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 .1 2.7.3.3 2.7.1 7 0 8.3 0 8.7 0 12s0 3.7.1 5c.2 4.3 2.6 6.7 6.9 6.9 1.3.1 1.7.1 5 .1s3.7 0 5-.1c4.3-.2 6.7-2.6 6.9-6.9.1-1.3.1-1.7.1-5s0-3.7-.1-5C23.7 2.7 21.3.3 17 .1 15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-10.8a1.4 1.4 0 11-2.9 0 1.4 1.4 0 012.9 0z" />
-                </svg>
-              </a>
             </div>
           </div>
           <div>
@@ -200,14 +185,14 @@ export function Footer() {
               </li>
             </ul>
             <p style={{ marginTop: 18 }}>
-              <Link href="/contact" style={{ color: '#fff', fontWeight: 600 }}>
+              <Link href="/contact" className="foot-cta">
                 Build Smarter. Invest Better. →
               </Link>
             </p>
           </div>
         </div>
         <div className="foot-bottom">
-          <span>© 2026 {BRAND.name}. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} {BRAND.name}. All rights reserved.</span>
           <span>
             <Link href="/privacy">Privacy Policy</Link> · <Link href="/terms">Terms &amp; Conditions</Link>
           </span>
@@ -354,7 +339,7 @@ export function Workbook({
       </div>
       <div className="win-tabs" aria-label="Workbook sections">
         {tabs.map((t) => (
-          <span className={t === active ? 'on' : ''} key={t} aria-current={t === active ? 'page' : undefined}>
+          <span className={t === active ? 'on' : ''} key={t} aria-current={t === active ? 'true' : undefined}>
             {t}
           </span>
         ))}
@@ -438,7 +423,7 @@ export function DarkProcess({ teaser = false }: { teaser?: boolean }) {
           <div className="eyebrow">{SITE_COPY.process.eyebrow}</div>
           <h2>{SITE_COPY.process.title}</h2>
           {teaser && (
-            <p className="lede" style={{ color: '#C9BBB3', maxWidth: '52ch' }}>
+            <p className="lede process-teaser-lede">
               From the working set to a review-ready package — four clear steps.
             </p>
           )}

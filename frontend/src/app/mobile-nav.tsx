@@ -237,15 +237,15 @@ export default function MobileNav() {
               <Link className="btn btn-primary btn-sm" href="/quote" onClick={() => setOpen(false)}>
                 {SITE_COPY.cta.primary} →
               </Link>
-              <a className="nav-tel" href={`tel:${BRAND.phoneRaw}`} onClick={() => setOpen(false)} style={{ padding: '12px 14px' }}>
+              <a className="nav-tel" href={`tel:${BRAND.phoneRaw}`} onClick={() => setOpen(false)}>
                 Call {BRAND.phoneDisplay}
               </a>
               <a
+                className="nav-wa"
                 href={`https://wa.me/${BRAND.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
-                style={{ padding: '12px 14px', color: 'var(--cherry)', fontWeight: 600 }}
               >
                 WhatsApp us
               </a>

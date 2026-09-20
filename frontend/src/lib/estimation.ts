@@ -5,6 +5,7 @@ export type EstimationCategory = {
 
 export type EstimationHub = {
   slug: string;
+  code: string;
   name: string;
   lede: string;
   intro: string[];
@@ -30,6 +31,7 @@ export type TradeEstimationPage = {
 export const ESTIMATION_HUBS: EstimationHub[] = [
   {
     slug: 'general-construction',
+    code: 'GC',
     name: 'General Construction',
     lede:
       'We help General Contractors win more work with accurate quantity takeoffs, real-time pricing, and professionally prepared bid proposals.',
@@ -56,6 +58,7 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
   },
   {
     slug: 'industrial',
+    code: 'IND',
     name: 'Industrial Projects',
     lede:
       'Detailed industrial estimating for manufacturing, logistics, processing, and specialty facilities — organized by trade in CSI Format.',
@@ -127,6 +130,7 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
   },
   {
     slug: 'public-projects',
+    code: 'PUB',
     name: 'Public Projects',
     lede:
       'Estimating for the demands of government and municipal bidding — CSI Format estimates, compliant bid proposals, and proprietary market intelligence.',
@@ -230,6 +234,7 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
   },
   {
     slug: 'trades',
+    code: 'TRD',
     name: 'Trade Contractors',
     lede:
       'Every successful project is built by skilled subcontractors. Winning work starts with accurate pricing and the confidence to submit competitive bids.',

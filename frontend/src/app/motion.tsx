@@ -119,11 +119,13 @@ export function MotionButton({
   className,
   ...props
 }: HTMLMotionProps<'div'>) {
+  const reduced = useReducedMotion();
+
   return (
     <motion.div
       className={className}
-      whileHover={{ y: -2 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={reduced ? undefined : { y: -2 }}
+      whileTap={reduced ? undefined : { scale: 0.98 }}
       transition={{ duration: 0.2, ease }}
       {...props}
     >

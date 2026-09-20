@@ -249,7 +249,6 @@ export const NAV_ITEMS = [
   ['Estimation', '/estimation'],
   ['Trades', '/trades'],
   ['How It Works', '/how-it-works'],
-  ['Who We Serve', '/who-we-serve'],
   ['About', '/about'],
   ['Contact', '/contact'],
 ] as const;
