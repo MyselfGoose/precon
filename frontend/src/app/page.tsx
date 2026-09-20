@@ -13,7 +13,7 @@ import {
   HOME_STATS,
 } from '@/lib/content';
 import { createMetadata } from '@/lib/metadata';
-import { MotionItem, MotionReveal, MotionStagger } from './motion';
+import { MotionHeroItem, MotionItem, MotionReveal, MotionStagger, CountUp } from './motion';
 
 export const metadata = createMetadata({
   title: 'Preconstruction Solutions for a Stronger Tomorrow',
@@ -53,25 +53,35 @@ export default function Home() {
   return (
     <>
       <section className="hero">
-        <MotionReveal className="wrap hero-grid" y={28}>
+        <div className="wrap hero-grid">
           <div className="stack">
-            <div className="eyebrow">{BRAND.descriptor}</div>
-            <p className="brand-hero-name">{BRAND.shortName}</p>
-            <h1>
-              Preconstruction Solutions for a Stronger <span className="accent-word">Tomorrow.</span>
-            </h1>
-            <p className="lede">
-              From detailed estimates and architectural design to strategic property acquisition — we provide the
-              expertise, data, and relationships to move your project from vision to value.
-            </p>
-            <div className="btn-row">
-              <Button href="/quote">Request an Estimate →</Button>
-              <Link className="btn btn-ghost" href="/services">
-                Explore Our Services
-              </Link>
-            </div>
+            <MotionHeroItem delay={0}>
+              <div className="eyebrow">{BRAND.descriptor}</div>
+            </MotionHeroItem>
+            <MotionHeroItem delay={0.08}>
+              <p className="brand-hero-name">{BRAND.shortName}</p>
+            </MotionHeroItem>
+            <MotionHeroItem delay={0.15}>
+              <h1>
+                Preconstruction Solutions for a Stronger <span className="accent-word">Tomorrow.</span>
+              </h1>
+            </MotionHeroItem>
+            <MotionHeroItem delay={0.22}>
+              <p className="lede">
+                From detailed estimates and architectural design to strategic property acquisition — we provide the
+                expertise, data, and relationships to move your project from vision to value.
+              </p>
+            </MotionHeroItem>
+            <MotionHeroItem delay={0.3}>
+              <div className="btn-row">
+                <Button href="/quote">Request an Estimate →</Button>
+                <Link className="btn btn-ghost" href="/services">
+                  Explore Our Services
+                </Link>
+              </div>
+            </MotionHeroItem>
           </div>
-          <MotionReveal className="hero-art media hero-photo" delay={0.12} y={18}>
+          <MotionHeroItem className="hero-art media hero-photo" delay={0.18} y={18} x={24} scale={0.97}>
             <Photo
               src="/images/hero/home-hero.jpg"
               alt="American suburban home with wraparound porch and lawn"
@@ -79,8 +89,8 @@ export default function Home() {
               priority
               sizes="(max-width: 1000px) 100vw, 55vw"
             />
-          </MotionReveal>
-        </MotionReveal>
+          </MotionHeroItem>
+        </div>
       </section>
 
       <section className="band">
@@ -140,12 +150,21 @@ export default function Home() {
             <h2>Built on Experience.</h2>
           </MotionReveal>
           <div className="stats-light">
-            {HOME_STATS.map((stat) => (
-              <div className="stat" key={stat.label}>
-                <b>{stat.value}</b>
-                <small>{stat.label}</small>
-              </div>
-            ))}
+            {HOME_STATS.map((stat, index) => {
+              const numericMatch = /^(\d+)([+%]?)$/.exec(stat.value);
+              return (
+                <MotionReveal className="stat" key={stat.label} delay={index * 0.08} y={16}>
+                  <b>
+                    {numericMatch ? (
+                      <CountUp value={Number(numericMatch[1])} suffix={numericMatch[2]} label={stat.value} />
+                    ) : (
+                      stat.value
+                    )}
+                  </b>
+                  <small>{stat.label}</small>
+                </MotionReveal>
+              );
+            })}
           </div>
         </div>
       </section>

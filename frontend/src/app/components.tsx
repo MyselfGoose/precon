@@ -390,7 +390,9 @@ export function FAQ({ items, openFirst = true }: { items: [string, string][]; op
       {items.map(([q, a], i) => (
         <details open={openFirst && i === 0} key={q}>
           <summary>{q}</summary>
-          <p>{a}</p>
+          <div className="faq-body">
+            <p>{a}</p>
+          </div>
         </details>
       ))}
     </div>

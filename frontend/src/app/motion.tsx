@@ -134,6 +134,44 @@ export function MotionButton({
   );
 }
 
+export function MotionHeroItem({
+  children,
+  className,
+  delay = 0,
+  y = 14,
+  x = 0,
+  scale,
+  ...props
+}: HTMLMotionProps<'div'> & {
+  delay?: number;
+  y?: number;
+  x?: number;
+  scale?: number;
+}) {
+  const reduced = useReducedMotion();
+
+  return (
+    <motion.div
+      className={className}
+      initial={
+        reduced
+          ? false
+          : {
+              opacity: 0,
+              y,
+              x,
+              ...(scale !== undefined ? { scale } : {}),
+            }
+      }
+      animate={{ opacity: 1, y: 0, x: 0, ...(scale !== undefined ? { scale: 1 } : {}) }}
+      transition={{ duration: 0.7, delay: reduced ? 0 : delay, ease }}
+      {...props}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 export function CountUp({
   value,
   suffix = '',
