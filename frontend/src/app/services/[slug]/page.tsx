@@ -8,7 +8,31 @@ import { Button, CTA, PageHead, PhoneLink, Photo, WhatsAppLink } from '../../com
 import { createMetadata } from '@/lib/metadata';
 import type { Metadata } from 'next';
 import PropertyForm from '../acquisitions-form';
+import { BimVisualShowcase } from '../bim-visual-showcase';
 import { MotionItem, MotionReveal, MotionStagger } from '../../motion';
+
+const BIM_VISUAL_FRAMES = [
+  {
+    src: '/images/services/bim/gym-render.jpg',
+    alt: 'Photorealistic gym interior visualization',
+    label: 'Gym interior render',
+  },
+  {
+    src: '/images/services/bim/exterior-render.jpg',
+    alt: 'Photorealistic architectural exterior rendering',
+    label: 'Exterior architectural render',
+  },
+  {
+    src: '/images/services/bim/interior-render.jpg',
+    alt: 'Photorealistic residential interior rendering',
+    label: 'Interior space render',
+  },
+  {
+    src: '/images/services/bim/bim-model.jpg',
+    alt: 'Two-dimensional BIM and architectural plan set',
+    label: 'BIM model on 2D plans',
+  },
+] as const;
 
 type EstimationProjectTypeCard = {
   href: string;
@@ -274,10 +298,21 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 {content.catchphrase && <p className="lede">{content.catchphrase}</p>}
                 <p className="prose">{content.details}</p>
               </div>
-              <div className="media project-photo">
-                <Photo src={photoSrc} alt={photoAlt} fill sizes="(max-width: 1000px) 100vw, 48vw" />
-              </div>
+              {content.slug === 'bim-visualization' ? (
+                <BimVisualShowcase frames={[...BIM_VISUAL_FRAMES]} />
+              ) : (
+                <div className="media project-photo">
+                  <Photo src={photoSrc} alt={photoAlt} fill sizes="(max-width: 1000px) 100vw, 48vw" />
+                </div>
+              )}
             </div>
+            {content.slug === 'bim-visualization' && (
+              <div className="stack">
+                <div className="eyebrow">Render gallery</div>
+                <h2>From gym interiors to BIM on 2D</h2>
+                <BimVisualShowcase frames={[...BIM_VISUAL_FRAMES]} mode="collage" />
+              </div>
+            )}
             <div className="spec">
               <div className="spec-h">
                 <h4>Included work</h4>
@@ -354,10 +389,27 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
             {content.systems && content.systems.length > 0 && (
               <div className="stack-lg">
-                <div className="stack">
-                  <div className="eyebrow">Structural systems</div>
-                  <h2>Structural Systems We Design</h2>
-                </div>
+                {content.sectionsPhotoSrc ? (
+                  <div className="split" style={{ alignItems: 'center' }}>
+                    <div className="stack">
+                      <div className="eyebrow">Structural systems</div>
+                      <h2>Structural Systems We Design</h2>
+                    </div>
+                    <div className="media project-photo" style={{ minHeight: 240 }}>
+                      <Photo
+                        src={content.sectionsPhotoSrc}
+                        alt={content.sectionsPhotoAlt ?? `${content.name} systems`}
+                        fill
+                        sizes="(max-width: 1000px) 100vw, 48vw"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="stack">
+                    <div className="eyebrow">Structural systems</div>
+                    <h2>Structural Systems We Design</h2>
+                  </div>
+                )}
                 <ul className="check-list">
                   {content.systems.map((system) => (
                     <li key={system}>{system}</li>

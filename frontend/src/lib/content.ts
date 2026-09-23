@@ -261,17 +261,22 @@ export const CONTENT_SERVICES: ContentService[] = [
     slug: 'structural-engineering',
     code: 'STR',
     ico: 'takeoff',
-    name: 'Structural drawings & engineering',
+    name: 'Structural engineering',
     summary:
-      'Safe, efficient, and code-compliant structural solutions from concept development to permit-ready engineering documentation.',
+      'Safe, efficient, and code-compliant structural engineering from concept development through analysis, systems design, and calculations.',
+    supportsTitle: 'Engineering that carries the load',
     details:
-      'Our structural engineering services combine innovative design with precise engineering calculations to deliver safe, efficient, and code-compliant structural solutions for projects across the United States. From concept development to permit-ready engineering documentation, we design structural systems that optimize performance, constructability, and material efficiency while meeting the highest industry standards. Whether your project involves reinforced concrete, structural steel, wood framing, cold-formed steel, masonry, post-tensioned concrete, precast concrete, or hybrid structural systems, our engineers develop tailored solutions based on project-specific loading conditions, site requirements, and applicable building codes.',
+      'Our structural engineering services combine innovative design with precise engineering calculations to deliver safe, efficient, and code-compliant structural solutions for projects across the United States. From concept development to engineering documentation, we design structural systems that optimize performance, constructability, and material efficiency while meeting the highest industry standards. Whether your project involves reinforced concrete, structural steel, wood framing, cold-formed steel, masonry, post-tensioned concrete, precast concrete, or hybrid structural systems, our engineers develop tailored solutions based on project-specific loading conditions, site requirements, and applicable building codes. Every design is supported by comprehensive structural analysis so the system you build is the system the calculations intended.',
     points: [
-      'Permit-ready structural plans, sections, and details',
       'Comprehensive structural analysis and engineering calculations',
       'Support for concrete, steel, wood, masonry, and hybrid systems',
+      'Loading, foundation, and lateral-system design coordination',
       'Documentation aligned with IBC, IRC, ASCE 7, ACI, AISC, NDS, and TMS',
     ],
+    photoSrc: '/images/services/structural-steel.jpg',
+    photoAlt: 'Structural steel frame under construction on a commercial building',
+    sectionsPhotoSrc: '/images/services/structural-wood.jpg',
+    sectionsPhotoAlt: 'Wood construction and lumber work representing wood structural systems',
     systems: [
       'Reinforced Concrete Structures',
       'Structural Steel Buildings',
@@ -300,20 +305,66 @@ export const CONTENT_SERVICES: ContentService[] = [
     ctaText: 'Share the structural system, loading conditions, and jurisdiction so we can define the right engineering package.',
   },
   {
+    slug: 'permit-ready-structural-drawings',
+    code: 'PSD',
+    ico: 'draft',
+    name: 'Permit-ready structural drawings',
+    summary:
+      'Permit-ready structural plans, sections, details, and foundation drawings coordinated with engineering calculations and local AHJ requirements.',
+    supportsTitle: 'Drawings ready for the building department',
+    details:
+      'Our permit-ready structural drawing packages translate engineering intent into clear construction documents. We prepare structural plans, sections, details, foundation drawings, and notes that support plan review and field execution — coordinated with applicable codes and jurisdiction-specific requirements so contractors and owners can move from design into permitting with confidence. Working alongside our structural engineers and estimators, we keep drawings buildable, consistent, and aligned with the calculations that support them.',
+    points: [
+      'Permit-ready structural plans, sections, and details',
+      'Foundation plans, schedules, and connection details',
+      'Drawing packages coordinated with structural calculations',
+      'Documentation prepared for AHJ plan review and field use',
+    ],
+    photoSrc: '/images/services/structural-wood.jpg',
+    photoAlt: 'Wood and steel structural framing ready for construction documentation',
+    sections: [
+      {
+        title: 'Structural Plans',
+        items: ['Framing plans', 'Foundation plans', 'Roof framing plans', 'Floor framing plans'],
+      },
+      {
+        title: 'Sections & Details',
+        items: ['Building sections', 'Connection details', 'Typical details', 'Enlarged structural details'],
+      },
+      {
+        title: 'Schedules & Notes',
+        items: ['Beam and column schedules', 'Foundation schedules', 'General structural notes', 'Material specifications'],
+      },
+      {
+        title: 'Permit Coordination',
+        items: ['Code-referenced documentation', 'AHJ-ready drawing sets', 'Revision-ready markups', 'Field clarification support'],
+      },
+    ],
+    sectionsEyebrow: 'Deliverables',
+    sectionsTitle: 'What we produce for permitting',
+    ctaTitle: 'Discuss permit-ready structural drawings',
+    ctaText: 'Share the structural system, jurisdiction, and any existing calculations so we can define a permit-ready drawing package.',
+  },
+  {
     slug: 'bim-visualization',
     code: 'BIM',
     ico: 'draft',
-    name: '3D modeling, rendering & virtual walkthroughs',
+    name: 'BIM modeling, rendering & walkthroughs',
     summary:
       'Photorealistic visualizations and immersive walkthroughs that help stakeholders experience a project before construction begins.',
+    supportsTitle: 'See the build before it starts',
     details:
-      'Great design deserves to be understood before it is built. Our 3D modeling, rendering, and visualization services bridge the gap between technical drawings and reality, allowing clients, developers, architects, contractors, and investors to experience a project long before construction begins. Using industry-leading visualization technologies, we transform architectural concepts, engineering drawings, and BIM models into highly detailed, photorealistic representations that accurately showcase materials, lighting, textures, spatial relationships, and overall design intent.',
+      'Great design deserves to be understood before it is built. Our BIM modeling, rendering, and visualization services bridge the gap between technical drawings and reality, allowing clients, developers, architects, contractors, and investors to experience a project long before construction begins. Using industry-leading visualization technologies, we transform architectural concepts, engineering drawings, and BIM models into highly detailed, photorealistic representations that accurately showcase materials, lighting, textures, spatial relationships, and overall design intent. From luxury residences and commercial interiors to hospitality, healthcare, and industrial facilities, clear visualization supports better decisions, fewer revisions, and faster approvals.',
     points: [
       'Photorealistic renderings of interiors and exteriors',
       'Architectural walkthrough and flythrough animations',
       'BIM-based visualization for coordination and presentations',
       'Support for design reviews, investor presentations, and marketing',
     ],
+    photoSrc: '/images/services/bim/exterior-render.jpg',
+    photoAlt: 'Photorealistic architectural exterior rendering',
+    sectionsEyebrow: 'Visualization',
+    sectionsTitle: 'Walkthroughs, renders & immersive clarity',
     sections: [
       {
         title: 'Walkthrough Animations',

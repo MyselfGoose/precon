@@ -2,13 +2,28 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CTA, PageHead, Photo } from '../../components';
 import { createMetadata } from '@/lib/metadata';
-import { categoryAnchorId, ESTIMATION_HUBS, getEstimationHub } from '@/lib/estimation';
+import {
+  categoryAnchorId,
+  categoryHubHref,
+  ESTIMATION_HUBS,
+  GC_FEATURED_TRADES,
+  getEstimationHub,
+} from '@/lib/estimation';
 import type { Metadata } from 'next';
+import { MotionItem, MotionStagger } from '../../motion';
 
-const HUB_SLUGS = ['general-construction', 'industrial', 'public-projects'] as const;
+const HUB_SLUGS = [
+  'general-construction',
+  'commercial',
+  'residential',
+  'industrial',
+  'public-projects',
+] as const;
 
 const HUB_IMAGES: Record<(typeof HUB_SLUGS)[number], string> = {
   'general-construction': '/images/projects/residential-commercial.jpg',
+  commercial: '/images/projects/residential-commercial.jpg',
+  residential: '/images/properties/residential.jpg',
   industrial: '/images/projects/industrial.jpg',
   'public-projects': '/images/projects/public-institutional.jpg',
 };
@@ -64,6 +79,31 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
               />
             </div>
           </div>
+
+          {slug === 'general-construction' && (
+            <div className="stack-lg">
+              <div className="stack">
+                <div className="eyebrow">Trades under general construction</div>
+                <h2>Remodeling, new construction, demolition, ADUs &amp; more</h2>
+                <p className="prose">
+                  Open the trade estimation pages that sit under a GC bid — renovation and remodeling, ground-up new
+                  construction, demolition, accessory dwellings, and the core building trades that complete the package.
+                </p>
+              </div>
+              <MotionStagger className="grid-2">
+                {GC_FEATURED_TRADES.map((trade) => (
+                  <MotionItem className="motion-fill" key={trade.slug}>
+                    <Link className="card card-link" href={`/estimation/trades/${trade.slug}`}>
+                      <h3>{trade.name}</h3>
+                      <p>{trade.blurb}</p>
+                      <span className="card-action">Open trade page →</span>
+                    </Link>
+                  </MotionItem>
+                ))}
+              </MotionStagger>
+            </div>
+          )}
+
           {hub.categories && hub.categories.length > 0 && (
             <>
               <div className="stack">
@@ -71,17 +111,24 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
                 <h2>What this section covers</h2>
               </div>
               <div className="grid-2">
-                {hub.categories.map((cat) => (
-                  <div className="card" key={cat.name} id={categoryAnchorId(cat.name)}>
-                    <h3>{cat.name}</h3>
-                    <p>{cat.description}</p>
-                    {cat.name === 'Industrial Projects' && slug === 'general-construction' ? (
-                      <p style={{ marginTop: 8 }}>
-                        <Link href="/estimation/industrial">Open full industrial project details →</Link>
-                      </p>
-                    ) : null}
-                  </div>
-                ))}
+                {hub.categories.map((cat) => {
+                  const href = slug === 'general-construction' ? categoryHubHref(cat.name) : undefined;
+                  if (href) {
+                    return (
+                      <Link className="card card-link" href={href} key={cat.name} id={categoryAnchorId(cat.name)}>
+                        <h3>{cat.name}</h3>
+                        <p>{cat.description}</p>
+                        <span className="card-action">Open full details →</span>
+                      </Link>
+                    );
+                  }
+                  return (
+                    <div className="card" key={cat.name} id={categoryAnchorId(cat.name)}>
+                      <h3>{cat.name}</h3>
+                      <p>{cat.description}</p>
+                    </div>
+                  );
+                })}
               </div>
             </>
           )}

@@ -26,7 +26,62 @@ export type TradeEstimationPage = {
   ctaText: string;
   /** Matching MasterFormat division slug from `TRADES` when a sample workbook is appropriate. */
   sampleDivisionSlug?: string;
+  imageSrc?: string;
+  imageAlt?: string;
 };
+
+/** Featured trades shown under the General Construction hub intro. */
+export const GC_FEATURED_TRADES: { slug: string; name: string; blurb: string }[] = [
+  {
+    slug: 'remodeling',
+    name: 'Remodeling',
+    blurb: 'Tenant improvements, residential remodels, commercial renovations, and adaptive reuse.',
+  },
+  {
+    slug: 'new-construction',
+    name: 'New Construction',
+    blurb: 'Ground-up residential and commercial packages with full trade coordination from foundation to finish.',
+  },
+  {
+    slug: 'demolition',
+    name: 'Demolition',
+    blurb: 'Selective and structural demolition scopes tied to renovation and new-build sequences.',
+  },
+  {
+    slug: 'adu',
+    name: 'ADUs & Accessory Dwellings',
+    blurb: 'Detached and attached ADU estimating with compact foundation, framing, MEP, and finish packages.',
+  },
+  {
+    slug: 'restoration',
+    name: 'Restoration',
+    blurb: 'Fire, water, and historic restoration estimates grounded in existing conditions.',
+  },
+  {
+    slug: 'concrete',
+    name: 'Concrete',
+    blurb: 'Foundations, slabs, and structural concrete quantities for GC packages.',
+  },
+  {
+    slug: 'structural',
+    name: 'Structural',
+    blurb: 'Steel, concrete, and wood structural takeoffs coordinated into the GC bid.',
+  },
+  {
+    slug: 'sitework-earthwork',
+    name: 'Sitework & Earthwork',
+    blurb: 'Grading, excavation, and site utilities that set the stage for vertical construction.',
+  },
+];
+
+export function categoryHubHref(categoryName: string): string | undefined {
+  const map: Record<string, string> = {
+    'Commercial Projects': '/estimation/commercial',
+    'Residential Projects': '/estimation/residential',
+    'Industrial Projects': '/estimation/industrial',
+  };
+  return map[categoryName];
+}
 
 export const ESTIMATION_HUBS: EstimationHub[] = [
   {
@@ -53,6 +108,90 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
         name: 'Industrial Projects',
         description:
           'Our industrial estimates combine detailed quantity takeoffs with real-time market pricing enhanced by our proprietary data analytics platform to help contractors bid confidently on manufacturing facilities, warehouses, processing plants, distribution centers, and other industrial developments. Prepared in CSI Format, every estimate is organized by trade with accurate material, labor, and equipment costs, enabling better cost control, reduced risk, and improved project profitability.',
+      },
+    ],
+  },
+  {
+    slug: 'commercial',
+    code: 'COM',
+    name: 'Commercial Projects',
+    lede:
+      'CSI Format commercial estimating for offices, retail, hospitality, mixed-use, and tenant improvement work — built for general contractors who need trade-coordinated bids.',
+    intro: [
+      'Our commercial estimating services are designed to help General Contractors win more bids with confidence. We combine accurate quantity takeoffs, professional bid proposals, and real-time market analysis to deliver competitive pricing that aligns with current labor and material trends while protecting profitability. Prepared in CSI Format and coordinated by trade, every estimate supports a smoother bidding process, stronger subcontractor coverage, reduced risk, and a better chance of securing commercial projects.',
+    ],
+    categories: [
+      {
+        name: 'Office & Corporate Buildings',
+        description:
+          'Core and shell, tenant demising, lobby upgrades, and floor build-outs with coordinated architectural, structural, and MEP takeoffs.',
+      },
+      {
+        name: 'Retail & Mixed-Use',
+        description:
+          'Storefront packages, mall and strip-center fit-outs, restaurant build-outs, and mixed-use podium estimating with clear trade splits.',
+      },
+      {
+        name: 'Hospitality & Lodging',
+        description:
+          'Hotels, motels, and short-stay facilities with guest-room typicals, FF&E-adjacent scopes, and back-of-house MEP coordination.',
+      },
+      {
+        name: 'Tenant Improvements',
+        description:
+          'Occupied-building renovations, suite turnovers, and phased TI packages that account for existing conditions and after-hours productivity.',
+      },
+      {
+        name: 'Healthcare & Medical Office',
+        description:
+          'Outpatient clinics, medical office buildings, and specialty suites requiring durable finishes and coordinated specialty systems.',
+      },
+      {
+        name: 'Education & Institutional Commercial',
+        description:
+          'Private schools, training centers, and institutional commercial builds with phased occupancy and durable finish packages.',
+      },
+    ],
+  },
+  {
+    slug: 'residential',
+    code: 'RES',
+    name: 'Residential Projects',
+    lede:
+      'From custom homes to multi-family developments — CSI Format residential estimates with market-driven pricing and clear trade coordination.',
+    intro: [
+      'From custom homes to multi-family developments, our residential estimates provide accurate quantity takeoffs and market-driven pricing to help contractors build competitive, profitable bids. Organized in CSI Format, every estimate ensures clear trade coordination, accuracy, and confidence from planning through construction.',
+    ],
+    categories: [
+      {
+        name: 'Custom Homes',
+        description:
+          'Single-family custom estates and high-end residences with detailed finish packages, specialty millwork, and sitework coordination.',
+      },
+      {
+        name: 'Production & Spec Homes',
+        description:
+          'Repeated plan sets and option packages organized so production builders can price models, elevations, and option adders consistently.',
+      },
+      {
+        name: 'Multi-Family & Apartments',
+        description:
+          'Garden-style, mid-rise, and podium multi-family with unit typicals, common areas, and structured parking takeoffs.',
+      },
+      {
+        name: 'Townhomes & Condos',
+        description:
+          'Attached residential product with shared party walls, roof assemblies, and HOA-driven finish standards.',
+      },
+      {
+        name: 'ADUs & Accessory Dwellings',
+        description:
+          'Detached and attached accessory dwelling units with foundation, framing, MEP, and finish scopes sized for smaller footprints.',
+      },
+      {
+        name: 'Residential Renovations & Additions',
+        description:
+          'Whole-home remodels, room additions, and kitchen/bath packages that account for demolition and existing conditions.',
       },
     ],
   },
@@ -283,6 +422,76 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Remodeling Estimate',
     ctaText:
       'Partner with a team that delivers more than just numbers. Get accurate takeoffs, data-driven pricing, and professional bid proposals that help you bid smarter and build more profitably.',
+    imageSrc: '/images/trades/remodeling.jpg',
+    imageAlt: 'Residential remodeling and renovation interior under construction',
+  },
+  {
+    slug: 'new-construction',
+    name: 'New Construction Estimation Services',
+    headline: 'Ground-Up Estimates Built for Competitive GC Bids.',
+    lede:
+      'New construction estimating for residential and commercial projects — CSI Format takeoffs, real-time pricing, and trade-coordinated bid packages from foundation through finishes.',
+    intro: [
+      'Whether you are bidding a custom home, multi-family building, or commercial ground-up project, we prepare organized quantity takeoffs and cost estimates that reflect current material pricing, regional labor, and the full scope of work required to build right the first time.',
+    ],
+    whatWeEstimate: [
+      'Sitework and foundations for new builds',
+      'Structural framing and shell packages',
+      'Envelope, roofing, and exterior finishes',
+      'MEP rough-in and finish systems',
+      'Interior finishes and specialty packages',
+      'Site utilities and hardscape (as shown)',
+    ],
+    whatsIncluded: [
+      'Detailed Quantity Takeoffs',
+      'CSI Format Estimates',
+      'Real-Time Material Pricing',
+      'Labor Cost Analysis',
+      'Professional Bid Proposals',
+      'Scope Review & Clarifications',
+      'Value Engineering Support',
+      'BIM Estimating (When Required)',
+    ],
+    whyUs:
+      'New construction wins when quantities and pricing stay aligned with the market. We deliver CSI Format packages that help general contractors pursue ground-up work with confidence.',
+    ctaTitle: 'Request Your New Construction Estimate',
+    ctaText: 'Share the working set and bid date — we will define a clear new-construction estimating scope.',
+    imageSrc: '/images/trades/new-construction.jpg',
+    imageAlt: 'New construction building frame rising on a job site',
+  },
+  {
+    slug: 'adu',
+    name: 'ADU Estimation Services',
+    headline: 'Accessory Dwelling Estimates That Fit the Lot.',
+    lede:
+      'ADU and accessory dwelling estimating for detached studios, garage conversions, and attached units — accurate quantities for compact footprints and full MEP packages.',
+    intro: [
+      'Accessory dwelling units demand careful takeoffs for foundations, framing, envelope, and complete living systems in a smaller footprint. We prepare CSI Format estimates that help contractors price ADUs competitively without missing critical scope.',
+    ],
+    whatWeEstimate: [
+      'Detached ADU structures',
+      'Garage and basement conversions',
+      'Attached accessory units and junior ADUs',
+      'Foundation and slab packages',
+      'Framing, envelope, and roofing',
+      'MEP systems sized for accessory dwellings',
+      'Interior finishes and site connections',
+    ],
+    whatsIncluded: [
+      'Detailed Quantity Takeoffs',
+      'CSI Format Estimates',
+      'Real-Time Material Pricing',
+      'Labor Cost Analysis',
+      'Professional Bid Proposals',
+      'Scope Review & Clarifications',
+      'Value Engineering Support',
+    ],
+    whyUs:
+      'ADU bids fail when compact scopes are under-measured. We deliver clear, complete estimates so accessory dwelling projects bid profitably and permit-ready.',
+    ctaTitle: 'Request Your ADU Estimate',
+    ctaText: 'Send the ADU drawings, site plan, and bid date — we will return an organized accessory dwelling estimate.',
+    imageSrc: '/images/trades/adu.jpg',
+    imageAlt: 'Accessory dwelling unit and backyard residential construction',
   },
   {
     slug: 'restoration',
@@ -969,6 +1178,18 @@ export const TRADE_BUBBLE_SUMMARIES: { slug: string; name: string; summary: stri
       'Whether it\'s a tenant improvement or a complete renovation, our remodeling estimates account for demolition, existing conditions, material upgrades, and labor productivity to deliver competitive, profitable bids.',
   },
   {
+    slug: 'new-construction',
+    name: 'New Construction Estimation Services',
+    summary:
+      'Ground-up residential and commercial estimating with CSI Format takeoffs, real-time pricing, and trade-coordinated bid packages from foundation through finishes.',
+  },
+  {
+    slug: 'adu',
+    name: 'ADU Estimation Services',
+    summary:
+      'Accessory dwelling and ADU estimates for detached, attached, and conversion projects — compact footprints with complete MEP and finish packages.',
+  },
+  {
     slug: 'restoration',
     name: 'Restoration Estimation Services',
     summary:
@@ -1088,8 +1309,107 @@ export function getEstimationHub(slug: string): EstimationHub | undefined {
   return ESTIMATION_HUBS.find((h) => h.slug === slug);
 }
 
+const TRADE_IMAGES: Record<string, { src: string; alt: string }> = {
+  remodeling: {
+    src: '/images/trades/remodeling.jpg',
+    alt: 'Residential remodeling and renovation interior under construction',
+  },
+  'new-construction': {
+    src: '/images/trades/new-construction.jpg',
+    alt: 'New construction building frame rising on a job site',
+  },
+  adu: {
+    src: '/images/trades/adu.jpg',
+    alt: 'Accessory dwelling unit and backyard residential construction',
+  },
+  restoration: {
+    src: '/images/trades/restoration.jpg',
+    alt: 'Historic building restoration and repair work on site',
+  },
+  glazing: {
+    src: '/images/trades/glazing.jpg',
+    alt: 'Curtain wall and architectural glass glazing installation',
+  },
+  paving: {
+    src: '/images/trades/paving.jpg',
+    alt: 'Asphalt paving crew working on a roadway',
+  },
+  roofing: {
+    src: '/images/trades/roofing.jpg',
+    alt: 'Roofing crew installing shingles on a residential roof',
+  },
+  'metal-framing': {
+    src: '/images/trades/metal-framing.jpg',
+    alt: 'Light-gauge metal stud framing on a commercial build',
+  },
+  hvac: {
+    src: '/images/trades/hvac.jpg',
+    alt: 'Mechanical piping and HVAC-related building systems installation',
+  },
+  mep: {
+    src: '/images/trades/mep.jpg',
+    alt: 'Electrical panel and MEP systems work in progress',
+  },
+  masonry: {
+    src: '/images/trades/masonry.jpg',
+    alt: 'Brick and masonry wall under construction',
+  },
+  concrete: {
+    src: '/images/trades/concrete.jpg',
+    alt: 'Concrete pour and formwork on a construction site',
+  },
+  insulation: {
+    src: '/images/trades/insulation.jpg',
+    alt: 'Building insulation installed in wall cavities',
+  },
+  structural: {
+    src: '/images/trades/structural.jpg',
+    alt: 'Structural steel erection on a multi-story building',
+  },
+  'sitework-earthwork': {
+    src: '/images/trades/sitework-earthwork.jpg',
+    alt: 'Heavy equipment performing sitework and earthwork grading',
+  },
+  flooring: {
+    src: '/images/trades/flooring.jpg',
+    alt: 'Flooring installation of hardwood in a residential interior',
+  },
+  'bath-tile': {
+    src: '/images/trades/bath-tile.jpg',
+    alt: 'Bathroom tile installation and finish work',
+  },
+  'lumber-woodwork': {
+    src: '/images/trades/lumber-woodwork.jpg',
+    alt: 'Lumber and woodwork fastening on a construction project',
+  },
+  demolition: {
+    src: '/images/trades/demolition.jpg',
+    alt: 'Selective demolition work on a renovation project',
+  },
+  'ceiling-drywall': {
+    src: '/images/trades/ceiling-drywall.jpg',
+    alt: 'Drywall and ceiling installation in a commercial space',
+  },
+  landscaping: {
+    src: '/images/trades/landscaping.jpg',
+    alt: 'Landscaping and planting work on a residential site',
+  },
+  fencing: {
+    src: '/images/trades/fencing.jpg',
+    alt: 'Fence installation along a residential property line',
+  },
+};
+
 export function getTradeEstimation(slug: string): TradeEstimationPage | undefined {
-  return TRADE_ESTIMATION_PAGES.find((t) => t.slug === slug);
+  const page = TRADE_ESTIMATION_PAGES.find((t) => t.slug === slug);
+  if (!page) return undefined;
+  const image = TRADE_IMAGES[slug];
+  if (!image) return page;
+  return {
+    ...page,
+    imageSrc: page.imageSrc ?? image.src,
+    imageAlt: page.imageAlt ?? image.alt,
+  };
 }
 
 export function categoryAnchorId(name: string): string {

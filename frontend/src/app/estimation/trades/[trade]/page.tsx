@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { CTA, PageHead, Spec, Workbook } from '../../../components';
+import { CTA, PageHead, Photo, Spec, Workbook } from '../../../components';
 import { createMetadata } from '@/lib/metadata';
 import { getTradeEstimation, TRADE_ESTIMATION_PAGES } from '@/lib/estimation';
 import { TRADES } from '@/lib/data';
@@ -46,12 +46,35 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
       />
       <section className="band">
         <div className="wrap stack-lg">
-          <p className="prose">{page.lede}</p>
-          {page.intro.map((paragraph) => (
-            <p className="prose" key={paragraph.slice(0, 48)}>
-              {paragraph}
-            </p>
-          ))}
+          {page.imageSrc ? (
+            <div className="split" style={{ alignItems: 'start' }}>
+              <div className="stack">
+                <p className="prose">{page.lede}</p>
+                {page.intro.map((paragraph) => (
+                  <p className="prose" key={paragraph.slice(0, 48)}>
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              <div className="media project-photo">
+                <Photo
+                  src={page.imageSrc}
+                  alt={page.imageAlt ?? `${page.name} — CSI & Design`}
+                  fill
+                  sizes="(max-width: 1000px) 100vw, 48vw"
+                />
+              </div>
+            </div>
+          ) : (
+            <>
+              <p className="prose">{page.lede}</p>
+              {page.intro.map((paragraph) => (
+                <p className="prose" key={paragraph.slice(0, 48)}>
+                  {paragraph}
+                </p>
+              ))}
+            </>
+          )}
           <div className="grid-2">
             <Spec title="What we estimate" unit="SCOPE" items={page.whatWeEstimate} />
             <Spec title="What's included" unit="DELIVERABLE" items={page.whatsIncluded} />

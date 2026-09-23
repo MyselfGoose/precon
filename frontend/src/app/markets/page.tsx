@@ -12,8 +12,8 @@ export const metadata = createMetadata({
 });
 
 const SECTOR_LINKS: Record<string, { href: string; label: string }> = {
-  residential: { href: '/estimation/general-construction', label: 'General construction estimating' },
-  commercial: { href: '/estimation/general-construction', label: 'General construction estimating' },
+  residential: { href: '/estimation/residential', label: 'Residential estimating' },
+  commercial: { href: '/estimation/commercial', label: 'Commercial estimating' },
   industrial: { href: '/estimation/industrial', label: 'Industrial estimating' },
   'government-public': { href: '/estimation/public-projects', label: 'Public project estimating' },
   'infrastructure-civil': { href: '/estimation/public-projects', label: 'Public project estimating' },
