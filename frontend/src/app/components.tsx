@@ -1,4 +1,4 @@
-import { FOOTER_NAV_ITEMS, type Trade, type Sample } from '@/lib/data';
+import { DIVISION_IMAGES, FOOTER_NAV_ITEMS, type Trade, type Sample } from '@/lib/data';
 import { D, ICO, flowArt } from '@/lib/illustrations';
 import MobileNav from './mobile-nav';
 import NavLinks from './nav-links';
@@ -157,7 +157,7 @@ export function Footer() {
                 <Link href="/estimation/trades">Trade contractors</Link>
               </li>
               <li>
-                <Link href="/markets">Markets &amp; sectors</Link>
+                <Link href="/markets">Markets We Serve</Link>
               </li>
             </ul>
           </div>
@@ -304,11 +304,19 @@ export function ServiceCard({
 }
 
 export function TradeTile({ trade }: { trade: Trade }) {
+  const photo = DIVISION_IMAGES[trade.slug];
   return (
     <MotionItem className="motion-fill">
       <Link className="tile" href={`/trades/${trade.slug}`}>
         <div className="thumb">
-          <Svg markup={D[trade.slug]()} />
+          {photo ? (
+            <div className="thumb-photo" aria-hidden="true">
+              <Image src={photo.src} alt="" fill sizes="(max-width: 700px) 100vw, 33vw" />
+            </div>
+          ) : null}
+          <div className="thumb-diagram">
+            <Svg markup={D[trade.slug]()} />
+          </div>
         </div>
         <div className="body">
           <span className="div">DIVISION {trade.div}</span>

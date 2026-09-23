@@ -1,6 +1,59 @@
 export type MeasureGroup = { group: string; unit: string; items: [string, string][] };
 export type Sample = { title: string; cols: string[]; rows: string[][]; total: string[]; basis: string };
 export type Trade = { slug: string; art: string; noun: string; div: string; name: string; short: string; lede: string; intro: [string,string]; sheets: string; measure: MeasureGroup[]; sample: Sample; exclusions: string[]; faq: [string,string][] };
+
+/** Real-world photos paired with CSI MasterFormat SVG diagrams on /trades/[slug]. */
+export const DIVISION_IMAGES: Record<string, { src: string; alt: string }> = {
+  concrete: {
+    src: '/images/divisions/concrete.jpg',
+    alt: 'Construction worker pouring concrete through a hose on a job site',
+  },
+  masonry: {
+    src: '/images/divisions/masonry.jpg',
+    alt: 'Brick and masonry wall construction',
+  },
+  metals: {
+    src: '/images/divisions/metals.jpg',
+    alt: 'Structural rebar and metals reinforcement on a concrete deck',
+  },
+  wood: {
+    src: '/images/divisions/wood.jpg',
+    alt: 'Wood framing and dimensional lumber under construction',
+  },
+  thermal: {
+    src: '/images/divisions/thermal.jpg',
+    alt: 'Roofing and thermal moisture protection work',
+  },
+  finishes: {
+    src: '/images/divisions/finishes.jpg',
+    alt: 'Interior finishes including drywall and ceiling installation',
+  },
+  plumbing: {
+    src: '/images/divisions/plumbing.jpg',
+    alt: 'Plumber assembling pipe fittings and valves',
+  },
+  hvac: {
+    src: '/images/divisions/hvac.jpg',
+    alt: 'Sheet-metal HVAC ductwork hung during mechanical rough-in',
+  },
+  electrical: {
+    src: '/images/divisions/electrical.jpg',
+    alt: 'Electrical distribution and panel work',
+  },
+  earthwork: {
+    src: '/images/divisions/earthwork.jpg',
+    alt: 'Excavator performing earthwork on a construction site',
+  },
+  exterior: {
+    src: '/images/divisions/exterior.jpg',
+    alt: 'Residential exterior with landscaping and site improvements',
+  },
+  utilities: {
+    src: '/images/divisions/utilities.jpg',
+    alt: 'Underground utility pipe laid in a prepared trench',
+  },
+};
+
 export const TRADES: Trade[] =
 [
 { slug:'concrete', art:'a', noun:'concrete', div:'03', name:'Concrete', short:'Footings, slabs, walls, formwork, rebar, finishes',

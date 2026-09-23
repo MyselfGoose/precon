@@ -515,7 +515,7 @@ export const ABOUT_CONTENT = {
     [
       'TURNAROUND',
       'Faster Turnaround Time',
-      'Well, other companies take a lot of unnecessary time while delivering the cost estimation. We complete the work on time and without errors.',
+      'While other companies take a lot of unnecessary time delivering the cost estimation. We complete the work on time and without errors.',
     ],
     [
       'ACCURACY',
@@ -732,7 +732,7 @@ export const MARKET_SECTORS = [
 ] as const;
 
 export const MARKETS_CONTENT = {
-  title: 'Markets & Sectors',
+  title: 'Markets We Serve',
   lede:
     'Our multidisciplinary expertise extends across a diverse range of industries and building sectors throughout the United States. Whether supporting a new development, renovation, expansion, or infrastructure project, we deliver coordinated preconstruction solutions tailored to the unique technical and operational requirements of each market.',
   coordinationTitle: 'Integrated Coordination Across Every Project',

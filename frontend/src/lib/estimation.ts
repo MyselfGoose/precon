@@ -1332,7 +1332,7 @@ const TRADE_IMAGES: Record<string, { src: string; alt: string }> = {
   },
   paving: {
     src: '/images/trades/paving.jpg',
-    alt: 'Asphalt paving crew working on a roadway',
+    alt: 'Asphalt paving crew and paver machine laying roadway asphalt',
   },
   roofing: {
     src: '/images/trades/roofing.jpg',
@@ -1340,11 +1340,11 @@ const TRADE_IMAGES: Record<string, { src: string; alt: string }> = {
   },
   'metal-framing': {
     src: '/images/trades/metal-framing.jpg',
-    alt: 'Light-gauge metal stud framing on a commercial build',
+    alt: 'Light-gauge metal stud framing and cement board on a renovation build',
   },
   hvac: {
     src: '/images/trades/hvac.jpg',
-    alt: 'Mechanical piping and HVAC-related building systems installation',
+    alt: 'Sheet-metal HVAC ductwork hung during mechanical rough-in',
   },
   mep: {
     src: '/images/trades/mep.jpg',
@@ -1356,7 +1356,7 @@ const TRADE_IMAGES: Record<string, { src: string; alt: string }> = {
   },
   concrete: {
     src: '/images/trades/concrete.jpg',
-    alt: 'Concrete pour and formwork on a construction site',
+    alt: 'Construction worker pouring concrete through a hose on a job site',
   },
   insulation: {
     src: '/images/trades/insulation.jpg',
@@ -1364,11 +1364,11 @@ const TRADE_IMAGES: Record<string, { src: string; alt: string }> = {
   },
   structural: {
     src: '/images/trades/structural.jpg',
-    alt: 'Structural steel erection on a multi-story building',
+    alt: 'Structural rebar and steel reinforcement work on a concrete deck',
   },
   'sitework-earthwork': {
     src: '/images/trades/sitework-earthwork.jpg',
-    alt: 'Heavy equipment performing sitework and earthwork grading',
+    alt: 'Excavator performing sitework and earthwork on a construction site',
   },
   flooring: {
     src: '/images/trades/flooring.jpg',
@@ -1380,7 +1380,7 @@ const TRADE_IMAGES: Record<string, { src: string; alt: string }> = {
   },
   'lumber-woodwork': {
     src: '/images/trades/lumber-woodwork.jpg',
-    alt: 'Lumber and woodwork fastening on a construction project',
+    alt: 'Wood framing and dimensional lumber structure under construction',
   },
   demolition: {
     src: '/images/trades/demolition.jpg',

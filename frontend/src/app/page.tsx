@@ -295,7 +295,7 @@ export default function Home() {
           <p className="prose">
             See all five advantages on our <Link href="/about">About</Link> page, explore{' '}
             <Link href="/estimation">estimation by project type and trade</Link>, or review our{' '}
-            <Link href="/markets">markets &amp; sectors</Link>.
+            <Link href="/markets">Markets We Serve</Link>.
           </p>
         </div>
       </section>

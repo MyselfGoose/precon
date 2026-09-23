@@ -5,7 +5,7 @@ import { MARKETS_CONTENT, MARKET_SECTORS } from '@/lib/content';
 import { MotionItem, MotionReveal, MotionStagger } from '../motion';
 
 export const metadata = createMetadata({
-  title: 'Markets & Sectors',
+  title: 'Markets We Serve',
   description:
     'CSI & Design delivers coordinated architectural, structural, MEP, and estimating solutions across residential, commercial, industrial, government, infrastructure, and hospitality markets.',
   path: '/markets',
@@ -24,7 +24,7 @@ export default function MarketsPage() {
   return (
     <>
       <PageHead
-        eyebrow="Markets & Sectors"
+        eyebrow="Markets We Serve"
         title={MARKETS_CONTENT.title}
         lede="Coordinated architectural, structural, MEP, and estimating support across the markets we work in every week."
       />

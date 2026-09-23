@@ -299,9 +299,13 @@
   .tile{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--rule);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;text-decoration:none;color:var(--ink);}
   .tile{transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease;}
   .tile:hover{border-color:var(--cherry);box-shadow:0 16px 36px -16px rgba(139,38,53,.28);transform:translateY(-4px);}
-  .tile .thumb{background:var(--sky);border-bottom:1px solid var(--rule);overflow:hidden;}
+  .tile .thumb{position:relative;background:var(--sky);border-bottom:1px solid var(--rule);overflow:hidden;min-height:140px;}
+  .tile .thumb-photo{position:absolute;inset:0;opacity:.28;}
+  .tile .thumb-photo img{object-fit:cover;}
+  .tile .thumb-diagram{position:relative;z-index:1;}
   .tile .thumb svg{display:block;width:100%;height:auto;transition:transform .4s ease;}
   .tile:hover .thumb svg{transform:scale(1.03);}
+  .tile:hover .thumb-photo{opacity:.38;}
   .tile .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:3px;}
   .tile .div{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em;color:var(--cherry);font-weight:600;}
   .tile .nm{font-family:"Playfair Display",Georgia,serif;font-weight:700;font-size:1.08rem;color:var(--ink);letter-spacing:-.01em;}

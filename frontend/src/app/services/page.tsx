@@ -41,8 +41,8 @@ export default function ServicesPage() {
             ))}
           </MotionStagger>
           <div className="note">
-            <b>Markets we serve.</b> Residential, commercial, industrial, government &amp; public, infrastructure
-            &amp; civil, and hospitality &amp; recreation — see <Link href="/markets">Markets &amp; Sectors</Link>.
+            <b>Markets We Serve.</b> Residential, commercial, industrial, government &amp; public, infrastructure
+            &amp; civil, and hospitality &amp; recreation — see <Link href="/markets">Markets We Serve</Link>.
             For trade-by-trade estimation pages, open <Link href="/estimation">Estimation</Link>.
           </div>
         </div>
