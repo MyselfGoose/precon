@@ -2,12 +2,53 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { BRAND, CONTENT_SERVICES, ACQUISITION_CONTENT } from '@/lib/content';
+import { ESTIMATION_HUBS, TRADE_BUBBLE_SUMMARIES } from '@/lib/estimation';
 import { ICO } from '@/lib/illustrations';
 import { Button, CTA, PageHead, PhoneLink, Photo, WhatsAppLink } from '../../components';
 import { createMetadata } from '@/lib/metadata';
 import type { Metadata } from 'next';
 import PropertyForm from '../acquisitions-form';
 import { MotionItem, MotionReveal, MotionStagger } from '../../motion';
+
+type EstimationProjectTypeCard = {
+  href: string;
+  code: string;
+  name: string;
+  lede: string;
+  image?: { src: string; alt: string };
+};
+
+const ESTIMATION_PROJECT_TYPE_IMAGES: Record<string, { src: string; alt: string }> = {
+  'general-construction': {
+    src: '/images/projects/residential-commercial.jpg',
+    alt: 'Commercial and residential construction representing general contractor estimating',
+  },
+  industrial: {
+    src: '/images/projects/industrial.jpg',
+    alt: 'Industrial facility representing industrial project estimating',
+  },
+  'public-projects': {
+    src: '/images/projects/public-institutional.jpg',
+    alt: 'Public and institutional project representing government estimating',
+  },
+};
+
+const ESTIMATION_PROJECT_TYPE_CARDS: EstimationProjectTypeCard[] = [
+  ...ESTIMATION_HUBS.filter((hub) => hub.slug !== 'trades').map((hub) => ({
+    href: `/estimation/${hub.slug}`,
+    code: hub.code,
+    name: hub.name,
+    lede: hub.lede,
+    image: ESTIMATION_PROJECT_TYPE_IMAGES[hub.slug],
+  })),
+  {
+    href: '/estimation/trades/remodeling',
+    code: 'REN',
+    name: 'Renovation & Remodeling',
+    lede:
+      'Tenant improvements, residential remodels, commercial renovations, adaptive reuse, and new construction additions — estimated with existing conditions and market-driven pricing.',
+  },
+];
 
 export function generateStaticParams() {
   return CONTENT_SERVICES.map((s) => ({ slug: s.slug }));
@@ -203,6 +244,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     );
   }
 
+  const relatedMode = content.relatedMode ?? 'services';
+  const photoSrc = content.photoSrc ?? '/images/hero/engineering-hero.jpg';
+  const photoAlt = content.photoAlt ?? `${content.name} — CSI & Design`;
+
   return (
       <>
         <PageHead
@@ -225,16 +270,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   dangerouslySetInnerHTML={{ __html: ICO[content.ico as keyof typeof ICO] }}
                 />
                 <div className="code">{content.code}</div>
-                <h2 style={{ fontSize: 'var(--s2)' }}>What this supports</h2>
+                <h2 style={{ fontSize: 'var(--s2)' }}>{content.supportsTitle ?? 'What this supports'}</h2>
+                {content.catchphrase && <p className="lede">{content.catchphrase}</p>}
                 <p className="prose">{content.details}</p>
               </div>
               <div className="media project-photo">
-                <Photo
-                  src="/images/hero/engineering-hero.jpg"
-                  alt={`${content.name} — CSI & Design`}
-                  fill
-                  sizes="(max-width: 1000px) 100vw, 48vw"
-                />
+                <Photo src={photoSrc} alt={photoAlt} fill sizes="(max-width: 1000px) 100vw, 48vw" />
               </div>
             </div>
             <div className="spec">
@@ -253,10 +294,27 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
             {content.sections && content.sections.length > 0 && (
               <div className="stack-lg">
-                <div className="stack">
-                  <div className="eyebrow">Deliverables</div>
-                  <h2>What we produce</h2>
-                </div>
+                {content.sectionsPhotoSrc ? (
+                  <div className="split" style={{ alignItems: 'center' }}>
+                    <div className="stack">
+                      <div className="eyebrow">{content.sectionsEyebrow ?? 'Deliverables'}</div>
+                      <h2>{content.sectionsTitle ?? 'What we produce'}</h2>
+                    </div>
+                    <div className="media project-photo" style={{ minHeight: 240 }}>
+                      <Photo
+                        src={content.sectionsPhotoSrc}
+                        alt={content.sectionsPhotoAlt ?? `${content.name} deliverables`}
+                        fill
+                        sizes="(max-width: 1000px) 100vw, 48vw"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="stack">
+                    <div className="eyebrow">{content.sectionsEyebrow ?? 'Deliverables'}</div>
+                    <h2>{content.sectionsTitle ?? 'What we produce'}</h2>
+                  </div>
+                )}
                 <div className="tp-grid">
                   {content.sections.map((section) => (
                     <div className="spec" key={section.title}>
@@ -336,30 +394,90 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               </div>
             )}
 
-            {content.slug === 'estimating' && (
-              <div className="note">
-                <b>Explore estimation by project type and trade.</b> Review{' '}
-                <Link href="/estimation">general construction, industrial, public projects</Link>, and{' '}
-                <Link href="/estimation/trades">individual trade estimation pages</Link>.
+            {content.showEstimationProjectTypes && (
+              <div className="stack-lg">
+                <div className="stack">
+                  <div className="eyebrow">By project type</div>
+                  <h2>General contractor, commercial, residential, industrial &amp; public work</h2>
+                  <p className="prose">
+                    Start with the work you bid — commercial and residential for general contractors, renovation and
+                    remodeling, industrial facilities, and public projects — then open the full estimation pages for
+                    every subtype we cover.
+                  </p>
+                </div>
+                <MotionStagger className="grid-2">
+                  {ESTIMATION_PROJECT_TYPE_CARDS.map((card) => (
+                    <MotionItem className="motion-fill" key={card.href}>
+                      <Link className="card card-link" href={card.href}>
+                        {card.image && (
+                          <div className="media" style={{ position: 'relative', aspectRatio: '16 / 9', marginBottom: 16 }}>
+                            <Image
+                              src={card.image.src}
+                              alt={card.image.alt}
+                              fill
+                              sizes="(max-width: 1000px) 100vw, 48vw"
+                              style={{ objectFit: 'cover' }}
+                            />
+                          </div>
+                        )}
+                        <div className="code">{card.code}</div>
+                        <h3>{card.name}</h3>
+                        <p>{card.lede}</p>
+                        <span className="card-action">View estimation details →</span>
+                      </Link>
+                    </MotionItem>
+                  ))}
+                </MotionStagger>
               </div>
             )}
 
-            <div className="stack">
-              <div className="eyebrow">Related services</div>
-              <div className="grid-2">
-                {CONTENT_SERVICES.filter((s) => s.slug !== content.slug)
-                  .slice(0, 4)
-                  .map((s) => (
-                    <Link className="card card-link" href={`/services/${s.slug}`} key={s.slug}>
-                      <div className="ico" dangerouslySetInnerHTML={{ __html: ICO[s.ico as keyof typeof ICO] }} />
-                      <div className="code">{s.code}</div>
-                      <h3>{s.name}</h3>
-                      <p>{s.summary}</p>
-                      <span className="card-action">Review this service →</span>
-                    </Link>
+            {relatedMode === 'trades' && (
+              <div className="stack-lg">
+                <div className="stack">
+                  <div className="eyebrow">Our trades</div>
+                  <h2>Singular estimation pages per trade</h2>
+                  <p className="prose">
+                    Detailed quantity takeoffs, trade-specific estimates, and market-driven pricing that help
+                    subcontractors bid faster, protect their margins, and secure more profitable work.
+                  </p>
+                </div>
+                <MotionStagger className="grid-2">
+                  {TRADE_BUBBLE_SUMMARIES.map((trade) => (
+                    <MotionItem className="motion-fill" key={trade.slug}>
+                      <Link className="card card-link" href={`/estimation/trades/${trade.slug}`}>
+                        <h3>{trade.name}</h3>
+                        <p>{trade.summary}</p>
+                        <span className="card-action">Open trade page →</span>
+                      </Link>
+                    </MotionItem>
                   ))}
+                </MotionStagger>
+                <div className="note">
+                  <b>Why us?</b> Estimating isn&apos;t just about quantities — it&apos;s about intelligence. We help you
+                  win the right work at the right price.{' '}
+                  <Link href="/estimation/trades">View all trade estimation services →</Link>
+                </div>
               </div>
-            </div>
+            )}
+
+            {relatedMode === 'services' && (
+              <div className="stack">
+                <div className="eyebrow">Related services</div>
+                <div className="grid-2">
+                  {CONTENT_SERVICES.filter((s) => s.slug !== content.slug)
+                    .slice(0, 4)
+                    .map((s) => (
+                      <Link className="card card-link" href={`/services/${s.slug}`} key={s.slug}>
+                        <div className="ico" dangerouslySetInnerHTML={{ __html: ICO[s.ico as keyof typeof ICO] }} />
+                        <div className="code">{s.code}</div>
+                        <h3>{s.name}</h3>
+                        <p>{s.summary}</p>
+                        <span className="card-action">Review this service →</span>
+                      </Link>
+                    ))}
+                </div>
+              </div>
+            )}
           </div>
         </section>
         <CTA

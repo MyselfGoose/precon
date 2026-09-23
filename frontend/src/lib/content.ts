@@ -46,6 +46,19 @@ export type ContentService = {
   whyUs?: string[];
   ctaTitle?: string;
   ctaText?: string;
+  /** Replaces the default "What this supports" heading. */
+  supportsTitle?: string;
+  /** Optional catchphrase shown under the supports heading. */
+  catchphrase?: string;
+  photoSrc?: string;
+  photoAlt?: string;
+  sectionsEyebrow?: string;
+  sectionsTitle?: string;
+  /** Optional image shown beside the deliverables / sections heading. */
+  sectionsPhotoSrc?: string;
+  sectionsPhotoAlt?: string;
+  relatedMode?: 'services' | 'trades' | 'none';
+  showEstimationProjectTypes?: boolean;
 };
 
 export type ServiceSection = {
@@ -61,14 +74,19 @@ export const CONTENT_SERVICES: ContentService[] = [
     name: 'Estimating & quantity takeoffs',
     summary:
       'Accurate quantity takeoffs and cost estimates prepared in accordance with CSI MasterFormat, tailored to each trade and market.',
+    supportsTitle: 'CSI Trade Expertise',
     details:
-      'Every project is unique, and every trade comes with its own scope, materials, labor requirements, and construction methods. Our estimating team understands the importance of trade-specific expertise and prepares detailed quantity takeoffs and cost estimates tailored to each discipline. Whether you\'re a general contractor assembling a complete bid or a specialty subcontractor pricing a single scope of work, we provide accurate, organized, and reliable estimates that help you bid with confidence.',
+      'Every project is unique, and every trade comes with its own scope, materials, labor requirements, and construction methods. Our estimating team understands the importance of trade-specific expertise and prepares detailed quantity takeoffs and cost estimates tailored to each discipline. Whether you\'re a general contractor assembling a complete bid or a specialty subcontractor pricing a single scope of work, we provide accurate, organized, and reliable estimates that help you bid with confidence. Our estimates are prepared in accordance with CSI MasterFormat, ensuring clear organization, consistency, and professional documentation across every project.',
     points: [
       'CSI MasterFormat-organized quantity takeoffs',
       'Trade-specific cost estimates with market intelligence',
       'Real-time material pricing and regional labor trends',
       'Professional bid proposals and editable workbooks',
     ],
+    relatedMode: 'trades',
+    showEstimationProjectTypes: true,
+    photoSrc: '/images/divisions/estimation-design.jpg',
+    photoAlt: 'Construction estimating and design coordination for CSI Format takeoffs',
     ctaTitle: 'Request your estimate',
     ctaText: 'Request a Quote and tell us which trades or project type you need estimated.',
   },
@@ -79,8 +97,9 @@ export const CONTENT_SERVICES: ContentService[] = [
     name: 'Architectural drawings',
     summary:
       'Code-conscious, buildable drawing packages coordinated with estimating so design, budget, and permitting stay aligned.',
+    supportsTitle: 'Architectural drawings that build',
     details:
-      'Our architectural drawings are developed with careful consideration of applicable building codes, jurisdiction-specific regulations, and local permitting requirements, ensuring every design is tailored to the project\'s location and approval process. Working alongside our experienced construction estimators, our architectural team develops practical, buildable designs that reflect both the project\'s vision and its budget. Every layout, detail, and material selection is thoughtfully coordinated to simplify construction, minimize unnecessary revisions, and create a smoother path from design to completion.',
+      'Our architectural drawings are developed with careful consideration of applicable building codes, jurisdiction-specific regulations, and local permitting requirements, ensuring every design is tailored to the project\'s location and approval process. Working alongside our experienced construction estimators, our architectural team develops practical, buildable designs that reflect both the project\'s vision and its budget. Every layout, detail, and material selection is thoughtfully coordinated to simplify construction, minimize unnecessary revisions, and create a smoother path from design to completion. The result is a well coordinated drawing package that brings together thoughtful design, regulatory compliance, and real world construction expertise.',
     points: [
       'Planning & layout: site, floor, roof, and reflected ceiling plans',
       'Exterior design: elevations, finish details, door & window schedules',
@@ -117,6 +136,12 @@ export const CONTENT_SERVICES: ContentService[] = [
         items: ['Material Specifications', 'Finish Specifications', 'General Architectural Notes'],
       },
     ],
+    sectionsEyebrow: 'Where excellence meets design',
+    sectionsTitle: 'Where Design Meets Construction Intelligence',
+    photoSrc: '/images/services/architectural-building.jpg',
+    photoAlt: 'Landmark contemporary architecture representing coordinated drawing packages',
+    sectionsPhotoSrc: '/images/services/architectural-plans.jpg',
+    sectionsPhotoAlt: 'Architectural plan sheets and construction drawings on a desk',
     whyUs: [
       'Bringing together architecture, estimating, and preconstruction expertise to deliver smarter, coordinated project solutions.',
       'Where Design Meets Construction Intelligence — our architectural team combines thoughtful design with practical construction expertise to deliver coordinated drawing packages that are functional, buildable, and tailored to your project\'s unique requirements.',
@@ -131,14 +156,19 @@ export const CONTENT_SERVICES: ContentService[] = [
     name: 'MEP drafting & engineering',
     summary:
       'Coordinated Mechanical, Electrical & Plumbing drawings for efficient, code-compliant construction across the United States.',
+    supportsTitle: 'MEP Drawings',
+    catchphrase:
+      'Coordinated Mechanical, Electrical & Plumbing Drawings for Efficient, Code-Compliant Construction',
     details:
-      'Our MEP drafting services deliver accurate, coordinated, and construction-ready Mechanical, Electrical, and Plumbing drawings for projects across the United States. From permit-ready documentation and multidisciplinary coordination to engineering calculations and energy compliance, we provide comprehensive solutions that support every stage of the construction process. Whether your project requires California Title 24 compliance, HVAC load calculations, electrical load analysis, plumbing calculations, or jurisdiction-specific code documentation, our team develops precise MEP packages tailored to local regulations and project requirements.',
+      'Our MEP drafting services deliver accurate, coordinated, and construction-ready Mechanical, Electrical, and Plumbing drawings for projects across the United States. From permit-ready documentation and multidisciplinary coordination to engineering calculations and energy compliance, we provide comprehensive solutions that support every stage of the construction process. Whether your project requires California Title 24 compliance, HVAC load calculations, electrical load analysis, plumbing calculations, or jurisdiction-specific code documentation, our team develops precise MEP packages tailored to local regulations and project requirements. Every drawing is prepared to improve constructability, streamline coordination between trades, accelerate permit approvals, and ensure efficient project execution.',
     points: [
       'Permit-ready MEP documentation and trade coordination',
       'California Title 24 and energy compliance support',
       'HVAC, electrical, and plumbing engineering calculations',
       'Codes & standards aligned with IBC, NEC, IMC, IPC, ASHRAE, and ACCA',
     ],
+    photoSrc: '/images/services/mep-engineer-jobsite.jpg',
+    photoAlt: 'Engineer reviewing systems on an active construction job site',
     calculations: [
       {
         title: 'California Title 24 Energy Compliance',
@@ -183,7 +213,7 @@ export const CONTENT_SERVICES: ContentService[] = [
       {
         title: 'Voltage Drop Calculations',
         description:
-          'Electrical system analysis ensures voltage remains within acceptable tolerances throughout distribution systems while maximizing operational efficiency.',
+          'Electrical system analysis to ensure voltage remains within acceptable tolerances throughout distribution systems while maximizing operational efficiency.',
       },
       {
         title: 'Plumbing Fixture Unit Calculations',
