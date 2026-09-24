@@ -425,8 +425,6 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     ctaTitle: 'Request Your Remodeling Estimate',
     ctaText:
       'Partner with a team that delivers more than just numbers. Get accurate takeoffs, data-driven pricing, and professional bid proposals that help you bid smarter and build more profitably.',
-    imageSrc: '/images/trades/remodeling.jpg',
-    imageAlt: 'Residential remodeling and renovation interior under construction',
   },
   {
     slug: 'new-construction',
@@ -460,8 +458,6 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
       'New construction wins when quantities and pricing stay aligned with the market. We deliver CSI Format packages that help general contractors pursue ground-up work with confidence.',
     ctaTitle: 'Request Your New Construction Estimate',
     ctaText: 'Share the working set and bid date. We will define a clear new-construction estimating scope.',
-    imageSrc: '/images/trades/new-construction.jpg',
-    imageAlt: 'New construction building frame rising on a job site',
   },
   {
     slug: 'adu',
@@ -494,8 +490,6 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
       'ADU bids fail when compact scopes are under-measured. We deliver clear, complete estimates so accessory dwelling projects bid profitably and permit-ready.',
     ctaTitle: 'Request Your ADU Estimate',
     ctaText: 'Send the ADU drawings, site plan, and bid date. We will return an organized accessory dwelling estimate.',
-    imageSrc: '/images/trades/adu.jpg',
-    imageAlt: 'Accessory dwelling unit and backyard residential construction',
   },
   {
     slug: 'restoration',

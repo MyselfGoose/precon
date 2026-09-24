@@ -18,6 +18,9 @@ export default function Quote() {
         eyebrow="Request a Quote"
         title="Give the next decision a useful project brief"
         lede="Share what you are trying to estimate, design, coordinate, or decide, along with the project stage, location, timing, and information you already have."
+        image="/images/hero/quote.jpg"
+        imageAlt="Project plans ready for a quote request"
+        priority
       />
       <section className="band">
         <div className="wrap">
@@ -34,8 +37,8 @@ export default function Quote() {
               </div>
               <div className="stack">
                 <div className="eyebrow">Prefer to talk?</div>
-                <PhoneLink className="nav-tel" style={{ fontSize: '1.35rem', padding: 0, margin: 0, color: 'var(--ink)' }}>
-                  {BRAND.phoneDisplay}
+                <PhoneLink className="btn btn-ghost" style={{ alignSelf: 'flex-start' }}>
+                  Call {BRAND.phoneDisplay}
                 </PhoneLink>
                 <WhatsAppLink className="btn btn-ghost" style={{ alignSelf: 'flex-start' }}>
                   WhatsApp {BRAND.phoneDisplay} →

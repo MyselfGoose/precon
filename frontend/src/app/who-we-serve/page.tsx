@@ -23,6 +23,9 @@ export default function Who() {
           </>
         }
         lede="From general contractors assembling complete bids to specialty subcontractors protecting margins under tight deadlines. Precise takeoffs and dependable preconstruction support."
+        image="/images/hero/who-we-serve.jpg"
+        imageAlt="Construction professionals reviewing plans on a job site"
+        priority
       />
       <section className="band">
         <div className="wrap stack-lg">

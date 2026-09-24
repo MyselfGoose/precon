@@ -9,6 +9,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "check:images": "node scripts/check-image-uniqueness.mjs",
     "whereami": "bash -lc 'echo ROOT=$(git rev-parse --show-toplevel); git status -sb; git worktree list'"
   },
   "dependencies": {

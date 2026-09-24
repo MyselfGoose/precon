@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CONTENT_SERVICES } from '@/lib/content';
+import { CONTENT_SERVICES, SITE_COPY } from '@/lib/content';
 import { ICO } from '@/lib/illustrations';
 import { CTA, PageHead } from '../components';
 import { createMetadata } from '@/lib/metadata';
@@ -42,7 +42,7 @@ export default function ServicesPage() {
                       <li key={p}>{p}</li>
                     ))}
                   </ul>
-                  <span className="card-action">Review this service →</span>
+                  <span className="card-action">{SITE_COPY.cta.reviewService}</span>
                 </Link>
               </MotionItem>
             ))}

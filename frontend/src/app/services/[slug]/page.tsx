@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { BRAND, CONTENT_SERVICES, ACQUISITION_CONTENT } from '@/lib/content';
+import { BRAND, CONTENT_SERVICES, ACQUISITION_CONTENT, SITE_COPY } from '@/lib/content';
 import { ESTIMATION_HUBS, TRADE_BUBBLE_SUMMARIES } from '@/lib/estimation';
 import { ICO } from '@/lib/illustrations';
 import { Button, CTA, PageHead, PhoneLink, Photo, WhatsAppLink } from '../../components';
@@ -74,30 +74,28 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   if (content.slug === 'acquisitions-investments') {
     return (
       <>
-        <section className="hero">
-          <MotionReveal className="wrap hero-grid" y={24}>
-            <div className="stack">
-              <div className="eyebrow">{ACQUISITION_CONTENT.eyebrow}</div>
-              <h1>{ACQUISITION_CONTENT.title}</h1>
-              <p className="lede">{ACQUISITION_CONTENT.lede}</p>
-              <div className="btn-row">
-                <Button href="#discuss-property">Get in Touch →</Button>
-                <a className="btn btn-ghost" href="#approach">
-                  See our approach →
-                </a>
-              </div>
-            </div>
-            <div className="media hero-photo">
-              <Photo
-                src="/images/hero/acquisition-hero.jpg"
-                alt="Malibu California beachfront homes representing US property acquisition"
-                fill
-                priority
-                sizes="(max-width: 1000px) 100vw, 55vw"
-              />
-            </div>
-          </MotionReveal>
-        </section>
+        <PageHead
+          eyebrow={ACQUISITION_CONTENT.eyebrow}
+          title={ACQUISITION_CONTENT.title}
+          lede={ACQUISITION_CONTENT.lede}
+          crumb={
+            <>
+              <Link href="/services">Services</Link> / {content.name}
+            </>
+          }
+          image="/images/hero/acquisition-hero.jpg"
+          imageAlt="Malibu California beachfront homes representing US property acquisition"
+          priority
+          variant="dark"
+          actions={
+            <>
+              <Button href="#discuss-property">Get in Touch →</Button>
+              <a className="btn btn-on-dark" href="#approach">
+                See our approach →
+              </a>
+            </>
+          }
+        />
 
         <section className="band">
           <div className="wrap stack-lg">
@@ -234,6 +232,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
         </section>
+        <CTA
+          title={ACQUISITION_CONTENT.ctaTitle}
+          text={ACQUISITION_CONTENT.ctaText}
+        />
       </>
     );
   }
@@ -259,7 +261,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           image={photoSrc}
           imageAlt={photoAlt}
           priority={Boolean(photoSrc)}
-          variant={isBim ? 'dark' : 'split'}
+          variant="dark"
         />
         <section className="band">
           <div className="wrap stack-lg">
@@ -414,7 +416,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         <div className="code">{card.code}</div>
                         <h3>{card.name}</h3>
                         <p>{card.lede}</p>
-                        <span className="card-action">View estimation details →</span>
+                        <span className="card-action">{SITE_COPY.cta.viewEstimation}</span>
                       </Link>
                     </MotionItem>
                   ))}
@@ -438,7 +440,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                       <Link className="card card-link" href={`/estimation/trades/${trade.slug}`}>
                         <h3>{trade.name}</h3>
                         <p>{trade.summary}</p>
-                        <span className="card-action">Open trade page →</span>
+                        <span className="card-action">{SITE_COPY.cta.openTrade}</span>
                       </Link>
                     </MotionItem>
                   ))}
@@ -463,7 +465,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                         <div className="code">{s.code}</div>
                         <h3>{s.name}</h3>
                         <p>{s.summary}</p>
-                        <span className="card-action">Review this service →</span>
+                        <span className="card-action">{SITE_COPY.cta.reviewService}</span>
                       </Link>
                     ))}
                 </div>

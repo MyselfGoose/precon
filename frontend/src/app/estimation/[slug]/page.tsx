@@ -9,6 +9,7 @@ import {
   GC_FEATURED_TRADES,
   getEstimationHub,
 } from '@/lib/estimation';
+import { SITE_COPY } from '@/lib/content';
 import type { Metadata } from 'next';
 import { MotionItem, MotionStagger } from '../../motion';
 
@@ -78,7 +79,7 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
                     <Link className="card card-link" href={`/estimation/trades/${trade.slug}`}>
                       <h3>{trade.name}</h3>
                       <p>{trade.blurb}</p>
-                      <span className="card-action">Open trade page →</span>
+                      <span className="card-action">{SITE_COPY.cta.openTrade}</span>
                     </Link>
                   </MotionItem>
                 ))}
@@ -100,7 +101,7 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
                       <Link className="card card-link" href={href} key={cat.name} id={categoryAnchorId(cat.name)}>
                         <h3>{cat.name}</h3>
                         <p>{cat.description}</p>
-                        <span className="card-action">Open full details →</span>
+                        <span className="card-action">{SITE_COPY.cta.viewDetails}</span>
                       </Link>
                     );
                   }

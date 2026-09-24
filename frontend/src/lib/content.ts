@@ -16,8 +16,11 @@ export const SITE_COPY = {
   cta: {
     primary: 'Request a Quote',
     secondary: `Call ${BRAND.phoneDisplay}`,
-    reviewTrade: 'Review this trade',
-    reviewService: 'Review this service',
+    reviewTrade: 'Review this trade →',
+    reviewService: 'Review this service →',
+    openTrade: 'Open trade page →',
+    viewEstimation: 'View estimation details →',
+    viewDetails: 'View details →',
   },
   process: {
     eyebrow: 'How it works',
@@ -561,9 +564,9 @@ export const ACQUISITION_CONTENT = {
   ] as const,
   propertyTypes: [
     { title: 'Residential', subtitle: 'Single-family, multi-family, and value-add homes', image: '/images/properties/residential.jpg' },
-    { title: 'Commercial', subtitle: 'Office, retail, mixed-use, and income assets' },
+    { title: 'Commercial', subtitle: 'Office, retail, mixed-use, and income assets', image: '/images/properties/commercial-type.jpg' },
     { title: 'Land & Development', subtitle: 'Sites positioned for growth and entitlements', image: '/images/properties/land-development.jpg' },
-    { title: 'Special Situations', subtitle: 'Unique circumstances where timing and clarity matter' },
+    { title: 'Special Situations', subtitle: 'Unique circumstances where timing and clarity matter', image: '/images/properties/special-situations.jpg' },
   ] as const,
   values: [
     { title: 'Market Insight', description: 'Data-backed evaluation of condition, cost, and upside.' },
@@ -683,9 +686,9 @@ export const WHY_WORK_WITH_US = [
 ] as const;
 
 export const FEATURED_PROJECTS = [
-  { title: 'Industrial' },
-  { title: 'Residential & Commercial' },
-  { title: 'Public / Institutional' },
+  { title: 'Industrial', image: '/images/markets/home-industrial.jpg' },
+  { title: 'Residential & Commercial', image: '/images/markets/home-residential-commercial.jpg' },
+  { title: 'Public / Institutional', image: '/images/markets/home-public-institutional.jpg' },
 ] as const;
 
 export const MARKET_SECTORS = [

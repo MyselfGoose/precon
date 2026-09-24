@@ -2,7 +2,7 @@ export type MeasureGroup = { group: string; unit: string; items: [string, string
 export type Sample = { title: string; cols: string[]; rows: string[][]; total: string[]; basis: string };
 export type Trade = { slug: string; art: string; noun: string; div: string; name: string; short: string; lede: string; intro: [string,string]; sheets: string; measure: MeasureGroup[]; sample: Sample; exclusions: string[]; faq: [string,string][] };
 
-/** Real-world photos paired with CSI MasterFormat SVG diagrams on /trades/[slug]. */
+/** Real-world photos for dark heroes on /trades/[slug]. TradeTile thumbs are diagram-only. */
 export const DIVISION_IMAGES: Record<string, { src: string; alt: string }> = {
   concrete: {
     src: '/images/divisions/concrete.jpg',

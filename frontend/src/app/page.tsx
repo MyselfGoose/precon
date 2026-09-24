@@ -208,8 +208,15 @@ export default function Home() {
           <MotionStagger className="grid-3">
             {FEATURED_PROJECTS.map((project) => (
               <MotionItem className="motion-fill" key={project.title}>
-                <div className="project-card project-card-text">
-                  <h3>{project.title}</h3>
+                <div className="project-card">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 1000px) 100vw, 33vw"
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <span className="label">{project.title}</span>
                 </div>
               </MotionItem>
             ))}

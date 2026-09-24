@@ -1,4 +1,4 @@
-import { DIVISION_IMAGES, FOOTER_NAV_ITEMS, type Trade, type Sample } from '@/lib/data';
+import { FOOTER_NAV_ITEMS, type Trade, type Sample } from '@/lib/data';
 import { D, ICO, flowArt } from '@/lib/illustrations';
 import MobileNav from './mobile-nav';
 import NavLinks from './nav-links';
@@ -203,6 +203,12 @@ export function Footer() {
   );
 }
 
+/**
+ * Allowed hero patterns:
+ * 1) Home brand hero — custom `.hero` / `.hero-grid` with brand-first treatment
+ * 2) Dark full-bleed — `variant="dark"` for service/trade detail covers
+ * 3) Split cover — `variant="split"` (default) for marketing hubs with inset photo
+ */
 export function PageHead({
   eyebrow,
   title,
@@ -364,16 +370,10 @@ export function ServiceCard({
 }
 
 export function TradeTile({ trade }: { trade: Trade }) {
-  const photo = DIVISION_IMAGES[trade.slug];
   return (
     <MotionItem className="motion-fill">
       <Link className="tile" href={`/trades/${trade.slug}`}>
         <div className="thumb">
-          {photo ? (
-            <div className="thumb-photo" aria-hidden="true">
-              <Image src={photo.src} alt="" fill sizes="(max-width: 700px) 100vw, 33vw" />
-            </div>
-          ) : null}
           <div className="thumb-diagram">
             <Svg markup={D[trade.slug]()} />
           </div>

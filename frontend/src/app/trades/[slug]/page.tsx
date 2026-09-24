@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { DIVISION_IMAGES, TRADES } from '@/lib/data';
-import { CTA, FAQ, PhoneLink, Photo, Svg, Workbook } from '../../components';
+import { CTA, FAQ, PageHead, PhoneLink, Svg, Workbook } from '../../components';
 import { D } from '@/lib/illustrations';
 import { createMetadata } from '@/lib/metadata';
 import type { Metadata } from 'next';
@@ -33,56 +33,34 @@ export default async function TradePage({ params }: { params: Promise<{ slug: st
 
   return (
     <>
-      <section className="trade-hero on-dark">
-        <div className="wrap trade-hero-grid">
-          <div className="stack">
-            <div className="crumb">
-              <Link href="/trades">Trades</Link> / Division {tr.div}
-            </div>
-            <div className="eyebrow">
-              Division {tr.div} · {tr.name}
-            </div>
-            <h1>
-              {tr.name} estimating &amp; takeoff services
-            </h1>
-            <p className="lede">{tr.lede}</p>
-            <div className="btn-row">
-              <Link className="btn btn-primary" href="/quote">
-                Send your {tr.noun} scope
-              </Link>
-              <PhoneLink className="btn btn-on-dark">Talk through your scope</PhoneLink>
-            </div>
-          </div>
-          <div className="trade-hero-visual">
-            {photo ? (
-              <>
-                <div className="media trade-hero-photo">
-                  <Photo src={photo.src} alt={photo.alt} fill priority sizes="(max-width: 1000px) 100vw, 55vw" />
-                </div>
-                <div className="trade-hero-diagram">
-                  <div className="draw">
-                    <Svg markup={D[tr.slug]()} />
-                    <div className="draw-cap">
-                      <b>Division {tr.div}</b>
-                      <span>Typical detail, drawn for illustration</span>
-                    </div>
-                  </div>
-                </div>
-              </>
-            ) : (
-              <div className="draw">
-                <Svg markup={D[tr.slug]()} />
-                <div className="draw-cap">
-                  <b>Division {tr.div}</b>
-                  <span>Typical detail, drawn for illustration</span>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
+      <PageHead
+        eyebrow={`Division ${tr.div} · ${tr.name}`}
+        title={
+          <>
+            {tr.name} estimating &amp; takeoff services
+          </>
+        }
+        lede={tr.lede}
+        crumb={
+          <>
+            <Link href="/trades">Trades</Link> / Division {tr.div}
+          </>
+        }
+        image={photo?.src}
+        imageAlt={photo?.alt}
+        priority={Boolean(photo)}
+        variant="dark"
+        actions={
+          <>
+            <Link className="btn btn-primary" href="/quote">
+              Send your {tr.noun} scope
+            </Link>
+            <PhoneLink className="btn btn-on-dark">Talk through your scope</PhoneLink>
+          </>
+        }
+      />
 
-      <section className="band trade-overlap">
+      <section className="band">
         <div className="wrap stack-lg">
           <div className="split" style={{ alignItems: 'start' }}>
             <div className="stack">
@@ -91,62 +69,40 @@ export default async function TradePage({ params }: { params: Promise<{ slug: st
               <p className="prose">{tr.intro[0]}</p>
               <p className="prose">{tr.intro[1]}</p>
             </div>
-            {photo ? (
-              <div className="media project-photo">
-                <Photo src={photo.src} alt={photo.alt} fill sizes="(max-width: 1000px) 100vw, 48vw" />
-              </div>
-            ) : (
-              <div className="stack">
-                <dl className="kv">
-                  <dt>Drawings used</dt>
-                  <dd>{tr.sheets}</dd>
-                  <dt>Reported in</dt>
-                  <dd>{units}</dd>
-                  <dt>Format</dt>
-                  <dd>
-                    Editable Excel workbook, division tab with sheet references; PDF summary; written exclusions and
-                    assumptions.
-                  </dd>
-                  <dt>Turnaround</dt>
-                  <dd>Confirmed after we review the set and the project date.</dd>
-                </dl>
-                <div className="excl">
-                  <h4>Excluded by default</h4>
-                  <ul>
-                    {tr.exclusions.map((e) => (
-                      <li key={e}>{e}</li>
-                    ))}
-                  </ul>
+            <div className="trade-diagram">
+              <div className="draw">
+                <Svg markup={D[tr.slug]()} />
+                <div className="draw-cap">
+                  <b>Division {tr.div}</b>
+                  <span>Typical detail, drawn for illustration</span>
                 </div>
               </div>
-            )}
+            </div>
           </div>
 
-          {photo && (
-            <div className="split" style={{ alignItems: 'start' }}>
-              <dl className="kv">
-                <dt>Drawings used</dt>
-                <dd>{tr.sheets}</dd>
-                <dt>Reported in</dt>
-                <dd>{units}</dd>
-                <dt>Format</dt>
-                <dd>
-                  Editable Excel workbook, division tab with sheet references; PDF summary; written exclusions and
-                  assumptions.
-                </dd>
-                <dt>Turnaround</dt>
-                <dd>Confirmed after we review the set and the project date.</dd>
-              </dl>
-              <div className="excl">
-                <h4>Excluded by default</h4>
-                <ul>
-                  {tr.exclusions.map((e) => (
-                    <li key={e}>{e}</li>
-                  ))}
-                </ul>
-              </div>
+          <div className="split" style={{ alignItems: 'start' }}>
+            <dl className="kv">
+              <dt>Drawings used</dt>
+              <dd>{tr.sheets}</dd>
+              <dt>Reported in</dt>
+              <dd>{units}</dd>
+              <dt>Format</dt>
+              <dd>
+                Editable Excel workbook, division tab with sheet references; PDF summary; written exclusions and
+                assumptions.
+              </dd>
+              <dt>Turnaround</dt>
+              <dd>Confirmed after we review the set and the project date.</dd>
+            </dl>
+            <div className="excl">
+              <h4>Excluded by default</h4>
+              <ul>
+                {tr.exclusions.map((e) => (
+                  <li key={e}>{e}</li>
+                ))}
+              </ul>
             </div>
-          )}
+          </div>
         </div>
       </section>
 

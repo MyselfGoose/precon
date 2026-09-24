@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { CTA, PageHead } from '../components';
 import { createMetadata } from '@/lib/metadata';
 import { ESTIMATION_HUBS, TRADE_BUBBLE_SUMMARIES } from '@/lib/estimation';
+import { SITE_COPY } from '@/lib/content';
 import { MotionItem, MotionStagger } from '../motion';
 
 export const metadata = createMetadata({
@@ -40,7 +41,7 @@ export default function EstimationPage() {
                   <div className="code">{hub.code}</div>
                   <h3>{hub.name}</h3>
                   <p>{hub.lede}</p>
-                  <span className="card-action">View details →</span>
+                  <span className="card-action">{SITE_COPY.cta.viewDetails}</span>
                 </Link>
               </MotionItem>
             ))}
@@ -62,7 +63,7 @@ export default function EstimationPage() {
                 <Link className="card card-link" href={`/estimation/trades/${trade.slug}`}>
                   <h3>{trade.name}</h3>
                   <p>{trade.summary}</p>
-                  <span className="card-action">Open trade page →</span>
+                  <span className="card-action">{SITE_COPY.cta.openTrade}</span>
                 </Link>
               </MotionItem>
             ))}

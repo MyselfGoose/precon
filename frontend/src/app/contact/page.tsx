@@ -20,8 +20,8 @@ export default function Contact() {
           </>
         }
         lede="Share the project information you have. We will help identify the right service, scope, and next step: estimate, design package, or property acquisition conversation."
-        image="/images/properties/special-situations.jpg"
-        imageAlt="Strategic property context for contacting CSI & Design"
+        image="/images/hero/contact.jpg"
+        imageAlt="Contact CSI & Design about estimation, design, or acquisition"
         priority
       />
       <section className="band">
