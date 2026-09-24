@@ -18,11 +18,6 @@ const BIM_VISUAL_FRAMES = [
     label: 'Gym interior render',
   },
   {
-    src: '/images/services/bim/exterior-render.jpg',
-    alt: 'Photorealistic architectural exterior rendering',
-    label: 'Exterior architectural render',
-  },
-  {
     src: '/images/services/bim/interior-render.jpg',
     alt: 'Photorealistic residential interior rendering',
     label: 'Interior space render',
@@ -39,22 +34,6 @@ type EstimationProjectTypeCard = {
   code: string;
   name: string;
   lede: string;
-  image?: { src: string; alt: string };
-};
-
-const ESTIMATION_PROJECT_TYPE_IMAGES: Record<string, { src: string; alt: string }> = {
-  'general-construction': {
-    src: '/images/projects/residential-commercial.jpg',
-    alt: 'Commercial and residential construction representing general contractor estimating',
-  },
-  industrial: {
-    src: '/images/projects/industrial.jpg',
-    alt: 'Industrial facility representing industrial project estimating',
-  },
-  'public-projects': {
-    src: '/images/projects/public-institutional.jpg',
-    alt: 'Public and institutional project representing government estimating',
-  },
 };
 
 const ESTIMATION_PROJECT_TYPE_CARDS: EstimationProjectTypeCard[] = [
@@ -63,7 +42,6 @@ const ESTIMATION_PROJECT_TYPE_CARDS: EstimationProjectTypeCard[] = [
     code: hub.code,
     name: hub.name,
     lede: hub.lede,
-    image: ESTIMATION_PROJECT_TYPE_IMAGES[hub.slug],
   })),
   {
     href: '/estimation/trades/remodeling',
@@ -154,15 +132,17 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <div className="property-types">
               {ACQUISITION_CONTENT.propertyTypes.map((type) => (
                 <article className="property-type" key={type.title}>
-                  <div className="media">
-                    <Image
-                      src={type.image}
-                      alt={type.title}
-                      fill
-                      sizes="(max-width: 1000px) 50vw, 25vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
+                  {'image' in type && type.image ? (
+                    <div className="media">
+                      <Image
+                        src={type.image}
+                        alt={type.title}
+                        fill
+                        sizes="(max-width: 1000px) 50vw, 25vw"
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                  ) : null}
                   <h4>{type.title}</h4>
                   <p>{type.subtitle}</p>
                 </article>
@@ -173,29 +153,19 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
         <section className="band" id="approach">
           <div className="wrap stack-lg">
-            <div className="split">
-              <div className="media" style={{ minHeight: 360, position: 'relative' }}>
-                <Photo
-                  src="/images/approach/building.jpg"
-                  alt="American Colonial-style home representing property evaluation and acquisition"
-                  fill
-                  sizes="(max-width: 1000px) 100vw, 50vw"
-                />
-              </div>
-              <div className="stack">
-                <div className="eyebrow">Our Acquisition Approach</div>
-                <h2>{ACQUISITION_CONTENT.offerTitle}</h2>
-                {ACQUISITION_CONTENT.offerBody.map((paragraph) => (
-                  <p className="prose" key={paragraph.slice(0, 48)}>
-                    {paragraph}
-                  </p>
+            <div className="stack">
+              <div className="eyebrow">Our Acquisition Approach</div>
+              <h2>{ACQUISITION_CONTENT.offerTitle}</h2>
+              {ACQUISITION_CONTENT.offerBody.map((paragraph) => (
+                <p className="prose" key={paragraph.slice(0, 48)}>
+                  {paragraph}
+                </p>
+              ))}
+              <ul className="check-list">
+                {ACQUISITION_CONTENT.approachItems.map((item) => (
+                  <li key={item}>{item}</li>
                 ))}
-                <ul className="check-list">
-                  {ACQUISITION_CONTENT.approachItems.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
+              </ul>
             </div>
           </div>
         </section>
@@ -269,11 +239,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   }
 
   const relatedMode = content.relatedMode ?? 'services';
-  const photoSrc = content.photoSrc ?? '/images/hero/engineering-hero.jpg';
+  const photoSrc = content.photoSrc;
   const photoAlt = content.photoAlt ?? `${content.name}: CSI & Design`;
   const isBim = content.slug === 'bim-visualization';
   const heroTitle = content.catchphrase ?? content.supportsTitle ?? content.name;
-  const heroLede = content.catchphrase ? content.summary : content.summary;
+  const heroLede = content.summary;
 
   return (
       <>
@@ -288,31 +258,22 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           }
           image={photoSrc}
           imageAlt={photoAlt}
-          priority
+          priority={Boolean(photoSrc)}
           variant={isBim ? 'dark' : 'split'}
         />
         <section className="band">
           <div className="wrap stack-lg">
-            <div className="split" style={{ alignItems: 'start' }}>
-              <div className="stack">
-                <div
-                  className="ico"
-                  style={{ width: 64, height: 64 }}
-                  dangerouslySetInnerHTML={{ __html: ICO[content.ico as keyof typeof ICO] }}
-                />
-                <div className="code">{content.code}</div>
-                <h2 style={{ fontSize: 'var(--s2)' }}>{content.name}</h2>
-                <p className="prose">{content.details}</p>
-              </div>
-              {isBim ? (
-                <BimVisualShowcase frames={[...BIM_VISUAL_FRAMES]} />
-              ) : (
-                <div className="media project-photo">
-                  <Photo src={photoSrc} alt={photoAlt} fill sizes="(max-width: 1000px) 100vw, 48vw" />
-                </div>
-              )}
+            <div className="stack service-intro">
+              <div
+                className="ico"
+                style={{ width: 56, height: 56 }}
+                dangerouslySetInnerHTML={{ __html: ICO[content.ico as keyof typeof ICO] }}
+              />
+              <div className="code">{content.code}</div>
+              <h2 style={{ fontSize: 'var(--s2)' }}>{content.name}</h2>
+              <p className="prose">{content.details}</p>
             </div>
-            {content.slug === 'bim-visualization' && (
+            {isBim && (
               <div className="stack">
                 <div className="eyebrow">Render gallery</div>
                 <h2>From gym interiors to BIM on 2D</h2>
@@ -336,7 +297,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             {content.sections && content.sections.length > 0 && (
               <div className="stack-lg">
                 {content.sectionsPhotoSrc ? (
-                  <div className="split" style={{ alignItems: 'center' }}>
+                  <div className="split">
                     <div className="stack">
                       <div className="eyebrow">{content.sectionsEyebrow ?? 'Deliverables'}</div>
                       <h2>{content.sectionsTitle ?? 'What we produce'}</h2>
@@ -395,27 +356,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
             {content.systems && content.systems.length > 0 && (
               <div className="stack-lg">
-                {content.sectionsPhotoSrc ? (
-                  <div className="split" style={{ alignItems: 'center' }}>
-                    <div className="stack">
-                      <div className="eyebrow">Structural systems</div>
-                      <h2>Structural Systems We Design</h2>
-                    </div>
-                    <div className="media project-photo" style={{ minHeight: 240 }}>
-                      <Photo
-                        src={content.sectionsPhotoSrc}
-                        alt={content.sectionsPhotoAlt ?? `${content.name} systems`}
-                        fill
-                        sizes="(max-width: 1000px) 100vw, 48vw"
-                      />
-                    </div>
-                  </div>
-                ) : (
-                  <div className="stack">
-                    <div className="eyebrow">Structural systems</div>
-                    <h2>Structural Systems We Design</h2>
-                  </div>
-                )}
+                <div className="stack">
+                  <div className="eyebrow">Structural systems</div>
+                  <h2>Structural Systems We Design</h2>
+                </div>
                 <ul className="check-list">
                   {content.systems.map((system) => (
                     <li key={system}>{system}</li>
@@ -467,17 +411,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   {ESTIMATION_PROJECT_TYPE_CARDS.map((card) => (
                     <MotionItem className="motion-fill" key={card.href}>
                       <Link className="card card-link" href={card.href}>
-                        {card.image && (
-                          <div className="media" style={{ position: 'relative', aspectRatio: '16 / 9', marginBottom: 16 }}>
-                            <Image
-                              src={card.image.src}
-                              alt={card.image.alt}
-                              fill
-                              sizes="(max-width: 1000px) 100vw, 48vw"
-                              style={{ objectFit: 'cover' }}
-                            />
-                          </div>
-                        )}
                         <div className="code">{card.code}</div>
                         <h3>{card.name}</h3>
                         <p>{card.lede}</p>

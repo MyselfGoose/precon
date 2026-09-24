@@ -23,8 +23,8 @@ export default function EstimationPage() {
           </>
         }
         lede="Every estimate is prepared in CSI Format and enhanced by our proprietary data analytics platform, combining real-time supplier pricing, regional labor trends, historical project data, and market intelligence."
-        image="/images/divisions/estimation-design.jpg"
-        imageAlt="Construction estimating and design coordination"
+        image="/images/projects/residential-commercial.jpg"
+        imageAlt="Commercial and residential construction representing CSI Format estimating"
         priority
       />
       <section className="band">

@@ -22,8 +22,8 @@ export default function HowItWorks() {
           </>
         }
         lede="We start with what you have, define the decision the work needs to support, and produce organized technical or estimating deliverables with a visible basis."
-        image="/images/hero/engineering-hero.jpg"
-        imageAlt="Engineering and preconstruction coordination"
+        image="/images/services/architectural-plans.jpg"
+        imageAlt="Architectural plans representing the path from working set to deliverable"
         priority
       />
       <DarkProcess />

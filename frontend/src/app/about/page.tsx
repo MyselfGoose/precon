@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CTA, PageHead, Photo } from '../components';
+import { CTA, PageHead } from '../components';
 import { createMetadata } from '@/lib/metadata';
 import { ABOUT_CONTENT, BRAND } from '@/lib/content';
 import { MotionItem, MotionReveal, MotionStagger } from '../motion';
@@ -28,20 +28,10 @@ export default function About() {
       />
       <section className="band">
         <div className="wrap stack-lg">
-          <div className="split">
-            <MotionReveal className="stack" y={16}>
-              <p className="prose">{ABOUT_CONTENT.paragraphs[0]}</p>
-              <p className="prose">{ABOUT_CONTENT.paragraphs[1]}</p>
-            </MotionReveal>
-            <MotionReveal className="media project-photo" delay={0.08} y={18}>
-              <Photo
-                src="/images/approach/building.jpg"
-                alt="American Colonial-style home: CSI & Design preconstruction partnership"
-                fill
-                sizes="(max-width: 1000px) 100vw, 48vw"
-              />
-            </MotionReveal>
-          </div>
+          <MotionReveal className="stack" y={16}>
+            <p className="prose">{ABOUT_CONTENT.paragraphs[0]}</p>
+            <p className="prose">{ABOUT_CONTENT.paragraphs[1]}</p>
+          </MotionReveal>
 
           <div className="stack">
             <div className="eyebrow">Why contractors choose us</div>

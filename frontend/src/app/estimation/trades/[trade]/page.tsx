@@ -32,7 +32,7 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
     ? TRADES.find((t) => t.slug === page.sampleDivisionSlug)?.sample
     : undefined;
   const heroTitle = page.heroHeadline ?? page.name;
-  const heroImage = page.imageSrc ?? '/images/divisions/estimation-design.jpg';
+  const heroImage = page.imageSrc;
 
   return (
     <>
@@ -47,7 +47,7 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
         }
         image={heroImage}
         imageAlt={page.imageAlt ?? `${page.name} estimation`}
-        priority
+        priority={Boolean(heroImage)}
       />
       <section className="band">
         <div className="wrap stack-lg">

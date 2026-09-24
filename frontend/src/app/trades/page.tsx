@@ -25,9 +25,6 @@ export default function TradesPage() {
           </>
         }
         lede="Estimates prepared in CSI MasterFormat. Clear organization, consistency, and professional documentation whether you need one specialty scope or a full-building workbook."
-        image="/images/divisions/estimation-design.jpg"
-        imageAlt="US construction crew estimating and coordinating on a job site"
-        priority
         actions={
           <>
             <Button href="/estimation/trades">Browse specialty estimation →</Button>

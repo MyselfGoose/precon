@@ -23,8 +23,8 @@ export default function ServicesPage() {
           </>
         }
         lede="Estimating, drawings, engineering, visualization, and property acquisition. One partner for planning, documentation, and the decisions before construction."
-        image="/images/divisions/estimation-design.jpg"
-        imageAlt="Construction estimating and design coordination"
+        image="/images/hero/engineering-hero.jpg"
+        imageAlt="Engineering and preconstruction coordination under one roof"
         priority
       />
       <section className="band">

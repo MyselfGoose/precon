@@ -20,14 +20,6 @@ const HUB_SLUGS = [
   'public-projects',
 ] as const;
 
-const HUB_IMAGES: Record<(typeof HUB_SLUGS)[number], string> = {
-  'general-construction': '/images/projects/residential-commercial.jpg',
-  commercial: '/images/projects/residential-commercial.jpg',
-  residential: '/images/properties/residential.jpg',
-  industrial: '/images/projects/industrial.jpg',
-  'public-projects': '/images/projects/public-institutional.jpg',
-};
-
 export function generateStaticParams() {
   return HUB_SLUGS.map((slug) => ({ slug }));
 }
@@ -59,9 +51,6 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
             <Link href="/estimation">Estimation</Link> / {hub.name}
           </>
         }
-        image={HUB_IMAGES[slug as (typeof HUB_SLUGS)[number]]}
-        imageAlt={`${hub.name} estimation`}
-        priority
       />
       <section className="band">
         <div className="wrap stack-lg">

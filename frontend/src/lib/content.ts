@@ -140,8 +140,6 @@ export const CONTENT_SERVICES: ContentService[] = [
     sectionsTitle: 'Architectural Drawing Package',
     photoSrc: '/images/services/architectural-building.jpg',
     photoAlt: 'Landmark contemporary architecture representing coordinated drawing packages',
-    sectionsPhotoSrc: '/images/services/architectural-plans.jpg',
-    sectionsPhotoAlt: 'Architectural plan sheets and construction drawings on a desk',
     whyUs: [
       'Architecture, estimating, and preconstruction expertise combined for coordinated project solutions.',
       'Our architectural team pairs design intent with construction expertise to deliver coordinated drawing packages that are functional, buildable, and matched to your project\'s requirements.',
@@ -275,8 +273,6 @@ export const CONTENT_SERVICES: ContentService[] = [
     ],
     photoSrc: '/images/services/structural-steel.jpg',
     photoAlt: 'Structural steel frame under construction on a commercial building',
-    sectionsPhotoSrc: '/images/services/structural-wood.jpg',
-    sectionsPhotoAlt: 'Wood construction and lumber work representing wood structural systems',
     systems: [
       'Reinforced Concrete Structures',
       'Structural Steel Buildings',
@@ -565,9 +561,9 @@ export const ACQUISITION_CONTENT = {
   ] as const,
   propertyTypes: [
     { title: 'Residential', subtitle: 'Single-family, multi-family, and value-add homes', image: '/images/properties/residential.jpg' },
-    { title: 'Commercial', subtitle: 'Office, retail, mixed-use, and income assets', image: '/images/properties/commercial.jpg' },
+    { title: 'Commercial', subtitle: 'Office, retail, mixed-use, and income assets' },
     { title: 'Land & Development', subtitle: 'Sites positioned for growth and entitlements', image: '/images/properties/land-development.jpg' },
-    { title: 'Special Situations', subtitle: 'Unique circumstances where timing and clarity matter', image: '/images/properties/special-situations.jpg' },
+    { title: 'Special Situations', subtitle: 'Unique circumstances where timing and clarity matter' },
   ] as const,
   values: [
     { title: 'Market Insight', description: 'Data-backed evaluation of condition, cost, and upside.' },
@@ -631,7 +627,7 @@ export const HOME_DIVISIONS = [
     description:
       'Cost estimation, architectural drawings, structural and MEP engineering, BIM coordination, and visualization. Buildable packages for contractors and developers.',
     href: '/services',
-    image: '/images/divisions/estimation-design.jpg',
+    image: '/images/properties/commercial.jpg',
     cta: 'Explore Our Services',
   },
   {
@@ -687,9 +683,9 @@ export const WHY_WORK_WITH_US = [
 ] as const;
 
 export const FEATURED_PROJECTS = [
-  { title: 'Industrial', image: '/images/projects/industrial.jpg' },
-  { title: 'Residential & Commercial', image: '/images/projects/residential-commercial.jpg' },
-  { title: 'Public / Institutional', image: '/images/projects/public-institutional.jpg' },
+  { title: 'Industrial' },
+  { title: 'Residential & Commercial' },
+  { title: 'Public / Institutional' },
 ] as const;
 
 export const MARKET_SECTORS = [

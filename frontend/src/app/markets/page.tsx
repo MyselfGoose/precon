@@ -32,7 +32,7 @@ export default function MarketsPage() {
         }
         lede="Coordinated architectural, structural, MEP, and estimating support across the markets we work in every week."
         image="/images/projects/public-institutional.jpg"
-        imageAlt="US public and institutional construction"
+        imageAlt="Public and institutional construction representing the markets we serve"
         priority
       />
       <section className="band">
