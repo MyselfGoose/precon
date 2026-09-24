@@ -3,7 +3,7 @@ export const BRAND = {
   shortName: 'CSI & DESIGN',
   descriptor: 'Estimation · Design · Acquisition',
   description:
-    'Estimation, design, and property acquisition under one roof — clear scope, coordinated documentation, and strategic opportunities.',
+    'Estimation, design, and property acquisition under one roof: clear scope, coordinated documentation, and strategic opportunities.',
   phone: '(227) 204-9141',
   phoneDisplay: '+1 (227) 204-9141',
   phoneRaw: '+12272049141',
@@ -76,7 +76,7 @@ export const CONTENT_SERVICES: ContentService[] = [
       'Accurate quantity takeoffs and cost estimates prepared in accordance with CSI MasterFormat, tailored to each trade and market.',
     supportsTitle: 'CSI Trade Expertise',
     details:
-      'Every project is unique, and every trade comes with its own scope, materials, labor requirements, and construction methods. Our estimating team understands the importance of trade-specific expertise and prepares detailed quantity takeoffs and cost estimates tailored to each discipline. Whether you\'re a general contractor assembling a complete bid or a specialty subcontractor pricing a single scope of work, we provide accurate, organized, and reliable estimates that help you bid with confidence. Our estimates are prepared in accordance with CSI MasterFormat, ensuring clear organization, consistency, and professional documentation across every project.',
+      'Every project is unique, and every trade comes with its own scope, materials, labor requirements, and construction methods. Our estimating team prepares detailed quantity takeoffs and cost estimates tailored to each discipline. General contractors assembling a complete bid and specialty subcontractors pricing a single scope of work receive accurate, organized estimates built to support confident bidding. All estimates follow CSI MasterFormat for clear organization, consistency, and professional documentation across every project.',
     points: [
       'CSI MasterFormat-organized quantity takeoffs',
       'Trade-specific cost estimates with market intelligence',
@@ -99,7 +99,7 @@ export const CONTENT_SERVICES: ContentService[] = [
       'Code-conscious, buildable drawing packages coordinated with estimating so design, budget, and permitting stay aligned.',
     supportsTitle: 'Architectural drawings that build',
     details:
-      'Our architectural drawings are developed with careful consideration of applicable building codes, jurisdiction-specific regulations, and local permitting requirements, ensuring every design is tailored to the project\'s location and approval process. Working alongside our experienced construction estimators, our architectural team develops practical, buildable designs that reflect both the project\'s vision and its budget. Every layout, detail, and material selection is thoughtfully coordinated to simplify construction, minimize unnecessary revisions, and create a smoother path from design to completion. The result is a well coordinated drawing package that brings together thoughtful design, regulatory compliance, and real world construction expertise.',
+      'Our architectural drawings account for applicable building codes, jurisdiction-specific regulations, and local permitting requirements. Each design reflects the project\'s location and approval process. Working alongside our construction estimators, the architectural team develops practical, buildable designs that align with the project\'s vision and budget. Layouts, details, and material selections are coordinated to simplify construction, minimize revisions, and shorten the path from design to completion. The finished package ties code compliance, real-world construction knowledge, and design intent into one coordinated set.',
     points: [
       'Planning & layout: site, floor, roof, and reflected ceiling plans',
       'Exterior design: elevations, finish details, door & window schedules',
@@ -136,15 +136,15 @@ export const CONTENT_SERVICES: ContentService[] = [
         items: ['Material Specifications', 'Finish Specifications', 'General Architectural Notes'],
       },
     ],
-    sectionsEyebrow: 'Where excellence meets design',
-    sectionsTitle: 'Where Design Meets Construction Intelligence',
+    sectionsEyebrow: 'What we deliver',
+    sectionsTitle: 'Architectural Drawing Package',
     photoSrc: '/images/services/architectural-building.jpg',
     photoAlt: 'Landmark contemporary architecture representing coordinated drawing packages',
     sectionsPhotoSrc: '/images/services/architectural-plans.jpg',
     sectionsPhotoAlt: 'Architectural plan sheets and construction drawings on a desk',
     whyUs: [
-      'Bringing together architecture, estimating, and preconstruction expertise to deliver smarter, coordinated project solutions.',
-      'Where Design Meets Construction Intelligence — our architectural team combines thoughtful design with practical construction expertise to deliver coordinated drawing packages that are functional, buildable, and tailored to your project\'s unique requirements.',
+      'Architecture, estimating, and preconstruction expertise combined for coordinated project solutions.',
+      'Our architectural team pairs design intent with construction expertise to deliver coordinated drawing packages that are functional, buildable, and matched to your project\'s requirements.',
     ],
     ctaTitle: 'Discuss architectural drawings',
     ctaText: 'Share your project vision, location, and any existing documents so we can define a coordinated drawing package.',
@@ -160,7 +160,7 @@ export const CONTENT_SERVICES: ContentService[] = [
     catchphrase:
       'Coordinated Mechanical, Electrical & Plumbing Drawings for Efficient, Code-Compliant Construction',
     details:
-      'Our MEP drafting services deliver accurate, coordinated, and construction-ready Mechanical, Electrical, and Plumbing drawings for projects across the United States. From permit-ready documentation and multidisciplinary coordination to engineering calculations and energy compliance, we provide comprehensive solutions that support every stage of the construction process. Whether your project requires California Title 24 compliance, HVAC load calculations, electrical load analysis, plumbing calculations, or jurisdiction-specific code documentation, our team develops precise MEP packages tailored to local regulations and project requirements. Every drawing is prepared to improve constructability, streamline coordination between trades, accelerate permit approvals, and ensure efficient project execution.',
+      'Our MEP drafting services deliver accurate, coordinated, construction-ready Mechanical, Electrical, and Plumbing drawings for projects across the United States. Scope ranges from permit-ready documentation and multidisciplinary coordination to engineering calculations and energy compliance. The team produces precise MEP packages covering California Title 24 compliance, HVAC load calculations, electrical load analysis, plumbing calculations, and jurisdiction-specific code documentation, all tailored to local regulations and project requirements. Every drawing targets improved constructability, tighter trade coordination, faster permit approvals, and efficient project execution.',
     points: [
       'Permit-ready MEP documentation and trade coordination',
       'California Title 24 and energy compliance support',
@@ -250,9 +250,9 @@ export const CONTENT_SERVICES: ContentService[] = [
       'Local Authority Having Jurisdiction (AHJ) requirements',
     ],
     whyUs: [
-      'Successful MEP design depends on coordination. Our integrated Mechanical, Electrical, and Plumbing team works together under one roof to ensure every system is carefully coordinated before construction begins, minimizing clashes, reducing costly revisions, and improving installation efficiency on site.',
-      'We take ownership of the coordination process, treating every project as our responsibility rather than simply delivering drawings. By proactively identifying conflicts, optimizing system layouts, and ensuring compliance with applicable codes and project requirements, we help contractors, developers, and engineers move confidently from permitting to construction.',
-      'Our commitment to accuracy, accountability, and seamless collaboration allows us to deliver coordinated MEP documentation that reduces the margin for error, streamlines project execution, and supports successful outcomes on projects of every size.',
+      'Successful MEP design depends on coordination. Our integrated Mechanical, Electrical, and Plumbing team works under one roof to coordinate every system before construction begins, minimizing clashes, reducing costly revisions, and improving installation efficiency on site.',
+      'We own the coordination process and treat every project as our responsibility. We identify conflicts early, optimize system layouts, and verify compliance with applicable codes so contractors, developers, and engineers can move from permitting to construction with confidence.',
+      'Accuracy, accountability, and tight collaboration produce coordinated MEP documentation that reduces errors, compresses project timelines, and supports successful outcomes at every scale.',
     ],
     ctaTitle: 'Discuss MEP drawings & engineering',
     ctaText: 'Share your project type, jurisdiction, and required calculations so we can define a coordinated MEP package.',
@@ -266,7 +266,7 @@ export const CONTENT_SERVICES: ContentService[] = [
       'Safe, efficient, and code-compliant structural engineering from concept development through analysis, systems design, and calculations.',
     supportsTitle: 'Engineering that carries the load',
     details:
-      'Our structural engineering services combine innovative design with precise engineering calculations to deliver safe, efficient, and code-compliant structural solutions for projects across the United States. From concept development to engineering documentation, we design structural systems that optimize performance, constructability, and material efficiency while meeting the highest industry standards. Whether your project involves reinforced concrete, structural steel, wood framing, cold-formed steel, masonry, post-tensioned concrete, precast concrete, or hybrid structural systems, our engineers develop tailored solutions based on project-specific loading conditions, site requirements, and applicable building codes. Every design is supported by comprehensive structural analysis so the system you build is the system the calculations intended.',
+      'Our structural engineering services combine design with precise calculations to deliver safe, efficient, and code-compliant structural solutions for projects across the United States. From concept development to engineering documentation, we design systems that optimize performance, constructability, and material efficiency. Our engineers work across reinforced concrete, structural steel, wood framing, cold-formed steel, masonry, post-tensioned concrete, precast concrete, and hybrid systems, developing solutions based on project-specific loading conditions, site requirements, and applicable building codes. Every design is supported by structural analysis so the system you build is the system the calculations intended.',
     points: [
       'Comprehensive structural analysis and engineering calculations',
       'Support for concrete, steel, wood, masonry, and hybrid systems',
@@ -313,7 +313,7 @@ export const CONTENT_SERVICES: ContentService[] = [
       'Permit-ready structural plans, sections, details, and foundation drawings coordinated with engineering calculations and local AHJ requirements.',
     supportsTitle: 'Drawings ready for the building department',
     details:
-      'Our permit-ready structural drawing packages translate engineering intent into clear construction documents. We prepare structural plans, sections, details, foundation drawings, and notes that support plan review and field execution — coordinated with applicable codes and jurisdiction-specific requirements so contractors and owners can move from design into permitting with confidence. Working alongside our structural engineers and estimators, we keep drawings buildable, consistent, and aligned with the calculations that support them.',
+      'Our permit-ready structural drawing packages translate engineering intent into clear construction documents. We prepare structural plans, sections, details, foundation drawings, and notes that support plan review and field execution. Every sheet is coordinated with applicable codes and jurisdiction-specific requirements so contractors and owners can move from design into permitting with confidence. Working alongside our structural engineers and estimators, we keep drawings buildable, consistent, and aligned with the calculations that support them.',
     points: [
       'Permit-ready structural plans, sections, and details',
       'Foundation plans, schedules, and connection details',
@@ -354,7 +354,7 @@ export const CONTENT_SERVICES: ContentService[] = [
       'Photorealistic visualizations and immersive walkthroughs that help stakeholders experience a project before construction begins.',
     supportsTitle: 'See the build before it starts',
     details:
-      'Great design deserves to be understood before it is built. Our BIM modeling, rendering, and visualization services bridge the gap between technical drawings and reality, allowing clients, developers, architects, contractors, and investors to experience a project long before construction begins. Using industry-leading visualization technologies, we transform architectural concepts, engineering drawings, and BIM models into highly detailed, photorealistic representations that accurately showcase materials, lighting, textures, spatial relationships, and overall design intent. From luxury residences and commercial interiors to hospitality, healthcare, and industrial facilities, clear visualization supports better decisions, fewer revisions, and faster approvals.',
+      'Design should be understood before it is built. Our BIM modeling, rendering, and visualization services connect technical drawings to reality, giving clients, developers, architects, contractors, and investors a clear view of the project before construction begins. We transform architectural concepts, engineering drawings, and BIM models into photorealistic representations that show materials, lighting, textures, spatial relationships, and design intent. Across luxury residences, commercial interiors, hospitality, healthcare, and industrial facilities, clear visualization drives better decisions, fewer revisions, and faster approvals.',
     points: [
       'Photorealistic renderings of interiors and exteriors',
       'Architectural walkthrough and flythrough animations',
@@ -393,9 +393,9 @@ export const CONTENT_SERVICES: ContentService[] = [
     ico: 'bid',
     name: 'Property Acquisition',
     summary:
-      'Strategic property acquisition — identifying and evaluating high-potential assets through discreet, relationship-driven opportunities.',
+      'Strategic property acquisition: identifying and evaluating high-potential assets through discreet, relationship-driven opportunities.',
     details:
-      'We look at property differently. Every opportunity begins with understanding the property, the numbers, and the circumstances behind it. From there, our team evaluates the opportunity and determines whether there is a path forward that makes sense. For property owners, that means having the opportunity to explore a direct transaction based on the property\'s actual condition, potential, and underlying fundamentals. For us, it means identifying properties where thoughtful renovation, design, and execution can unlock significant value.',
+      'We look at property differently. Every opportunity begins with understanding the property, the numbers, and the circumstances behind it. From there, our team evaluates the opportunity and determines whether a path forward makes sense. For property owners, that means exploring a direct transaction based on the property\'s actual condition, potential, and underlying fundamentals. For us, it means identifying properties where targeted renovation, design, and execution can unlock significant value.',
     points: [
       'Distressed Properties',
       'Off-Market Deals',
@@ -406,7 +406,7 @@ export const CONTENT_SERVICES: ContentService[] = [
     ],
     whyUs: [
       'Once an opportunity fits our criteria, our construction and design expertise becomes a major part of the equation. We can evaluate what needs to be renovated, what it will realistically cost, how the property can be improved, and what the finished asset could become.',
-      'Our estimating, architectural, and engineering capabilities allow us to approach renovation projects with a level of detail that goes beyond simply buying and reselling property.',
+      'Our estimating, architectural, and engineering capabilities allow us to approach renovation projects with a level of detail that goes beyond buying and reselling property.',
     ],
     ctaTitle: 'Have a property to discuss?',
     ctaText:
@@ -420,7 +420,7 @@ export const AUDIENCE_CONTENT = [
     code: 'GC',
     icon: 'gc',
     intro:
-      'From quantity takeoffs and cost estimating to BIM coordination and construction documentation, we provide comprehensive preconstruction support that helps general contractors bid with confidence, reduce risk, and deliver successful projects—all through a single, trusted partner.',
+      'From quantity takeoffs and cost estimating to BIM coordination and construction documentation, we provide full-scope preconstruction support that helps general contractors bid with confidence, reduce risk, and deliver successful projects. One firm, one point of contact.',
     details:
       'Use organized takeoffs, visible pricing logic, and revision-ready documentation to decide which opportunities deserve a bid and carry the number into review.',
     items: ['Complete bid and scope support', 'Trade-by-trade quantities', 'Addenda and revision coordination', 'Editable, review-ready documentation'],
@@ -430,9 +430,9 @@ export const AUDIENCE_CONTENT = [
     code: 'SUB',
     icon: 'sub',
     intro:
-      'Behind every successful project is a skilled subcontractor whose work brings the vision to life. We understand the pressure of pricing projects accurately while balancing tight deadlines and competitive markets.',
+      'Subcontractors carry the project from paper to reality. We understand the pressure of pricing work accurately while balancing tight deadlines and competitive markets.',
     details:
-      'Our team provides precise quantity takeoffs, trade-specific cost estimates, and dependable preconstruction support, giving you the confidence to bid smarter, protect your margins, and focus on what you do best—building with excellence.',
+      'Our team provides precise quantity takeoffs, trade-specific cost estimates, and dependable preconstruction support so you can bid smarter, protect your margins, and stay focused on the field.',
     items: ['Single-trade takeoffs', 'Labor and material breakdowns', 'Scope clarifications and exclusions', 'Bid-ready trade support'],
   },
   {
@@ -505,37 +505,37 @@ export const TRADE_CONTENT = [
 ];
 
 export const ABOUT_CONTENT = {
-  lede: 'We believe preconstruction shouldn\'t be fragmented.',
+  lede: 'Preconstruction should not be fragmented.',
   paragraphs: [
-    'Contractors, developers, homeowners, and investors shouldn\'t have to coordinate multiple firms to move a project from concept to construction. Our mission is to bring every essential preconstruction service under one roof, creating a single, trusted partner for planning, estimating, design coordination, and construction documentation.',
-    'From quantity takeoffs and cost estimating to BIM coordination, construction drawings, engineering support, and code-compliant documentation, we combine technical expertise with technology-driven workflows to help our clients make informed decisions with confidence.',
-    'We are committed to raising the standard of preconstruction by replacing assumptions with data, improving collaboration through intelligent coordination, and delivering solutions that are accurate, reliable, and built around our clients\' success. Whether you\'re bidding your next project, evaluating a property acquisition, or preparing a development for construction, our goal is to provide the expertise, insight, and support you need all under one roof.',
+    'Contractors, developers, homeowners, and investors should not have to coordinate multiple firms to move a project from concept to construction. We bring every core preconstruction service under one roof: planning, estimating, design coordination, and construction documentation from a single partner.',
+    'Quantity takeoffs, cost estimating, BIM coordination, construction drawings, engineering support, and code-compliant documentation all run through one team. Technical expertise and technology-driven workflows help clients make informed decisions faster.',
+    'We replace assumptions with data, improve collaboration through coordinated workflows, and deliver solutions that are accurate, reliable, and built around client success. Bidding a project, evaluating a property acquisition, or preparing a development for construction all start with the same need: expertise, insight, and support in one place.',
   ],
   benefits: [
     [
       'TURNAROUND',
       'Faster Turnaround Time',
-      'While other companies take a lot of unnecessary time delivering the cost estimation. We complete the work on time and without errors.',
+      'Other firms pad turnaround schedules. We deliver cost estimates on time and without errors.',
     ],
     [
       'ACCURACY',
       'Accuracy of Data',
-      'We\'ll provide you with accurate data according to the instructions you give. We\'ll make sure that you don\'t have to rush after receiving the work.',
+      'You receive accurate data matched to your instructions. No scrambling after delivery.',
     ],
     [
       'BID EDGE',
       'Bidding Edge',
-      'With our Market Analytical Proprietary Technology our estimates are powered with Market Trends — pushing the bid in the final rounds.',
+      'With our Market Analytical Proprietary Technology, estimates incorporate live market trends, giving your bid an edge in final rounds.',
     ],
     [
       'DEDICATED',
       'Dedicated Estimator',
-      'For contractors and subcontractors to keep their operational cost to a minimum we offer a designated estimator, only allocated to your needs.',
+      'Contractors and subcontractors get a designated estimator allocated exclusively to their workload, keeping operational costs low.',
     ],
     [
       'SUPPORT',
       '24/7 Support',
-      'Once project files are shared with us — rest assured, it is as much our responsibility as it is yours.',
+      'Once project files are shared with us, they are as much our responsibility as they are yours.',
     ],
   ],
 };
@@ -546,8 +546,8 @@ export const ACQUISITION_CONTENT = {
   lede: 'We look at property differently.',
   intro: [
     'Every opportunity begins with understanding the property, the numbers, and the circumstances behind it. From there, our team evaluates the opportunity and determines whether there is a path forward that makes sense.',
-    'For property owners, that means having the opportunity to explore a direct transaction based on the property\'s actual condition, potential, and underlying fundamentals.',
-    'For us, it means identifying properties where thoughtful renovation, design, and execution can unlock significant value.',
+    'For property owners, that means a direct conversation based on the property\'s actual condition, potential, and underlying fundamentals.',
+    'For us, it means identifying properties where targeted renovation, design, and execution can unlock significant value.',
   ],
   features: [
     { title: 'Property-First Evaluation', description: 'Understand condition, potential, and fundamentals before structure' },
@@ -561,7 +561,7 @@ export const ACQUISITION_CONTENT = {
     'Analyze potential before proposing a path forward',
     'Determine an appropriate acquisition structure',
     'Present the opportunity for consideration',
-    'Understand the property first — then what makes sense',
+    'Understand the property first, then determine what makes sense',
   ] as const,
   propertyTypes: [
     { title: 'Residential', subtitle: 'Single-family, multi-family, and value-add homes', image: '/images/properties/residential.jpg' },
@@ -580,7 +580,7 @@ export const ACQUISITION_CONTENT = {
     'We don\'t believe every property should be approached the same way.',
     'Our team evaluates the property, considers its current condition, estimates the investment required to improve it, and analyzes its potential.',
     'From that evaluation, we can determine an appropriate acquisition structure and present the opportunity for consideration.',
-    'The objective is simple: understand the property first, then determine what makes sense.',
+    'The objective is clear: understand the property first, then determine what makes sense.',
   ],
   advantageTitle: 'Where Our Advantage Begins',
   advantageIntro:
@@ -592,11 +592,11 @@ export const ACQUISITION_CONTENT = {
     'What the finished asset could become.',
   ],
   advantageClose:
-    'Our estimating, architectural, and engineering capabilities allow us to approach renovation projects with a level of detail that goes beyond simply buying and reselling property. We identify the opportunity, understand the investment required, and develop a strategy designed to create meaningful value.',
+    'Our estimating, architectural, and engineering capabilities let us approach renovation projects with a level of detail that goes beyond buying and reselling property. We identify the opportunity, understand the investment required, and develop a strategy designed to create lasting value.',
   stepsTitle: 'From Acquisition to Transformation',
   steps: ['Evaluate', 'Acquire', 'Design', 'Renovate', 'Create Value'] as const,
   stepsBody:
-    'We look for properties where the right combination of acquisition discipline, construction expertise, and thoughtful design can transform an existing asset into something substantially better. That is where we see opportunity.',
+    'We look for properties where the right combination of acquisition discipline, construction expertise, and deliberate design can transform an existing asset into something substantially better. That is where we see opportunity.',
   ctaTitle: 'Have a Property to Discuss?',
   ctaText:
     'If you\'re considering your options for a property, we\'d be happy to take a look. Provide us with the available information, and our team will evaluate the property and its potential.',
@@ -629,7 +629,7 @@ export const HOME_DIVISIONS = [
   {
     title: 'Estimation & Design',
     description:
-      'Cost estimation, architectural drawings, structural and MEP engineering, BIM coordination, and visualization — buildable packages for contractors and developers.',
+      'Cost estimation, architectural drawings, structural and MEP engineering, BIM coordination, and visualization. Buildable packages for contractors and developers.',
     href: '/services',
     image: '/images/divisions/estimation-design.jpg',
     cta: 'Explore Our Services',
@@ -637,7 +637,7 @@ export const HOME_DIVISIONS = [
   {
     title: 'Property Acquisition',
     description:
-      'Distressed assets, off-market deals, seller advisory, investor partnerships, and market analysis — discreet sourcing with construction-backed diligence.',
+      'Distressed assets, off-market deals, seller advisory, investor partnerships, and market analysis. Discreet sourcing with construction-backed diligence.',
     href: '/services/acquisitions-investments',
     image: '/images/divisions/property-acquisition.jpg',
     cta: 'Discuss Opportunities',
@@ -734,12 +734,12 @@ export const MARKET_SECTORS = [
 export const MARKETS_CONTENT = {
   title: 'Markets We Serve',
   lede:
-    'Our multidisciplinary expertise extends across a diverse range of industries and building sectors throughout the United States. Whether supporting a new development, renovation, expansion, or infrastructure project, we deliver coordinated preconstruction solutions tailored to the unique technical and operational requirements of each market.',
+    'Our multidisciplinary expertise covers a wide range of industries and building sectors throughout the United States. New developments, renovations, expansions, and infrastructure projects all receive coordinated preconstruction solutions tailored to the technical and operational requirements of each market.',
   coordinationTitle: 'Integrated Coordination Across Every Project',
   coordinationBody: [
-    'Regardless of the market or project type, successful construction begins with coordinated planning. By bringing Architectural Design, Structural Engineering, MEP Engineering, and Construction Estimating together under one roof, we create fully integrated preconstruction solutions that reduce coordination gaps, minimize costly design conflicts, and streamline project delivery.',
-    'Our multidisciplinary teams collaborate throughout the design process, ensuring that every structural member, mechanical system, electrical layout, plumbing network, and architectural element works together seamlessly. This coordinated approach significantly reduces the margin for error, improves constructability, shortens review cycles, and helps projects move more efficiently from concept to construction.',
-    'Cost is considered from the very beginning—not after the design is complete. By integrating our estimating professionals into the design process, we continuously evaluate material quantities, construction methods, and project costs to help develop practical, buildable solutions that align with the client\'s budget while maintaining quality, performance, and code compliance.',
+    'Regardless of the market or project type, successful construction begins with coordinated planning. Bringing Architectural Design, Structural Engineering, MEP Engineering, and Construction Estimating together under one roof reduces coordination gaps, minimizes costly design conflicts, and accelerates project delivery.',
+    'Our multidisciplinary teams collaborate throughout design so every structural member, mechanical system, electrical layout, plumbing network, and architectural element aligns. This coordinated approach cuts the margin for error, improves constructability, shortens review cycles, and moves projects more efficiently from concept to construction.',
+    'Cost enters the conversation at project start, not after design is complete. Our estimating professionals work inside the design process, continuously evaluating material quantities, construction methods, and project costs to develop practical, buildable solutions that align with the client\'s budget while maintaining quality, performance, and code compliance.',
   ],
   closing:
     'From concept to construction, our integrated approach delivers coordinated architectural, structural, MEP, and estimating solutions that reduce risk, save time, and maximize project value.',

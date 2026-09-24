@@ -53,12 +53,31 @@ export default async function TradePage({ params }: { params: Promise<{ slug: st
               <PhoneLink className="btn btn-on-dark">Talk through your scope</PhoneLink>
             </div>
           </div>
-          <div className="draw">
-            <Svg markup={D[tr.slug]()} />
-            <div className="draw-cap">
-              <b>Division {tr.div}</b>
-              <span>Typical detail — drawn for illustration</span>
-            </div>
+          <div className="trade-hero-visual">
+            {photo ? (
+              <>
+                <div className="media trade-hero-photo">
+                  <Photo src={photo.src} alt={photo.alt} fill priority sizes="(max-width: 1000px) 100vw, 55vw" />
+                </div>
+                <div className="trade-hero-diagram">
+                  <div className="draw">
+                    <Svg markup={D[tr.slug]()} />
+                    <div className="draw-cap">
+                      <b>Division {tr.div}</b>
+                      <span>Typical detail, drawn for illustration</span>
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="draw">
+                <Svg markup={D[tr.slug]()} />
+                <div className="draw-cap">
+                  <b>Division {tr.div}</b>
+                  <span>Typical detail, drawn for illustration</span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>

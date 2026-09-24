@@ -26,8 +26,15 @@ export default function Who() {
     <>
       <PageHead
         eyebrow="Who we serve"
-        title="Support shaped around your role in the bid"
-        lede="From general contractors assembling complete bids to specialty subcontractors protecting margins under tight deadlines — precise takeoffs and dependable preconstruction support."
+        title={
+          <>
+            Support built around your role in the <span className="accent-word">bid.</span>
+          </>
+        }
+        lede="From general contractors assembling complete bids to specialty subcontractors protecting margins under tight deadlines. Precise takeoffs and dependable preconstruction support."
+        image="/images/projects/industrial.jpg"
+        imageAlt="Industrial construction representing contractor support"
+        priority
       />
       <section className="band">
         <div className="wrap stack-lg">
@@ -49,7 +56,7 @@ export default function Who() {
                   <Spec title="Typical support" unit={a.code} items={a.items} />
                 </div>
                 <div className="media project-photo">
-                  <Photo src={image} alt={`${a.name} — CSI & Design support`} fill sizes="(max-width: 1000px) 100vw, 42vw" />
+                  <Photo src={image} alt={`${a.name}: CSI & Design support`} fill sizes="(max-width: 1000px) 100vw, 42vw" />
                 </div>
               </MotionReveal>
             );

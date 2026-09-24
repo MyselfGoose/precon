@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CTA, PageHead, PhoneLink, Photo, WhatsAppLink } from '../components';
+import { CTA, PageHead, PhoneLink, WhatsAppLink } from '../components';
 import { BRAND } from '@/lib/content';
 import { createMetadata } from '@/lib/metadata';
 
@@ -14,13 +14,19 @@ export default function Contact() {
     <>
       <PageHead
         eyebrow={`Contact ${BRAND.name}`}
-        title="Bring the next project decision into focus"
-        lede="Share the project information you have. We will help identify the right service, scope, and next step — whether you need an estimate, design package, or a property acquisition conversation."
+        title={
+          <>
+            Build Smarter. Invest <span className="accent-word">Better.</span>
+          </>
+        }
+        lede="Share the project information you have. We will help identify the right service, scope, and next step: estimate, design package, or property acquisition conversation."
+        image="/images/hero/home-hero.jpg"
+        imageAlt="American suburban home: CSI & Design estimation, design, and acquisition"
+        priority
       />
       <section className="band">
-        <div className="wrap contact-grid">
-          <div className="stack-lg">
-            <div className="grid-2">
+        <div className="wrap stack-lg">
+          <div className="grid-2">
               <div className="contact-block">
                 <span className="k">Phone</span>
                 <PhoneLink className="v">{BRAND.phoneDisplay}</PhoneLink>
@@ -45,19 +51,10 @@ export default function Contact() {
                 </a>
                 <span className="hint">Serving project teams across the United States</span>
               </div>
-            </div>
-            <div className="note">
-              <b>Have project information ready?</b> Use the <Link href="/quote">project request form</Link> to capture
-              the scope, service, timing, and gaps in one place — or WhatsApp us at {BRAND.phoneDisplay}.
-            </div>
           </div>
-          <div className="media project-photo" style={{ minHeight: 420 }}>
-            <Photo
-              src="/images/hero/home-hero.jpg"
-              alt="American suburban home — CSI & Design estimation, design, and acquisition"
-              fill
-              sizes="(max-width: 1000px) 100vw, 48vw"
-            />
+          <div className="note">
+            <b>Have project information ready?</b> Use the <Link href="/quote">project request form</Link> to capture
+            the scope, service, timing, and gaps in one place, or WhatsApp us at {BRAND.phoneDisplay}.
           </div>
         </div>
       </section>

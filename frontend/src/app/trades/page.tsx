@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import { CSI_TRADE_LIST, TRADES } from '@/lib/data';
 import { getCsiTradeNavItems } from '@/lib/estimation';
-import { Button, CTA, PageHead, Photo, TradeTile } from '../components';
+import { Button, CTA, PageHead, TradeTile } from '../components';
 import { createMetadata } from '@/lib/metadata';
-import { MotionReveal, MotionStagger } from '../motion';
+import { MotionStagger } from '../motion';
 
 export const metadata = createMetadata({
   title: 'Trades',
   description:
-    'CSI trade expertise across general construction, remodeling, restoration, MEP, structural, HVAC, and specialty trades — with detailed division takeoff pages.',
+    'CSI trade expertise across general construction, remodeling, restoration, MEP, structural, HVAC, and specialty trades, with detailed division takeoff pages.',
   path: '/trades',
 });
 
@@ -19,38 +19,24 @@ export default function TradesPage() {
     <>
       <PageHead
         eyebrow="CSI Trade Expertise"
-        title="Trade-specific estimating across every discipline"
-        lede="Estimates prepared in CSI MasterFormat — clear organization, consistency, and professional documentation whether you need one specialty scope or a full-building workbook."
+        title={
+          <>
+            CSI trade expertise, every division <span className="accent-word">covered.</span>
+          </>
+        }
+        lede="Estimates prepared in CSI MasterFormat. Clear organization, consistency, and professional documentation whether you need one specialty scope or a full-building workbook."
+        image="/images/divisions/estimation-design.jpg"
+        imageAlt="US construction crew estimating and coordinating on a job site"
+        priority
+        actions={
+          <>
+            <Button href="/estimation/trades">Browse specialty estimation →</Button>
+            <Link className="btn btn-ghost" href="#divisions">
+              Jump to division takeoffs
+            </Link>
+          </>
+        }
       />
-
-      <section className="band">
-        <div className="wrap stack-lg">
-          <div className="split">
-            <MotionReveal className="stack" y={16}>
-              <div className="eyebrow">Two ways in</div>
-              <h2>Specialty estimation pages, plus CSI MasterFormat division takeoffs</h2>
-              <p className="prose">
-                Use a specialty estimation page when you are pricing a trade scope from our CSI expertise list, or open a
-                MasterFormat division page for measured units, sheet references, sample output, and exclusions.
-              </p>
-              <div className="btn-row">
-                <Button href="/estimation/trades">Browse specialty estimation →</Button>
-                <Link className="btn btn-ghost" href="#divisions">
-                  Jump to division takeoffs
-                </Link>
-              </div>
-            </MotionReveal>
-            <MotionReveal className="media project-photo" delay={0.08} y={18}>
-              <Photo
-                src="/images/divisions/estimation-design.jpg"
-                alt="US construction crew estimating and coordinating on a job site"
-                fill
-                sizes="(max-width: 1000px) 100vw, 48vw"
-              />
-            </MotionReveal>
-          </div>
-        </div>
-      </section>
 
       <section className="band band-ground">
         <div className="wrap stack-lg">

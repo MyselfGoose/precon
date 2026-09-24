@@ -8,7 +8,7 @@ import { MotionItem, MotionStagger } from '../motion';
 export const metadata = createMetadata({
   title: 'Services',
   description:
-    'Estimating, architectural drawings, MEP engineering, structural engineering, 3D visualization, and property acquisition — all under one roof.',
+    'Estimating, architectural drawings, MEP engineering, structural engineering, 3D visualization, and property acquisition, all under one roof.',
   path: '/services',
 });
 
@@ -17,8 +17,15 @@ export default function ServicesPage() {
     <>
       <PageHead
         eyebrow="Services"
-        title="Every essential preconstruction service under one roof"
-        lede="Estimating, drawings, engineering, visualization, and property acquisition — one partner for planning, documentation, and the decisions before construction."
+        title={
+          <>
+            Every essential preconstruction service under one <span className="accent-word">roof.</span>
+          </>
+        }
+        lede="Estimating, drawings, engineering, visualization, and property acquisition. One partner for planning, documentation, and the decisions before construction."
+        image="/images/divisions/estimation-design.jpg"
+        imageAlt="Construction estimating and design coordination"
+        priority
       />
       <section className="band">
         <div className="wrap stack-lg">
@@ -42,7 +49,7 @@ export default function ServicesPage() {
           </MotionStagger>
           <div className="note">
             <b>Markets We Serve.</b> Residential, commercial, industrial, government &amp; public, infrastructure
-            &amp; civil, and hospitality &amp; recreation — see <Link href="/markets">Markets We Serve</Link>.
+            &amp; civil, and hospitality &amp; recreation. See <Link href="/markets">Markets We Serve</Link>.
             For trade-by-trade estimation pages, open <Link href="/estimation">Estimation</Link>.
           </div>
         </div>

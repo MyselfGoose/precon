@@ -241,7 +241,7 @@ export default function PropertyForm() {
           Supporting files <span className="optional">(optional)</span>
         </label>
         <label className="dropzone" htmlFor="p-files">
-          <b>Share photos, surveys, or documents</b> PDF, ZIP, or DWG up to 8 MB each (20 MB total) — or <u>browse files</u>
+          <b>Share photos, surveys, or documents</b> PDF, ZIP, or DWG up to 8 MB each (20 MB total), or <u>browse files</u>
         </label>
         <input
           id="p-files"
@@ -272,7 +272,7 @@ export default function PropertyForm() {
       </div>
       <div className="field full">
         <div className="consent">
-          <div className="consent-title">Consent — required before submitting</div>
+          <div className="consent-title">Consent (required before submitting)</div>
           <div className="check">
             <input
               required

@@ -267,10 +267,10 @@ export default function QuoteForm() {
                     type="checkbox"
                     id={`q-trade-div-${t.slug}`}
                     name="trade"
-                    value={`Div ${t.div} — ${t.name}`}
+                    value={`Div ${t.div}: ${t.name}`}
                   />
                   <label htmlFor={`q-trade-div-${t.slug}`}>
-                    Div {t.div} — {t.name}
+                    Div {t.div}: {t.name}
                   </label>
                 </div>
               ))}
@@ -334,7 +334,7 @@ export default function QuoteForm() {
           Project files <span className="optional">(optional)</span>
         </label>
         <label className="dropzone" htmlFor="q-files">
-          <b>Share your project files</b> PDF, ZIP, or DWG up to 8 MB each (20 MB total) — or <u>browse files</u> · paste a
+          <b>Share your project files</b> PDF, ZIP, or DWG up to 8 MB each (20 MB total), or <u>browse files</u> · paste a
           plan-room link in the notes for larger sets
         </label>
         <input
@@ -394,7 +394,7 @@ export default function QuoteForm() {
       </div>
       <div className="field full">
         <div className="consent">
-          <div className="consent-title">Consent — required before submitting</div>
+          <div className="consent-title">Consent (required before submitting)</div>
           <div className="check">
             <input
               required

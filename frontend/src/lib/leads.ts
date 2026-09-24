@@ -236,7 +236,7 @@ export function buildQuoteEmail(payload: QuoteLeadPayload, attachmentNames: stri
   ];
 
   return {
-    subject: `Quote request — ${payload.name}${payload.company ? ` (${payload.company})` : ''}`,
+    subject: `Quote request - ${payload.name}${payload.company ? ` (${payload.company})` : ''}`,
     html: `<div style="font-family:Georgia,serif;font-size:15px;line-height:1.5;color:#111;"><p>New project quote request from the website.</p><table>${rowsHtml(rows)}</table></div>`,
     text: `New project quote request from the website.\n\n${rowsText(rows)}`,
   };
@@ -259,7 +259,7 @@ export function buildAcquisitionEmail(
   ];
 
   return {
-    subject: `Property acquisition — ${payload.address}`,
+    subject: `Property acquisition - ${payload.address}`,
     html: `<div style="font-family:Georgia,serif;font-size:15px;line-height:1.5;color:#111;"><p>New property acquisition inquiry from the website.</p><table>${rowsHtml(rows)}</table></div>`,
     text: `New property acquisition inquiry from the website.\n\n${rowsText(rows)}`,
   };
@@ -305,7 +305,7 @@ export async function sendLeadEmail(input: {
   html: string;
   text: string;
   attachments: LeadAttachment[];
-  /** Honeypot — if filled, pretend success without sending. */
+  /** Honeypot: if filled, pretend success without sending. */
   website: string;
 }): Promise<SendLeadResult> {
   if (input.website) {

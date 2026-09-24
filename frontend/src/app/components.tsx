@@ -208,19 +208,79 @@ export function PageHead({
   title,
   lede,
   crumb,
+  image,
+  imageAlt,
+  priority = false,
+  variant = 'split',
+  actions,
 }: {
   eyebrow: string;
-  title: string;
+  title: React.ReactNode;
   lede?: string;
   crumb?: React.ReactNode;
+  image?: string;
+  imageAlt?: string;
+  priority?: boolean;
+  variant?: 'split' | 'dark';
+  actions?: React.ReactNode;
 }) {
+  const hasCover = Boolean(image);
+  const isDark = variant === 'dark' && hasCover;
+  const className = [
+    'page-head',
+    hasCover ? 'has-cover' : '',
+    isDark ? 'page-head-dark on-dark' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  const copy = (
+    <div className="stack page-head-copy">
+      {crumb && <div className="crumb">{crumb}</div>}
+      <div className="eyebrow">{eyebrow}</div>
+      <h1>{title}</h1>
+      {lede && <p className="lede">{lede}</p>}
+      {actions && <div className="btn-row page-head-actions">{actions}</div>}
+    </div>
+  );
+
+  if (!hasCover || !image) {
+    return (
+      <header className={className}>
+        <MotionReveal className="wrap" y={18}>
+          {copy}
+        </MotionReveal>
+      </header>
+    );
+  }
+
+  if (isDark) {
+    return (
+      <header className={className}>
+        <div className="page-head-dark-media" aria-hidden="true">
+          <Photo src={image} alt="" fill priority={priority} sizes="100vw" />
+          <span className="page-head-dark-overlay" />
+        </div>
+        <MotionReveal className="wrap page-head-dark-inner" y={18}>
+          {copy}
+        </MotionReveal>
+      </header>
+    );
+  }
+
   return (
-    <header className="page-head">
-      <MotionReveal className="wrap" y={18}>
-        {crumb && <div className="crumb">{crumb}</div>}
-        <div className="eyebrow">{eyebrow}</div>
-        <h1>{title}</h1>
-        {lede && <p className="lede">{lede}</p>}
+    <header className={className}>
+      <MotionReveal className="wrap page-head-grid" y={18}>
+        {copy}
+        <div className="media hero-photo page-head-photo">
+          <Photo
+            src={image}
+            alt={imageAlt ?? ''}
+            fill
+            priority={priority}
+            sizes="(max-width: 1000px) 100vw, 55vw"
+          />
+        </div>
       </MotionReveal>
     </header>
   );
@@ -343,7 +403,7 @@ export function Workbook({
         <i aria-hidden="true" />
         <i aria-hidden="true" />
         <i aria-hidden="true" />
-        <span className="t">{sample.title} — estimate.xlsx</span>
+        <span className="t">{sample.title} · estimate.xlsx</span>
       </div>
       <div className="win-tabs" aria-label="Workbook sections">
         {tabs.map((t) => (
@@ -434,7 +494,7 @@ export function DarkProcess({ teaser = false }: { teaser?: boolean }) {
           <h2>{SITE_COPY.process.title}</h2>
           {teaser && (
             <p className="lede process-teaser-lede">
-              From the working set to a review-ready package — four clear steps.
+              From the working set to a review-ready package. Four clear steps.
             </p>
           )}
         </MotionReveal>

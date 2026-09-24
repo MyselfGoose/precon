@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { CTA, PageHead, Photo } from '../../components';
+import { CTA, PageHead } from '../../components';
 import { createMetadata } from '@/lib/metadata';
 import {
   categoryAnchorId,
@@ -59,25 +59,18 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
             <Link href="/estimation">Estimation</Link> / {hub.name}
           </>
         }
+        image={HUB_IMAGES[slug as (typeof HUB_SLUGS)[number]]}
+        imageAlt={`${hub.name} estimation`}
+        priority
       />
       <section className="band">
         <div className="wrap stack-lg">
-          <div className="split">
-            <div className="stack">
-              {hub.intro.slice(0, 2).map((p) => (
-                <p className="prose" key={p.slice(0, 48)}>
-                  {p}
-                </p>
-              ))}
-            </div>
-            <div className="media project-photo">
-              <Photo
-                src={HUB_IMAGES[slug as (typeof HUB_SLUGS)[number]]}
-                alt={`${hub.name} estimation`}
-                fill
-                sizes="(max-width: 1000px) 100vw, 48vw"
-              />
-            </div>
+          <div className="stack">
+            {hub.intro.slice(0, 2).map((p) => (
+              <p className="prose" key={p.slice(0, 48)}>
+                {p}
+              </p>
+            ))}
           </div>
 
           {slug === 'general-construction' && (
@@ -86,7 +79,7 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
                 <div className="eyebrow">Trades under general construction</div>
                 <h2>Remodeling, new construction, demolition, ADUs &amp; more</h2>
                 <p className="prose">
-                  Open the trade estimation pages that sit under a GC bid — renovation and remodeling, ground-up new
+                  Open the trade estimation pages that sit under a GC bid: renovation and remodeling, ground-up new
                   construction, demolition, accessory dwellings, and the core building trades that complete the package.
                 </p>
               </div>

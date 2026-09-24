@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   ...createMetadata({
     title: BRAND.name,
     description:
-      'CSI & Design delivers estimation, architectural design, engineering coordination, and strategic property acquisition — from vision to value.',
+      'CSI & Design delivers estimation, architectural design, engineering coordination, and strategic property acquisition. From vision to value.',
     path: '/',
   }),
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://csianddesign.com'),

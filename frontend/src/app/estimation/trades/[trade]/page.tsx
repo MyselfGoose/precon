@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { CTA, PageHead, Photo, Spec, Workbook } from '../../../components';
+import { CTA, PageHead, Workbook } from '../../../components';
 import { createMetadata } from '@/lib/metadata';
 import { getTradeEstimation, TRADE_ESTIMATION_PAGES } from '@/lib/estimation';
 import { TRADES } from '@/lib/data';
@@ -31,53 +31,61 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
   const sample = page.sampleDivisionSlug
     ? TRADES.find((t) => t.slug === page.sampleDivisionSlug)?.sample
     : undefined;
+  const heroTitle = page.heroHeadline ?? page.name;
+  const heroImage = page.imageSrc ?? '/images/divisions/estimation-design.jpg';
 
   return (
     <>
       <PageHead
         eyebrow="Estimation · Trade"
-        title={page.name}
+        title={heroTitle}
         lede={page.headline}
         crumb={
           <>
             <Link href="/estimation">Estimation</Link> / <Link href="/estimation/trades">Trades</Link> / {page.name}
           </>
         }
+        image={heroImage}
+        imageAlt={page.imageAlt ?? `${page.name} estimation`}
+        priority
       />
       <section className="band">
         <div className="wrap stack-lg">
-          {page.imageSrc ? (
-            <div className="split" style={{ alignItems: 'start' }}>
-              <div className="stack">
-                <p className="prose">{page.lede}</p>
-                {page.intro.map((paragraph) => (
-                  <p className="prose" key={paragraph.slice(0, 48)}>
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-              <div className="media project-photo">
-                <Photo
-                  src={page.imageSrc}
-                  alt={page.imageAlt ?? `${page.name} — CSI & Design`}
-                  fill
-                  sizes="(max-width: 1000px) 100vw, 48vw"
-                />
-              </div>
-            </div>
-          ) : (
-            <>
-              <p className="prose">{page.lede}</p>
-              {page.intro.map((paragraph) => (
-                <p className="prose" key={paragraph.slice(0, 48)}>
-                  {paragraph}
-                </p>
-              ))}
-            </>
-          )}
+          <div className="stack">
+            <p className="prose">{page.lede}</p>
+            {page.intro.map((paragraph) => (
+              <p className="prose" key={paragraph.slice(0, 48)}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
           <div className="grid-2">
-            <Spec title="What we estimate" unit="SCOPE" items={page.whatWeEstimate} />
-            <Spec title="What's included" unit="DELIVERABLE" items={page.whatsIncluded} />
+            <div className="spec">
+              <div className="spec-h">
+                <h4>What we estimate</h4>
+                <span className="u">SCOPE</span>
+              </div>
+              <ul>
+                {page.whatWeEstimate.map((item) => (
+                  <li key={item}>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="spec">
+              <div className="spec-h">
+                <h4>What&apos;s included</h4>
+                <span className="u">DELIVERABLE</span>
+              </div>
+              <ul>
+                {page.whatsIncluded.map((item) => (
+                  <li key={item}>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           {sample ? (
             <div className="stack">

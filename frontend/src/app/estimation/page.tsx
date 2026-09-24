@@ -7,7 +7,7 @@ import { MotionItem, MotionStagger } from '../motion';
 export const metadata = createMetadata({
   title: 'Estimation Services',
   description:
-    'CSI Format estimating for general construction, industrial projects, public work, and trade contractors — powered by proprietary market intelligence.',
+    'CSI Format estimating for general construction, industrial projects, public work, and trade contractors, powered by proprietary market intelligence.',
   path: '/estimation',
 });
 
@@ -17,8 +17,15 @@ export default function EstimationPage() {
     <>
       <PageHead
         eyebrow="Estimation"
-        title="Accurate takeoffs. Competitive bids. Protected margins."
-        lede="Every estimate is prepared in CSI Format and enhanced by our proprietary data analytics platform — combining real-time supplier pricing, regional labor trends, historical project data, and market intelligence."
+        title={
+          <>
+            Accurate takeoffs. Competitive bids. Protected <span className="accent-word">margins.</span>
+          </>
+        }
+        lede="Every estimate is prepared in CSI Format and enhanced by our proprietary data analytics platform, combining real-time supplier pricing, regional labor trends, historical project data, and market intelligence."
+        image="/images/divisions/estimation-design.jpg"
+        imageAlt="Construction estimating and design coordination"
+        priority
       />
       <section className="band">
         <div className="wrap stack-lg">
@@ -61,7 +68,7 @@ export default function EstimationPage() {
             ))}
           </MotionStagger>
           <div className="note">
-            <b>Why us?</b> Estimating isn&apos;t just about quantities — it&apos;s about intelligence. We help you win the right work at the right price.{' '}
+            <b>Why us?</b> Estimating starts with quantities. Intelligence wins the bid. We help you win the right work at the right price.{' '}
             <Link href="/estimation/trades">View all trade estimation services →</Link>
           </div>
         </div>

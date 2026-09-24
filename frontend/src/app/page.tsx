@@ -20,7 +20,7 @@ import { MotionHeroItem, MotionItem, MotionReveal, MotionStagger, CountUp } from
 export const metadata = createMetadata({
   title: 'Preconstruction Solutions for a Stronger Tomorrow',
   description:
-    'From detailed estimates and architectural design to strategic property acquisition — CSI & Design provides the expertise, data, and relationships to move your project from vision to value.',
+    'From detailed estimates and architectural design to strategic property acquisition. CSI & Design provides the expertise, data, and relationships to move your project from vision to value.',
   path: '/',
 });
 
@@ -31,7 +31,7 @@ const homeFaq: [string, string][] = [
   ],
   [
     'What do I need to send you?',
-    'Start with the PDF plan set and specifications you have. Include the trades, project location, and important date. If the set is incomplete, say so — we will identify what needs to be confirmed.',
+    'Start with the PDF plan set and specifications you have. Include the trades, project location, and important date. If the set is incomplete, say so. We will identify what needs to be confirmed.',
   ],
   [
     'How quickly can you help?',
@@ -70,7 +70,7 @@ export default function Home() {
             </MotionHeroItem>
             <MotionHeroItem delay={0.22}>
               <p className="lede">
-                From detailed estimates and architectural design to strategic property acquisition — we provide the
+                From detailed estimates and architectural design to strategic property acquisition. We provide the
                 expertise, data, and relationships to move your project from vision to value.
               </p>
             </MotionHeroItem>
@@ -177,8 +177,8 @@ export default function Home() {
             <div className="eyebrow">Services</div>
             <h2>What we bring together</h2>
             <p className="prose">
-              From estimating and quantity takeoffs to drawings, engineering, visualization, and property acquisition —
-              every essential preconstruction service under one roof.
+              From estimating and quantity takeoffs to drawings, engineering, visualization, and property acquisition.
+              Every essential preconstruction service under one roof.
             </p>
           </div>
           <MotionStagger className="grid-3">
@@ -231,8 +231,8 @@ export default function Home() {
             <div className="eyebrow">What you receive</div>
             <h2>A deliverable your team can use immediately.</h2>
             <p className="prose">
-              Not a summary number. A line-item workbook you can open, edit, review, and hand to a project manager —
-              organized around the way your team makes decisions.
+              A line-item workbook you can open, edit, review, and hand to a project manager.
+              Organized around the way your team makes decisions.
             </p>
           </div>
           <Workbook
@@ -251,7 +251,7 @@ export default function Home() {
               <h3>Fits the tools you already use</h3>
               <p className="prose">
                 Takeoffs in Bluebeam Revu, Planswift and On-Screen Takeoff. Estimates arrive as editable Excel workbooks
-                with formulas intact — ready for your review, not locked away.
+                with formulas intact, ready for your review, not locked away.
               </p>
             </div>
           </div>
@@ -318,7 +318,7 @@ export default function Home() {
 
       <CTA
         title="Ready to move your project forward?"
-        text={`Share your plans or property details with ${BRAND.name}. We will help identify the right next step — estimate, design package, or acquisition conversation.`}
+        text={`Share your plans or property details with ${BRAND.name}. We will help identify the right next step: estimate, design package, or acquisition conversation.`}
       />
     </>
   );

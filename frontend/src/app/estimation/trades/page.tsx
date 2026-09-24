@@ -17,13 +17,20 @@ export default function TradeEstimationIndex() {
     <>
       <PageHead
         eyebrow="Estimation · Trade contractors"
-        title={hub?.name ?? 'Trade Contractors'}
+        title={
+          <>
+            Trade-specific expertise. CSI-organized. <span className="accent-word">Bid-ready.</span>
+          </>
+        }
         lede={hub?.lede}
         crumb={
           <>
             <Link href="/estimation">Estimation</Link> / Trade contractors
           </>
         }
+        image="/images/divisions/estimation-design.jpg"
+        imageAlt="Trade-specific construction estimating"
+        priority
       />
       <section className="band">
         <div className="wrap stack-lg">
@@ -50,7 +57,7 @@ export default function TradeEstimationIndex() {
           )}
         </div>
       </section>
-      <CTA title="Request a trade-specific estimate" text="Tell us your trade, project location, and bid date — then send the sheets that matter." />
+      <CTA title="Request a trade-specific estimate" text="Tell us your trade, project location, and bid date. Then send the sheets that matter." />
     </>
   );
 }

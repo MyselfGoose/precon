@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { CTA, PageHead, Photo } from '../components';
+import { CTA, PageHead } from '../components';
 import { createMetadata } from '@/lib/metadata';
 import { MARKETS_CONTENT, MARKET_SECTORS } from '@/lib/content';
-import { MotionItem, MotionReveal, MotionStagger } from '../motion';
+import { MotionItem, MotionStagger } from '../motion';
 
 export const metadata = createMetadata({
   title: 'Markets We Serve',
@@ -25,8 +25,15 @@ export default function MarketsPage() {
     <>
       <PageHead
         eyebrow="Markets We Serve"
-        title={MARKETS_CONTENT.title}
+        title={
+          <>
+            One accountable team across every market we <span className="accent-word">serve.</span>
+          </>
+        }
         lede="Coordinated architectural, structural, MEP, and estimating support across the markets we work in every week."
+        image="/images/projects/public-institutional.jpg"
+        imageAlt="US public and institutional construction"
+        priority
       />
       <section className="band">
         <div className="wrap stack-lg">
@@ -57,35 +64,25 @@ export default function MarketsPage() {
       </section>
       <section className="band band-ground">
         <div className="wrap stack-lg">
-          <div className="split">
-            <MotionReveal className="stack" y={16}>
-              <div className="eyebrow">Integrated delivery</div>
-              <h2>{MARKETS_CONTENT.coordinationTitle}</h2>
-              <p className="prose">{MARKETS_CONTENT.coordinationBody[0]}</p>
-              <p className="prose">{MARKETS_CONTENT.coordinationBody[1]}</p>
-              <p className="prose">{MARKETS_CONTENT.coordinationBody[2]}</p>
-              <div className="note">
-                <b>One accountable team.</b> {MARKETS_CONTENT.closing}
-              </div>
-              <p className="prose">
-                Looking for trade-specific estimating? Explore our <Link href="/estimation">estimation services</Link>{' '}
-                or review <Link href="/services">construction drawings and engineering</Link>.
-              </p>
-            </MotionReveal>
-            <MotionReveal className="media project-photo" delay={0.08} y={18}>
-              <Photo
-                src="/images/projects/public-institutional.jpg"
-                alt="US public and institutional construction — American civic architecture"
-                fill
-                sizes="(max-width: 1000px) 100vw, 48vw"
-              />
-            </MotionReveal>
+          <div className="stack">
+            <div className="eyebrow">Integrated delivery</div>
+            <h2>{MARKETS_CONTENT.coordinationTitle}</h2>
+            <p className="prose">{MARKETS_CONTENT.coordinationBody[0]}</p>
+            <p className="prose">{MARKETS_CONTENT.coordinationBody[1]}</p>
+            <p className="prose">{MARKETS_CONTENT.coordinationBody[2]}</p>
+            <div className="note">
+              <b>One accountable team.</b> {MARKETS_CONTENT.closing}
+            </div>
+            <p className="prose">
+              Looking for trade-specific estimating? Explore our <Link href="/estimation">estimation services</Link>{' '}
+              or review <Link href="/services">construction drawings and engineering</Link>.
+            </p>
           </div>
         </div>
       </section>
       <CTA
         title="Tell us about your market and project"
-        text="Share the sector, project type, and decision in front of you — we will define the right coordinated package."
+        text="Share the sector, project type, and decision in front of you. We will define the right coordinated package."
       />
     </>
   );

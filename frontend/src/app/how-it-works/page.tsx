@@ -16,8 +16,15 @@ export default function HowItWorks() {
     <>
       <PageHead
         eyebrow={SITE_COPY.process.eyebrow}
-        title={SITE_COPY.process.title}
+        title={
+          <>
+            From working set to review-ready <span className="accent-word">package.</span>
+          </>
+        }
         lede="We start with what you have, define the decision the work needs to support, and produce organized technical or estimating deliverables with a visible basis."
+        image="/images/hero/engineering-hero.jpg"
+        imageAlt="Engineering and preconstruction coordination"
+        priority
       />
       <DarkProcess />
       <section className="band">
@@ -68,7 +75,7 @@ export default function HowItWorks() {
             <div className="eyebrow">Choose your path</div>
             <h2>Estimation &amp; design, or property acquisition</h2>
             <p className="prose">
-              The same disciplined intake supports bid packages and technical documentation — or property opportunities
+              The same disciplined intake supports bid packages and technical documentation, or property opportunities
               you want evaluated for acquisition.
             </p>
           </div>
@@ -77,7 +84,7 @@ export default function HowItWorks() {
               <div className="code">PATH 01</div>
               <h3>Estimation &amp; Design</h3>
               <p>
-                Trade takeoffs, full-building estimates, architectural and MEP documentation — organized for bidding
+                Trade takeoffs, full-building estimates, architectural and MEP documentation, organized for bidding
                 and construction decisions.
               </p>
               <div className="btn-row" style={{ marginTop: 16 }}>
@@ -91,7 +98,7 @@ export default function HowItWorks() {
               <div className="code">PATH 02</div>
               <h3>Property Acquisition</h3>
               <p>
-                Share a property opportunity for evaluation — we identify renovation and design upside and a clear next
+                Share a property opportunity for evaluation. We identify renovation and design upside and a clear next
                 step.
               </p>
               <div className="btn-row" style={{ marginTop: 16 }}>

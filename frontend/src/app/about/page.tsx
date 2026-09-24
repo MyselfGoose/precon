@@ -7,7 +7,7 @@ import { MotionItem, MotionReveal, MotionStagger } from '../motion';
 export const metadata = createMetadata({
   title: 'About',
   description:
-    'Learn how CSI & Design brings every essential preconstruction service under one roof — estimating, design coordination, and construction documentation.',
+    'Learn how CSI & Design brings every essential preconstruction service under one roof: estimating, design coordination, and construction documentation.',
   path: '/about',
 });
 
@@ -16,8 +16,15 @@ export default function About() {
     <>
       <PageHead
         eyebrow={`About ${BRAND.name}`}
-        title={ABOUT_CONTENT.lede}
+        title={
+          <>
+            Preconstruction, under one <span className="accent-word">roof.</span>
+          </>
+        }
         lede="A single, trusted partner for planning, estimating, design coordination, and construction documentation."
+        image="/images/approach/building.jpg"
+        imageAlt="American Colonial-style home: CSI & Design preconstruction partnership"
+        priority
       />
       <section className="band">
         <div className="wrap stack-lg">
@@ -29,7 +36,7 @@ export default function About() {
             <MotionReveal className="media project-photo" delay={0.08} y={18}>
               <Photo
                 src="/images/approach/building.jpg"
-                alt="American Colonial-style home — CSI & Design preconstruction partnership"
+                alt="American Colonial-style home: CSI & Design preconstruction partnership"
                 fill
                 sizes="(max-width: 1000px) 100vw, 48vw"
               />
@@ -60,8 +67,8 @@ export default function About() {
               </p>
             </div>
             <div className="note">
-              <b>Built around your project.</b> Whether you are bidding, planning a development, evaluating a property,
-              or coordinating a technical package, we shape the support around the decisions in front of you.
+              <b>Built around your project.</b> Bidding, planning a development, evaluating a property,
+              or coordinating a technical package: we shape the support around the decisions in front of you.
             </div>
           </div>
         </div>

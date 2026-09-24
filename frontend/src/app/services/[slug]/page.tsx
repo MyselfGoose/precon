@@ -70,7 +70,7 @@ const ESTIMATION_PROJECT_TYPE_CARDS: EstimationProjectTypeCard[] = [
     code: 'REN',
     name: 'Renovation & Remodeling',
     lede:
-      'Tenant improvements, residential remodels, commercial renovations, adaptive reuse, and new construction additions — estimated with existing conditions and market-driven pricing.',
+      'Tenant improvements, residential remodels, commercial renovations, adaptive reuse, and new construction additions. Estimated with existing conditions and market-driven pricing.',
   },
 ];
 
@@ -259,7 +259,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <PropertyForm />
               <div className="note">
                 <b>What happens next.</b> Our team evaluates the property, its condition, the investment required to
-                improve it, and its potential — then determines whether an acquisition approach makes sense.
+                improve it, and its potential, then determines whether an acquisition approach makes sense.
               </div>
             </div>
           </div>
@@ -270,19 +270,26 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   const relatedMode = content.relatedMode ?? 'services';
   const photoSrc = content.photoSrc ?? '/images/hero/engineering-hero.jpg';
-  const photoAlt = content.photoAlt ?? `${content.name} — CSI & Design`;
+  const photoAlt = content.photoAlt ?? `${content.name}: CSI & Design`;
+  const isBim = content.slug === 'bim-visualization';
+  const heroTitle = content.catchphrase ?? content.supportsTitle ?? content.name;
+  const heroLede = content.catchphrase ? content.summary : content.summary;
 
   return (
       <>
         <PageHead
           eyebrow={`${content.code} · Service`}
-          title={content.name}
-          lede={content.summary}
+          title={heroTitle}
+          lede={heroLede}
           crumb={
             <>
               <Link href="/services">Services</Link> / {content.name}
             </>
           }
+          image={photoSrc}
+          imageAlt={photoAlt}
+          priority
+          variant={isBim ? 'dark' : 'split'}
         />
         <section className="band">
           <div className="wrap stack-lg">
@@ -294,11 +301,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   dangerouslySetInnerHTML={{ __html: ICO[content.ico as keyof typeof ICO] }}
                 />
                 <div className="code">{content.code}</div>
-                <h2 style={{ fontSize: 'var(--s2)' }}>{content.supportsTitle ?? 'What this supports'}</h2>
-                {content.catchphrase && <p className="lede">{content.catchphrase}</p>}
+                <h2 style={{ fontSize: 'var(--s2)' }}>{content.name}</h2>
                 <p className="prose">{content.details}</p>
               </div>
-              {content.slug === 'bim-visualization' ? (
+              {isBim ? (
                 <BimVisualShowcase frames={[...BIM_VISUAL_FRAMES]} />
               ) : (
                 <div className="media project-photo">
@@ -452,8 +458,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   <div className="eyebrow">By project type</div>
                   <h2>General contractor, commercial, residential, industrial &amp; public work</h2>
                   <p className="prose">
-                    Start with the work you bid — commercial and residential for general contractors, renovation and
-                    remodeling, industrial facilities, and public projects — then open the full estimation pages for
+                    Start with the work you bid: commercial and residential for general contractors, renovation and
+                    remodeling, industrial facilities, and public projects. Then open the full estimation pages for
                     every subtype we cover.
                   </p>
                 </div>
@@ -505,7 +511,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   ))}
                 </MotionStagger>
                 <div className="note">
-                  <b>Why us?</b> Estimating isn&apos;t just about quantities — it&apos;s about intelligence. We help you
+                  <b>Why us?</b> Estimating starts with quantities. Intelligence wins the bid. We help you
                   win the right work at the right price.{' '}
                   <Link href="/estimation/trades">View all trade estimation services →</Link>
                 </div>
