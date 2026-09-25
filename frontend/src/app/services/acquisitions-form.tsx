@@ -3,13 +3,16 @@
 import { FormEvent, useState } from 'react';
 import Link from 'next/link';
 import { BRAND } from '@/lib/content';
+import {
+  ALLOWED_FILE_ACCEPT,
+  EMAIL_PATTERN,
+  MAX_NOTES_LENGTH,
+  PHONE_PATTERN,
+  formatAttachmentLimitsHelp,
+  validateAttachmentList,
+} from '@/lib/lead-shared';
 
 type FormErrors = Record<string, string>;
-
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phonePattern = /^[+()\d\s.-]{7,}$/;
-const MAX_FILE_BYTES = 8 * 1024 * 1024;
-const MAX_TOTAL_BYTES = 20 * 1024 * 1024;
 
 type ApiErrorBody = {
   ok?: boolean;
@@ -25,24 +28,18 @@ function validate(form: HTMLFormElement): FormErrors {
   const address = String(data.get('address') ?? '').trim();
   const notes = String(data.get('notes') ?? '').trim();
   if (!String(data.get('name') ?? '').trim()) errors.name = 'Enter your name.';
-  if (!emailPattern.test(email)) errors.email = 'Enter a valid email address.';
-  if (phone && !phonePattern.test(phone)) errors.phone = 'Enter a valid phone number or leave this field blank.';
+  if (!EMAIL_PATTERN.test(email)) errors.email = 'Enter a valid email address.';
+  if (phone && !PHONE_PATTERN.test(phone)) errors.phone = 'Enter a valid phone number or leave this field blank.';
   if (!address) errors.address = 'Add the property address or location.';
   if (notes.length < 20) errors.notes = 'Add at least 20 characters describing the property and your situation.';
+  if (notes.length > MAX_NOTES_LENGTH) {
+    errors.notes = `Details must be ${MAX_NOTES_LENGTH.toLocaleString()} characters or fewer.`;
+  }
   if (!data.get('contact-consent')) errors['contact-consent'] = 'Consent is required before submitting.';
   const files = form.elements.namedItem('files') as HTMLInputElement | null;
   if (files?.files?.length) {
-    let total = 0;
-    for (const file of Array.from(files.files)) {
-      total += file.size;
-      if (file.size > MAX_FILE_BYTES) {
-        errors.files = `Each file must be smaller than ${MAX_FILE_BYTES / (1024 * 1024)} MB for email delivery. Paste a plan-room link in the notes for larger sets.`;
-        break;
-      }
-    }
-    if (!errors.files && total > MAX_TOTAL_BYTES) {
-      errors.files = `Total attachments must be under ${MAX_TOTAL_BYTES / (1024 * 1024)} MB. Paste a plan-room link in the notes for larger sets.`;
-    }
+    const fileError = validateAttachmentList(Array.from(files.files));
+    if (fileError) errors.files = fileError;
   }
   return errors;
 }
@@ -160,7 +157,7 @@ export default function PropertyForm() {
           name="phone"
           type="tel"
           autoComplete="tel"
-          placeholder="(555) 555-5555"
+          placeholder="+1 (555) 000-0000"
           aria-invalid={Boolean(errors.phone)}
           aria-describedby={errors.phone ? 'error-p-phone' : undefined}
         />
@@ -241,13 +238,13 @@ export default function PropertyForm() {
           Supporting files <span className="optional">(optional)</span>
         </label>
         <label className="dropzone" htmlFor="p-files">
-          <b>Share photos, surveys, or documents</b> PDF, ZIP, or DWG up to 8 MB each (20 MB total), or <u>browse files</u>
+          <b>Share plans, surveys, or documents</b> {formatAttachmentLimitsHelp()}, or <u>browse files</u>
         </label>
         <input
           id="p-files"
           name="files"
           type="file"
-          accept=".pdf,.zip,.dwg"
+          accept={ALLOWED_FILE_ACCEPT}
           multiple
           hidden
           aria-invalid={Boolean(errors.files)}

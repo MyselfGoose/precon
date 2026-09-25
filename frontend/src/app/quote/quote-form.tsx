@@ -5,17 +5,23 @@ import Link from 'next/link';
 import { CONTENT_SERVICES, BRAND } from '@/lib/content';
 import { TRADES } from '@/lib/data';
 import { TRADE_ESTIMATION_PAGES } from '@/lib/estimation';
+import {
+  ALLOWED_FILE_ACCEPT,
+  EMAIL_PATTERN,
+  MAX_MISSING_LENGTH,
+  MAX_NOTES_LENGTH,
+  PHONE_PATTERN,
+  formatAttachmentLimitsHelp,
+  validateAttachmentList,
+} from '@/lib/lead-shared';
 
 type FormErrors = Record<string, string>;
 type StepId = 1 | 2 | 3 | 4;
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phonePattern = /^[+()\d\s.-]{7,}$/;
-const MAX_FILE_BYTES = 8 * 1024 * 1024;
-const MAX_TOTAL_BYTES = 20 * 1024 * 1024;
-
 const ESTIMATION_HUB_OPTIONS = [
   'General construction estimate',
+  'Commercial projects',
+  'Residential projects',
   'Industrial projects',
   'Public / infrastructure projects',
 ] as const;
@@ -66,17 +72,7 @@ type ApiErrorBody = {
 
 function validateFiles(files: FileList | null): string | undefined {
   if (!files?.length) return undefined;
-  let total = 0;
-  for (const file of Array.from(files)) {
-    total += file.size;
-    if (file.size > MAX_FILE_BYTES) {
-      return `Each file must be smaller than ${MAX_FILE_BYTES / (1024 * 1024)} MB for email delivery. Paste a plan-room link in the notes for larger sets.`;
-    }
-  }
-  if (total > MAX_TOTAL_BYTES) {
-    return `Total attachments must be under ${MAX_TOTAL_BYTES / (1024 * 1024)} MB. Paste a plan-room link in the notes for larger sets.`;
-  }
-  return undefined;
+  return validateAttachmentList(Array.from(files));
 }
 
 function validateAll(form: HTMLFormElement): FormErrors {
@@ -90,8 +86,8 @@ function validateAll(form: HTMLFormElement): FormErrors {
   const date = String(data.get('due') ?? '');
 
   if (!String(data.get('name') ?? '').trim()) errors.name = 'Enter your name.';
-  if (!emailPattern.test(email)) errors.email = 'Enter a valid email address.';
-  if (phone && !phonePattern.test(phone)) errors.phone = 'Enter a valid phone number or leave this field blank.';
+  if (!EMAIL_PATTERN.test(email)) errors.email = 'Enter a valid email address.';
+  if (phone && !PHONE_PATTERN.test(phone)) errors.phone = 'Enter a valid phone number or leave this field blank.';
   if (!selectedServices.length) errors.trade = 'Select at least one service or division.';
   if (!location) errors.state = 'Add the project location.';
   if (!date) errors.due = 'Add the important project date.';
@@ -99,6 +95,13 @@ function validateAll(form: HTMLFormElement): FormErrors {
     errors.due = 'Choose today or a future date.';
   }
   if (notes.length < 20) errors.notes = 'Add at least 20 characters describing the scope or decision.';
+  if (notes.length > MAX_NOTES_LENGTH) {
+    errors.notes = `Scope notes must be ${MAX_NOTES_LENGTH.toLocaleString()} characters or fewer.`;
+  }
+  const missing = String(data.get('missing') ?? '').trim();
+  if (missing.length > MAX_MISSING_LENGTH) {
+    errors.missing = `Known gaps must be ${MAX_MISSING_LENGTH.toLocaleString()} characters or fewer.`;
+  }
   if (!data.get('contact-consent')) errors['contact-consent'] = 'Consent is required before submitting.';
 
   const files = form.elements.namedItem('files') as HTMLInputElement | null;
@@ -116,8 +119,8 @@ function validateStep(step: StepId, form: HTMLFormElement): FormErrors {
     const email = String(data.get('email') ?? '').trim();
     const phone = String(data.get('phone') ?? '').trim();
     if (!String(data.get('name') ?? '').trim()) errors.name = 'Enter your name.';
-    if (!emailPattern.test(email)) errors.email = 'Enter a valid email address.';
-    if (phone && !phonePattern.test(phone)) errors.phone = 'Enter a valid phone number or leave this field blank.';
+    if (!EMAIL_PATTERN.test(email)) errors.email = 'Enter a valid email address.';
+    if (phone && !PHONE_PATTERN.test(phone)) errors.phone = 'Enter a valid phone number or leave this field blank.';
   }
 
   if (step === 2) {
@@ -127,6 +130,7 @@ function validateStep(step: StepId, form: HTMLFormElement): FormErrors {
   if (step === 3) {
     const location = String(data.get('state') ?? '').trim();
     const notes = String(data.get('notes') ?? '').trim();
+    const missing = String(data.get('missing') ?? '').trim();
     const date = String(data.get('due') ?? '');
     if (!location) errors.state = 'Add the project location.';
     if (!date) errors.due = 'Add the important project date.';
@@ -134,6 +138,12 @@ function validateStep(step: StepId, form: HTMLFormElement): FormErrors {
       errors.due = 'Choose today or a future date.';
     }
     if (notes.length < 20) errors.notes = 'Add at least 20 characters describing the scope or decision.';
+    if (notes.length > MAX_NOTES_LENGTH) {
+      errors.notes = `Scope notes must be ${MAX_NOTES_LENGTH.toLocaleString()} characters or fewer.`;
+    }
+    if (missing.length > MAX_MISSING_LENGTH) {
+      errors.missing = `Known gaps must be ${MAX_MISSING_LENGTH.toLocaleString()} characters or fewer.`;
+    }
     const files = form.elements.namedItem('files') as HTMLInputElement | null;
     const fileError = validateFiles(files?.files ?? null);
     if (fileError) errors.files = fileError;
@@ -683,14 +693,14 @@ export default function QuoteForm() {
             Project files <span className="optional">(optional)</span>
           </label>
           <label className="dropzone" htmlFor="q-files">
-            <b>Share your project files</b> PDF, ZIP, or DWG up to 8 MB each (20 MB total), or <u>browse files</u> · paste
+            <b>Share your project files</b> {formatAttachmentLimitsHelp()}, or <u>browse files</u> · paste
             a plan-room link in the notes for larger sets
           </label>
           <input
             id="q-files"
             name="files"
             type="file"
-            accept=".pdf,.zip,.dwg"
+            accept={ALLOWED_FILE_ACCEPT}
             multiple
             hidden
             aria-invalid={Boolean(errors.files)}

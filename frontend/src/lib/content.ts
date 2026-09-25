@@ -156,11 +156,11 @@ export const CONTENT_SERVICES: ContentService[] = [
     ico: 'precon',
     name: 'MEP drafting & engineering',
     summary:
-      'Coordinated Mechanical, Electrical & Plumbing drawings for efficient, code-compliant construction across the United States.',
+      'Coordinated Mechanical, Electrical & Plumbing drawings for efficient, code-compliant construction across the United States and Canada.',
     supportsTitle: 'MEP Drawings',
     catchphrase: 'Coordinated MEP drawings, ready for the field',
     details:
-      'Our MEP drafting services deliver accurate, coordinated, construction-ready Mechanical, Electrical, and Plumbing drawings for projects across the United States. Scope ranges from permit-ready documentation and multidisciplinary coordination to engineering calculations and energy compliance. The team produces precise MEP packages covering California Title 24 compliance, HVAC load calculations, electrical load analysis, plumbing calculations, and jurisdiction-specific code documentation, all tailored to local regulations and project requirements. Every drawing targets improved constructability, tighter trade coordination, faster permit approvals, and efficient project execution.',
+      'Our MEP drafting services deliver accurate, coordinated, construction-ready Mechanical, Electrical, and Plumbing drawings for projects across the United States and Canada. Scope ranges from permit-ready documentation and multidisciplinary coordination to engineering calculations and energy compliance. The team produces precise MEP packages covering California Title 24 compliance, HVAC load calculations, electrical load analysis, plumbing calculations, and jurisdiction-specific code documentation, all tailored to local regulations and project requirements. Every drawing targets improved constructability, tighter trade coordination, faster permit approvals, and efficient project execution.',
     points: [
       'Permit-ready MEP documentation and trade coordination',
       'California Title 24 and energy compliance support',
@@ -266,7 +266,7 @@ export const CONTENT_SERVICES: ContentService[] = [
       'Safe, efficient, and code-compliant structural engineering from concept development through analysis, systems design, and calculations.',
     supportsTitle: 'Engineering that carries the load',
     details:
-      'Our structural engineering services combine design with precise calculations to deliver safe, efficient, and code-compliant structural solutions for projects across the United States. From concept development to engineering documentation, we design systems that optimize performance, constructability, and material efficiency. Our engineers work across reinforced concrete, structural steel, wood framing, cold-formed steel, masonry, post-tensioned concrete, precast concrete, and hybrid systems, developing solutions based on project-specific loading conditions, site requirements, and applicable building codes. Every design is supported by structural analysis so the system you build is the system the calculations intended.',
+      'Our structural engineering services combine design with precise calculations to deliver safe, efficient, and code-compliant structural solutions for projects across the United States and Canada. From concept development to engineering documentation, we design systems that optimize performance, constructability, and material efficiency. Our engineers work across reinforced concrete, structural steel, wood framing, cold-formed steel, masonry, post-tensioned concrete, precast concrete, and hybrid systems, developing solutions based on project-specific loading conditions, site requirements, and applicable building codes. Every design is supported by structural analysis so the system you build is the system the calculations intended.',
     points: [
       'Comprehensive structural analysis and engineering calculations',
       'Support for concrete, steel, wood, masonry, and hybrid systems',
@@ -513,7 +513,7 @@ export const ABOUT_CONTENT = {
     [
       'TURNAROUND',
       'Faster Turnaround Time',
-      'Other firms pad turnaround schedules. We deliver cost estimates on time and without errors.',
+      'Other firms pad turnaround schedules. We deliver cost estimates on time with careful quantity checking.',
     ],
     [
       'ACCURACY',
@@ -532,8 +532,8 @@ export const ABOUT_CONTENT = {
     ],
     [
       'SUPPORT',
-      '24/7 Support',
-      'Once project files are shared with us, they are as much our responsibility as they are yours.',
+      'Responsive Support',
+      'Once project files are shared with us, they are as much our responsibility as they are yours. Message us anytime on WhatsApp.',
     ],
   ],
 };
@@ -783,9 +783,8 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
           'We collect personal information that you voluntarily provide to us through direct interactions, including:',
         ],
         bullets: [
-          'Contact form submissions — your name, email address, phone number, company name, and project details',
-          'Quote and consultation requests — project scope, service type, and budget information',
-          'Email correspondence — any information you include when contacting us directly',
+          'Project quote and acquisition requests — your name, email address, phone number, company name, project or property details, and any files you upload',
+          'Direct email, phone, and WhatsApp correspondence — any information you include when contacting us',
           'Mailing list subscriptions — your email address and communication preferences (if applicable)',
         ],
       },
@@ -840,45 +839,27 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     id: 'cookies',
     title: '4. Cookies & Tracking Technologies',
     paragraphs: [
-      'Our Site uses cookies and similar tracking technologies to enhance your browsing experience. Cookies are small text files stored on your device that help us recognize your browser and remember certain preferences.',
+      'Our Site may use essential cookies and similar technologies required for basic operation, security, and session management. We do not currently run third-party analytics or advertising trackers on the Site.',
     ],
     subsections: [
       {
-        title: 'Types of Cookies We Use',
-        bullets: [
-          'Essential Cookies — required for the Site to function properly (e.g., session management, security)',
-          'Analytics Cookies — help us understand how visitors interact with our Site by collecting anonymous usage data',
-          'Functional Cookies — remember your preferences such as language or region to provide a personalized experience',
-          'Performance Cookies — monitor Site performance and help us identify and fix issues',
-        ],
-      },
-      {
         title: 'Managing Your Cookies',
         paragraphs: [
-          'You can control cookie preferences through your browser settings. Most browsers allow you to refuse cookies or alert you when cookies are being sent. Note that disabling certain cookies may affect the functionality of our Site. You can also clear cookies at any time through your browser\'s "Clear Browsing Data" option.',
+          'You can control cookie preferences through your browser settings. Most browsers allow you to refuse cookies or alert you when cookies are being sent. Note that disabling essential cookies may affect the functionality of our Site. You can also clear cookies at any time through your browser\'s "Clear Browsing Data" option.',
         ],
       },
     ],
   },
   {
     id: 'analytics',
-    title: '5. Analytics & Third-Party Services',
+    title: '5. Third-Party Services',
     paragraphs: [
-      'We may use third-party analytics services, such as Google Analytics, to collect and analyze information about how our Site is used. These services help us understand visitor behavior, measure Site performance, and improve our content and services.',
+      'Our Site uses trusted third-party services for hosting and email delivery of form submissions. These providers are contractually obligated to protect your data and use it only for the purposes we specify.',
     ],
     bullets: [
-      'Google Analytics collects data such as pages visited, time on site, and traffic sources using cookies and similar technologies',
-      'Analytics data is typically processed in aggregated, anonymous form',
-      'We do not merge analytics data with personally identifiable information',
-      'You can opt out of Google Analytics tracking by installing the Google Analytics Opt-out Browser Add-on, available at tools.google.com/dlpage/gaoptout.',
-    ],
-    subsections: [
-      {
-        title: 'Third-Party Services',
-        paragraphs: [
-          'Our Site may use additional third-party services for hosting, email delivery, and form processing. These providers are contractually obligated to protect your data and use it only for the purposes we specify.',
-        ],
-      },
+      'Website hosting and related infrastructure for serving the Site',
+      'Email delivery for project quote and property acquisition requests',
+      'We do not currently use Google Analytics or similar visitor-analytics platforms',
     ],
   },
   {
@@ -889,7 +870,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
       'We may share your information only in the following limited circumstances:',
     ],
     bullets: [
-      'Service Providers — trusted vendors who assist with website hosting, email delivery, analytics, and business operations, bound by confidentiality agreements',
+      'Service Providers — trusted vendors who assist with website hosting, email delivery, and business operations, bound by confidentiality agreements',
       'Legal Requirements — when required to comply with applicable law, court order, subpoena, or legal process',
       'Business Transfers — in connection with a merger, acquisition, or sale of assets, your data may be transferred as part of the business transaction',
       'Professional Advisors — legal, financial, or accounting professionals who provide services to our company',
@@ -903,10 +884,9 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
       'We retain personal information only for as long as necessary to fulfill the purposes for which it was collected, or as required by law. Our general retention practices include:',
     ],
     bullets: [
-      'Contact form submissions and quote requests — retained for up to 3 years to support ongoing client relationships and project references',
+      'Quote and acquisition requests — retained for up to 3 years to support ongoing client relationships and project references',
       'Email correspondence — retained for the duration of the business relationship plus a reasonable archival period',
-      'Analytics data — retained in aggregated, anonymized form and reviewed periodically',
-      'Cookie data — retained according to each cookie\'s designated lifespan (session cookies are deleted when you close your browser)',
+      'Essential cookie and session data — retained according to each cookie\'s designated lifespan (session cookies are deleted when you close your browser)',
     ],
     subsections: [
       {
@@ -1000,7 +980,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     id: 'contact',
     title: '13. Contact Information',
     paragraphs: [
-      `If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us at ${BRAND.email} or by calling ${BRAND.phone}.`,
+      `If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us at ${BRAND.email} or by calling ${BRAND.phoneDisplay}.`,
     ],
   },
 ];
@@ -1028,14 +1008,14 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'services',
     title: '2. Services Overview',
     paragraphs: [
-      'CSI & Design provides professional construction support services to contractors, architects, engineers, and developers across the United States. Our services include:',
+      'CSI & Design provides professional construction support services to contractors, architects, engineers, and developers across the United States and Canada. Our services include:',
     ],
     bullets: [
-      'Construction cost estimating and quantity takeoffs across all CSI divisions',
+      'Construction cost estimating and quantity takeoffs across CSI divisions',
       'Architectural drafting and construction documentation',
-      'Civil and site planning support',
-      'Engineering and technical documentation',
-      'Metal fabrication and shop drawings',
+      'MEP engineering drawings, calculations, and energy compliance support',
+      'Structural engineering and permit-ready structural drawings',
+      'BIM modeling, rendering, and visualization',
       'Rehabilitation property acquisition and development support',
       'Pre-construction coordination and project support',
     ],

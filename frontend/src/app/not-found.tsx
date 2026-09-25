@@ -5,7 +5,7 @@ import { createMetadata } from '@/lib/metadata';
 export const metadata = createMetadata({
   title: 'Page Not Found',
   description: 'The requested CSI & Design page could not be found.',
-  path: '/404',
+  path: '/',
 });
 
 export default function NotFound() {

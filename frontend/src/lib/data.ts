@@ -303,6 +303,7 @@ export const NAV_ITEMS = [
   ['Trades', '/trades'],
   ['Markets', '/markets'],
   ['How It Works', '/how-it-works'],
+  ['Who We Serve', '/who-we-serve'],
   ['About', '/about'],
   ['Contact', '/contact'],
 ] as const;
@@ -324,8 +325,8 @@ export const FOOTER_NAV_ITEMS = [
   ['Estimation', '/estimation'],
   ['Trades', '/trades'],
   ['Markets', '/markets'],
-  ['How it works', '/how-it-works'],
-  ['Who we serve', '/who-we-serve'],
+  ['How It Works', '/how-it-works'],
+  ['Who We Serve', '/who-we-serve'],
   ['Contact', '/contact'],
   ['Request a Quote', '/quote'],
 ] as const;

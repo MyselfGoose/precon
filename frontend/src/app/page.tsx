@@ -18,7 +18,7 @@ import { createMetadata } from '@/lib/metadata';
 import { MotionHeroItem, MotionItem, MotionReveal, MotionStagger, CountUp } from './motion';
 
 export const metadata = createMetadata({
-  title: 'Preconstruction Solutions for a Stronger Tomorrow',
+  title: BRAND.name,
   description:
     'From detailed estimates and architectural design to strategic property acquisition. CSI & Design provides the expertise, data, and relationships to move your project from vision to value.',
   path: '/',

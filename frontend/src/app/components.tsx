@@ -148,6 +148,12 @@ export function Footer() {
                 <Link href="/estimation/general-construction">General construction</Link>
               </li>
               <li>
+                <Link href="/estimation/commercial">Commercial projects</Link>
+              </li>
+              <li>
+                <Link href="/estimation/residential">Residential projects</Link>
+              </li>
+              <li>
                 <Link href="/estimation/industrial">Industrial projects</Link>
               </li>
               <li>
@@ -194,7 +200,7 @@ export function Footer() {
         <div className="foot-bottom">
           <span>© {new Date().getFullYear()} {BRAND.name}. All rights reserved.</span>
           <span>
-            <Link href="/privacy">Privacy Policy</Link> · <Link href="/terms">Terms &amp; Conditions</Link>
+            <Link href="/privacy">Privacy Policy</Link> · <Link href="/terms">Terms of Service</Link>
           </span>
           <span>Design. Build. Invest.</span>
         </div>

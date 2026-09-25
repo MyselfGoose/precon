@@ -1,14 +1,28 @@
 import { Resend } from 'resend';
 import { BRAND } from '@/lib/content';
+import {
+  EMAIL_PATTERN,
+  MAX_MISSING_LENGTH,
+  MAX_NOTES_LENGTH,
+  PHONE_PATTERN,
+  fileExtension,
+  validateAttachmentList,
+} from '@/lib/lead-shared';
 
-export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-export const PHONE_PATTERN = /^[+()\d\s.-]{7,}$/;
-
-/** Per-file and total caps for email attachments (Resend-friendly). */
-export const MAX_ATTACHMENT_BYTES = 8 * 1024 * 1024;
-export const MAX_TOTAL_ATTACHMENT_BYTES = 20 * 1024 * 1024;
-export const ALLOWED_FILE_EXTENSIONS = new Set(['.pdf', '.zip', '.dwg']);
-export const ALLOWED_MIME_PREFIXES = ['application/pdf', 'application/zip', 'application/x-zip', 'image/', 'application/octet-stream'];
+export {
+  ALLOWED_FILE_ACCEPT,
+  ALLOWED_FILE_EXTENSIONS,
+  EMAIL_PATTERN,
+  MAX_ATTACHMENT_BYTES,
+  MAX_ATTACHMENT_MB_LABEL,
+  MAX_MISSING_LENGTH,
+  MAX_NOTES_LENGTH,
+  MAX_TOTAL_ATTACHMENT_BYTES,
+  MAX_TOTAL_ATTACHMENT_MB_LABEL,
+  PHONE_PATTERN,
+  formatAttachmentLimitsHelp,
+  validateAttachmentList,
+} from '@/lib/lead-shared';
 
 export type FieldErrors = Record<string, string>;
 
@@ -57,10 +71,10 @@ function isChecked(value: FormDataEntryValue | null): boolean {
   return value === 'on' || value === 'true' || value === '1';
 }
 
-function extensionOf(filename: string): string {
-  const idx = filename.lastIndexOf('.');
-  if (idx < 0) return '';
-  return filename.slice(idx).toLowerCase();
+function enforceTextLength(value: string, max: number, fieldLabel: string, errors: FieldErrors, key: string): void {
+  if (value.length > max) {
+    errors[key] = `${fieldLabel} must be ${max.toLocaleString()} characters or fewer.`;
+  }
 }
 
 export function validateQuoteFields(data: FormData): { errors: FieldErrors; payload: QuoteLeadPayload | null } {
@@ -91,6 +105,8 @@ export function validateQuoteFields(data: FormData): { errors: FieldErrors; payl
     errors.due = 'Choose today or a future date.';
   }
   if (notes.length < 20) errors.notes = 'Add at least 20 characters describing the scope or decision.';
+  enforceTextLength(notes, MAX_NOTES_LENGTH, 'Scope notes', errors, 'notes');
+  enforceTextLength(missing, MAX_MISSING_LENGTH, 'Known gaps', errors, 'missing');
   if (!contactConsent) errors['contact-consent'] = 'Consent is required before submitting.';
 
   if (Object.keys(errors).length) return { errors, payload: null };
@@ -138,6 +154,7 @@ export function validateAcquisitionFields(data: FormData): {
   if (phone && !PHONE_PATTERN.test(phone)) errors.phone = 'Enter a valid phone number or leave this field blank.';
   if (!address) errors.address = 'Add the property address or location.';
   if (notes.length < 20) errors.notes = 'Add at least 20 characters describing the property and your situation.';
+  enforceTextLength(notes, MAX_NOTES_LENGTH, 'Details', errors, 'notes');
   if (!contactConsent) errors['contact-consent'] = 'Consent is required before submitting.';
 
   if (Object.keys(errors).length) return { errors, payload: null };
@@ -163,27 +180,12 @@ export async function collectAttachments(data: FormData): Promise<{ attachments:
   const files = data.getAll('files').filter((entry): entry is File => entry instanceof File && entry.size > 0);
   if (!files.length) return { attachments: [] };
 
-  let total = 0;
-  const attachments: LeadAttachment[] = [];
+  const validationError = validateAttachmentList(files);
+  if (validationError) return { attachments: [], error: validationError };
 
+  const attachments: LeadAttachment[] = [];
   for (const file of files) {
-    const ext = extensionOf(file.name);
-    if (!ALLOWED_FILE_EXTENSIONS.has(ext)) {
-      return { attachments: [], error: 'Only PDF, ZIP, and DWG files are accepted.' };
-    }
-    if (file.size > MAX_ATTACHMENT_BYTES) {
-      return {
-        attachments: [],
-        error: `Each file must be smaller than ${MAX_ATTACHMENT_BYTES / (1024 * 1024)} MB for email delivery. Paste a plan-room link in the notes for larger sets.`,
-      };
-    }
-    total += file.size;
-    if (total > MAX_TOTAL_ATTACHMENT_BYTES) {
-      return {
-        attachments: [],
-        error: `Total attachments must be under ${MAX_TOTAL_ATTACHMENT_BYTES / (1024 * 1024)} MB. Paste a plan-room link in the notes for larger sets.`,
-      };
-    }
+    const ext = fileExtension(file.name);
     const buffer = Buffer.from(await file.arrayBuffer());
     attachments.push({
       filename: file.name.replace(/[^\w.\- ()[\]]+/g, '_').slice(0, 180) || `attachment${ext}`,
@@ -309,7 +311,7 @@ export async function sendLeadEmail(input: {
   website: string;
 }): Promise<SendLeadResult> {
   if (input.website) {
-    return { ok: true, id: 'honeypot' };
+    return { ok: true, id: 'sent' };
   }
 
   const config = leadConfig();

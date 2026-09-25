@@ -49,7 +49,7 @@ export default function Contact() {
                 <a className="v" href={`mailto:${BRAND.email}`}>
                   {BRAND.email}
                 </a>
-                <span className="hint">Serving project teams across the United States</span>
+                <span className="hint">Serving project teams across the United States and Canada</span>
               </div>
           </div>
           <div className="note">

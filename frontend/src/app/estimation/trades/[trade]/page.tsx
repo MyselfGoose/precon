@@ -48,6 +48,7 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
         image={heroImage}
         imageAlt={page.imageAlt ?? `${page.name} estimation`}
         priority={Boolean(heroImage)}
+        variant={heroImage ? 'dark' : 'split'}
       />
       <section className="band">
         <div className="wrap stack-lg">

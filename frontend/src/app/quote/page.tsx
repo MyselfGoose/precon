@@ -4,7 +4,7 @@ import { BRAND } from '@/lib/content';
 import { createMetadata } from '@/lib/metadata';
 
 export const metadata = createMetadata({
-  title: 'Send Your Plans',
+  title: 'Request a Quote',
   description:
     'Share the project type, location, scope, timing, and files needed for a focused CSI & Design conversation.',
   path: '/quote',
