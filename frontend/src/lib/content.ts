@@ -158,8 +158,7 @@ export const CONTENT_SERVICES: ContentService[] = [
     summary:
       'Coordinated Mechanical, Electrical & Plumbing drawings for efficient, code-compliant construction across the United States.',
     supportsTitle: 'MEP Drawings',
-    catchphrase:
-      'Coordinated Mechanical, Electrical & Plumbing Drawings for Efficient, Code-Compliant Construction',
+    catchphrase: 'Coordinated MEP drawings, ready for the field',
     details:
       'Our MEP drafting services deliver accurate, coordinated, construction-ready Mechanical, Electrical, and Plumbing drawings for projects across the United States. Scope ranges from permit-ready documentation and multidisciplinary coordination to engineering calculations and energy compliance. The team produces precise MEP packages covering California Title 24 compliance, HVAC load calculations, electrical load analysis, plumbing calculations, and jurisdiction-specific code documentation, all tailored to local regulations and project requirements. Every drawing targets improved constructability, tighter trade coordination, faster permit approvals, and efficient project execution.',
     points: [
