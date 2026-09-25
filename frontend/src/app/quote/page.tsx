@@ -16,8 +16,8 @@ export default function Quote() {
     <>
       <PageHead
         eyebrow="Request a Quote"
-        title="Give the next decision a useful project brief"
-        lede="Share what you are trying to estimate, design, coordinate, or decide, along with the project stage, location, timing, and information you already have."
+        title="A clear brief. A useful next step."
+        lede="Four short steps: who you are, what you need, the scope you know, and a quick review. We use the brief to organize the conversation — formal work starts only with a written agreement."
         image="/images/hero/quote.jpg"
         imageAlt="Project plans ready for a quote request"
         priority
@@ -26,13 +26,13 @@ export default function Quote() {
         <div className="wrap">
           <div className="grid-2" style={{ gap: 44, alignItems: 'start' }}>
             <QuoteForm />
-            <div className="stack-lg">
+            <aside className="stack-lg">
               <div className="stack">
                 <div className="eyebrow">What happens next</div>
                 <h3>Scope first. Commitment second.</h3>
                 <p className="prose">
-                  The brief helps organize the project conversation: what is known, what is missing, which service fits,
-                  and what deadline matters. Formal services begin only through a separate written agreement.
+                  Your brief helps us see what is known, what is missing, which service fits, and which deadline
+                  matters. We follow up with a clear next step — not a pressure pitch.
                 </p>
               </div>
               <div className="stack">
@@ -44,13 +44,13 @@ export default function Quote() {
                   WhatsApp {BRAND.phoneDisplay} →
                 </WhatsAppLink>
                 <p className="prose">
-                  If the scope is easier to explain out loud, call or message us and tell us what decision the project
-                  needs to support.
+                  If the scope is easier to explain out loud, call or message us. We will take notes and tell you what
+                  to send next.
                 </p>
               </div>
               <div className="note">
                 <b>Have a complex scope?</b> Include drawings, specifications, property information, or a plan-room
-                link in the request.
+                link when you reach the files step.
               </div>
               <div className="draw">
                 <Svg markup={D.concrete()} />
@@ -59,7 +59,7 @@ export default function Quote() {
                   <span>Organized scope, assumptions, and next steps</span>
                 </div>
               </div>
-            </div>
+            </aside>
           </div>
         </div>
       </section>
