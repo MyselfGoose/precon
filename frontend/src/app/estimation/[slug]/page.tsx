@@ -66,11 +66,11 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
           {slug === 'general-construction' && (
             <div className="stack-lg">
               <div className="stack">
-                <div className="eyebrow">Trades under general construction</div>
-                <h2>Remodeling, new construction, demolition, ADUs &amp; more</h2>
+                <div className="eyebrow">Related trade pages</div>
+                <h2>Trade estimation under general construction</h2>
                 <p className="prose">
-                  Open the trade estimation pages that sit under a GC bid: renovation and remodeling, ground-up new
-                  construction, demolition, accessory dwellings, and the core building trades that complete the package.
+                  Open dedicated estimation pages for remodeling, restoration, and the building trades that support a
+                  complete GC bid package.
                 </p>
               </div>
               <MotionStagger className="grid-2">

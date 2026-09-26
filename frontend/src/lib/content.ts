@@ -100,7 +100,7 @@ export const CONTENT_SERVICES: ContentService[] = [
     name: 'Architectural drawings',
     summary:
       'Code-conscious, buildable drawing packages coordinated with estimating so design, budget, and permitting stay aligned.',
-    supportsTitle: 'Architectural drawings that build',
+    supportsTitle: 'Architectural Drawings',
     details:
       'Our architectural drawings are developed with careful consideration of applicable building codes, jurisdiction-specific regulations, and local permitting requirements, ensuring every design is tailored to the project\'s location and approval process. Working alongside our experienced construction estimators, our architectural team develops practical, buildable designs that reflect both the project\'s vision and its budget. Every layout, detail, and material selection is thoughtfully coordinated to simplify construction, minimize unnecessary revisions, and create a smoother path from design to completion. The result is a well coordinated drawing package that brings together thoughtful design, regulatory compliance, and real world construction expertise.',
     points: [
@@ -145,7 +145,7 @@ export const CONTENT_SERVICES: ContentService[] = [
     photoAlt: 'Landmark contemporary architecture representing coordinated drawing packages',
     whyUs: [
       'Bringing together architecture, estimating, and preconstruction expertise to deliver smarter, coordinated project solutions.',
-      'Our architectural team combines thoughtful design with practical construction expertise to deliver coordinated drawing packages that are functional, buildable, and tailored to your project\'s unique requirements.',
+      'Where Design Meets Construction Intelligence: Our architectural team combines thoughtful design with practical construction expertise to deliver coordinated drawing packages that are functional, buildable, and tailored to your project\'s unique requirements.',
     ],
     ctaTitle: 'Discuss architectural drawings',
     ctaText: 'Share your project vision, location, and any existing documents so we can define a coordinated drawing package.',
@@ -264,9 +264,9 @@ export const CONTENT_SERVICES: ContentService[] = [
     name: 'Structural engineering',
     summary:
       'Safe, efficient, and code-compliant structural engineering from concept development through analysis, systems design, and calculations.',
-    supportsTitle: 'Engineering that carries the load',
+    supportsTitle: 'Structural Drawings & Calculations',
     details:
-      'Our structural engineering services combine innovative design with precise engineering calculations to deliver safe, efficient, and code-compliant structural solutions for projects across the United States. From concept development to permit-ready engineering documentation, we design structural systems that optimize performance, constructability, and material efficiency while meeting the highest industry standards. Whether your project involves reinforced concrete, structural steel, wood framing, cold-formed steel, masonry, post-tensioned concrete, precast concrete, or hybrid structural systems, our engineers develop tailored solutions based on project-specific loading conditions, site requirements, and applicable building codes. Every design is supported by comprehensive structural analysis and engineering calculations to ensure the integrity, stability, and long-term performance of the structure.',
+      'Our structural engineering services combine innovative design with precise engineering calculations to deliver safe, efficient, and code-compliant structural solutions for projects across the United States. From concept development to permit-ready engineering documentation, we design structural systems that optimize performance, constructability, and material efficiency while meeting the highest industry standards. Whether your project involves reinforced concrete, structural steel, wood framing, cold-formed steel, masonry, post-tensioned concrete, precast concrete, or hybrid structural systems, our engineers develop tailored solutions based on project-specific loading conditions, site requirements, and applicable building codes. Every design is supported by comprehensive structural analysis and engineering calculations to ensure the integrity, stability, and long-term performance of the structure. Every structural design and engineering calculation is developed in accordance with nationally recognized building codes and engineering standards to ensure safety, durability, structural integrity, and regulatory compliance. Our work adheres to the International Building Code (IBC), International Residential Code (IRC), ASCE 7, ACI 318, AISC Steel Construction Manual, NDS for Wood Construction, TMS Masonry Code, and all applicable state and local building regulations, delivering permit-ready structural documentation you can build with confidence.',
     points: [
       'Comprehensive structural analysis and engineering calculations',
       'Support for concrete, steel, wood, masonry, and hybrid systems',
@@ -350,7 +350,7 @@ export const CONTENT_SERVICES: ContentService[] = [
     name: 'BIM modeling, rendering & walkthroughs',
     summary:
       'Photorealistic visualizations and immersive walkthroughs that help stakeholders experience a project before construction begins.',
-    supportsTitle: 'See the build before it starts',
+    supportsTitle: '3D Modeling, Rendering & Virtual Walkthroughs',
     details:
       'Great design deserves to be understood before it is built. Our 3D modeling, rendering, and visualization services bridge the gap between technical drawings and reality, allowing clients, developers, architects, contractors, and investors to experience a project long before construction begins. Using industry-leading visualization technologies, we transform architectural concepts, engineering drawings, and BIM models into highly detailed, photorealistic representations that accurately showcase materials, lighting, textures, spatial relationships, and overall design intent. These visualizations not only enhance presentations but also support better decision-making, reduce design revisions, and build confidence throughout the planning and approval process. Whether you\'re presenting a luxury residence, commercial development, mixed-use complex, hospitality project, healthcare facility, or industrial building, our visualization team delivers realistic imagery and immersive experiences that communicate every aspect of your project with clarity and precision.',
     points: [
@@ -434,7 +434,7 @@ export const AUDIENCE_CONTENT = [
     items: ['Single-trade takeoffs', 'Labor and material breakdowns', 'Scope clarifications and exclusions', 'Bid-ready trade support'],
   },
   {
-    name: 'Heavy Civil & Infrastructure',
+    name: 'Heavy Civil & Infrastructure — Public Projects',
     code: 'CIV',
     icon: 'precon',
     intro:
@@ -444,7 +444,7 @@ export const AUDIENCE_CONTENT = [
     items: ['Roads and bridges', 'Utilities and public works', 'Excavation and sitework', 'Tender and addenda support'],
   },
   {
-    name: 'MEP contractors',
+    name: 'MEP — Mechanical Electrical Plumbing',
     code: 'MEP',
     icon: 'draft',
     intro:
@@ -454,7 +454,7 @@ export const AUDIENCE_CONTENT = [
     items: ['Mechanical systems', 'Electrical systems', 'Plumbing systems', 'BIM coordination when required'],
   },
   {
-    name: 'Structural contractors',
+    name: 'Structural',
     code: 'STR',
     icon: 'takeoff',
     intro:
@@ -464,7 +464,7 @@ export const AUDIENCE_CONTENT = [
     items: ['Concrete, steel, masonry, and wood', 'Reinforcement and connection details', 'Production-based estimating', 'BIM-enabled coordination'],
   },
   {
-    name: 'HVAC contractors',
+    name: 'HVAC',
     code: 'HVAC',
     icon: 'estimate',
     intro:

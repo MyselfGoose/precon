@@ -28,8 +28,6 @@ export type TradeEstimationPage = {
   sampleDivisionSlug?: string;
   imageSrc?: string;
   imageAlt?: string;
-  /** Optional short hero headline; falls back to `name`. */
-  heroHeadline?: string;
 };
 
 /** Featured trades shown under the General Construction hub intro. */
@@ -118,41 +116,9 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
     code: 'COM',
     name: 'Commercial Projects',
     lede:
-      'CSI Format commercial estimating for offices, retail, hospitality, mixed-use, and tenant improvement work. Built for general contractors who need trade-coordinated bids.',
+      'Our commercial estimating services are designed to help General Contractors win more bids with confidence.',
     intro: [
-      'Our commercial estimating services are designed to help General Contractors win more bids with confidence. We combine accurate quantity takeoffs, professional bid proposals, and real-time market analysis to deliver competitive pricing that aligns with current labor and material trends while protecting profitability. Prepared in CSI Format and coordinated by trade, every estimate supports a smoother bidding process, stronger subcontractor coverage, reduced risk, and a better chance of securing commercial projects.',
-    ],
-    categories: [
-      {
-        name: 'Office & Corporate Buildings',
-        description:
-          'Core and shell, tenant demising, lobby upgrades, and floor build-outs with coordinated architectural, structural, and MEP takeoffs.',
-      },
-      {
-        name: 'Retail & Mixed-Use',
-        description:
-          'Storefront packages, mall and strip-center fit-outs, restaurant build-outs, and mixed-use podium estimating with clear trade splits.',
-      },
-      {
-        name: 'Hospitality & Lodging',
-        description:
-          'Hotels, motels, and short-stay facilities with guest-room typicals, FF&E-adjacent scopes, and back-of-house MEP coordination.',
-      },
-      {
-        name: 'Tenant Improvements',
-        description:
-          'Occupied-building renovations, suite turnovers, and phased TI packages that account for existing conditions and after-hours productivity.',
-      },
-      {
-        name: 'Healthcare & Medical Office',
-        description:
-          'Outpatient clinics, medical office buildings, and specialty suites requiring durable finishes and coordinated specialty systems.',
-      },
-      {
-        name: 'Education & Institutional Commercial',
-        description:
-          'Private schools, training centers, and institutional commercial builds with phased occupancy and durable finish packages.',
-      },
+      'We combine accurate quantity takeoffs, professional bid proposals, and real-time market analysis to deliver competitive pricing that aligns with current labor and material trends while protecting profitability. Prepared in CSI Format and coordinated by trade, every estimate supports a smoother bidding process, stronger subcontractor coverage, reduced risk, and a better chance of securing commercial projects.',
     ],
   },
   {
@@ -160,41 +126,9 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
     code: 'RES',
     name: 'Residential Projects',
     lede:
-      'CSI Format residential estimates for custom homes through multi-family developments, with market-driven pricing and clear trade coordination.',
+      'From custom homes to multi-family developments, our residential estimates provide accurate quantity takeoffs and market-driven pricing to help contractors build competitive, profitable bids.',
     intro: [
-      'From custom homes to multi-family developments, our residential estimates provide accurate quantity takeoffs and market-driven pricing to help contractors build competitive, profitable bids. Organized in CSI Format, every estimate ensures clear trade coordination, accuracy, and confidence from planning through construction.',
-    ],
-    categories: [
-      {
-        name: 'Custom Homes',
-        description:
-          'Single-family custom estates and high-end residences with detailed finish packages, specialty millwork, and sitework coordination.',
-      },
-      {
-        name: 'Production & Spec Homes',
-        description:
-          'Repeated plan sets and option packages organized so production builders can price models, elevations, and option adders consistently.',
-      },
-      {
-        name: 'Multi-Family & Apartments',
-        description:
-          'Garden-style, mid-rise, and podium multi-family with unit typicals, common areas, and structured parking takeoffs.',
-      },
-      {
-        name: 'Townhomes & Condos',
-        description:
-          'Attached residential product with shared party walls, roof assemblies, and HOA-driven finish standards.',
-      },
-      {
-        name: 'ADUs & Accessory Dwellings',
-        description:
-          'Detached and attached accessory dwelling units with foundation, framing, MEP, and finish scopes sized for smaller footprints.',
-      },
-      {
-        name: 'Residential Renovations & Additions',
-        description:
-          'Whole-home remodels, room additions, and kitchen/bath packages that account for demolition and existing conditions.',
-      },
+      'Organized in CSI Format, every estimate ensures clear trade coordination, accuracy, and confidence from planning through construction.',
     ],
   },
   {
@@ -202,9 +136,9 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
     code: 'IND',
     name: 'Industrial Projects',
     lede:
-      'Detailed industrial estimating for manufacturing, logistics, processing, and specialty facilities, organized by trade in CSI Format.',
+      'Our industrial estimates combine detailed quantity takeoffs with real-time market pricing enhanced by our proprietary data analytics platform to help contractors bid confidently on manufacturing facilities, warehouses, processing plants, distribution centers, and other industrial developments.',
     intro: [
-      'Our industrial estimates combine detailed quantity takeoffs with real-time market pricing enhanced by our proprietary data analytics platform to help contractors bid confidently on manufacturing facilities, warehouses, processing plants, distribution centers, and other industrial developments. Prepared in CSI Format, every estimate is organized by trade with accurate material, labor, and equipment costs, enabling better cost control, reduced risk, and improved project profitability.',
+      'Prepared in CSI Format, every estimate is organized by trade with accurate material, labor, and equipment costs, enabling better cost control, reduced risk, and improved project profitability.',
     ],
     categories: [
       {
@@ -274,9 +208,9 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
     code: 'PUB',
     name: 'Public Projects',
     lede:
-      'Estimating for the demands of government and municipal bidding: CSI Format estimates, compliant bid proposals, and proprietary market intelligence.',
+      'Our public project estimating services are designed for the demands of government and municipal bidding.',
     intro: [
-      'Our public project estimating services are designed for the demands of government and municipal bidding. We deliver accurate quantity takeoffs, CSI Format estimates, and compliant bid proposals enhanced by our proprietary data analytics platform. By applying lessons from past projects, including equity considerations, scope trends, and historical cost patterns, we help contractors submit competitive bids that win work while protecting profit and long-term margins.',
+      'We deliver accurate quantity takeoffs, CSI Format estimates, and compliant bid proposals enhanced by our proprietary data analytics platform. By applying lessons from past projects, including equity considerations, scope trends, and historical cost patterns, we help contractors submit competitive bids that win work while protecting profit and long-term margins.',
     ],
     categories: [
       {
@@ -378,9 +312,8 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
     code: 'TRD',
     name: 'Trade Contractors',
     lede:
-      'Every successful project is built by skilled subcontractors. Winning work starts with accurate pricing and the confidence to submit competitive bids.',
-    intro: [
       'Every successful project is built by skilled subcontractors. Whether you\'re an electrical contractor, HVAC contractor, concrete contractor, roofer, or painter, winning work starts with accurate pricing and the confidence to submit competitive bids.',
+    intro: [
       'We provide detailed quantity takeoffs, trade-specific estimates, and market-driven pricing that help subcontractors bid faster, protect their margins, and secure more profitable work. Every estimate is prepared in CSI Format, giving you a clear scope that integrates seamlessly into any General Contractor\'s bid package.',
       'Every estimate is enhanced by our proprietary data analytics platform, combining real-time supplier pricing, regional labor trends, historical project data, and market intelligence. The result is a bid package that helps you price competitively, protect your margins, and win more work with confidence.',
     ],
@@ -394,7 +327,6 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     slug: 'remodeling',
     name: 'Remodeling Estimation Services',
     headline: 'Build Smarter. Renovate with Confidence.',
-    heroHeadline: 'Renovate with Real Numbers',
     lede:
       'Whether you\'re pricing a tenant improvement, commercial renovation, residential remodel, or adaptive reuse project, our remodeling estimating services provide the accuracy and market intelligence needed to bid competitively without sacrificing profitability.',
     intro: [
@@ -430,7 +362,6 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     slug: 'new-construction',
     name: 'New Construction Estimation Services',
     headline: 'Ground-Up Estimates Built for Competitive GC Bids.',
-    heroHeadline: 'Ground-Up Estimates That Win',
     lede:
       'New construction estimating for residential and commercial projects. CSI Format takeoffs, real-time pricing, and trade-coordinated bid packages from foundation through finishes.',
     intro: [
@@ -672,7 +603,6 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     slug: 'hvac',
     name: 'HVAC Estimation Services',
     headline: 'Accurate HVAC Estimates. Smarter Mechanical Bids.',
-    heroHeadline: 'Ductwork to Controls, Quantified',
     lede:
       'Our HVAC estimating services combine detailed quantity takeoffs, real-time supplier pricing, labor analysis, and proprietary data analytics to help mechanical contractors submit competitive, profitable bids.',
     intro: [
@@ -709,7 +639,6 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     slug: 'mep',
     name: 'MEP Estimation Services',
     headline: 'Fully Coordinated MEP Estimates for Better Project Outcomes',
-    heroHeadline: 'Full-System MEP Takeoffs',
     lede:
       'Our MEP estimating services combine detailed quantity takeoffs, real-time pricing, and proprietary data analytics to deliver accurate, coordinated estimates for mechanical, electrical, and plumbing systems.',
     intro: [
@@ -782,7 +711,6 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     slug: 'concrete',
     name: 'Concrete Estimating Services',
     headline: 'Accurate Concrete Estimates. Stronger Foundations for Better Bids.',
-    heroHeadline: 'Pour Smarter, Bid Stronger',
     lede:
       'Our concrete estimating services combine detailed quantity takeoffs, production-based calculations, real-time material pricing, and proprietary data analytics to help concrete contractors submit competitive, profitable bids.',
     intro: [
@@ -857,7 +785,6 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     slug: 'structural',
     name: 'Structural Estimation Services',
     headline: 'Precision Structural Estimates for Stronger Projects',
-    heroHeadline: 'Steel, Concrete, Timber: Quantified',
     lede:
       'Our structural estimating services combine detailed quantity takeoffs, engineering coordination, real-time material pricing, and proprietary data analytics to help contractors submit competitive, profitable bids.',
     intro: [
@@ -1046,7 +973,6 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     slug: 'demolition',
     name: 'Demolition Estimation Services',
     headline: 'Accurate Demolition Takeoffs for Safer, Clearer Bids.',
-    heroHeadline: 'Know What Comes Out',
     lede:
       'Selective demolition, gut-outs, and structural removal demand careful sequencing and quantity clarity. Our demolition estimates quantify what comes out, what stays protected, and how the work is staged so contractors can price risk and productivity with confidence.',
     intro: [

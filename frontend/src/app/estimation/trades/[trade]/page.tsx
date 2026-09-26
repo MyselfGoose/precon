@@ -31,15 +31,14 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
   const sample = page.sampleDivisionSlug
     ? TRADES.find((t) => t.slug === page.sampleDivisionSlug)?.sample
     : undefined;
-  const heroTitle = page.heroHeadline ?? page.name;
   const heroImage = page.imageSrc;
 
   return (
     <>
       <PageHead
         eyebrow="Estimation · Trade"
-        title={heroTitle}
-        lede={page.headline}
+        title={page.headline}
+        lede={page.name}
         crumb={
           <>
             <Link href="/estimation">Estimation</Link> / <Link href="/estimation/trades">Trades</Link> / {page.name}
@@ -96,8 +95,8 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
             </div>
           ) : null}
           <div className="stack">
-            <div className="eyebrow">Why contractors choose us</div>
-            <h2>Built for competitive, profitable bids</h2>
+            <div className="eyebrow">Why us</div>
+            <h2>Why Contractors Choose Us</h2>
             <p className="prose">{page.whyUs}</p>
           </div>
           <div className="stack">

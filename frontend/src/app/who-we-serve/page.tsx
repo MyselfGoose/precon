@@ -22,7 +22,7 @@ export default function Who() {
             Support built around your role in the <span className="accent-word">bid.</span>
           </>
         }
-        lede="From general contractors assembling complete bids to specialty subcontractors protecting margins under tight deadlines. Precise takeoffs and dependable preconstruction support."
+        lede="From quantity takeoffs and cost estimating to BIM coordination and construction documentation — comprehensive preconstruction support for general contractors, subcontractors, and specialty trades."
         image="/images/hero/who-we-serve.jpg"
         imageAlt="Construction professionals reviewing plans on a job site"
         priority
@@ -39,7 +39,6 @@ export default function Who() {
               <div className="code">{a.code}</div>
               <h2 style={{ fontSize: 'var(--s2)' }}>{a.name}</h2>
               <p className="prose">{a.intro}</p>
-              <p className="prose">{a.details}</p>
               <Spec title="Typical support" unit={a.code} items={a.items} />
             </MotionReveal>
           ))}

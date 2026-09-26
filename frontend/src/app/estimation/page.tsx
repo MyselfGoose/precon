@@ -23,7 +23,7 @@ export default function EstimationPage() {
             Accurate takeoffs. Competitive bids. Protected <span className="accent-word">margins.</span>
           </>
         }
-        lede="Every estimate is prepared in CSI Format and enhanced by our proprietary data analytics platform, combining real-time supplier pricing, regional labor trends, historical project data, and market intelligence."
+        lede="We provide detailed quantity takeoffs, trade-specific estimates, and market-driven pricing that help subcontractors bid faster, protect their margins, and secure more profitable work. Every estimate is prepared in CSI Format and enhanced by our proprietary data analytics platform."
         image="/images/projects/residential-commercial.jpg"
         imageAlt="Commercial and residential construction representing CSI Format estimating"
         priority

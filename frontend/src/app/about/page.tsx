@@ -29,13 +29,16 @@ export default function About() {
       <section className="band">
         <div className="wrap stack-lg">
           <MotionReveal className="stack" y={16}>
-            <p className="prose">{ABOUT_CONTENT.paragraphs[0]}</p>
-            <p className="prose">{ABOUT_CONTENT.paragraphs[1]}</p>
+            {ABOUT_CONTENT.paragraphs.map((paragraph) => (
+              <p className="prose" key={paragraph.slice(0, 48)}>
+                {paragraph}
+              </p>
+            ))}
           </MotionReveal>
 
           <div className="stack">
-            <div className="eyebrow">Why contractors choose us</div>
-            <h2>Built around accuracy, speed, and accountability</h2>
+            <div className="eyebrow">Why choose us</div>
+            <h2>What sets our preconstruction support apart</h2>
           </div>
           <MotionStagger className="reasons">
             {ABOUT_CONTENT.benefits.map(([code, title, text]) => (
@@ -47,25 +50,15 @@ export default function About() {
             ))}
           </MotionStagger>
 
-          <div className="grid-2">
-            <div className="stack">
-              <h3>How we work</h3>
-              <p className="prose">{ABOUT_CONTENT.paragraphs[2]}</p>
-              <p className="prose">
-                Explore <Link href="/estimation">estimation</Link>, <Link href="/services">services</Link>, or{' '}
-                <Link href="/how-it-works">how it works</Link>.
-              </p>
-            </div>
-            <div className="note">
-              <b>Built around your project.</b> Bidding, planning a development, evaluating a property,
-              or coordinating a technical package: we shape the support around the decisions in front of you.
-            </div>
-          </div>
+          <p className="prose">
+            Explore <Link href="/estimation">estimation</Link>, <Link href="/services">services</Link>, or{' '}
+            <Link href="/how-it-works">how it works</Link>.
+          </p>
         </div>
       </section>
       <CTA
-        title="Bring the next project into focus"
-        text="Share the information you have and we will help identify the right starting point."
+        title="Ready to work with a single preconstruction partner?"
+        text="Share the project information you have and we will help identify the right starting point."
       />
     </>
   );
