@@ -380,12 +380,12 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
     lede:
       'Every successful project is built by skilled subcontractors. Winning work starts with accurate pricing and the confidence to submit competitive bids.',
     intro: [
-      'Electrical, HVAC, concrete, roofing, painting: winning work starts with accurate pricing and the confidence to submit competitive bids.',
-      'We provide detailed quantity takeoffs, trade-specific estimates, and market-driven pricing that help subcontractors bid faster, protect their margins, and secure more profitable work. Every estimate is prepared in CSI Format, giving you a clear scope that integrates into any General Contractor\'s bid package.',
-      'Every estimate is enhanced by our proprietary data analytics platform, combining real-time supplier pricing, regional labor trends, historical project data, and market intelligence. The result is a bid package that helps you price competitively, protect your margins, and win more work.',
+      'Every successful project is built by skilled subcontractors. Whether you\'re an electrical contractor, HVAC contractor, concrete contractor, roofer, or painter, winning work starts with accurate pricing and the confidence to submit competitive bids.',
+      'We provide detailed quantity takeoffs, trade-specific estimates, and market-driven pricing that help subcontractors bid faster, protect their margins, and secure more profitable work. Every estimate is prepared in CSI Format, giving you a clear scope that integrates seamlessly into any General Contractor\'s bid package.',
+      'Every estimate is enhanced by our proprietary data analytics platform, combining real-time supplier pricing, regional labor trends, historical project data, and market intelligence. The result is a bid package that helps you price competitively, protect your margins, and win more work with confidence.',
     ],
     whyUs:
-      'Our proprietary data analytics platform combines nearly a decade of historical project data with real-time material pricing, regional labor costs, and market trends to produce CSI MasterFormat-compliant estimates built on hard numbers. Every takeoff helps trade contractors price competitively, protect their margins, and bid with confidence. Data-driven insights, fast turnaround times, and uncompromising accuracy mean you win the right work at the right price.',
+      'Estimating isn\'t just about quantities — it\'s about intelligence. Our proprietary data analytics platform combines nearly a decade of historical project data with real-time material pricing, regional labor costs, and market trends to produce CSI MasterFormat-compliant estimates that go beyond the numbers. Every takeoff is built to help trade contractors price competitively, protect their margins, and bid with confidence. By combining data-driven insights with fast turnaround times and uncompromising accuracy, we don\'t just help you win more work, we help you win the right work at the right price. So the better question isn\'t "Why us?" it\'s "Why not us?"',
   },
 ];
 
@@ -396,7 +396,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     headline: 'Build Smarter. Renovate with Confidence.',
     heroHeadline: 'Renovate with Real Numbers',
     lede:
-      'Tenant improvements, commercial renovations, residential remodels, and adaptive reuse projects all demand accurate quantities and market intelligence. Our remodeling estimating services deliver both so you can bid competitively without sacrificing profitability.',
+      'Whether you\'re pricing a tenant improvement, commercial renovation, residential remodel, or adaptive reuse project, our remodeling estimating services provide the accuracy and market intelligence needed to bid competitively without sacrificing profitability.',
     intro: [
       'Every estimate is prepared in CSI Format and powered by our proprietary data analytics platform, combining real-time material pricing, regional labor trends, historical project data, and market analysis to deliver reliable, bid-ready estimates.',
     ],
@@ -421,7 +421,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
       'BIM Estimating',
     ],
     whyUs:
-      'Remodeling projects present unique challenges: unforeseen existing conditions, evolving scopes, and tight schedules. Our estimators account for demolition, structural modifications, material upgrades, code compliance, and labor productivity to deliver estimates that are both competitive and dependable. By combining nearly a decade of historical pricing data with live market intelligence, we help contractors reduce uncertainty, protect profit margins, and submit bids with confidence. From a single-space remodel to a full facility renovation, we become an extension of your preconstruction team, delivering the speed, consistency, and accuracy needed to win more work.',
+      'Remodeling projects present unique challenges — from unforeseen existing conditions to evolving scopes and tight schedules. Our estimators account for demolition, structural modifications, material upgrades, code compliance, and labor productivity to deliver estimates that are both competitive and dependable. By combining nearly a decade of historical pricing data with live market intelligence, we help contractors reduce uncertainty, protect profit margins, and submit bids with confidence. Whether you\'re remodeling a single space or renovating an entire facility, we become an extension of your preconstruction team — delivering the speed, consistency, and accuracy needed to win more work.',
     ctaTitle: 'Request Your Remodeling Estimate',
     ctaText:
       'Partner with a team that delivers more than just numbers. Get accurate takeoffs, data-driven pricing, and professional bid proposals that help you bid smarter and build more profitably.',
@@ -556,7 +556,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
       'BIM Estimating',
     ],
     whyUs:
-      'Glazing projects require precise measurements, coordinated systems, and accurate pricing. Our estimates account for framing systems, specialty glass, hardware, and installation requirements to help you minimize risk, protect your margins, and bid with confidence.',
+      'Glazing projects require precise measurements, coordinated systems, and accurate pricing. Our estimates account for framing systems, specialty glass, hardware, and installation requirements — helping you minimize risk, protect your margins, and bid with confidence.',
     ctaTitle: 'Request Your Glazing Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you secure more glazing projects.',
@@ -1178,7 +1178,7 @@ export const TRADE_BUBBLE_SUMMARIES: { slug: string; name: string; summary: stri
     slug: 'remodeling',
     name: 'Remodeling Estimation Services',
     summary:
-      'Tenant improvements and full renovations alike require demolition, existing-condition, and material-upgrade detail. Our remodeling estimates deliver competitive, profitable bids.',
+      'Whether it\'s a tenant improvement or a complete renovation, our remodeling estimates account for demolition, existing conditions, material upgrades, and labor productivity to deliver competitive, profitable bids.',
   },
   {
     slug: 'new-construction',

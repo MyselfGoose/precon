@@ -21,7 +21,7 @@ export default function About() {
             Preconstruction, under one <span className="accent-word">roof.</span>
           </>
         }
-        lede="A single, trusted partner for planning, estimating, design coordination, and construction documentation."
+        lede={ABOUT_CONTENT.lede}
         image="/images/approach/building.jpg"
         imageAlt="American Colonial-style home: CSI & Design preconstruction partnership"
         priority

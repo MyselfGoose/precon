@@ -51,8 +51,8 @@ export default function EstimationPage() {
       <section className="band band-ground">
         <div className="wrap stack-lg">
           <div className="stack">
-            <div className="eyebrow">Trade contractors</div>
-            <h2>Singular estimation pages per trade</h2>
+            <div className="eyebrow">CSI Trade Expertise</div>
+            <h2>CSI Trades</h2>
             <p className="prose">
               Detailed quantity takeoffs, trade-specific estimates, and market-driven pricing that help subcontractors bid faster, protect their margins, and secure more profitable work.
             </p>

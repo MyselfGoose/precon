@@ -176,7 +176,10 @@ export default function MobileNav() {
 
   function handlePointerDown(event: React.PointerEvent<HTMLButtonElement>) {
     if (event.pointerType === 'mouse' && event.button !== 0) return;
-    const origin = position ?? cornerPosition(corner, 58, 58);
+    const shell = shellRef.current;
+    const fallbackWidth = shell?.offsetWidth ?? 220;
+    const fallbackHeight = shell?.offsetHeight ?? 58;
+    const origin = position ?? cornerPosition(corner, fallbackWidth, fallbackHeight);
     dragRef.current = {
       pointerId: event.pointerId,
       startX: event.clientX,
@@ -234,9 +237,6 @@ export default function MobileNav() {
                   <Link href={href} onClick={() => setOpen(false)}>{name}</Link>
                 </motion.div>
               ))}
-              <Link className="btn btn-primary btn-sm" href="/quote" onClick={() => setOpen(false)}>
-                {SITE_COPY.cta.primary} →
-              </Link>
               <a className="nav-tel" href={`tel:${BRAND.phoneRaw}`} onClick={() => setOpen(false)}>
                 Call {BRAND.phoneDisplay}
               </a>
@@ -252,6 +252,14 @@ export default function MobileNav() {
             </motion.nav>
           )}
         </AnimatePresence>
+        <Link
+          className="floating-nav-quote"
+          href="/quote"
+          onClick={() => setOpen(false)}
+          aria-label={SITE_COPY.cta.primary}
+        >
+          {SITE_COPY.cta.primary}
+        </Link>
       <motion.button
         ref={toggleRef}
         className="floating-nav-toggle"

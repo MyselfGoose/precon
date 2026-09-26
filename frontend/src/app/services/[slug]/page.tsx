@@ -89,7 +89,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           variant="dark"
           actions={
             <>
-              <Button href="#discuss-property">Get in Touch →</Button>
+              <Button href="/quote">{SITE_COPY.cta.primary} →</Button>
+              <a className="btn btn-on-dark" href="#discuss-property">
+                Get in Touch →
+              </a>
               <a className="btn btn-on-dark" href="#approach">
                 See our approach →
               </a>
@@ -146,6 +149,24 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="band" id="special-cases">
+          <div className="wrap stack-lg">
+            <MotionReveal className="stack" y={16}>
+              <div className="eyebrow">Special cases</div>
+              <h2>{ACQUISITION_CONTENT.specialCasesTitle}</h2>
+              <p className="prose">{ACQUISITION_CONTENT.specialCasesIntro}</p>
+            </MotionReveal>
+            <MotionStagger className="grid-3">
+              {ACQUISITION_CONTENT.specialCases.map((item) => (
+                <MotionItem className="card" key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </MotionItem>
+              ))}
+            </MotionStagger>
           </div>
         </section>
 
@@ -219,7 +240,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <h2>{ACQUISITION_CONTENT.ctaTitle}</h2>
               <p className="prose">{ACQUISITION_CONTENT.ctaText}</p>
               <div className="contact-actions">
-                <PhoneLink className="btn btn-primary">Call {BRAND.phoneDisplay}</PhoneLink>
+                <Link className="btn btn-primary" href="/quote">
+                  {SITE_COPY.cta.primary} →
+                </Link>
+                <PhoneLink className="btn btn-ghost">Call {BRAND.phoneDisplay}</PhoneLink>
                 <WhatsAppLink className="btn btn-ghost">WhatsApp Us →</WhatsAppLink>
               </div>
             </div>
@@ -427,8 +451,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             {relatedMode === 'trades' && (
               <div className="stack-lg">
                 <div className="stack">
-                  <div className="eyebrow">Our trades</div>
-                  <h2>Singular estimation pages per trade</h2>
+                  <div className="eyebrow">CSI Trade Expertise</div>
+                  <h2>CSI Trades</h2>
                   <p className="prose">
                     Detailed quantity takeoffs, trade-specific estimates, and market-driven pricing that help
                     subcontractors bid faster, protect their margins, and secure more profitable work.

@@ -45,7 +45,7 @@ export default function Who() {
           ))}
           <div className="note">
             <b>Need a trade-specific estimation page?</b> Browse{' '}
-            <Link href="/estimation/trades">singular estimation pages per trade</Link> or review our{' '}
+            <Link href="/estimation/trades">CSI Trades</Link> or review our{' '}
             <Link href="/trades">CSI trade expertise</Link>.
           </div>
         </div>
