@@ -19,6 +19,12 @@ export type EstimationHub = {
   imageSrc?: string;
   imageAlt?: string;
   watermark?: string;
+  equityNote?: {
+    title: string;
+    body: string;
+    exampleTitle: string;
+    example: string;
+  };
 };
 
 export type TradeEstimationPage = {
@@ -144,6 +150,56 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
     imageSrc: '/images/estimation/commercial.jpg',
     imageAlt: 'Commercial office building for commercial project estimating',
     watermark: 'Commercial Projects',
+    categories: [
+      {
+        name: 'Office & Corporate',
+        description:
+          'Office towers, corporate campuses, and professional buildings with coordinated architectural, structural, and MEP takeoffs organized in CSI Format for competitive commercial bids.',
+        imageSrc: '/images/estimation/com-office.jpg',
+        imageAlt: 'Modern commercial office building exterior',
+        watermark: 'Office & Corporate',
+      },
+      {
+        name: 'Retail & Storefront',
+        description:
+          'Retail shells, storefronts, and shopping centers estimated with clear trade splits for storefront systems, interiors, site work, and tenant-ready conditions.',
+        imageSrc: '/images/estimation/com-retail.jpg',
+        imageAlt: 'Retail storefront and commercial streetscape',
+        watermark: 'Retail & Storefront',
+      },
+      {
+        name: 'Mixed-Use Developments',
+        description:
+          'Combined residential, retail, and office programs requiring coordinated quantities across vertical towers, podium parking, and shared building systems.',
+        imageSrc: '/images/estimation/com-mixed-use.jpg',
+        imageAlt: 'Mixed-use commercial and residential development',
+        watermark: 'Mixed-Use',
+      },
+      {
+        name: 'Hospitality & Lodging',
+        description:
+          'Hotels, resorts, and lodging projects with guest-room packages, public areas, kitchens, and specialty finishes priced for market-driven commercial bids.',
+        imageSrc: '/images/estimation/com-hospitality.jpg',
+        imageAlt: 'Hospitality hotel exterior for commercial estimating',
+        watermark: 'Hospitality',
+      },
+      {
+        name: 'Healthcare & Medical Office',
+        description:
+          'Medical offices, clinics, and outpatient facilities with specialty MEP, finishes, and code-driven scopes that demand precise commercial takeoffs.',
+        imageSrc: '/images/estimation/com-healthcare.jpg',
+        imageAlt: 'Medical office and healthcare commercial building',
+        watermark: 'Healthcare',
+      },
+      {
+        name: 'Tenant Improvements / Fit-Outs',
+        description:
+          'TI and interior fit-out packages for commercial spaces — partitions, ceilings, flooring, MEP revisions, and finish scopes coordinated for fast turnaround bids.',
+        imageSrc: '/images/estimation/com-ti.jpg',
+        imageAlt: 'Commercial tenant improvement interior fit-out',
+        watermark: 'Tenant Improvements',
+      },
+    ],
   },
   {
     slug: 'residential',
@@ -152,11 +208,61 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
     lede:
       'From custom homes to multi-family developments, our residential estimates provide accurate quantity takeoffs and market-driven pricing to help contractors build competitive, profitable bids.',
     intro: [
-      'Organized in CSI Format, every estimate ensures clear trade coordination, accuracy, and confidence from planning through construction.',
+      'Organized in CSI Format, every estimate ensures clear trade coordination, accuracy, and confidence from planning through construction. Residential work spans single-family homes, duplex and two-family dwellings, townhomes, multi-family apartments, affordable housing schemes, and custom estate residences.',
     ],
     imageSrc: '/images/estimation/residential.jpg',
     imageAlt: 'Residential homes for residential project estimating',
     watermark: 'Residential Projects',
+    categories: [
+      {
+        name: 'Single-Family Homes',
+        description:
+          'Detached single-family homes estimated from foundation through finishes with market-driven material and labor pricing organized in CSI Format.',
+        imageSrc: '/images/estimation/res-single-family.jpg',
+        imageAlt: 'Single-family residential home exterior',
+        watermark: 'Single-Family',
+      },
+      {
+        name: 'Duplex / Two-Family Homes',
+        description:
+          'Side-by-side and stacked two-family dwellings with shared and separated systems quantified clearly so each unit and common scope is priced correctly.',
+        imageSrc: '/images/estimation/res-duplex.jpg',
+        imageAlt: 'Duplex two-family residential building',
+        watermark: 'Duplex / Two-Family',
+      },
+      {
+        name: 'Townhomes & Row Housing',
+        description:
+          'Attached townhome and row-house communities with party walls, shared roofs, and repeating unit packages that benefit from consistent CSI takeoffs.',
+        imageSrc: '/images/estimation/res-townhomes.jpg',
+        imageAlt: 'Townhome row housing residential street',
+        watermark: 'Townhomes',
+      },
+      {
+        name: 'Multi-Family Apartments',
+        description:
+          'Garden-style and mid-rise multi-family apartments with unit types, corridors, amenities, and site packages estimated for competitive residential bids.',
+        imageSrc: '/images/estimation/res-multifamily.jpg',
+        imageAlt: 'Multi-family apartment residential building',
+        watermark: 'Multi-Family',
+      },
+      {
+        name: 'Affordable / Low-Cost Housing Schemes',
+        description:
+          'Affordable and low-cost housing schemes where quantity accuracy, durable assemblies, and disciplined pricing protect both schedule and contractor margins.',
+        imageSrc: '/images/estimation/res-affordable.jpg',
+        imageAlt: 'Affordable low-cost housing residential development',
+        watermark: 'Affordable Housing',
+      },
+      {
+        name: 'Custom Homes & Estate Residential',
+        description:
+          'Custom and estate residences with elevated finishes, complex framing, and specialty scopes priced carefully so the bid stays competitive and profitable.',
+        imageSrc: '/images/estimation/res-custom.jpg',
+        imageAlt: 'Custom estate residential home',
+        watermark: 'Custom Homes',
+      },
+    ],
   },
   {
     slug: 'industrial',
@@ -175,21 +281,33 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
         name: 'Manufacturing Facilities',
         description:
           'Production lines, heavy machinery foundations, utility systems, ventilation, and workflow optimization are critical to support efficient manufacturing operations.',
+        imageSrc: '/images/estimation/ind-manufacturing.jpg',
+        imageAlt: 'Manufacturing facility production floor',
+        watermark: 'Manufacturing',
       },
       {
         name: 'Warehouses & Distribution Centers',
         description:
           'Large clear-span structures, loading docks, racking systems, concrete slabs, and truck circulation are key considerations for high-volume storage and logistics.',
+        imageSrc: '/images/estimation/ind-warehouse.jpg',
+        imageAlt: 'Warehouse distribution center with loading docks',
+        watermark: 'Warehouses',
       },
       {
         name: 'Processing Plants',
         description:
           'Complex piping, process equipment, structural steel, instrumentation, and mechanical systems require precise coordination across multiple trades.',
+        imageSrc: '/images/estimation/ind-processing.jpg',
+        imageAlt: 'Industrial processing plant exterior',
+        watermark: 'Processing Plants',
       },
       {
         name: 'Food & Beverage Facilities',
         description:
           'Sanitary construction, food-grade finishes, temperature-controlled environments, drainage systems, and strict health code compliance are essential.',
+        imageSrc: '/images/estimation/ind-food.jpg',
+        imageAlt: 'Food and beverage industrial facility',
+        watermark: 'Food & Beverage',
       },
       {
         name: 'Pharmaceutical Plants',
@@ -210,6 +328,9 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
         name: 'Power Generation Facilities',
         description:
           'Equipment foundations, turbine installations, electrical distribution, cooling systems, and high-capacity structural components require accurate planning.',
+        imageSrc: '/images/estimation/ind-power.jpg',
+        imageAlt: 'Power generation industrial facility',
+        watermark: 'Power Generation',
       },
       {
         name: 'Water & Wastewater Treatment Plants',
@@ -225,6 +346,9 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
         name: 'Cold Storage Facilities',
         description:
           'Insulated wall panels, vapor barriers, refrigeration systems, specialized flooring, and energy-efficient building envelopes are critical for temperature control.',
+        imageSrc: '/images/estimation/ind-cold-storage.jpg',
+        imageAlt: 'Cold storage industrial warehouse',
+        watermark: 'Cold Storage',
       },
       {
         name: 'Mining & Industrial Processing Facilities',
@@ -243,48 +367,79 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
       'We deliver accurate quantity takeoffs, CSI Format estimates, and compliant bid proposals enhanced by our proprietary data analytics platform. By applying lessons from past projects, including equity considerations, scope trends, and historical cost patterns, we help contractors submit competitive bids that win work while protecting profit and long-term margins.',
       'Infrastructure & Civil work sits at the core of public estimating: roads and highways, bridges, aviation, marine and port, rail and transit, water and wastewater, utility corridors, dams, tunnels, and related civil scopes. Vertical public facilities follow with the same CSI Format discipline.',
     ],
+    imageSrc: '/images/estimation/public-projects.jpg',
+    imageAlt: 'Public civil infrastructure bridge and roadway',
+    watermark: 'Public Projects',
+    equityNote: {
+      title: 'How we protect equity on public work',
+      body: 'Public bids are won and lost on more than quantities. We apply lessons from past projects — including equity considerations, scope trends, and historical cost patterns — so the estimate stays competitive while protecting profit and long-term margins as the project evolves.',
+      exampleTitle: 'Example: fire stations & emergency services',
+      example:
+        'Fire station work often changes after award: apparatus-bay layouts, specialized MEP, training spaces, and resilient systems get revised mid-design. We keep those equity impacts in view — updating quantities and pricing as scope shifts — so the contractor’s position stays intact instead of absorbing uncontrolled change into the margin.',
+    },
     categories: [
       {
         name: 'Roads & Highways',
         group: 'civil',
         description:
           'Estimating for roads, highways, and interchanges requires careful consideration of earthwork, paving, drainage, traffic control, utility coordination, and local market pricing to ensure competitive, profitable bids.',
+        imageSrc: '/images/estimation/civil-roads.jpg',
+        imageAlt: 'Highway and roadway civil infrastructure',
+        watermark: 'Roads & Highways',
       },
       {
         name: 'Bridges',
         group: 'civil',
         description:
           'Bridge estimates account for structural steel, reinforced concrete, deep foundations, falsework, specialty equipment, erection sequencing, and project-specific engineering complexities.',
+        imageSrc: '/images/estimation/civil-bridges.jpg',
+        imageAlt: 'Bridge civil infrastructure over water',
+        watermark: 'Bridges',
       },
       {
         name: 'Aviation Infrastructure',
         group: 'civil',
         description:
           'Airport projects demand coordinated estimating for runways, taxiways, terminals, airside utilities, security requirements, phasing, and uninterrupted operational access.',
+        imageSrc: '/images/estimation/civil-aviation.jpg',
+        imageAlt: 'Airport runway and aviation infrastructure',
+        watermark: 'Aviation',
       },
       {
         name: 'Marine & Port Facilities',
         group: 'civil',
         description:
           'Marine estimates consider tidal conditions, cofferdams, dredging, corrosion-resistant materials, marine equipment, environmental regulations, and specialized construction methods.',
+        imageSrc: '/images/estimation/civil-marine.jpg',
+        imageAlt: 'Marine port facility and dock infrastructure',
+        watermark: 'Marine & Port',
       },
       {
         name: 'Rail & Transit',
         group: 'civil',
         description:
           'Rail projects require estimating for track systems, signaling, platforms, utilities, traffic management, phased construction, and strict operational coordination.',
+        imageSrc: '/images/estimation/civil-rail.jpg',
+        imageAlt: 'Rail and transit civil infrastructure',
+        watermark: 'Rail & Transit',
       },
       {
         name: 'Water & Wastewater',
         group: 'civil',
         description:
           'Treatment facilities require detailed estimates for process equipment, underground utilities, piping networks, structural concrete, mechanical systems, and regulatory compliance.',
+        imageSrc: '/images/estimation/civil-water.jpg',
+        imageAlt: 'Water and wastewater treatment facility',
+        watermark: 'Water & Wastewater',
       },
       {
         name: 'Utility Infrastructure',
         group: 'civil',
         description:
           'Utility projects involve underground coordination, excavation, backfill, trench safety, restoration, utility conflicts, and local labor and material pricing.',
+        imageSrc: '/images/estimation/civil-utilities.jpg',
+        imageAlt: 'Underground utility infrastructure trench work',
+        watermark: 'Utility Infrastructure',
       },
       {
         name: 'Dams & Flood Control',
@@ -303,12 +458,18 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
         group: 'facilities',
         description:
           'Government facilities require coordinated estimates covering architectural finishes, structural systems, MEP trades, code compliance, accessibility, and public procurement standards.',
+        imageSrc: '/images/estimation/fac-municipal.jpg',
+        imageAlt: 'Municipal government public building',
+        watermark: 'Municipal Buildings',
       },
       {
         name: 'Educational Facilities',
         group: 'facilities',
         description:
           'School and university projects require phased construction planning, occupied-campus coordination, life safety compliance, durable finishes, and budget-conscious estimating.',
+        imageSrc: '/images/estimation/fac-education.jpg',
+        imageAlt: 'Educational school public facility',
+        watermark: 'Educational Facilities',
       },
       {
         name: 'Healthcare Facilities',
@@ -339,6 +500,9 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
         group: 'facilities',
         description:
           'Fire stations and EMS facilities require estimating for apparatus bays, emergency response systems, specialized MEP infrastructure, training spaces, and resilient building design.',
+        imageSrc: '/images/estimation/fac-fire-station.jpg',
+        imageAlt: 'Fire station emergency services public facility',
+        watermark: 'Fire Stations',
       },
       {
         name: 'Police & Public Safety Facilities',

@@ -631,6 +631,9 @@
   .bim-step-copy strong{font-size:.92rem;color:var(--ink);line-height:1.25;}
   .bim-step-copy em{font-style:normal;font-size:.8rem;color:var(--muted);line-height:1.4;}
   .bim-walkthrough-status{margin:0;font-size:.84rem;color:var(--muted);}
+  .equity-note{display:flex;flex-direction:column;gap:12px;padding:24px 26px;border:1px solid rgba(139,38,53,.28);border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(245,240,230,.85));box-shadow:var(--shadow);}
+  .equity-note h2{margin:0;}
+  .equity-example{margin-top:4px;}
   @media (max-width:900px){
     .bim-walkthrough-steps{grid-template-columns:1fr;}
   }

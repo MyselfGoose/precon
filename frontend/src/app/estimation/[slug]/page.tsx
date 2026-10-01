@@ -154,7 +154,27 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
 
           {plainCategories.length > 0 && (
             <>
-              {slug !== 'general-construction' && (
+              {slug === 'commercial' && (
+                <div className="stack">
+                  <div className="eyebrow">Kinds of commercial projects</div>
+                  <h2>Commercial work we estimate</h2>
+                  <p className="prose">
+                    From office and retail to hospitality, healthcare, mixed-use, and tenant improvements — each card below
+                    opens the scope we take into account for that commercial project type.
+                  </p>
+                </div>
+              )}
+              {slug === 'residential' && (
+                <div className="stack">
+                  <div className="eyebrow">Types of residential projects</div>
+                  <h2>Residential work we estimate</h2>
+                  <p className="prose">
+                    Single-family, duplex and two-family, townhomes, multi-family, affordable housing schemes, and custom
+                    homes — each with CSI Format takeoffs and market-driven pricing.
+                  </p>
+                </div>
+              )}
+              {slug !== 'general-construction' && slug !== 'commercial' && slug !== 'residential' && (
                 <div className="stack">
                   <div className="eyebrow">Categories</div>
                   <h2>What this section covers</h2>
@@ -171,6 +191,17 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
                 })}
               </MotionStagger>
             </>
+          )}
+
+          {isPublic && hub.equityNote && (
+            <div className="equity-note" id="equity">
+              <div className="eyebrow">Public-project addendum</div>
+              <h2>{hub.equityNote.title}</h2>
+              <p className="prose">{hub.equityNote.body}</p>
+              <div className="note equity-example">
+                <b>{hub.equityNote.exampleTitle}</b> {hub.equityNote.example}
+              </div>
+            </div>
           )}
 
           {isPublic && civilCategories.length > 0 && (

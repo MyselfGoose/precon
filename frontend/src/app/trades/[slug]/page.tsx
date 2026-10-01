@@ -68,6 +68,11 @@ export default async function TradePage({ params }: { params: Promise<{ slug: st
               <h2 style={{ fontSize: 'var(--s2)' }}>How we estimate {tr.noun}</h2>
               <p className="prose">{tr.intro[0]}</p>
               <p className="prose">{tr.intro[1]}</p>
+              <div className="note taken-into-account">
+                <b>What we take into account.</b> Division {tr.div} {tr.name.toLowerCase()} takeoffs start from the
+                sheets listed below — {tr.sheets}. We measure the units your bid needs ({units}), organize the
+                workbook by CSI division, and call out exclusions so quantities stay defendable through review.
+              </div>
             </div>
             <div className="trade-diagram">
               <div className="draw">

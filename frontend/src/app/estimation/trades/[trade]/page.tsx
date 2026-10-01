@@ -87,6 +87,12 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
               </ul>
             </div>
           </div>
+          <div className="note taken-into-account">
+            <b>What we take into account.</b> For {page.name.replace(/ Estimation Services| Estimating Services/g, '').toLowerCase()}{' '}
+            work we review project drawings and specs against the scopes listed above, apply CSI Format organization,
+            and factor real-time material pricing, regional labor, and market conditions so the bid stays competitive
+            without quietly eroding margin.
+          </div>
           {sample ? (
             <div className="stack">
               <div className="eyebrow">Sample deliverable</div>

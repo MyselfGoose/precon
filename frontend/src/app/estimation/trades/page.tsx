@@ -29,8 +29,8 @@ export default function TradeEstimationIndex() {
             <Link href="/estimation">Estimation</Link> / Trade contractors
           </>
         }
-        image="/images/projects/industrial.jpg"
-        imageAlt="Industrial construction representing trade contractor estimation"
+        image="/images/estimation/trades-hub.jpg"
+        imageAlt="Specialty trade contractors coordinating framing and systems on a commercial jobsite"
         priority
       />
       <section className="band">
