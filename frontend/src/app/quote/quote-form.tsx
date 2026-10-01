@@ -927,7 +927,7 @@ export default function QuoteForm() {
                 <label htmlFor="c-contact">
                   <span className="req">Required</span>
                   <br />
-                  <b>I agree to be contacted about this request.</b> CSI & Design may email or call me to discuss the
+                  <b>I agree to be contacted about this request.</b> QuantSult may email or call me to discuss the
                   services I have requested.
                 </label>
               </div>

@@ -7,7 +7,7 @@ import { createMetadata } from '@/lib/metadata';
 export const metadata = createMetadata({
   title: 'How It Works',
   description:
-    'See how CSI & Design turns project information into organized, decision-ready deliverables.',
+    'See how QuantSult turns project information into organized, decision-ready deliverables.',
   path: '/how-it-works',
 });
 

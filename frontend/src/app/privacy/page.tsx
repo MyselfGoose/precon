@@ -4,7 +4,7 @@ import { BRAND, PRIVACY_EFFECTIVE_DATE, PRIVACY_SECTIONS, type LegalSection } fr
 
 export const metadata = createMetadata({
   title: 'Privacy Policy',
-  description: 'Learn how CSI & Design collects, uses, and protects your personal information.',
+  description: 'Learn how QuantSult collects, uses, and protects your personal information.',
   path: '/privacy',
 });
 

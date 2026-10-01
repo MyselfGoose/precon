@@ -282,7 +282,7 @@ export default function PropertyForm() {
             <label htmlFor="p-consent">
               <span className="req">Required</span>
               <br />
-              <b>I agree to be contacted about this property.</b> CSI & Design may email or call me to discuss the
+              <b>I agree to be contacted about this property.</b> QuantSult may email or call me to discuss the
               opportunity.
             </label>
           </div>

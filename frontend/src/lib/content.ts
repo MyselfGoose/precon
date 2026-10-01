@@ -1,6 +1,6 @@
 export const BRAND = {
-  name: 'CSI & Design',
-  shortName: 'CSI & DESIGN',
+  name: 'QuantSult',
+  shortName: 'QUANTSULT',
   descriptor: 'Estimation · Design · Acquisition',
   description:
     'Estimation, design, and property acquisition under one roof: clear scope, coordinated documentation, and strategic opportunities.',
@@ -513,29 +513,35 @@ export const ABOUT_CONTENT = {
     [
       'TURNAROUND',
       'Faster Turnaround Time',
-      'Well, other companies take a lot of unnecessary time while delivering the cost estimation. We complete the work on time and without errors.',
+      'Other firms often take unnecessary time delivering cost estimates. We complete the work on schedule and without avoidable errors.',
     ],
     [
       'ACCURACY',
       'Accuracy of Data',
-      'We\'ll provide you with accurate data according to the instructions you give. We\'ll make sure that you don\'t have to rush after receiving the text.',
+      'We deliver accurate data according to your instructions, so you can move forward with confidence instead of chasing corrections after delivery.',
     ],
     [
       'BID EDGE',
       'Bidding Edge',
-      'With our Market Analytical Proprietary Technology our estimates are powered with Market Trends — Pushing the Bid in the final rounds.',
+      'With our Market Analytical Proprietary Technology, estimates are powered by market trends — helping push the bid in the final rounds.',
     ],
     [
       'DEDICATED',
       'Dedicated Estimator',
-      'For contractors, sub contractors to keep their operational cost to a minimum we offer designated Estimator, only allocated to your needs.',
+      'For contractors and subcontractors looking to keep operational cost down, we offer a designated estimator allocated to your needs.',
     ],
     [
       'SUPPORT',
       '24/7 Support',
-      'Once project files are shared with us — rest assured, it is as much our responsibility as is yours.',
+      'Once project files are shared with us, rest assured — the work is as much our responsibility as it is yours.',
     ],
   ],
+  biddingEdge: {
+    code: 'BID EDGE',
+    title: 'Bidding Edge',
+    lede: 'Market intelligence that moves the bid when it matters most.',
+    body: 'With our Market Analytical Proprietary Technology, QuantSult estimates are powered by live market trends — giving you a sharper position in the final rounds of competitive bidding.',
+  },
 };
 
 export const ACQUISITION_CONTENT = {
@@ -743,7 +749,7 @@ export const MARKET_SECTORS = [
     slug: 'infrastructure-civil',
     name: 'Infrastructure & Civil',
     summary:
-      'Quantity takeoffs and coordination for roads, bridges, utilities, and civil infrastructure.',
+      'Civil estimating for roads, highways, bridges, utilities, airports, marine, rail, and related public infrastructure — quantity takeoffs and bid support built for competitive public work.',
   },
   {
     slug: 'hospitality-recreation',
@@ -784,7 +790,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     id: 'introduction',
     title: '1. Introduction',
     paragraphs: [
-      'CSI & Design ("we," "us," or "our") is committed to protecting your privacy and handling your personal data with transparency. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at csianddesign.com (the "Site") or engage with our professional construction support services.',
+      `QuantSult ("we," "us," or "our") is committed to protecting your privacy and handling your personal data with transparency. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at ${BRAND.website.replace(/^https?:\/\//, '')} (the "Site") or engage with our professional construction support services.`,
       'We believe in keeping things clear and straightforward. This policy applies to all information collected through our Site, email correspondence, and any related services or communications.',
     ],
     subsections: [
@@ -969,7 +975,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     id: 'third-party-links',
     title: '10. Third-Party Links',
     paragraphs: [
-      'Our Site may contain links to third-party websites, applications, or services that are not owned or controlled by CSI & Design. These links are provided for your convenience and informational purposes.',
+      'Our Site may contain links to third-party websites, applications, or services that are not owned or controlled by QuantSult. These links are provided for your convenience and informational purposes.',
       'We have no control over — and assume no responsibility for — the content, privacy policies, or practices of any third-party sites. We encourage you to review the privacy policies of any external websites you visit through links on our Site.',
     ],
   },
@@ -1016,7 +1022,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'acceptance',
     title: '1. Acceptance of Terms',
     paragraphs: [
-      `By accessing and using the website at ${BRAND.website} (the "Site"), operated by CSI & Design ("we," "us," or "our"), you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and all applicable laws and regulations.`,
+      `By accessing and using the website at ${BRAND.website} (the "Site"), operated by QuantSult ("we," "us," or "our"), you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and all applicable laws and regulations.`,
       'These Terms apply to all visitors, users, and others who access or use the Site. We may update these Terms from time to time, and your continued use of the Site constitutes acceptance of any modifications.',
     ],
     subsections: [
@@ -1032,7 +1038,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'services',
     title: '2. Services Overview',
     paragraphs: [
-      'CSI & Design provides professional construction support services to contractors, architects, engineers, and developers across the United States and Canada. Our services include:',
+      'QuantSult provides professional construction support services to contractors, architects, engineers, and developers across the United States and Canada. Our services include:',
     ],
     bullets: [
       'Construction cost estimating and quantity takeoffs across CSI divisions',
@@ -1047,7 +1053,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
       {
         title: 'Informational Purposes',
         paragraphs: [
-          'All information presented on this Site is for general informational purposes only and does not constitute a binding offer, contract, or guarantee of services. Specific service agreements are governed by separate written contracts between CSI & Design and the client.',
+          'All information presented on this Site is for general informational purposes only and does not constitute a binding offer, contract, or guarantee of services. Specific service agreements are governed by separate written contracts between QuantSult and the client.',
         ],
       },
     ],
@@ -1061,7 +1067,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     bullets: [
       'Provide accurate and truthful information when submitting forms or communicating with us',
       'Use the Site for lawful purposes only',
-      'Respect the intellectual property and proprietary rights of CSI & Design',
+      'Respect the intellectual property and proprietary rights of QuantSult',
       'Not misrepresent your identity or affiliation when contacting us',
     ],
     subsections: [
@@ -1085,8 +1091,8 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'ip',
     title: '4. Intellectual Property',
     paragraphs: [
-      'All content on this Site — including but not limited to text, graphics, logos, images, photographs, illustrations, software, and design elements — is the exclusive property of CSI & Design or its content suppliers and is protected by United States and international copyright, trademark, and intellectual property laws.',
-      'Without prior written consent from CSI & Design, you may not:',
+      'All content on this Site — including but not limited to text, graphics, logos, images, photographs, illustrations, software, and design elements — is the exclusive property of QuantSult or its content suppliers and is protected by United States and international copyright, trademark, and intellectual property laws.',
+      'Without prior written consent from QuantSult, you may not:',
     ],
     bullets: [
       'Reproduce, distribute, or publicly display any content from this Site',
@@ -1107,8 +1113,8 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'links',
     title: '5. Third-Party Links',
     paragraphs: [
-      'Our Site may contain links to third-party websites, resources, or services that are not owned, operated, or controlled by CSI & Design. These links are provided solely for your convenience and reference.',
-      'CSI & Design does not endorse, guarantee, or assume responsibility for the content, privacy policies, or practices of any third-party websites. You acknowledge and agree that CSI & Design is not responsible or liable — directly or indirectly — for any damage or loss caused or alleged to be caused by or in connection with your use of or reliance on any third-party content, products, or services.',
+      'Our Site may contain links to third-party websites, resources, or services that are not owned, operated, or controlled by QuantSult. These links are provided solely for your convenience and reference.',
+      'QuantSult does not endorse, guarantee, or assume responsibility for the content, privacy policies, or practices of any third-party websites. You acknowledge and agree that QuantSult is not responsible or liable — directly or indirectly — for any damage or loss caused or alleged to be caused by or in connection with your use of or reliance on any third-party content, products, or services.',
       'We encourage you to review the terms and privacy policies of any third-party sites you visit.',
     ],
   },
@@ -1132,7 +1138,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'disclaimer',
     title: '7. Disclaimer of Warranties',
     paragraphs: [
-      'This Site and its contents are provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, either express or implied. To the fullest extent permitted by law, CSI & Design disclaims all warranties, including but not limited to:',
+      'This Site and its contents are provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, either express or implied. To the fullest extent permitted by law, QuantSult disclaims all warranties, including but not limited to:',
     ],
     bullets: [
       'Implied warranties of merchantability and fitness for a particular purpose',
@@ -1153,7 +1159,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'liability',
     title: '8. Limitation of Liability',
     paragraphs: [
-      'To the fullest extent permitted by applicable law, CSI & Design, its officers, directors, employees, agents, and affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or related to:',
+      'To the fullest extent permitted by applicable law, QuantSult, its officers, directors, employees, agents, and affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or related to:',
     ],
     bullets: [
       'Your use of or inability to use this Site',
@@ -1167,7 +1173,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
       {
         title: '',
         paragraphs: [
-          'This limitation applies even if CSI & Design has been advised of the possibility of such damages. In jurisdictions that do not allow the exclusion or limitation of certain damages, our liability shall be limited to the greatest extent permitted by law.',
+          'This limitation applies even if QuantSult has been advised of the possibility of such damages. In jurisdictions that do not allow the exclusion or limitation of certain damages, our liability shall be limited to the greatest extent permitted by law.',
         ],
       },
     ],

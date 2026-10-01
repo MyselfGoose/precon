@@ -1,6 +1,6 @@
-## CSI & Design frontend
+## QuantSult frontend
 
-Next.js App Router site for CSI & Design — estimation, design, and property acquisition.
+Next.js App Router site for QuantSult — estimation, design, and property acquisition.
 
 ### Dev
 

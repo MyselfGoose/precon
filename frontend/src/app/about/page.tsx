@@ -7,11 +7,14 @@ import { MotionItem, MotionReveal, MotionStagger } from '../motion';
 export const metadata = createMetadata({
   title: 'About',
   description:
-    'Learn how CSI & Design brings every essential preconstruction service under one roof: estimating, design coordination, and construction documentation.',
+    'Learn how QuantSult brings every essential preconstruction service under one roof: estimating, design coordination, and construction documentation.',
   path: '/about',
 });
 
 export default function About() {
+  const otherBenefits = ABOUT_CONTENT.benefits.filter(([code]) => code !== 'BID EDGE');
+  const { biddingEdge } = ABOUT_CONTENT;
+
   return (
     <>
       <PageHead
@@ -23,7 +26,7 @@ export default function About() {
         }
         lede={ABOUT_CONTENT.lede}
         image="/images/approach/building.jpg"
-        imageAlt="American Colonial-style home: CSI & Design preconstruction partnership"
+        imageAlt="American Colonial-style home: QuantSult preconstruction partnership"
         priority
       />
       <section className="band">
@@ -36,12 +39,25 @@ export default function About() {
             ))}
           </MotionReveal>
 
+          <MotionReveal className="bidding-edge" y={20}>
+            <div className="bidding-edge-glow" aria-hidden="true" />
+            <div className="bidding-edge-inner">
+              <div className="bidding-edge-meta">
+                <span className="code">{biddingEdge.code}</span>
+                <span className="bidding-edge-spark" aria-hidden="true" />
+              </div>
+              <h2>{biddingEdge.title}</h2>
+              <p className="bidding-edge-lede">{biddingEdge.lede}</p>
+              <p>{biddingEdge.body}</p>
+            </div>
+          </MotionReveal>
+
           <div className="stack">
             <div className="eyebrow">Why choose us</div>
             <h2>What sets our preconstruction support apart</h2>
           </div>
           <MotionStagger className="reasons">
-            {ABOUT_CONTENT.benefits.map(([code, title, text]) => (
+            {otherBenefits.map(([code, title, text]) => (
               <MotionItem className="reason" key={code}>
                 <div className="code">{code}</div>
                 <h3>{title}</h3>

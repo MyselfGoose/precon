@@ -26,7 +26,7 @@ export const IMAGE_REGISTRY: ImagePlacement[] = [
   { path: '/images/projects/public-institutional.jpg', route: '/markets', role: 'hero', alt: 'Public and institutional project' },
   { path: '/images/projects/residential-commercial.jpg', route: '/estimation', role: 'hero', alt: 'Residential and commercial estimation work' },
   { path: '/images/projects/industrial.jpg', route: '/estimation/trades', role: 'hero', alt: 'Industrial trade estimation' },
-  { path: '/images/hero/contact.jpg', route: '/contact', role: 'hero', alt: 'Contact CSI & Design' },
+  { path: '/images/hero/contact.jpg', route: '/contact', role: 'hero', alt: 'Contact QuantSult' },
   { path: '/images/hero/who-we-serve.jpg', route: '/who-we-serve', role: 'hero', alt: 'Clients and partners we serve' },
   { path: '/images/hero/trades-hub.jpg', route: '/trades', role: 'hero', alt: 'CSI trade estimating expertise' },
   { path: '/images/hero/quote.jpg', route: '/quote', role: 'hero', alt: 'Request a quote for estimation or design' },
@@ -64,6 +64,15 @@ export const IMAGE_REGISTRY: ImagePlacement[] = [
   { path: '/images/divisions/earthwork.jpg', route: '/trades/earthwork', role: 'hero', alt: 'Earthwork excavator on site' },
   { path: '/images/divisions/exterior.jpg', route: '/trades/exterior', role: 'hero', alt: 'Exterior improvements and landscaping' },
   { path: '/images/divisions/utilities.jpg', route: '/trades/utilities', role: 'hero', alt: 'Underground utility installation' },
+
+  // Estimation market hubs (unique per route)
+  { path: '/images/estimation/general-construction.jpg', route: '/estimation/general-construction', role: 'hero', alt: 'General construction site with steel and concrete framing' },
+  { path: '/images/estimation/gc-commercial.jpg', route: '/estimation/general-construction', role: 'card', alt: 'Commercial streetscape under general construction' },
+  { path: '/images/estimation/gc-residential.jpg', route: '/estimation/general-construction', role: 'card', alt: 'Residential home under general construction' },
+  { path: '/images/estimation/gc-industrial.jpg', route: '/estimation/general-construction', role: 'card', alt: 'Industrial facility under general construction' },
+  { path: '/images/estimation/commercial.jpg', route: '/estimation/commercial', role: 'hero', alt: 'Commercial office building for commercial project estimating' },
+  { path: '/images/estimation/residential.jpg', route: '/estimation/residential', role: 'hero', alt: 'Residential homes for residential project estimating' },
+  { path: '/images/estimation/industrial.jpg', route: '/estimation/industrial', role: 'hero', alt: 'Industrial facility for industrial project estimating' },
 
   // Estimation specialty trade heroes
   { path: '/images/trades/remodeling.jpg', route: '/estimation/trades/remodeling', role: 'hero', alt: 'Residential remodeling interior' },

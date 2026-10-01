@@ -11,21 +11,21 @@ import PropertyForm from '../acquisitions-form';
 import { BimVisualShowcase } from '../bim-visual-showcase';
 import { MotionItem, MotionReveal, MotionStagger } from '../../motion';
 
-const BIM_VISUAL_FRAMES = [
+const BIM_WALKTHROUGH_FRAMES = [
+  {
+    src: '/images/services/bim/bim-model.jpg',
+    alt: 'BIM model overlaid on two-dimensional architectural plans',
+    label: 'BIM model',
+  },
   {
     src: '/images/services/bim/gym-render.jpg',
-    alt: 'Photorealistic gym interior visualization',
-    label: 'Gym interior render',
+    alt: 'Photorealistic gym interior visualization from the walkthrough',
+    label: 'Interior path',
   },
   {
     src: '/images/services/bim/interior-render.jpg',
-    alt: 'Photorealistic residential interior rendering',
-    label: 'Interior space render',
-  },
-  {
-    src: '/images/services/bim/bim-model.jpg',
-    alt: 'Two-dimensional BIM and architectural plan set',
-    label: 'BIM model on 2D plans',
+    alt: 'Photorealistic residential interior rendering from the walkthrough',
+    label: 'Space experience',
   },
 ] as const;
 
@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const content = CONTENT_SERVICES.find((s) => s.slug === slug);
   return createMetadata({
     title: content ? content.name : 'Service not found',
-    description: content ? content.summary : 'Explore CSI & Design project support services.',
+    description: content ? content.summary : 'Explore QuantSult project support services.',
     path: `/services/${slug}`,
   });
 }
@@ -266,7 +266,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   const relatedMode = content.relatedMode ?? 'services';
   const photoSrc = content.photoSrc;
-  const photoAlt = content.photoAlt ?? `${content.name}: CSI & Design`;
+  const photoAlt = content.photoAlt ?? `${content.name}: QuantSult`;
   const isBim = content.slug === 'bim-visualization';
   const heroTitle = content.catchphrase ?? content.supportsTitle ?? content.name;
   const heroLede = content.summary;
@@ -300,10 +300,16 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <p className="prose">{content.details}</p>
             </div>
             {isBim && (
-              <div className="stack">
-                <div className="eyebrow">Render gallery</div>
-                <h2>From gym interiors to BIM on 2D</h2>
-                <BimVisualShowcase frames={[...BIM_VISUAL_FRAMES]} mode="collage" />
+              <div className="stack-lg">
+                <div className="stack">
+                  <div className="eyebrow">BIM walkthrough</div>
+                  <h2>Walk through the model before it is built</h2>
+                  <p className="prose">
+                    Follow a narrated path from the BIM model into photorealistic exterior and interior renders —
+                    the same visualization sequence we prepare for stakeholder presentations.
+                  </p>
+                </div>
+                <BimVisualShowcase frames={[...BIM_WALKTHROUGH_FRAMES]} mode="walkthrough" />
               </div>
             )}
             <div className="spec">

@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const trade = TRADES.find((t) => t.slug === slug);
   return createMetadata({
     title: trade ? `${trade.name} Estimating` : 'Trade not found',
-    description: trade ? trade.lede : 'Explore CSI & Design trade estimating and takeoff support.',
+    description: trade ? trade.lede : 'Explore QuantSult trade estimating and takeoff support.',
     path: `/trades/${slug}`,
   });
 }

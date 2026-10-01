@@ -7,7 +7,7 @@ import { createMetadata } from '@/lib/metadata';
 export const metadata = createMetadata({
   title: 'Send Your Plans',
   description:
-    'Share the project type, location, scope, timing, and files needed for a focused CSI & Design conversation.',
+    'Share the project type, location, scope, timing, and files needed for a focused QuantSult conversation.',
   path: '/quote',
 });
 

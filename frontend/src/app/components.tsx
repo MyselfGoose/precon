@@ -27,7 +27,7 @@ export function Brand() {
           fontSize="12"
           fontWeight="700"
         >
-          CSI
+          QS
         </text>
       </svg>
       <span className="brand-name">{BRAND.shortName}</span>

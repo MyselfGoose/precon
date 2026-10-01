@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ trade: st
   const page = getTradeEstimation(trade);
   return createMetadata({
     title: page ? page.name : 'Trade estimation',
-    description: page ? page.lede : 'Explore CSI & Design trade estimation services.',
+    description: page ? page.lede : 'Explore QuantSult trade estimation services.',
     path: `/estimation/trades/${trade}`,
   });
 }

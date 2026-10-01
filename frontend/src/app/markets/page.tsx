@@ -7,7 +7,7 @@ import { MotionItem, MotionStagger } from '../motion';
 export const metadata = createMetadata({
   title: 'Markets We Serve',
   description:
-    'CSI & Design delivers coordinated architectural, structural, MEP, and estimating solutions across residential, commercial, industrial, government, infrastructure, and hospitality markets.',
+    'QuantSult delivers coordinated architectural, structural, MEP, and estimating solutions across residential, commercial, industrial, government, infrastructure, and hospitality markets.',
   path: '/markets',
 });
 
@@ -15,8 +15,8 @@ const SECTOR_LINKS: Record<string, { href: string; label: string }> = {
   residential: { href: '/estimation/residential', label: 'Residential estimating' },
   commercial: { href: '/estimation/commercial', label: 'Commercial estimating' },
   industrial: { href: '/estimation/industrial', label: 'Industrial estimating' },
-  'government-public': { href: '/estimation/public-projects', label: 'Public project estimating' },
-  'infrastructure-civil': { href: '/estimation/public-projects', label: 'Public project estimating' },
+  'government-public': { href: '/estimation/public-projects#public-facilities', label: 'Public project estimating' },
+  'infrastructure-civil': { href: '/estimation/public-projects#infrastructure-civil', label: 'Civil & infrastructure estimating' },
   'hospitality-recreation': { href: '/services', label: 'Design & estimating services' },
 };
 

@@ -20,7 +20,7 @@ import { MotionHeroItem, MotionItem, MotionReveal, MotionStagger, CountUp } from
 export const metadata = createMetadata({
   title: BRAND.name,
   description:
-    'From detailed estimates and architectural design to strategic property acquisition. CSI & Design provides the expertise, data, and relationships to move your project from vision to value.',
+    'From detailed estimates and architectural design to strategic property acquisition. QuantSult provides the expertise, data, and relationships to move your project from vision to value.',
   path: '/',
 });
 

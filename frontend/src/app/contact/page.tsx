@@ -5,7 +5,7 @@ import { createMetadata } from '@/lib/metadata';
 
 export const metadata = createMetadata({
   title: 'Contact',
-  description: `Call or WhatsApp ${BRAND.phoneDisplay}, or send a project request to CSI & Design.`,
+  description: `Call or WhatsApp ${BRAND.phoneDisplay}, or send a project request to QuantSult.`,
   path: '/contact',
 });
 
@@ -21,7 +21,7 @@ export default function Contact() {
         }
         lede="Share the project information you have. We will help identify the right service, scope, and next step: estimate, design package, or property acquisition conversation."
         image="/images/hero/contact.jpg"
-        imageAlt="Contact CSI & Design about estimation, design, or acquisition"
+        imageAlt="Contact QuantSult about estimation, design, or acquisition"
         priority
       />
       <section className="band">

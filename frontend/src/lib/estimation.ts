@@ -1,6 +1,11 @@
 export type EstimationCategory = {
   name: string;
   description: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  watermark?: string;
+  /** Stable anchor id for deep links */
+  group?: 'civil' | 'facilities';
 };
 
 export type EstimationHub = {
@@ -11,6 +16,9 @@ export type EstimationHub = {
   intro: string[];
   categories?: EstimationCategory[];
   whyUs?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  watermark?: string;
 };
 
 export type TradeEstimationPage = {
@@ -92,22 +100,35 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
       'We help General Contractors win more work with accurate quantity takeoffs, real-time pricing, and professionally prepared bid proposals.',
     intro: [
       'Backed by market intelligence enhanced by our proprietary data analytics platform and regional cost analysis, our estimates reflect local labor conditions, material pricing trends, subcontractor availability, and current bidding activity in your market. The result is clear, competitive, and well-structured bids that give you the confidence to pursue more projects while protecting your margins and profitability.',
+      'General Construction covers the full GC bid package across commercial, residential, and industrial work — coordinated by trade in CSI Format, with specialty scopes available through our singular trade estimation pages.',
     ],
+    imageSrc: '/images/estimation/general-construction.jpg',
+    imageAlt: 'General construction site with steel and concrete framing',
+    watermark: 'General Construction',
     categories: [
       {
         name: 'Commercial Projects',
         description:
           'Our commercial estimating services are designed to help General Contractors win more bids with confidence. We combine accurate quantity takeoffs, professional bid proposals, and real-time market analysis to deliver competitive pricing that aligns with current labor and material trends while protecting profitability. Prepared in CSI Format and coordinated by trade, every estimate supports a smoother bidding process, stronger subcontractor coverage, reduced risk, and a better chance of securing commercial projects.',
+        imageSrc: '/images/estimation/gc-commercial.jpg',
+        imageAlt: 'Commercial streetscape for general construction commercial projects',
+        watermark: 'Commercial Projects',
       },
       {
         name: 'Residential Projects',
         description:
           'From custom homes to multi-family developments, our residential estimates provide accurate quantity takeoffs and market-driven pricing to help contractors build competitive, profitable bids. Organized in CSI Format, every estimate ensures clear trade coordination, accuracy, and confidence from planning through construction.',
+        imageSrc: '/images/estimation/gc-residential.jpg',
+        imageAlt: 'Suburban residence for general construction residential projects',
+        watermark: 'Residential Projects',
       },
       {
         name: 'Industrial Projects',
         description:
           'Our industrial estimates combine detailed quantity takeoffs with real-time market pricing enhanced by our proprietary data analytics platform to help contractors bid confidently on manufacturing facilities, warehouses, processing plants, distribution centers, and other industrial developments. Prepared in CSI Format, every estimate is organized by trade with accurate material, labor, and equipment costs, enabling better cost control, reduced risk, and improved project profitability.',
+        imageSrc: '/images/estimation/gc-industrial.jpg',
+        imageAlt: 'Industrial facility interior for general construction industrial projects',
+        watermark: 'Industrial Projects',
       },
     ],
   },
@@ -120,6 +141,9 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
     intro: [
       'We combine accurate quantity takeoffs, professional bid proposals, and real-time market analysis to deliver competitive pricing that aligns with current labor and material trends while protecting profitability. Prepared in CSI Format and coordinated by trade, every estimate supports a smoother bidding process, stronger subcontractor coverage, reduced risk, and a better chance of securing commercial projects.',
     ],
+    imageSrc: '/images/estimation/commercial.jpg',
+    imageAlt: 'Commercial office building for commercial project estimating',
+    watermark: 'Commercial Projects',
   },
   {
     slug: 'residential',
@@ -130,6 +154,9 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
     intro: [
       'Organized in CSI Format, every estimate ensures clear trade coordination, accuracy, and confidence from planning through construction.',
     ],
+    imageSrc: '/images/estimation/residential.jpg',
+    imageAlt: 'Residential homes for residential project estimating',
+    watermark: 'Residential Projects',
   },
   {
     slug: 'industrial',
@@ -140,6 +167,9 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
     intro: [
       'Prepared in CSI Format, every estimate is organized by trade with accurate material, labor, and equipment costs, enabling better cost control, reduced risk, and improved project profitability.',
     ],
+    imageSrc: '/images/estimation/industrial.jpg',
+    imageAlt: 'Industrial facility for industrial project estimating',
+    watermark: 'Industrial Projects',
     categories: [
       {
         name: 'Manufacturing Facilities',
@@ -208,98 +238,117 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
     code: 'PUB',
     name: 'Public Projects',
     lede:
-      'Our public project estimating services are designed for the demands of government and municipal bidding.',
+      'Our public project estimating services are designed for the demands of government and municipal bidding — including civil infrastructure such as roads, bridges, and utilities.',
     intro: [
       'We deliver accurate quantity takeoffs, CSI Format estimates, and compliant bid proposals enhanced by our proprietary data analytics platform. By applying lessons from past projects, including equity considerations, scope trends, and historical cost patterns, we help contractors submit competitive bids that win work while protecting profit and long-term margins.',
+      'Infrastructure & Civil work sits at the core of public estimating: roads and highways, bridges, aviation, marine and port, rail and transit, water and wastewater, utility corridors, dams, tunnels, and related civil scopes. Vertical public facilities follow with the same CSI Format discipline.',
     ],
     categories: [
       {
         name: 'Roads & Highways',
+        group: 'civil',
         description:
           'Estimating for roads, highways, and interchanges requires careful consideration of earthwork, paving, drainage, traffic control, utility coordination, and local market pricing to ensure competitive, profitable bids.',
       },
       {
         name: 'Bridges',
+        group: 'civil',
         description:
           'Bridge estimates account for structural steel, reinforced concrete, deep foundations, falsework, specialty equipment, erection sequencing, and project-specific engineering complexities.',
       },
       {
         name: 'Aviation Infrastructure',
+        group: 'civil',
         description:
           'Airport projects demand coordinated estimating for runways, taxiways, terminals, airside utilities, security requirements, phasing, and uninterrupted operational access.',
       },
       {
         name: 'Marine & Port Facilities',
+        group: 'civil',
         description:
           'Marine estimates consider tidal conditions, cofferdams, dredging, corrosion-resistant materials, marine equipment, environmental regulations, and specialized construction methods.',
       },
       {
         name: 'Rail & Transit',
+        group: 'civil',
         description:
           'Rail projects require estimating for track systems, signaling, platforms, utilities, traffic management, phased construction, and strict operational coordination.',
       },
       {
         name: 'Water & Wastewater',
+        group: 'civil',
         description:
           'Treatment facilities require detailed estimates for process equipment, underground utilities, piping networks, structural concrete, mechanical systems, and regulatory compliance.',
       },
       {
         name: 'Utility Infrastructure',
+        group: 'civil',
         description:
           'Utility projects involve underground coordination, excavation, backfill, trench safety, restoration, utility conflicts, and local labor and material pricing.',
       },
       {
         name: 'Dams & Flood Control',
+        group: 'civil',
         description:
           'Estimating considers earthworks, hydraulic structures, reinforced concrete, erosion control, environmental mitigation, and long-term infrastructure performance.',
       },
       {
         name: 'Tunnels',
+        group: 'civil',
         description:
           'Tunnel construction requires analysis of excavation methods, ground conditions, shoring systems, ventilation, waterproofing, specialty equipment, and sequencing.',
       },
       {
         name: 'Municipal Buildings',
+        group: 'facilities',
         description:
           'Government facilities require coordinated estimates covering architectural finishes, structural systems, MEP trades, code compliance, accessibility, and public procurement standards.',
       },
       {
         name: 'Educational Facilities',
+        group: 'facilities',
         description:
           'School and university projects require phased construction planning, occupied-campus coordination, life safety compliance, durable finishes, and budget-conscious estimating.',
       },
       {
         name: 'Healthcare Facilities',
+        group: 'facilities',
         description:
           'Healthcare estimates account for complex MEP systems, medical equipment coordination, infection control measures, regulatory compliance, and uninterrupted facility operations.',
       },
       {
         name: 'Military & Defense',
+        group: 'facilities',
         description:
           'Defense projects demand detailed estimating for secure facilities, hardened structures, specialized systems, restricted access, and stringent government specifications.',
       },
       {
         name: 'Correctional Facilities',
+        group: 'facilities',
         description:
           'Correctional facilities require secure construction detailing, reinforced assemblies, controlled access systems, specialized hardware, and code-compliant life safety provisions.',
       },
       {
         name: 'Parks & Recreation',
+        group: 'facilities',
         description:
           'Recreational projects include estimating for grading, landscaping, sports facilities, playgrounds, site amenities, irrigation systems, and public accessibility requirements.',
       },
       {
         name: 'Fire Stations & Emergency Services',
+        group: 'facilities',
         description:
           'Fire stations and EMS facilities require estimating for apparatus bays, emergency response systems, specialized MEP infrastructure, training spaces, and resilient building design.',
       },
       {
         name: 'Police & Public Safety Facilities',
+        group: 'facilities',
         description:
           'Police stations, public safety buildings, and dispatch centers require secure construction, detention areas, evidence storage, access control, and advanced communication systems.',
       },
       {
         name: 'Courthouses & Judicial Facilities',
+        group: 'facilities',
         description:
           'Judicial buildings require estimates for secure circulation, courtroom fit-outs, detention areas, security infrastructure, and high-performance building systems.',
       },

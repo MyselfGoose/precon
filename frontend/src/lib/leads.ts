@@ -280,7 +280,7 @@ function leadConfig(): { apiKey: string; to: string; from: string } | { error: s
     };
   }
   const to = process.env.LEAD_TO_EMAIL?.trim() || BRAND.email;
-  const from = process.env.LEAD_FROM_EMAIL?.trim() || `CSI & Design <onboarding@resend.dev>`;
+  const from = process.env.LEAD_FROM_EMAIL?.trim() || `QuantSult <onboarding@resend.dev>`;
   return { apiKey, to, from };
 }
 

@@ -8,7 +8,7 @@ import { MotionReveal } from '../motion';
 export const metadata = createMetadata({
   title: 'Who We Serve',
   description:
-    'CSI & Design supports general contractors, subcontractors, heavy civil teams, MEP, structural, and HVAC contractors with trade-specific preconstruction support.',
+    'QuantSult supports general contractors, subcontractors, heavy civil teams, MEP, structural, and HVAC contractors with trade-specific preconstruction support.',
   path: '/who-we-serve',
 });
 
