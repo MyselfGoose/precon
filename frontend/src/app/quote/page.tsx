@@ -15,7 +15,7 @@ export default function Quote() {
   return (
     <>
       <PageHead
-        eyebrow="Request a Quote"
+        eyebrow="Request an Estimate"
         title="A clear brief. A useful next step."
         lede="Four short steps: who you are, what you need, the scope you know, and a quick review. We use the brief to organize the conversation — formal work starts only with a written agreement."
         image="/images/hero/quote.jpg"

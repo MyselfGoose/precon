@@ -74,7 +74,7 @@ export default function MarketsPage() {
               <b>One accountable team.</b> {MARKETS_CONTENT.closing}
             </div>
             <p className="prose">
-              Looking for trade-specific estimating? Explore our <Link href="/estimation">estimation services</Link>{' '}
+              Looking for trade-specific estimating? Explore our <Link href="/services/estimating">estimating services</Link>{' '}
               or review <Link href="/services">construction drawings and engineering</Link>.
             </p>
           </div>

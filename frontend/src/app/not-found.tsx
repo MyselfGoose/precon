@@ -21,8 +21,8 @@ export default function NotFound() {
             <Link className="btn btn-ghost" href="/services">
               Services
             </Link>
-            <Link className="btn btn-ghost" href="/estimation">
-              Estimation
+            <Link className="btn btn-ghost" href="/services/estimating">
+              Estimating
             </Link>
             <Link className="btn btn-ghost" href="/contact">
               Contact

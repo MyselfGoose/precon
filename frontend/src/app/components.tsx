@@ -1,8 +1,13 @@
-import { FOOTER_NAV_ITEMS, type Trade, type Sample } from '@/lib/data';
+import { FOOTER_COMPANY_ITEMS, type Trade, type Sample } from '@/lib/data';
 import { D, ICO, flowArt } from '@/lib/illustrations';
 import MobileNav from './mobile-nav';
 import NavLinks from './nav-links';
-import { BRAND, CONTENT_SERVICES, SITE_COPY } from '@/lib/content';
+import {
+  BRAND,
+  getServicesForCategory,
+  SERVICE_CATEGORIES,
+  SITE_COPY,
+} from '@/lib/content';
 import { MotionButton, MotionItem, MotionReveal, MotionStagger } from './motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -133,52 +138,42 @@ export function Footer() {
           </div>
           <div>
             <h5>Services</h5>
-            <ul>
-              {CONTENT_SERVICES.map((s) => (
-                <li key={s.slug}>
-                  <Link href={`/services/${s.slug}`}>{s.name}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h5>Estimation</h5>
-            <ul>
-              <li>
-                <Link href="/estimation/general-construction">General construction</Link>
-              </li>
-              <li>
-                <Link href="/estimation/commercial">Commercial projects</Link>
-              </li>
-              <li>
-                <Link href="/estimation/residential">Residential projects</Link>
-              </li>
-              <li>
-                <Link href="/estimation/industrial">Industrial projects</Link>
-              </li>
-              <li>
-                <Link href="/estimation/public-projects">Public projects</Link>
-              </li>
-              <li>
-                <Link href="/estimation/trades">Trade contractors</Link>
-              </li>
-              <li>
-                <Link href="/markets">Markets We Serve</Link>
-              </li>
-            </ul>
+            <div className="foot-services">
+              {SERVICE_CATEGORIES.map((category) => {
+                const services = getServicesForCategory(category);
+                return (
+                  <div key={category.id} className="foot-service-group">
+                    <p className="foot-service-label">{category.label}</p>
+                    <ul>
+                      {category.href && services.length <= 1 ? (
+                        <li>
+                          <Link href={category.href}>{services[0]?.name ?? category.label}</Link>
+                        </li>
+                      ) : (
+                        services.map((service) => (
+                          <li key={service.slug}>
+                            <Link href={`/services/${service.slug}`}>{service.name}</Link>
+                          </li>
+                        ))
+                      )}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
           </div>
           <div>
             <h5>Company</h5>
             <ul>
-              {FOOTER_NAV_ITEMS.map(([name, href]) => (
-                <li key={href}>
-                  <Link href={href}>{name}</Link>
+              {FOOTER_COMPANY_ITEMS.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href}>{item.label}</Link>
                 </li>
               ))}
             </ul>
           </div>
           <div>
-            <h5>Get in touch</h5>
+            <h5>Contact</h5>
             <ul>
               <li>
                 <PhoneLink>Call {BRAND.phoneDisplay}</PhoneLink>
@@ -187,14 +182,12 @@ export function Footer() {
                 <WhatsAppLink>WhatsApp us</WhatsAppLink>
               </li>
               <li>
+                <Link href="/contact">Contact</Link>
+              </li>
+              <li>
                 <Link href="/quote">{SITE_COPY.cta.primary} →</Link>
               </li>
             </ul>
-            <p style={{ marginTop: 18 }}>
-              <Link href="/contact" className="foot-cta">
-                Build Smarter. Invest Better. →
-              </Link>
-            </p>
           </div>
         </div>
         <div className="foot-bottom">

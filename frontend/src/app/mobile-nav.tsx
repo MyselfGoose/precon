@@ -3,8 +3,13 @@
 import Link from 'next/link';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { MOBILE_NAV_ITEMS } from '@/lib/data';
-import { BRAND, SITE_COPY } from '@/lib/content';
+import { NAV_ITEMS } from '@/lib/data';
+import {
+  BRAND,
+  getServicesForCategory,
+  SERVICE_CATEGORIES,
+  SITE_COPY,
+} from '@/lib/content';
 
 const STORAGE_KEY = 'csi-mobile-menu-position';
 const DEFAULT_CORNER = 'bottom-right' as const;
@@ -46,6 +51,7 @@ function cornerPosition(corner: Corner, width: number, height: number): Position
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
+  const [servicesExpanded, setServicesExpanded] = useState(false);
   const [corner, setCorner] = useState<Corner>(DEFAULT_CORNER);
   const [position, setPosition] = useState<Position | null>(null);
   const [dragging, setDragging] = useState(false);
@@ -160,6 +166,7 @@ export default function MobileNav() {
 
   function closeMenu() {
     setOpen(false);
+    setServicesExpanded(false);
     requestAnimationFrame(() => toggleRef.current?.focus());
   }
 
@@ -227,14 +234,64 @@ export default function MobileNav() {
               <button ref={closeRef} className="floating-nav-close" type="button" onClick={closeMenu}>
                 Close menu
               </button>
-              {MOBILE_NAV_ITEMS.map(([name, href], index) => (
+              <motion.div
+                initial={reduced ? false : { opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: reduced ? 0 : 0.06 }}
+                className="mobile-nav-services"
+              >
+                <div className="mobile-nav-services-row">
+                  <Link href="/services" onClick={closeMenu}>
+                    Services
+                  </Link>
+                  <button
+                    type="button"
+                    className="mobile-nav-services-toggle"
+                    aria-expanded={servicesExpanded}
+                    aria-controls="mobile-services-groups"
+                    onClick={() => setServicesExpanded((value) => !value)}
+                  >
+                    {servicesExpanded ? 'Hide' : 'Show'} categories
+                  </button>
+                </div>
+                {servicesExpanded && (
+                  <div id="mobile-services-groups" className="mobile-nav-service-groups">
+                    {SERVICE_CATEGORIES.map((category) => {
+                      const services = getServicesForCategory(category);
+                      return (
+                        <div key={category.id} className="mobile-nav-service-group">
+                          <p className="mobile-nav-service-heading">{category.label}</p>
+                          {category.href && services.length <= 1 ? (
+                            <Link href={category.href} onClick={closeMenu}>
+                              {services[0]?.name ?? category.label}
+                            </Link>
+                          ) : (
+                            services.map((service) => (
+                              <Link
+                                key={service.slug}
+                                href={`/services/${service.slug}`}
+                                onClick={closeMenu}
+                              >
+                                {service.name}
+                              </Link>
+                            ))
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </motion.div>
+              {NAV_ITEMS.map((item, index) => (
                 <motion.div
-                  key={href}
+                  key={item.href}
                   initial={reduced ? false : { opacity: 0, x: 16 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: reduced ? 0 : 0.06 + index * 0.045 }}
+                  transition={{ delay: reduced ? 0 : 0.1 + index * 0.045 }}
                 >
-                  <Link href={href} onClick={() => setOpen(false)}>{name}</Link>
+                  <Link href={item.href} onClick={closeMenu}>
+                    {item.label}
+                  </Link>
                 </motion.div>
               ))}
               <a className="nav-tel" href={`tel:${BRAND.phoneRaw}`} onClick={() => setOpen(false)}>

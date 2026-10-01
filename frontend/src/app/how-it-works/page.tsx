@@ -88,7 +88,7 @@ export default function HowItWorks() {
                 and construction decisions.
               </p>
               <div className="btn-row" style={{ marginTop: 16 }}>
-                <Button href="/estimation">Explore estimation →</Button>
+                <Button href="/services/estimating">Explore estimating →</Button>
                 <Link className="btn btn-ghost" href="/services">
                   View services
                 </Link>

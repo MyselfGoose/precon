@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { CTA, PageHead, PhoneLink, WhatsAppLink } from '../components';
-import { BRAND } from '@/lib/content';
+import { BRAND, SITE_COPY } from '@/lib/content';
 import { createMetadata } from '@/lib/metadata';
 
 export const metadata = createMetadata({
@@ -40,7 +40,7 @@ export default function Contact() {
               <div className="contact-block">
                 <span className="k">Project request</span>
                 <Link className="v" href="/quote">
-                  Request a Quote
+                  {SITE_COPY.cta.primary}
                 </Link>
                 <span className="hint">Capture the project type, service, files, timing, and open questions</span>
               </div>

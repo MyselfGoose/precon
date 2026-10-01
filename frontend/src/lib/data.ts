@@ -297,39 +297,33 @@ export const TRADES: Trade[] =
        ['Are connection fees included?','No. Tap fees, capacity charges and utility company work are owner costs that vary by jurisdiction. They are listed as exclusions so they are not forgotten in the owner\'s budget.'],
        ['Do you read the profiles or just the plan?','Both. The plan gives horizontal length; the profiles give invert elevations, depth and slope. Estimating from the plan alone under-prices deep runs.']] }
 ];
-export const NAV_ITEMS = [
-  ['Services', '/services'],
-  ['Estimation', '/estimation'],
-  ['Trades', '/trades'],
-  ['Markets', '/markets'],
-  ['How It Works', '/how-it-works'],
-  ['Who We Serve', '/who-we-serve'],
-  ['About', '/about'],
-  ['Contact', '/contact'],
-] as const;
+export type NavLinkItem = {
+  label: string;
+  href: string;
+};
 
-/** Full destinations for floating mobile panel. */
-export const MOBILE_NAV_ITEMS = [
-  ['Services', '/services'],
-  ['Estimation', '/estimation'],
-  ['Trades', '/trades'],
-  ['Markets', '/markets'],
-  ['How It Works', '/how-it-works'],
-  ['Who We Serve', '/who-we-serve'],
-  ['About', '/about'],
-  ['Contact', '/contact'],
-] as const;
+/** Top-level links after Services dropdown (desktop + mobile). */
+export const NAV_ITEMS: NavLinkItem[] = [
+  { label: 'Who We Serve', href: '/who-we-serve' },
+  { label: 'Trades', href: '/trades' },
+  { label: 'How It Works', href: '/how-it-works' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+];
 
-export const FOOTER_NAV_ITEMS = [
-  ['About', '/about'],
-  ['Estimation', '/estimation'],
-  ['Trades', '/trades'],
-  ['Markets', '/markets'],
-  ['How It Works', '/how-it-works'],
-  ['Who We Serve', '/who-we-serve'],
-  ['Contact', '/contact'],
-  ['Request a Quote', '/quote'],
-] as const;
+/** @deprecated Use NAV_ITEMS — same destinations for the floating mobile panel. */
+export const MOBILE_NAV_ITEMS = NAV_ITEMS;
+
+/** Company column in the trimmed footer. */
+export const FOOTER_COMPANY_ITEMS: NavLinkItem[] = [
+  { label: 'About', href: '/about' },
+  { label: 'Who We Serve', href: '/who-we-serve' },
+  { label: 'Trades', href: '/trades' },
+  { label: 'How It Works', href: '/how-it-works' },
+];
+
+/** @deprecated Prefer FOOTER_COMPANY_ITEMS. */
+export const FOOTER_NAV_ITEMS = FOOTER_COMPANY_ITEMS;
 export const CSI_TRADE_LIST = [
   'General Construction-GC',
   'Remodeling',

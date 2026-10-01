@@ -67,7 +67,7 @@ export default function About() {
           </MotionStagger>
 
           <p className="prose">
-            Explore <Link href="/estimation">estimation</Link>, <Link href="/services">services</Link>, or{' '}
+            Explore <Link href="/services/estimating">estimating</Link>, <Link href="/services">services</Link>, or{' '}
             <Link href="/how-it-works">how it works</Link>.
           </p>
         </div>

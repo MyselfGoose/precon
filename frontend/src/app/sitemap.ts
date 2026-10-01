@@ -13,10 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
     '/',
     '/services',
-    '/estimation',
     '/estimation/trades',
     '/trades',
-    '/markets',
     '/how-it-works',
     '/who-we-serve',
     '/about',
@@ -39,6 +37,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: url(path),
     lastModified: new Date(),
     changeFrequency: path === '/' || path === '/quote' ? 'weekly' : 'monthly',
-    priority: path === '/' ? 1 : path === '/quote' || path === '/services' || path === '/estimation' ? 0.9 : 0.7,
+    priority: path === '/' ? 1 : path === '/quote' || path === '/services' || path === '/services/estimating' ? 0.9 : 0.7,
   }));
 }

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   ...createMetadata({
     title: BRAND.name,
     description:
-      'QuantSult delivers estimation, architectural design, engineering coordination, and strategic property acquisition. From vision to value.',
+      'Preconstruction estimating, takeoffs, and design coordination for contractors and developers. Bid with confidence.',
     path: '/',
   }),
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://csianddesign.com'),

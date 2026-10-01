@@ -1,9 +1,9 @@
 export const BRAND = {
   name: 'QuantSult',
   shortName: 'QUANTSULT',
-  descriptor: 'Estimation · Design · Acquisition',
+  descriptor: 'Preconstruction · Estimating · Design Support',
   description:
-    'Estimation, design, and property acquisition under one roof: clear scope, coordinated documentation, and strategic opportunities.',
+    'Preconstruction estimating, takeoffs, and design coordination for contractors and developers — with investment and acquisition support when property decisions need construction intelligence.',
   phone: '(227) 204-9141',
   phoneDisplay: '+1 (227) 204-9141',
   phoneRaw: '+12272049141',
@@ -14,7 +14,7 @@ export const BRAND = {
 
 export const SITE_COPY = {
   cta: {
-    primary: 'Request a Quote',
+    primary: 'Request an Estimate',
     secondary: `Call ${BRAND.phoneDisplay}`,
     reviewTrade: 'Review this trade →',
     reviewService: 'Review this service →',
@@ -91,7 +91,7 @@ export const CONTENT_SERVICES: ContentService[] = [
     photoSrc: '/images/divisions/estimation-design.jpg',
     photoAlt: 'Construction estimating and design coordination for CSI Format takeoffs',
     ctaTitle: 'Request your estimate',
-    ctaText: 'Request a Quote and tell us which trades or project type you need estimated.',
+    ctaText: 'Request an Estimate and tell us which trades or project type you need estimated.',
   },
   {
     slug: 'architectural-drawings',
@@ -412,6 +412,69 @@ export const CONTENT_SERVICES: ContentService[] = [
   },
 ];
 
+export type ServiceCategoryId =
+  | 'estimating'
+  | 'design-engineering'
+  | 'preconstruction-support'
+  | 'investment-acquisition';
+
+export type ServiceCategory = {
+  id: ServiceCategoryId;
+  label: string;
+  description: string;
+  /** When set, the category itself is a primary destination (e.g. Estimating hub). */
+  href?: string;
+  serviceSlugs: string[];
+  /** Secondary visual weight on Services page and homepage. */
+  secondary?: boolean;
+};
+
+/** Shared IA for Services dropdown, Services page, and footer. */
+export const SERVICE_CATEGORIES: ServiceCategory[] = [
+  {
+    id: 'estimating',
+    label: 'Estimating',
+    description: 'Quantity takeoffs, cost estimates, and bid support organized to CSI MasterFormat.',
+    href: '/services/estimating',
+    serviceSlugs: ['estimating'],
+  },
+  {
+    id: 'design-engineering',
+    label: 'Design & Engineering',
+    description: 'Architectural drawings, MEP, structural engineering, and permit-support documentation.',
+    serviceSlugs: [
+      'architectural-drawings',
+      'mep-engineering',
+      'structural-engineering',
+      'permit-ready-structural-drawings',
+    ],
+  },
+  {
+    id: 'preconstruction-support',
+    label: 'Preconstruction Support',
+    description: 'BIM modeling, coordination, rendering, and walkthroughs that keep the team aligned.',
+    serviceSlugs: ['bim-visualization'],
+  },
+  {
+    id: 'investment-acquisition',
+    label: 'Investment & Acquisition',
+    description: 'Construction intelligence for off-market and distressed property decisions.',
+    href: '/services/acquisitions-investments',
+    serviceSlugs: ['acquisitions-investments'],
+    secondary: true,
+  },
+];
+
+export function getServicesForCategory(category: ServiceCategory): ContentService[] {
+  return category.serviceSlugs
+    .map((slug) => CONTENT_SERVICES.find((service) => service.slug === slug))
+    .filter((service): service is ContentService => service !== undefined);
+}
+
+export function getPrimaryServices(): ContentService[] {
+  return SERVICE_CATEGORIES.filter((category) => !category.secondary).flatMap(getServicesForCategory);
+}
+
 export const AUDIENCE_CONTENT = [
   {
     name: 'General Contractors',
@@ -653,6 +716,20 @@ export const HOME_PILLARS = [
   },
 ] as const;
 
+/** Homepage Investment & Acquisition section (client #17; supports Preconstruction lead). */
+export const HOME_INVESTMENT_ACQUISITION = {
+  eyebrow: 'Investment & Acquisition',
+  title: 'Construction intelligence for property decisions.',
+  body: 'We evaluate and identify off-market and distressed opportunities with construction feasibility.',
+  supporting:
+    "Property isn't just found. You understand what it will cost to build, renovate or reposition it.",
+  cta: 'Explore Acquisition',
+  href: '/services/acquisitions-investments',
+  image: '/images/divisions/property-acquisition.jpg',
+  imageAlt: 'Property site evaluated with construction and acquisition diligence',
+} as const;
+
+/** @deprecated Prefer HOME_INVESTMENT_ACQUISITION; kept only if residual imports remain. */
 export const HOME_DIVISIONS = [
   {
     title: 'Estimation & Design',

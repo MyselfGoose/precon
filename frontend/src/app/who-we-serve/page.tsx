@@ -1,16 +1,31 @@
 import Link from 'next/link';
-import { AUDIENCE_CONTENT } from '@/lib/content';
+import { AUDIENCE_CONTENT, MARKET_SECTORS, MARKETS_CONTENT } from '@/lib/content';
 import { CTA, PageHead, Spec } from '../components';
 import { createMetadata } from '@/lib/metadata';
 import { ICO } from '@/lib/illustrations';
-import { MotionReveal } from '../motion';
+import { MotionItem, MotionReveal, MotionStagger } from '../motion';
 
 export const metadata = createMetadata({
   title: 'Who We Serve',
   description:
-    'QuantSult supports general contractors, subcontractors, heavy civil teams, MEP, structural, and HVAC contractors with trade-specific preconstruction support.',
+    'QuantSult supports general contractors, subcontractors, developers, and project teams with trade-specific preconstruction support across commercial, residential, industrial, and public markets.',
   path: '/who-we-serve',
 });
+
+const SECTOR_LINKS: Record<string, { href: string; label: string }> = {
+  residential: { href: '/estimation/residential', label: 'Residential estimating' },
+  commercial: { href: '/estimation/commercial', label: 'Commercial estimating' },
+  industrial: { href: '/estimation/industrial', label: 'Industrial estimating' },
+  'government-public': {
+    href: '/estimation/public-projects#public-facilities',
+    label: 'Public project estimating',
+  },
+  'infrastructure-civil': {
+    href: '/estimation/public-projects#infrastructure-civil',
+    label: 'Civil & infrastructure estimating',
+  },
+  'hospitality-recreation': { href: '/services', label: 'Design & estimating services' },
+};
 
 export default function Who() {
   return (
@@ -49,6 +64,45 @@ export default function Who() {
           </div>
         </div>
       </section>
+
+      <section className="band band-ground" id="markets">
+        <div className="wrap stack-lg">
+          <MotionReveal className="stack" y={16}>
+            <div className="eyebrow">Markets we support</div>
+            <h2>{MARKETS_CONTENT.title}</h2>
+            <p className="prose">{MARKETS_CONTENT.lede}</p>
+          </MotionReveal>
+          <MotionStagger className="grid-3">
+            {MARKET_SECTORS.map((sector) => {
+              const link = SECTOR_LINKS[sector.slug];
+              return (
+                <MotionItem className="motion-fill" key={sector.slug}>
+                  {link ? (
+                    <Link className="card card-link" href={link.href}>
+                      <div className="code">{sector.name.slice(0, 3).toUpperCase()}</div>
+                      <h3>{sector.name}</h3>
+                      <p>{sector.summary}</p>
+                      <span className="card-action">{link.label} →</span>
+                    </Link>
+                  ) : (
+                    <div className="card">
+                      <div className="code">{sector.name.slice(0, 3).toUpperCase()}</div>
+                      <h3>{sector.name}</h3>
+                      <p>{sector.summary}</p>
+                    </div>
+                  )}
+                </MotionItem>
+              );
+            })}
+          </MotionStagger>
+          <div className="note">
+            <b>One accountable team.</b> {MARKETS_CONTENT.closing} Looking for trade-specific
+            estimating? Explore <Link href="/services/estimating">estimating services</Link> or{' '}
+            <Link href="/services">all services</Link>.
+          </div>
+        </div>
+      </section>
+
       <CTA
         title="Tell us what your team needs to decide"
         text="Share your role, project stage, scope, and timing so the first conversation starts in the right place."

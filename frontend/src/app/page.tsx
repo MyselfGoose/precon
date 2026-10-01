@@ -6,9 +6,9 @@ import { Button, CTA, DarkProcess, FAQ, Photo, TradeTile, Workbook } from './com
 import {
   ABOUT_CONTENT,
   BRAND,
-  CONTENT_SERVICES,
   FEATURED_PROJECTS,
-  HOME_DIVISIONS,
+  getPrimaryServices,
+  HOME_INVESTMENT_ACQUISITION,
   HOME_PILLARS,
   HOME_STATS,
   MARKETS_CONTENT,
@@ -20,7 +20,7 @@ import { MotionHeroItem, MotionItem, MotionReveal, MotionStagger, CountUp } from
 export const metadata = createMetadata({
   title: BRAND.name,
   description:
-    'From detailed estimates and architectural design to strategic property acquisition. QuantSult provides the expertise, data, and relationships to move your project from vision to value.',
+    'Preconstruction and construction estimation services for contractors and developers — takeoffs, bid support, and design coordination that help you bid with confidence.',
   path: '/',
 });
 
@@ -51,6 +51,8 @@ const homeFaq: [string, string][] = [
   ],
 ];
 
+const primaryServices = getPrimaryServices();
+
 export default function Home() {
   return (
     <>
@@ -65,20 +67,21 @@ export default function Home() {
             </MotionHeroItem>
             <MotionHeroItem delay={0.15}>
               <h1>
-                Preconstruction Solutions for a Stronger <span className="accent-word">Tomorrow.</span>
+                Preconstruction and Construction Estimation Services that help you bid with{' '}
+                <span className="accent-word">confidence.</span>
               </h1>
             </MotionHeroItem>
             <MotionHeroItem delay={0.22}>
               <p className="lede">
-                From detailed estimates and architectural design to strategic property acquisition. We provide the
-                expertise, data, and relationships to move your project from vision to value.
+                Accurate takeoffs, bid-ready estimates, and design coordination for contractors and
+                developers who need clear numbers before the deadline.
               </p>
             </MotionHeroItem>
             <MotionHeroItem delay={0.3}>
               <div className="btn-row">
                 <Button href="/quote">{SITE_COPY.cta.primary} →</Button>
                 <Link className="btn btn-ghost" href="/services">
-                  Explore Our Services
+                  Our Services
                 </Link>
               </div>
             </MotionHeroItem>
@@ -103,42 +106,6 @@ export default function Home() {
                 <div className="ico" dangerouslySetInnerHTML={{ __html: ICO[pillar.icon as keyof typeof ICO] }} />
                 <h3>{pillar.title}</h3>
                 <p>{pillar.description}</p>
-              </MotionItem>
-            ))}
-          </MotionStagger>
-        </div>
-      </section>
-
-      <section className="band band-dark on-dark">
-        <div className="wrap stack-lg">
-          <MotionReveal className="stack" y={18}>
-            <div className="eyebrow">Our Divisions</div>
-            <h2>Two Paths. One Strategic Advantage.</h2>
-            <p className="prose">
-              Estimation and design give you buildable clarity. Property acquisition turns the right assets into
-              long-term value. Together, they create a single partner for decisions that matter.
-            </p>
-          </MotionReveal>
-          <MotionStagger className="division-grid">
-            {HOME_DIVISIONS.map((division, index) => (
-              <MotionItem key={division.title}>
-                <Link className={`division-card ${index === 0 ? 'cherry' : 'rose'}`} href={division.href}>
-                  <Image
-                    src={division.image}
-                    alt={division.title}
-                    fill
-                    sizes="(max-width: 1000px) 100vw, 50vw"
-                    style={{ objectFit: 'cover' }}
-                  />
-                  <span className="overlay" aria-hidden="true" />
-                  <span className="body">
-                    <h3>{division.title}</h3>
-                    <p>{division.description}</p>
-                    <span className="card-action" style={{ color: '#fff' }}>
-                      {division.cta} →
-                    </span>
-                  </span>
-                </Link>
               </MotionItem>
             ))}
           </MotionStagger>
@@ -174,15 +141,15 @@ export default function Home() {
       <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
-            <div className="eyebrow">Services</div>
+            <div className="eyebrow">Preconstruction services</div>
             <h2>What we bring together</h2>
             <p className="prose">
-              From estimating and quantity takeoffs to drawings, engineering, visualization, and property acquisition.
-              Every essential preconstruction service under one roof.
+              Estimating, quantity takeoffs, drawings, engineering, and visualization — the preconstruction
+              support contractors and developers need before construction starts.
             </p>
           </div>
           <MotionStagger className="grid-3">
-            {CONTENT_SERVICES.map((s) => (
+            {primaryServices.map((s) => (
               <MotionItem className="motion-fill" key={s.slug}>
                 <Link className="card card-link" href={`/services/${s.slug}`}>
                   <div className="ico" dangerouslySetInnerHTML={{ __html: ICO[s.ico as keyof typeof ICO] }} />
@@ -193,6 +160,35 @@ export default function Home() {
               </MotionItem>
             ))}
           </MotionStagger>
+        </div>
+      </section>
+
+      <section className="band band-dark on-dark investment-band">
+        <div className="wrap investment-grid">
+          <MotionReveal className="investment-copy" y={18}>
+            <div className="eyebrow">{HOME_INVESTMENT_ACQUISITION.eyebrow}</div>
+            <h2>{HOME_INVESTMENT_ACQUISITION.title}</h2>
+            <p className="prose" style={{ color: 'rgba(255,255,255,.86)' }}>
+              {HOME_INVESTMENT_ACQUISITION.body}
+            </p>
+            <p className="supporting" style={{ color: 'rgba(255,255,255,.78)' }}>
+              {HOME_INVESTMENT_ACQUISITION.supporting}
+            </p>
+            <div className="btn-row">
+              <Button href={HOME_INVESTMENT_ACQUISITION.href}>
+                {HOME_INVESTMENT_ACQUISITION.cta} →
+              </Button>
+            </div>
+          </MotionReveal>
+          <MotionReveal className="investment-media" y={24} delay={0.08}>
+            <Image
+              src={HOME_INVESTMENT_ACQUISITION.image}
+              alt={HOME_INVESTMENT_ACQUISITION.imageAlt}
+              fill
+              sizes="(max-width: 1000px) 100vw, 45vw"
+              style={{ objectFit: 'cover' }}
+            />
+          </MotionReveal>
         </div>
       </section>
 
@@ -221,6 +217,10 @@ export default function Home() {
               </MotionItem>
             ))}
           </MotionStagger>
+          <p className="prose">
+            See how we support each market on{' '}
+            <Link href="/who-we-serve#markets">Who We Serve</Link>.
+          </p>
         </div>
       </section>
 
@@ -293,8 +293,8 @@ export default function Home() {
           </div>
           <p className="prose">
             See all five advantages on our <Link href="/about">About</Link> page, explore{' '}
-            <Link href="/estimation">estimation by project type and trade</Link>, or review our{' '}
-            <Link href="/markets">Markets We Serve</Link>.
+            <Link href="/services/estimating">estimating by project type and trade</Link>, or review{' '}
+            <Link href="/who-we-serve#markets">markets we serve</Link>.
           </p>
         </div>
       </section>
@@ -317,7 +317,7 @@ export default function Home() {
 
       <CTA
         title="Ready to move your project forward?"
-        text={`Share your plans or property details with ${BRAND.name}. We will help identify the right next step: estimate, design package, or acquisition conversation.`}
+        text={`Share your plans with ${BRAND.name}. We will help identify the right next step for your estimate or design package.`}
       />
     </>
   );
