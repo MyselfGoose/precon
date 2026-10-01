@@ -313,16 +313,25 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
         name: 'Pharmaceutical Plants',
         description:
           'Cleanrooms, contamination control, HVAC filtration, specialized utility systems, and regulatory compliance drive design and construction requirements.',
+        imageSrc: '/images/estimation/ind-pharma.jpg',
+        imageAlt: 'Pharmaceutical manufacturing plant exterior',
+        watermark: 'Pharmaceutical',
       },
       {
         name: 'Chemical & Petrochemical Facilities',
         description:
           'Hazardous material handling, corrosion-resistant materials, pressure piping, fire protection, and explosion-resistant construction are major priorities.',
+        imageSrc: '/images/estimation/ind-chemical.jpg',
+        imageAlt: 'Chemical and petrochemical industrial plant',
+        watermark: 'Chemical & Petrochemical',
       },
       {
         name: 'Oil & Gas Infrastructure',
         description:
           'Storage tanks, process piping, pumping stations, structural steel, safety systems, and environmental compliance are central to these facilities.',
+        imageSrc: '/images/estimation/ind-oil-gas.jpg',
+        imageAlt: 'Oil and gas storage tanks and process piping',
+        watermark: 'Oil & Gas',
       },
       {
         name: 'Power Generation Facilities',
@@ -336,11 +345,17 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
         name: 'Water & Wastewater Treatment Plants',
         description:
           'Concrete tanks, pumping stations, filtration systems, underground utilities, process piping, and corrosion-resistant materials are key cost drivers.',
+        imageSrc: '/images/estimation/ind-water-treatment.jpg',
+        imageAlt: 'Industrial water and wastewater treatment plant',
+        watermark: 'Water & Wastewater',
       },
       {
         name: 'Logistics & Fulfillment Centers',
         description:
           'High-bay storage, automated conveyor systems, loading infrastructure, electrical distribution, and durable flooring support efficient operations.',
+        imageSrc: '/images/estimation/ind-logistics.jpg',
+        imageAlt: 'Logistics fulfillment center with high-bay racking',
+        watermark: 'Logistics & Fulfillment',
       },
       {
         name: 'Cold Storage Facilities',
@@ -354,6 +369,9 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
         name: 'Mining & Industrial Processing Facilities',
         description:
           'Heavy equipment foundations, conveyors, crushers, structural steel, dust control systems, and material handling infrastructure require robust construction planning.',
+        imageSrc: '/images/estimation/ind-mining.jpg',
+        imageAlt: 'Mining and industrial processing facility',
+        watermark: 'Mining & Processing',
       },
     ],
   },
@@ -446,12 +464,18 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
         group: 'civil',
         description:
           'Estimating considers earthworks, hydraulic structures, reinforced concrete, erosion control, environmental mitigation, and long-term infrastructure performance.',
+        imageSrc: '/images/estimation/civil-dams.jpg',
+        imageAlt: 'Dam and flood control civil infrastructure',
+        watermark: 'Dams & Flood Control',
       },
       {
         name: 'Tunnels',
         group: 'civil',
         description:
           'Tunnel construction requires analysis of excavation methods, ground conditions, shoring systems, ventilation, waterproofing, specialty equipment, and sequencing.',
+        imageSrc: '/images/estimation/civil-tunnels.jpg',
+        imageAlt: 'Road tunnel civil infrastructure interior',
+        watermark: 'Tunnels',
       },
       {
         name: 'Municipal Buildings',
@@ -476,24 +500,36 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
         group: 'facilities',
         description:
           'Healthcare estimates account for complex MEP systems, medical equipment coordination, infection control measures, regulatory compliance, and uninterrupted facility operations.',
+        imageSrc: '/images/estimation/fac-healthcare.jpg',
+        imageAlt: 'Public healthcare hospital facility',
+        watermark: 'Healthcare Facilities',
       },
       {
         name: 'Military & Defense',
         group: 'facilities',
         description:
           'Defense projects demand detailed estimating for secure facilities, hardened structures, specialized systems, restricted access, and stringent government specifications.',
+        imageSrc: '/images/estimation/fac-military.jpg',
+        imageAlt: 'Military and defense secured facility',
+        watermark: 'Military & Defense',
       },
       {
         name: 'Correctional Facilities',
         group: 'facilities',
         description:
           'Correctional facilities require secure construction detailing, reinforced assemblies, controlled access systems, specialized hardware, and code-compliant life safety provisions.',
+        imageSrc: '/images/estimation/fac-correctional.jpg',
+        imageAlt: 'Correctional facility secure perimeter',
+        watermark: 'Correctional Facilities',
       },
       {
         name: 'Parks & Recreation',
         group: 'facilities',
         description:
           'Recreational projects include estimating for grading, landscaping, sports facilities, playgrounds, site amenities, irrigation systems, and public accessibility requirements.',
+        imageSrc: '/images/estimation/fac-parks.jpg',
+        imageAlt: 'Public parks and recreation facility',
+        watermark: 'Parks & Recreation',
       },
       {
         name: 'Fire Stations & Emergency Services',
@@ -509,12 +545,18 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
         group: 'facilities',
         description:
           'Police stations, public safety buildings, and dispatch centers require secure construction, detention areas, evidence storage, access control, and advanced communication systems.',
+        imageSrc: '/images/estimation/fac-police.jpg',
+        imageAlt: 'Police and public safety facility',
+        watermark: 'Police & Public Safety',
       },
       {
         name: 'Courthouses & Judicial Facilities',
         group: 'facilities',
         description:
           'Judicial buildings require estimates for secure circulation, courtroom fit-outs, detention areas, security infrastructure, and high-performance building systems.',
+        imageSrc: '/images/estimation/fac-courthouse.jpg',
+        imageAlt: 'Courthouse and judicial public facility',
+        watermark: 'Courthouses',
       },
     ],
     whyUs:
