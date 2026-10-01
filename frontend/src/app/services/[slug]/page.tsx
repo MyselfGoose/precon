@@ -15,17 +15,20 @@ const BIM_WALKTHROUGH_FRAMES = [
   {
     src: '/images/services/bim/bim-model.jpg',
     alt: 'BIM model overlaid on two-dimensional architectural plans',
-    label: 'BIM model',
+    label: 'Start with the BIM model',
+    hint: 'See the coordinated model sitting on the drawing set.',
   },
   {
     src: '/images/services/bim/gym-render.jpg',
     alt: 'Photorealistic gym interior visualization from the walkthrough',
-    label: 'Interior path',
+    label: 'Move into an interior space',
+    hint: 'Step inside a rendered room from the same model.',
   },
   {
     src: '/images/services/bim/interior-render.jpg',
     alt: 'Photorealistic residential interior rendering from the walkthrough',
-    label: 'Space experience',
+    label: 'Experience materials and light',
+    hint: 'Finish with a photoreal view used for stakeholder reviews.',
   },
 ] as const;
 
@@ -302,11 +305,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             {isBim && (
               <div className="stack-lg">
                 <div className="stack">
-                  <div className="eyebrow">BIM walkthrough</div>
+                  <div className="eyebrow">Interactive preview</div>
                   <h2>Walk through the model before it is built</h2>
                   <p className="prose">
-                    Follow a narrated path from the BIM model into photorealistic exterior and interior renders —
-                    the same visualization sequence we prepare for stakeholder presentations.
+                    This is a short guided preview of a BIM visualization sequence — the same kind of path we prepare for
+                    design reviews and stakeholder presentations. Use the controls under the image to play, pause, or
+                    step through each view.
                   </p>
                 </div>
                 <BimVisualShowcase frames={[...BIM_WALKTHROUGH_FRAMES]} mode="walkthrough" />

@@ -2,12 +2,14 @@
 
 import Image from 'next/image';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useId, useState } from 'react';
 
 export type BimVisualFrame = {
   src: string;
   alt: string;
   label: string;
+  /** Short guidance shown under the step title in walkthrough mode. */
+  hint?: string;
 };
 
 type BimVisualShowcaseProps = {
@@ -17,17 +19,50 @@ type BimVisualShowcaseProps = {
 
 export function BimVisualShowcase({ frames, mode = 'stage' }: BimVisualShowcaseProps) {
   const reduced = useReducedMotion();
+  const labelId = useId();
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [playing, setPlaying] = useState(!reduced && mode === 'walkthrough');
+
+  const goTo = useCallback(
+    (next: number) => {
+      if (frames.length === 0) return;
+      setIndex(((next % frames.length) + frames.length) % frames.length);
+    },
+    [frames.length],
+  );
+
+  const goPrev = useCallback(() => goTo(index - 1), [goTo, index]);
+  const goNext = useCallback(() => goTo(index + 1), [goTo, index]);
 
   useEffect(() => {
-    if (reduced || frames.length < 2 || mode === 'collage' || paused) return;
-    const intervalMs = mode === 'walkthrough' ? 5200 : 3800;
+    if (reduced || frames.length < 2 || mode === 'collage') return;
+    if (mode === 'walkthrough' && !playing) return;
+    const intervalMs = mode === 'walkthrough' ? 5600 : 3800;
     const id = window.setInterval(() => {
       setIndex((current) => (current + 1) % frames.length);
     }, intervalMs);
     return () => window.clearInterval(id);
-  }, [frames.length, mode, paused, reduced]);
+  }, [frames.length, mode, playing, reduced]);
+
+  useEffect(() => {
+    if (mode !== 'walkthrough') return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        goPrev();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        goNext();
+      } else if (event.key === ' ') {
+        const target = event.target as HTMLElement | null;
+        if (target && (target.tagName === 'BUTTON' || target.tagName === 'A' || target.isContentEditable)) return;
+        event.preventDefault();
+        setPlaying((value) => !value);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [goNext, goPrev, mode]);
 
   if (frames.length === 0) return null;
 
@@ -53,24 +88,117 @@ export function BimVisualShowcase({ frames, mode = 'stage' }: BimVisualShowcaseP
 
   const active = frames[index] ?? frames[0];
   const isWalkthrough = mode === 'walkthrough';
+  const stepLabel = `Step ${index + 1} of ${frames.length}`;
+
+  if (isWalkthrough) {
+    return (
+      <div className="bim-walkthrough-shell">
+        <div className="bim-walkthrough-guide" id={labelId}>
+          <p className="bim-walkthrough-howto">
+            <strong>How to use:</strong> Press <span>Play</span> to watch the sequence automatically, or use{' '}
+            <span>Previous</span> / <span>Next</span> (or the step buttons) to move through each view yourself.
+          </p>
+        </div>
+
+        <div
+          className="bim-visual-stage media project-photo bim-walkthrough"
+          role="region"
+          aria-labelledby={labelId}
+          aria-live="polite"
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={active.src}
+              className="bim-visual-slide"
+              initial={reduced ? false : { opacity: 0, scale: 1.06 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={reduced ? undefined : { opacity: 0, scale: 1.02 }}
+              transition={{ duration: reduced ? 0 : 1.05, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Image
+                src={active.src}
+                alt={active.alt}
+                fill
+                sizes="(max-width: 1000px) 100vw, 72vw"
+                style={{ objectFit: 'cover' }}
+                priority
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="bim-walkthrough-chrome">
+            <div className="bim-walkthrough-badge">BIM Walkthrough</div>
+            <div className="bim-walkthrough-progress" aria-hidden="true">
+              <span style={{ width: `${((index + 1) / frames.length) * 100}%` }} />
+            </div>
+          </div>
+
+          <div className="bim-visual-caption bim-walkthrough-caption">
+            <span className="code">{stepLabel}</span>
+            <span>{active.label}</span>
+          </div>
+        </div>
+
+        <div className="bim-walkthrough-controls">
+          <div className="bim-walkthrough-actions">
+            <button type="button" className="bim-ctrl" onClick={goPrev} aria-label="Previous walkthrough step">
+              ← Previous
+            </button>
+            <button
+              type="button"
+              className="bim-ctrl bim-ctrl-primary"
+              onClick={() => setPlaying((value) => !value)}
+              aria-pressed={playing}
+            >
+              {playing ? 'Pause' : 'Play'}
+            </button>
+            <button type="button" className="bim-ctrl" onClick={goNext} aria-label="Next walkthrough step">
+              Next →
+            </button>
+          </div>
+
+          <ol className="bim-walkthrough-steps" aria-label="Walkthrough steps">
+            {frames.map((frame, i) => (
+              <li key={frame.src}>
+                <button
+                  type="button"
+                  className={i === index ? 'is-active' : undefined}
+                  aria-current={i === index ? 'step' : undefined}
+                  onClick={() => {
+                    setPlaying(false);
+                    setIndex(i);
+                  }}
+                >
+                  <span className="bim-step-num">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="bim-step-copy">
+                    <strong>{frame.label}</strong>
+                    {frame.hint ? <em>{frame.hint}</em> : null}
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ol>
+
+          <p className="bim-walkthrough-status">
+            {playing
+              ? `Autoplaying · ${stepLabel}: ${active.label}`
+              : `Paused · ${stepLabel}: ${active.label}. Press Play or Next to continue.`}
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div
-      className={`bim-visual-stage media project-photo${isWalkthrough ? ' bim-walkthrough' : ''}`}
-      aria-live="polite"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
-      onBlur={() => setPaused(false)}
-    >
+    <div className="bim-visual-stage media project-photo" aria-live="polite">
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={active.src}
           className="bim-visual-slide"
-          initial={reduced ? false : { opacity: 0, scale: isWalkthrough ? 1.08 : 1.04 }}
+          initial={reduced ? false : { opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={reduced ? undefined : { opacity: 0, scale: isWalkthrough ? 1.02 : 1.02 }}
-          transition={{ duration: reduced ? 0 : isWalkthrough ? 1.15 : 0.85, ease: [0.22, 1, 0.36, 1] }}
+          exit={reduced ? undefined : { opacity: 0, scale: 1.02 }}
+          transition={{ duration: reduced ? 0 : 0.85, ease: [0.22, 1, 0.36, 1] }}
         >
           <Image
             src={active.src}
@@ -82,24 +210,12 @@ export function BimVisualShowcase({ frames, mode = 'stage' }: BimVisualShowcaseP
           />
         </motion.div>
       </AnimatePresence>
-
-      {isWalkthrough && (
-        <div className="bim-walkthrough-chrome">
-          <div className="bim-walkthrough-badge">BIM Walkthrough</div>
-          <div className="bim-walkthrough-progress" aria-hidden="true">
-            <span style={{ width: `${((index + 1) / frames.length) * 100}%` }} />
-          </div>
-        </div>
-      )}
-
       <div className="bim-visual-caption">
         <span className="code">{String(index + 1).padStart(2, '0')}</span>
-        <span>
-          {isWalkthrough ? `Walkthrough · ${active.label}` : active.label}
-        </span>
+        <span>{active.label}</span>
       </div>
       {!reduced && (
-        <div className="bim-visual-dots" role="tablist" aria-label={isWalkthrough ? 'Walkthrough frames' : 'Visualization frames'}>
+        <div className="bim-visual-dots" role="tablist" aria-label="Visualization frames">
           {frames.map((frame, i) => (
             <button
               key={frame.src}
