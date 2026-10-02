@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { CTA, PageHead, PhoneLink, WhatsAppLink } from '../components';
-import { BRAND, SITE_COPY } from '@/lib/content';
+import { BRAND, SITE_COPY, isUnsetBrandValue } from '@/lib/content';
 import { createMetadata } from '@/lib/metadata';
 import QuoteForm from '../quote/quote-form';
 
@@ -11,6 +11,8 @@ export const metadata = createMetadata({
 });
 
 export default function Contact() {
+  const showLegalName = !isUnsetBrandValue(BRAND.legalName);
+
   return (
     <>
       <PageHead
@@ -30,11 +32,19 @@ export default function Contact() {
           <div className="grid-2" style={{ gap: 44, alignItems: 'start' }}>
             <QuoteForm submitLabel="Submit Project" />
             <aside className="contact-aside">
-              <div className="contact-block">
-                <span className="k">Legal name</span>
-                <span className="v">{BRAND.legalName}</span>
-                <span className="hint">{BRAND.serviceAreaLine}</span>
-              </div>
+              {showLegalName ? (
+                <div className="contact-block">
+                  <span className="k">Legal name</span>
+                  <span className="v">{BRAND.legalName}</span>
+                  <span className="hint">{BRAND.serviceAreaLine}</span>
+                </div>
+              ) : (
+                <div className="contact-block">
+                  <span className="k">Service area</span>
+                  <span className="v">{BRAND.serviceArea}</span>
+                  <span className="hint">{BRAND.serviceAreaLine}</span>
+                </div>
+              )}
               <div className="contact-block">
                 <span className="k">Phone</span>
                 <PhoneLink className="v">{BRAND.phoneDisplay}</PhoneLink>

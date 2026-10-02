@@ -121,12 +121,16 @@ export function WhatsAppFab() {
 }
 
 function isPlaceholderUrl(value: string): boolean {
-  return value.startsWith('[PLACEHOLDER') || value === '#';
+  const trimmed = value.trim();
+  return trimmed.length === 0 || trimmed.startsWith('[PLACEHOLDER') || trimmed === '#';
 }
 
 export function Footer() {
   const googleUrl = BRAND.social.googleBusiness;
   const linkedInUrl = BRAND.social.linkedIn;
+  const showLegalName = !isPlaceholderUrl(BRAND.legalName);
+  const showGoogle = !isPlaceholderUrl(googleUrl);
+  const showLinkedIn = !isPlaceholderUrl(linkedInUrl);
 
   return (
     <footer className="site-foot">
@@ -135,9 +139,11 @@ export function Footer() {
           <div>
             <div className="foot-brand">{BRAND.shortName}</div>
             <p className="foot-sub">{BRAND.descriptor}</p>
-            <p className="foot-legal-name" style={{ marginTop: 10 }}>
-              {BRAND.legalName}
-            </p>
+            {showLegalName ? (
+              <p className="foot-legal-name" style={{ marginTop: 10 }}>
+                {BRAND.legalName}
+              </p>
+            ) : null}
             <p className="foot-description" style={{ marginTop: 14 }}>
               {BRAND.description}
             </p>
@@ -163,11 +169,7 @@ export function Footer() {
                 </span>
                 <span className="sr-only">WhatsApp</span>
               </WhatsAppLink>
-              {isPlaceholderUrl(googleUrl) ? (
-                <span className="foot-social-placeholder" title={googleUrl}>
-                  Google [PLACEHOLDER]
-                </span>
-              ) : (
+              {showGoogle ? (
                 <a
                   href={googleUrl}
                   target="_blank"
@@ -177,12 +179,8 @@ export function Footer() {
                 >
                   Google
                 </a>
-              )}
-              {isPlaceholderUrl(linkedInUrl) ? (
-                <span className="foot-social-placeholder" title={linkedInUrl}>
-                  LinkedIn [PLACEHOLDER]
-                </span>
-              ) : (
+              ) : null}
+              {showLinkedIn ? (
                 <a
                   href={linkedInUrl}
                   target="_blank"
@@ -192,7 +190,7 @@ export function Footer() {
                 >
                   LinkedIn
                 </a>
-              )}
+              ) : null}
             </div>
           </div>
           <div>

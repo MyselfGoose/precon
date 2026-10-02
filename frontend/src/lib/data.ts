@@ -318,7 +318,7 @@ export const MOBILE_NAV_ITEMS = NAV_ITEMS;
 export const FOOTER_COMPANY_ITEMS: NavLinkItem[] = [
   { label: 'About', href: '/about' },
   { label: 'Who We Serve', href: '/who-we-serve' },
-  { label: 'Markets', href: '/markets' },
+  { label: 'Markets', href: '/who-we-serve#markets' },
   { label: 'Trades', href: '/trades' },
   { label: 'How It Works', href: '/how-it-works' },
 ];

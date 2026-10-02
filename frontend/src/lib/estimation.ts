@@ -393,7 +393,7 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
       body: 'Public bids are won and lost on more than quantities. We apply lessons from past projects — including equity considerations, scope trends, and historical cost patterns — so the estimate stays competitive while protecting profit and long-term margins as the project evolves.',
       exampleTitle: 'Example: fire stations & emergency services',
       example:
-        'Fire station work often changes after award: apparatus-bay layouts, specialized MEP, training spaces, and resilient systems get revised mid-design. We keep those equity impacts in view — updating quantities and pricing as scope shifts — so the contractor’s position stays intact instead of absorbing uncontrolled change into the margin.',
+        'Fire station work often changes after award: apparatus-bay layouts, specialized MEP, training spaces, and resilient systems get revised mid-design. We keep those equity impacts in view — updating quantities and pricing as scope shifts — so the contractor\'s position stays intact instead of absorbing uncontrolled change into the margin.',
     },
     categories: [
       {
@@ -560,7 +560,7 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
       },
     ],
     whyUs:
-      'Public work demands precision, and we deliver it through CSI Format-compliant estimates, professional bid proposals, informed by current supplier and labor market data, and advanced BIM estimating that minimizes errors through enhanced quantity accuracy, coordination, and scope clarity. By analyzing historical project data alongside current market conditions, we develop the most competitive solution for every bid, helping you win public contracts with confidence while protecting your profitability.',
+      'Public work demands precision, and we deliver it through CSI Format-compliant estimates, professional bid proposals, informed by current supplier and labor market data, and advanced BIM estimating that improves quantity accuracy, coordination, and scope clarity. By analyzing historical project data alongside current market conditions, we develop competitive solutions for every bid, helping you win public contracts with confidence while protecting your profitability.',
   },
   {
     slug: 'trades',
@@ -573,7 +573,7 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
       'Every estimate is informed by current supplier and labor market data, combining supplier pricing, regional labor trends, historical project data, and market intelligence. The result is a bid package that helps you price competitively, protect your margins, and win more work with confidence.',
     ],
     whyUs:
-      'Estimating isn\'t just about quantities — it\'s about intelligence. Nearly a decade of historical project data is combined with current supplier and labor market data, regional labor costs, and regional market conditions to produce CSI MasterFormat-compliant estimates that go beyond the numbers. Every takeoff is built to help trade contractors price competitively, protect their margins, and bid with confidence. By combining data-driven insights with deadline-aligned delivery and documented assumptions, we don\'t just help you win more work, we help you win the right work at the right price. So the better question isn\'t "Why us?" it\'s "Why not us?"',
+      'Estimating isn\'t just about quantities — it\'s about intelligence. Historical project data is combined with current supplier and labor market data, regional labor costs, and regional market conditions to produce CSI MasterFormat-compliant estimates that go beyond the numbers. Every takeoff is built to help trade contractors price competitively, protect their margins, and bid with confidence. By combining data-driven insights with deadline-aligned delivery and documented assumptions, we don\'t just help you win more work, we help you win the right work at the right price. So the better question isn\'t "Why us?" it\'s "Why not us?"',
   },
 ];
 
@@ -608,7 +608,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
       'BIM Estimating',
     ],
     whyUs:
-      'Remodeling projects present unique challenges — from unforeseen existing conditions to evolving scopes and tight schedules. Our estimators account for demolition, structural modifications, material upgrades, code compliance, and labor productivity to deliver estimates that are both competitive and dependable. By combining nearly a decade of historical pricing data with regional market intelligence, we help contractors reduce uncertainty, protect profit margins, and submit bids with confidence. Whether you\'re remodeling a single space or renovating an entire facility, we become an extension of your preconstruction team — delivering the speed, consistency, and accuracy needed to win more work.',
+      'Remodeling projects present unique challenges — from unforeseen existing conditions to evolving scopes and tight schedules. Our estimators account for demolition, structural modifications, material upgrades, code compliance, and labor productivity to deliver estimates that are both competitive and dependable. By combining historical pricing data with regional market intelligence, we help contractors reduce uncertainty, protect profit margins, and submit bids with confidence. Whether you\'re remodeling a single space or renovating an entire facility, we become an extension of your preconstruction team — delivering the speed, consistency, and accuracy needed to win more work.',
     ctaTitle: 'Request Your Remodeling Estimate',
     ctaText:
       'Partner with a team that delivers more than just numbers. Get accurate takeoffs, data-driven pricing, and professional bid proposals that help you bid smarter and build more profitably.',
@@ -707,7 +707,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
       'BIM Estimating',
     ],
     whyUs:
-      'Restoration projects often involve hidden conditions, evolving scopes, and strict code requirements. Our estimators account for repair sequencing, specialty materials, and project complexities to deliver reviewable estimates with documented assumptions that help protect your margins. By combining nearly a decade of historical pricing data with regional market intelligence, we help restoration contractors bid with confidence.',
+      'Restoration projects often involve hidden conditions, evolving scopes, and strict code requirements. Our estimators account for repair sequencing, specialty materials, and project complexities to deliver reviewable estimates with documented assumptions that help protect your margins. By combining historical pricing data with regional market intelligence, we help restoration contractors bid with confidence.',
     ctaTitle: 'Request Your Restoration Estimate',
     ctaText:
       'From historic restorations to insurance repairs, our team provides the estimating expertise and data-driven insights you need to secure more restoration projects with confidence.',

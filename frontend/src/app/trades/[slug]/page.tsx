@@ -190,7 +190,7 @@ export default async function TradePage({ params }: { params: Promise<{ slug: st
 
       <CTA
         title={`${tr.name} bid due soon?`}
-        text={`Send the relevant sheets and we’ll come back with a price and a date.`}
+        text={`Send the relevant sheets and we'll come back with a price and a date.`}
       />
     </>
   );

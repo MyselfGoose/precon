@@ -1,4 +1,4 @@
-import { BRAND, CONTENT_SERVICES, HOME_FAQ, SITE_COPY } from './content';
+import { BRAND, CONTENT_SERVICES, HOME_FAQ, SITE_COPY, isUnsetBrandValue } from './content';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? BRAND.website;
 
@@ -7,7 +7,7 @@ export function organizationJsonLd(): Record<string, unknown> {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: BRAND.name,
-    ...(BRAND.legalName.startsWith('[PLACEHOLDER') ? {} : { legalName: BRAND.legalName }),
+    ...(isUnsetBrandValue(BRAND.legalName) ? {} : { legalName: BRAND.legalName }),
     url: SITE_URL,
     email: BRAND.email,
     telephone: BRAND.phoneDisplay,

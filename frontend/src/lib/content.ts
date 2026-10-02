@@ -1,8 +1,12 @@
 export const BRAND = {
   name: 'QuantSult',
   shortName: 'QUANTSULT',
-  /** [PLACEHOLDER — replace with owner-verified legal entity name] */
-  legalName: '[PLACEHOLDER — legal entity name]',
+  /**
+   * Registered legal entity name. Leave empty until the owner confirms —
+   * empty values are omitted from footer, contact, and structured data
+   * so placeholder text never reaches site visitors.
+   */
+  legalName: '',
   descriptor: 'Preconstruction · Estimating · Design Support',
   tagline: 'Estimate. Design. Invest.',
   description:
@@ -16,23 +20,31 @@ export const BRAND = {
   email: 'hello@csianddesign.com',
   website: 'https://csianddesign.com',
   social: {
-    /** [PLACEHOLDER — replace with live Google Business Profile URL] */
-    googleBusiness: '[PLACEHOLDER — Google Business Profile URL]',
-    /** [PLACEHOLDER — replace with live LinkedIn company page URL] */
-    linkedIn: '[PLACEHOLDER — LinkedIn company page URL]',
+    /** Leave empty until live Google Business Profile URL is approved. */
+    googleBusiness: '',
+    /** Leave empty until live LinkedIn company page URL is approved. */
+    linkedIn: '',
   },
 };
 
+/** True when a brand/social value is unset or still a developer placeholder. */
+export function isUnsetBrandValue(value: string): boolean {
+  const trimmed = value.trim();
+  return trimmed.length === 0 || trimmed.startsWith('[PLACEHOLDER');
+}
+
 /**
  * Owner-supplied values still required before launch claims can be treated as verified.
- * Swap placeholders in BRAND, HOME_STATS, HOME_CASE_STUDIES, HOME_FAQ, and social URLs.
+ * Fill BRAND.legalName, BRAND.social URLs, HOME_STATS, HOME_CASE_STUDIES, TEAM_SECTION.members,
+ * and optional FAQ turnaround/pricing numbers when the owner confirms them.
  */
 export const OWNER_PLACEHOLDERS = [
   'BRAND.legalName — registered legal entity name',
   'BRAND.social.googleBusiness / linkedIn — live profile URLs',
-  'HOME_STATS — projects, states, years, repeat-client figures',
-  'HOME_CASE_STUDIES — anonymised project type, size, result',
-  'HOME_FAQ turnaround ranges and indicative starting price',
+  'HOME_STATS — projects, states, years, repeat-client figures (homepage Proof section)',
+  'HOME_CASE_STUDIES — anonymised project type, size, result (homepage Results section)',
+  'TEAM_SECTION.members — founder + key roles with photos and bios (About page)',
+  'Optional FAQ turnaround ranges and indicative starting price once owner confirms',
   'License jurisdictions for sealing professionals (spoken for by SITE_COPY.licensing)',
 ] as const;
 
@@ -676,6 +688,31 @@ export const ABOUT_CONTENT = {
   },
 };
 
+export type TeamMember = {
+  name: string;
+  role: string;
+  bio: string;
+  location?: string;
+  expertise?: string;
+  photoSrc?: string;
+  photoAlt?: string;
+  linkedIn?: string;
+};
+
+/**
+ * Meet the Team (DOCX #20). Publish members only after the owner supplies
+ * verified names, bios, photos, and outsourcing disclosures.
+ */
+export const TEAM_SECTION = {
+  eyebrow: 'Meet the Team',
+  title: 'The people behind the takeoff.',
+  lede:
+    'Estimators, designers, and coordinators who treat your bid deadline as their own. Named profiles will appear here once the owner approves biographies and headshots.',
+  pendingNote:
+    'Owner action required: publish at least the Founder / Managing Director with photo, short biography, years of experience, location, and market expertise. Add Senior Estimator, Architect/Engineer, or Project Coordinator profiles when available. If any technical work is delivered through partner firms, state that structure transparently rather than implying everyone is in-house.',
+  members: [] as TeamMember[],
+};
+
 export const ACQUISITION_CONTENT = {
   eyebrow: 'Property Acquisition',
   title: 'Turning Property Opportunities Into Real Value',
@@ -687,7 +724,7 @@ export const ACQUISITION_CONTENT = {
   ],
   features: [
     { title: 'Property-First Evaluation', description: 'Understand condition, potential, and fundamentals before structure' },
-    { title: 'Direct Conversations', description: 'Explore options based on the property’s actual situation' },
+    { title: 'Direct Conversations', description: "Explore options based on the property's actual situation" },
     { title: 'Construction Advantage', description: 'Estimating, architecture, and engineering inform the plan' },
     { title: 'Value Through Execution', description: 'Renovation and design that unlock lasting asset value' },
   ] as const,
@@ -843,9 +880,9 @@ export const HOME_WHO_WE_SERVE = [
     icon: 'precon',
   },
   {
-    title: 'Construction Firms',
-    description: 'Need one preconstruction partner across estimating and design support?',
-    href: '/who-we-serve#general-contractors',
+    title: 'Architects',
+    description: 'Need estimating and engineering coordination during design?',
+    href: '/who-we-serve#architects',
     icon: 'arch',
   },
 ] as const;
@@ -897,37 +934,23 @@ export const HOME_DIVISIONS = [
   },
 ] as const;
 
-/** [PLACEHOLDER — replace with owner-verified figures before treating as public claims] */
-export const HOME_STATS = [
-  { value: '850+', label: 'Projects Completed [PLACEHOLDER]' },
-  { value: '38', label: 'States / Markets Served [PLACEHOLDER]' },
-  { value: '12+', label: 'Years of Experience [PLACEHOLDER]' },
-  { value: '70%', label: 'Repeat Clients [PLACEHOLDER]' },
-] as const;
+/**
+ * Homepage proof stats. Keep empty until the owner verifies every figure.
+ * When non-empty, the homepage Proof section renders automatically.
+ */
+export const HOME_STATS: readonly { value: string; label: string }[] = [];
 
-/** [PLACEHOLDER — replace with owner-approved anonymised case studies or testimonials] */
-export const HOME_CASE_STUDIES = [
-  {
-    projectType: '[PLACEHOLDER] Multi-family renovation — Southeast U.S.',
-    size: '[PLACEHOLDER] ~45,000 SF',
-    result:
-      '[PLACEHOLDER] CSI-format takeoff with documented exclusions delivered ahead of the bid deadline.',
-  },
-  {
-    projectType: '[PLACEHOLDER] Commercial TI package — Midwest',
-    size: '[PLACEHOLDER] Single-trade MEP',
-    result:
-      '[PLACEHOLDER] Trade-level workbook with sheet references used for GC bid submission.',
-  },
-  {
-    projectType: '[PLACEHOLDER] Light industrial shell — Southwest',
-    size: '[PLACEHOLDER] Multi-trade estimate',
-    result:
-      '[PLACEHOLDER] Assumptions and alternates documented so the owner team could compare scenarios.',
-  },
-] as const;
+/**
+ * Homepage case studies / testimonials. Keep empty until the owner approves
+ * anonymised project type, size, and result for each entry.
+ */
+export const HOME_CASE_STUDIES: readonly {
+  projectType: string;
+  size: string;
+  result: string;
+}[] = [];
 
-/** Homepage FAQ — turnaround/pricing figures are placeholders until the owner confirms. */
+/** Homepage FAQ — turnaround and pricing stay qualitative until the owner confirms numbers. */
 export const HOME_FAQ: [string, string][] = [
   [
     'How do you make an estimate defensible?',
@@ -939,11 +962,11 @@ export const HOME_FAQ: [string, string][] = [
   ],
   [
     'How quickly can you help?',
-    'Typical turnaround after scope confirmation (illustrative — [PLACEHOLDER — confirm with owner]): small / single-trade sets [PLACEHOLDER: 2–4 business days]; multi-trade / mid-size [PLACEHOLDER: 5–10 business days]; large or multi-building packages are scoped after review. Rush service is available on request when capacity allows ([PLACEHOLDER — rush fee/terms]). Share your bid or decision date and we will confirm a practical schedule.',
+    'Timing depends on the size and completeness of the set. After we confirm scope, we align delivery to your bid or decision date. Rush service is available on request when capacity allows. Share your deadline with the plans and we will confirm a practical schedule before work starts.',
   ],
   [
     'How does pricing work?',
-    'Fees are scoped from your files and explained before work starts — typically per project, per trade, or per SF depending on the package. Indicative starting range: [PLACEHOLDER: e.g. from $X — replace with owner figure]. You get a clear engagement rather than an open-ended subscription.',
+    'Fees are scoped from your files and explained before work starts — typically per project, per trade, or per SF depending on the package. You receive a clear engagement rather than an open-ended subscription. Ask for a fee outline when you send the set.',
   ],
   [
     'What if the drawings change?',

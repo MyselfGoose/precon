@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { TRADES } from '@/lib/data';
 import { ICO } from '@/lib/illustrations';
-import { Button, CTA, DarkProcess, FAQ, Photo, Workbook } from './components';
+import { Button, CTA, DarkProcess, FAQ, Photo, TrustReasons, Workbook } from './components';
 import {
   BRAND,
   HOME_CASE_STUDIES,
@@ -29,6 +29,9 @@ export const metadata = createMetadata({
 });
 
 export default function Home() {
+  const showProofStats = HOME_STATS.length > 0;
+  const showCaseStudies = HOME_CASE_STUDIES.length > 0;
+
   return (
     <>
       <script
@@ -148,7 +151,7 @@ export default function Home() {
       <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
-            <div className="eyebrow">The deliverable</div>
+            <div className="eyebrow">See What You Receive</div>
             <h2>Your estimate isn&apos;t just a number. It&apos;s a working bid document.</h2>
             <p className="prose">
               A line-item workbook you can open, edit, and hand to a project manager — not a locked PDF.
@@ -207,6 +210,8 @@ export default function Home() {
                 <li key={item}>{item}</li>
               ))}
             </ul>
+            <p className="supporting">{SAMPLE_ESTIMATE_SUMMARY.tracesBack}</p>
+            <p className="supporting">{SAMPLE_ESTIMATE_SUMMARY.toolCompatibility}</p>
           </div>
           <div className="btn-row">
             <a
@@ -221,6 +226,19 @@ export default function Home() {
               {SITE_COPY.cta.uploadPlans} →
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="band band-ground">
+        <div className="wrap stack-lg">
+          <div className="stack">
+            <div className="eyebrow">Trust</div>
+            <h2>Why Contractors Trust {BRAND.name}</h2>
+            <p className="prose">
+              The standards that make an estimate reviewable under bid pressure.
+            </p>
+          </div>
+          <TrustReasons />
         </div>
       </section>
 
@@ -250,55 +268,53 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band band-ground">
-        <div className="wrap stack-lg">
-          <MotionReveal className="stack" y={16}>
-            <div className="eyebrow">Proof</div>
-            <h2>Built on experience.</h2>
-            <p className="supporting">
-              Figures below are labeled placeholders until the owner verifies each statistic.
-            </p>
-          </MotionReveal>
-          <div className="stats-light">
-            {HOME_STATS.map((stat, index) => {
-              const numericMatch = /^(\d+)([+%]?)$/.exec(stat.value);
-              return (
-                <MotionReveal className="stat" key={stat.label} delay={index * 0.08} y={16}>
-                  <b>
-                    {numericMatch ? (
-                      <CountUp value={Number(numericMatch[1])} suffix={numericMatch[2]} label={stat.value} />
-                    ) : (
-                      stat.value
-                    )}
-                  </b>
-                  <small>{stat.label}</small>
-                </MotionReveal>
-              );
-            })}
+      {showProofStats ? (
+        <section className="band band-ground">
+          <div className="wrap stack-lg">
+            <MotionReveal className="stack" y={16}>
+              <div className="eyebrow">Proof</div>
+              <h2>Built on experience.</h2>
+            </MotionReveal>
+            <div className="stats-light">
+              {HOME_STATS.map((stat, index) => {
+                const numericMatch = /^(\d+)([+%]?)$/.exec(stat.value);
+                return (
+                  <MotionReveal className="stat" key={stat.label} delay={index * 0.08} y={16}>
+                    <b>
+                      {numericMatch ? (
+                        <CountUp value={Number(numericMatch[1])} suffix={numericMatch[2]} label={stat.value} />
+                      ) : (
+                        stat.value
+                      )}
+                    </b>
+                    <small>{stat.label}</small>
+                  </MotionReveal>
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
-      <section className="band">
-        <div className="wrap stack-lg">
-          <MotionReveal className="stack" y={16}>
-            <div className="eyebrow">Results</div>
-            <h2>Project outcomes worth reviewing.</h2>
-            <p className="supporting">
-              Anonymised case-study shells — replace with owner-approved examples before launch.
-            </p>
-          </MotionReveal>
-          <MotionStagger className="case-study-grid">
-            {HOME_CASE_STUDIES.map((study) => (
-              <MotionItem className="case-study" key={study.projectType}>
-                <p className="case-study-type">{study.projectType}</p>
-                <p className="case-study-size mono">{study.size}</p>
-                <p className="case-study-result">{study.result}</p>
-              </MotionItem>
-            ))}
-          </MotionStagger>
-        </div>
-      </section>
+      {showCaseStudies ? (
+        <section className="band">
+          <div className="wrap stack-lg">
+            <MotionReveal className="stack" y={16}>
+              <div className="eyebrow">Results</div>
+              <h2>Project outcomes worth reviewing.</h2>
+            </MotionReveal>
+            <MotionStagger className="case-study-grid">
+              {HOME_CASE_STUDIES.map((study) => (
+                <MotionItem className="case-study" key={study.projectType}>
+                  <p className="case-study-type">{study.projectType}</p>
+                  <p className="case-study-size mono">{study.size}</p>
+                  <p className="case-study-result">{study.result}</p>
+                </MotionItem>
+              ))}
+            </MotionStagger>
+          </div>
+        </section>
+      ) : null}
 
       <section className="band band-ground">
         <div className="wrap stack-lg">

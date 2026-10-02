@@ -207,6 +207,15 @@
   .foot-social a:hover{color:#fff;transform:translateY(-2px);}
   .foot-social-placeholder{font-size:.72rem;letter-spacing:.04em;color:rgba(245,240,230,.55);}
   .foot-legal-name,.foot-hours,.foot-response{font-size:.82rem;color:rgba(245,240,230,.72);margin:0;}
+  .team-section{scroll-margin-top:96px;}
+  .team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
+  .team-card{padding:22px;border:1px solid var(--line);border-radius:4px;background:var(--paper);display:flex;flex-direction:column;gap:8px;}
+  .team-card h3{margin:0;font-size:1.2rem;}
+  .team-meta{margin:0;color:var(--muted);font-size:.9rem;}
+  .team-pending{max-width:72ch;}
+  @media (max-width:900px){
+    .team-grid{grid-template-columns:1fr;}
+  }
   .case-study-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
   .case-study{padding:22px 0;border-top:1px solid var(--line);}
   .case-study-type{font-family:"Playfair Display",Georgia,serif;font-size:1.15rem;margin:0 0 8px;color:var(--ink);}
@@ -321,7 +330,7 @@
   .card-link:hover .card-action{color:var(--cherry-hot);}
   .card-action{margin-top:auto;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cherry);font-weight:600;transition:color .2s ease,transform .2s ease;}
   .card-link:hover .card-action{transform:translateX(3px);}
-  .trade-chip{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.04em;padding:7px 11px;border:1px solid var(--rule);border-radius:3px;color:var(--ink-2);background:var(--paper);display:inline-block;}
+  .trade-chip{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.04em;padding:7px 11px;border:1px solid var(--rule);border-radius:3px;color:var(--ink-2);background:var(--paper);display:inline-flex;align-items:center;min-height:40px;}
   .trade-chip-link{text-decoration:none;transition:border-color .2s ease,color .2s ease,background-color .2s ease,box-shadow .2s ease,transform .2s ease;}
   .trade-chip-link:hover{border-color:var(--cherry);color:var(--ink);background:rgba(139,38,53,.06);box-shadow:0 2px 8px rgba(139,38,53,.18);transform:translateY(-1px);}
   .trade-chip-muted{opacity:.78;background:var(--ground);}
@@ -748,7 +757,7 @@
   .hub-watermark-lg{left:18px;bottom:18px;padding:12px 16px;font-size:.92rem;}
   .hub-watermark-brand{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;opacity:.78;font-weight:500;}
 
-  /* Bidding Edge spotlight */
+  /* Data-driven estimating spotlight */
   .bidding-edge{position:relative;isolation:isolate;border-radius:16px;overflow:hidden;border:1px solid rgba(139,38,53,.35);background:linear-gradient(135deg,#2b1f1f 0%,#4a242c 48%,#8b2635 100%);color:#fff;box-shadow:0 22px 48px -24px rgba(139,38,53,.55);}
   .bidding-edge-glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:140%;background:radial-gradient(circle at center,rgba(255,220,180,.28),transparent 68%);animation:bid-spark 4.5s ease-in-out infinite;pointer-events:none;}
   .bidding-edge-inner{position:relative;z-index:1;padding:32px 34px;display:flex;flex-direction:column;gap:12px;max-width:62ch;}

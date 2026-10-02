@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { CTA, PageHead, TrustReasons } from '../components';
 import { createMetadata } from '@/lib/metadata';
-import { ABOUT_CONTENT, BRAND } from '@/lib/content';
+import { ABOUT_CONTENT, BRAND, TEAM_SECTION } from '@/lib/content';
 import { MotionItem, MotionReveal, MotionStagger } from '../motion';
 
 export const metadata = createMetadata({
@@ -14,6 +14,7 @@ export const metadata = createMetadata({
 export default function About() {
   const otherBenefits = ABOUT_CONTENT.benefits.filter(([code]) => code !== 'DATA');
   const { biddingEdge } = ABOUT_CONTENT;
+  const hasTeamMembers = TEAM_SECTION.members.length > 0;
 
   return (
     <>
@@ -74,6 +75,36 @@ export default function About() {
               </MotionItem>
             ))}
           </MotionStagger>
+
+          <MotionReveal className="stack team-section" y={18} id="team">
+            <div className="eyebrow">{TEAM_SECTION.eyebrow}</div>
+            <h2>{TEAM_SECTION.title}</h2>
+            <p className="prose">{TEAM_SECTION.lede}</p>
+            {hasTeamMembers ? (
+              <MotionStagger className="team-grid">
+                {TEAM_SECTION.members.map((member) => (
+                  <MotionItem className="team-card" key={`${member.name}-${member.role}`}>
+                    <div className="code">{member.role}</div>
+                    <h3>{member.name}</h3>
+                    {member.location ? <p className="team-meta mono">{member.location}</p> : null}
+                    {member.expertise ? <p className="team-meta">{member.expertise}</p> : null}
+                    <p>{member.bio}</p>
+                    {member.linkedIn ? (
+                      <p>
+                        <a href={member.linkedIn} target="_blank" rel="noopener noreferrer">
+                          LinkedIn →
+                        </a>
+                      </p>
+                    ) : null}
+                  </MotionItem>
+                ))}
+              </MotionStagger>
+            ) : (
+              <div className="note team-pending">
+                <b>Profiles pending owner content.</b> {TEAM_SECTION.pendingNote}
+              </div>
+            )}
+          </MotionReveal>
 
           <p className="prose">
             Explore <Link href="/services/estimating">estimating</Link>, <Link href="/services">services</Link>, or{' '}
