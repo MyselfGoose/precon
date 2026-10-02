@@ -188,6 +188,9 @@ export function Footer() {
               <li>
                 <Link href="/quote">{SITE_COPY.cta.primary} →</Link>
               </li>
+              <li>
+                <Link href="/quote#plans">{SITE_COPY.cta.uploadPlans} →</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -319,10 +322,13 @@ export function CTA({
   title,
   text,
   secondary = true,
+  uploadSecondary = false,
 }: {
   title: string;
   text: string;
   secondary?: boolean;
+  /** Prefer Upload Plans over phone as the secondary action. */
+  uploadSecondary?: boolean;
 }) {
   return (
     <section className="cta-band">
@@ -333,10 +339,18 @@ export function CTA({
         </div>
         <div className="btn-row">
           <Button href="/quote">{SITE_COPY.cta.primary} →</Button>
-          {secondary && (
+          {uploadSecondary ? (
             <MotionButton className="motion-inline">
-              <PhoneLink className="btn btn-on-dark">{SITE_COPY.cta.secondary}</PhoneLink>
+              <Link className="btn btn-on-dark" href="/quote#plans">
+                {SITE_COPY.cta.uploadPlans} →
+              </Link>
             </MotionButton>
+          ) : (
+            secondary && (
+              <MotionButton className="motion-inline">
+                <PhoneLink className="btn btn-on-dark">{SITE_COPY.cta.secondary}</PhoneLink>
+              </MotionButton>
+            )
           )}
         </div>
       </MotionReveal>
@@ -510,11 +524,11 @@ export function DarkProcess({ teaser = false }: { teaser?: boolean }) {
         <MotionReveal className="stack" y={16}>
           <div className="eyebrow">{SITE_COPY.process.eyebrow}</div>
           <h2>{SITE_COPY.process.title}</h2>
-          {teaser && (
-            <p className="lede process-teaser-lede">
-              From the working set to a review-ready package. Four clear steps.
-            </p>
-          )}
+        {teaser && (
+          <p className="lede process-teaser-lede">
+            Four clear steps from the working set to delivery.
+          </p>
+        )}
         </MotionReveal>
         {!teaser && (
           <MotionReveal className="flow" y={14}>

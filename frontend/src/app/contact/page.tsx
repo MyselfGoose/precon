@@ -2,10 +2,11 @@ import Link from 'next/link';
 import { CTA, PageHead, PhoneLink, WhatsAppLink } from '../components';
 import { BRAND, SITE_COPY } from '@/lib/content';
 import { createMetadata } from '@/lib/metadata';
+import QuoteForm from '../quote/quote-form';
 
 export const metadata = createMetadata({
   title: 'Contact',
-  description: `Call or WhatsApp ${BRAND.phoneDisplay}, or send a project request to QuantSult.`,
+  description: `Call or WhatsApp ${BRAND.phoneDisplay}, or submit a project request to QuantSult.`,
   path: '/contact',
 });
 
@@ -16,17 +17,19 @@ export default function Contact() {
         eyebrow={`Contact ${BRAND.name}`}
         title={
           <>
-            Build Smarter. Invest <span className="accent-word">Better.</span>
+            Tell us about the <span className="accent-word">project.</span>
           </>
         }
-        lede="Share the project information you have. We will help identify the right service, scope, and next step: estimate, design package, or property acquisition conversation."
+        lede="Share the plans, location, and bid date. We will help identify the right scope and next step."
         image="/images/hero/contact.jpg"
         imageAlt="Contact QuantSult about estimation, design, or acquisition"
         priority
       />
       <section className="band">
-        <div className="wrap stack-lg">
-          <div className="grid-2">
+        <div className="wrap">
+          <div className="grid-2" style={{ gap: 44, alignItems: 'start' }}>
+            <QuoteForm submitLabel="Submit Project" />
+            <aside className="contact-aside">
               <div className="contact-block">
                 <span className="k">Phone</span>
                 <PhoneLink className="v">{BRAND.phoneDisplay}</PhoneLink>
@@ -38,27 +41,33 @@ export default function Contact() {
                 <span className="hint">Message us anytime at the same number</span>
               </div>
               <div className="contact-block">
-                <span className="k">Project request</span>
-                <Link className="v" href="/quote">
-                  {SITE_COPY.cta.primary}
-                </Link>
-                <span className="hint">Capture the project type, service, files, timing, and open questions</span>
-              </div>
-              <div className="contact-block">
                 <span className="k">Email</span>
                 <a className="v" href={`mailto:${BRAND.email}`}>
                   {BRAND.email}
                 </a>
-                <span className="hint">Serving project teams across the United States and Canada</span>
+                <span className="hint">Project teams across the United States</span>
               </div>
-          </div>
-          <div className="note">
-            <b>Have project information ready?</b> Use the <Link href="/quote">project request form</Link> to capture
-            the scope, service, timing, and gaps in one place, or WhatsApp us at {BRAND.phoneDisplay}.
+              <div className="contact-meta">
+                <b>Business hours</b>
+                {SITE_COPY.contact.hours}
+              </div>
+              <div className="contact-meta">
+                <b>Response time</b>
+                {SITE_COPY.contact.responseTime}
+              </div>
+              <div className="note">
+                <b>Prefer a dedicated estimate page?</b> You can also use{' '}
+                <Link href="/quote">{SITE_COPY.cta.primary}</Link> — same form, same team.
+              </div>
+            </aside>
           </div>
         </div>
       </section>
-      <CTA title="Ready to make the next decision?" text="Send your plans and start with a project conversation built around the work." />
+      <CTA
+        title="Ready to make the next decision?"
+        text="Upload your plans and start a project conversation built around the work."
+        uploadSecondary
+      />
     </>
   );
 }

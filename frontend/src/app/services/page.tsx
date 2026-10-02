@@ -31,9 +31,9 @@ export default function ServicesPage() {
             <span className="accent-word">confidence.</span>
           </>
         }
-        lede="Estimating, design coordination, and engineering support organized for contractors and developers — with investment and acquisition available when property decisions need construction intelligence."
+        lede="Estimating, design coordination, and engineering support for contractors and developers — plus investment and acquisition when property decisions need construction input."
         image="/images/hero/engineering-hero.jpg"
-        imageAlt="Engineering and preconstruction coordination under one roof"
+        imageAlt="Engineering and preconstruction coordination on an active jobsite"
         priority
       />
       <section className="band">

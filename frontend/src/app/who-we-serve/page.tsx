@@ -1,14 +1,14 @@
 import Link from 'next/link';
-import { AUDIENCE_CONTENT, MARKET_SECTORS, MARKETS_CONTENT } from '@/lib/content';
-import { CTA, PageHead, Spec } from '../components';
+import { CTA, PageHead, Button } from '../components';
 import { createMetadata } from '@/lib/metadata';
+import { AUDIENCE_SECTIONS, BRAND, MARKET_SECTORS, MARKETS_CONTENT, SITE_COPY } from '@/lib/content';
 import { ICO } from '@/lib/illustrations';
 import { MotionItem, MotionReveal, MotionStagger } from '../motion';
 
 export const metadata = createMetadata({
   title: 'Who We Serve',
   description:
-    'QuantSult supports general contractors, subcontractors, developers, and project teams with trade-specific preconstruction support across commercial, residential, industrial, and public markets.',
+    'QuantSult supports general contractors, subcontractors, developers, and architects with trade-specific preconstruction estimating and design coordination.',
   path: '/who-we-serve',
 });
 
@@ -32,24 +32,46 @@ export default function Who() {
             Support built around your role in the <span className="accent-word">bid.</span>
           </>
         }
-        lede="From quantity takeoffs and cost estimating to BIM coordination and construction documentation — comprehensive preconstruction support for general contractors, subcontractors, and specialty trades."
+        lede="Estimating, takeoffs, and design coordination for the teams who need a defensible number before the deadline."
         image="/images/hero/who-we-serve.jpg"
         imageAlt="Construction professionals reviewing plans on a job site"
         priority
       />
       <section className="band">
         <div className="wrap stack-lg">
-          {AUDIENCE_CONTENT.map((a) => (
-            <MotionReveal className="stack audience-block" y={18} key={a.code}>
+          {AUDIENCE_SECTIONS.map((audience) => (
+            <MotionReveal className="stack audience-section" y={18} key={audience.id} id={audience.id}>
               <div
                 className="ico"
                 style={{ width: 48, height: 48, color: 'var(--cherry)' }}
-                dangerouslySetInnerHTML={{ __html: ICO[a.icon as keyof typeof ICO] }}
+                dangerouslySetInnerHTML={{ __html: ICO[audience.icon as keyof typeof ICO] }}
               />
-              <div className="code">{a.code}</div>
-              <h2 style={{ fontSize: 'var(--s2)' }}>{a.name}</h2>
-              <p className="prose">{a.intro}</p>
-              <Spec title="Typical support" unit={a.code} items={a.items} />
+              <div className="code">{audience.code}</div>
+              <h2 style={{ fontSize: 'var(--s2)' }}>{audience.name}</h2>
+              <p className="prose" style={{ fontSize: '1.15rem' }}>
+                {audience.problem}
+              </p>
+              <div className="audience-grid">
+                <div className="stack">
+                  <h3>Services</h3>
+                  <ul className="audience-block-list">
+                    {audience.services.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="stack">
+                  <h3>Deliverables</h3>
+                  <ul className="audience-block-list">
+                    {audience.deliverables.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="btn-row">
+                <Button href="/quote">{SITE_COPY.cta.primary} →</Button>
+              </div>
             </MotionReveal>
           ))}
           <div className="note">
@@ -100,8 +122,9 @@ export default function Who() {
       </section>
 
       <CTA
-        title="Tell us what your team needs to decide"
+        title={`Tell ${BRAND.name} what your team needs to decide`}
         text="Share your role, project stage, scope, and timing so the first conversation starts in the right place."
+        uploadSecondary
       />
     </>
   );

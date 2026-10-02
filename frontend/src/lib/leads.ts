@@ -346,6 +346,53 @@ export async function sendLeadEmail(input: {
   return { ok: true, id: data?.id ?? 'sent' };
 }
 
+export async function sendQuoteAutoReply(input: {
+  to: string;
+  name: string;
+  website: string;
+}): Promise<void> {
+  if (input.website) return;
+
+  const config = leadConfig();
+  if ('error' in config) {
+    console.error('Quote auto-reply skipped', config.error);
+    return;
+  }
+
+  const firstName = input.name.split(/\s+/)[0] || 'there';
+  const subject = `We received your project request — ${BRAND.name}`;
+  const text = [
+    `Hi ${firstName},`,
+    '',
+    `Thanks for contacting ${BRAND.name}. We received your project brief and will review it shortly.`,
+    'Typical response: within one business day. Business hours: Monday–Friday, 8:00 AM–6:00 PM Eastern.',
+    '',
+    `If you need to reach us sooner, call ${BRAND.phoneDisplay} or WhatsApp the same number.`,
+    '',
+    `— ${BRAND.name}`,
+  ].join('\n');
+
+  const html = `
+    <p>Hi ${escapeHtml(firstName)},</p>
+    <p>Thanks for contacting <strong>${escapeHtml(BRAND.name)}</strong>. We received your project brief and will review it shortly.</p>
+    <p>Typical response: within one business day.<br/>Business hours: Monday–Friday, 8:00 AM–6:00 PM Eastern.</p>
+    <p>If you need to reach us sooner, call <a href="tel:${BRAND.phoneRaw}">${escapeHtml(BRAND.phoneDisplay)}</a>.</p>
+    <p>— ${escapeHtml(BRAND.name)}</p>
+  `;
+
+  const resend = new Resend(config.apiKey);
+  const { error } = await resend.emails.send({
+    from: config.from,
+    to: [input.to],
+    subject,
+    html,
+    text,
+  });
+  if (error) {
+    console.error('Resend quote auto-reply failed', error);
+  }
+}
+
 export function clientIp(request: Request): string {
   const forwarded = request.headers.get('x-forwarded-for');
   if (forwarded) return forwarded.split(',')[0]?.trim() || 'unknown';

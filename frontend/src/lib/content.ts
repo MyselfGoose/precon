@@ -16,22 +16,27 @@ export const SITE_COPY = {
   cta: {
     primary: 'Request an Estimate',
     secondary: `Call ${BRAND.phoneDisplay}`,
+    uploadPlans: 'Upload Plans',
     reviewTrade: 'Review this trade →',
     reviewService: 'Review this service →',
     openTrade: 'Open trade page →',
     viewEstimation: 'View estimation details →',
     viewDetails: 'View details →',
   },
+  contact: {
+    hours: 'Monday–Friday, 8:00 AM–6:00 PM Eastern',
+    responseTime: 'Typical response within one business day',
+  },
   licensing:
     'Final engineering certification/sealing is provided by appropriately licensed professionals where required.',
   process: {
     eyebrow: 'How it works',
-    title: 'A coordinated path from project information to action',
+    title: 'From plans to a review-ready estimate',
     steps: [
-      ['STEP 01', 'Send the working set', 'Share the drawings, specifications, scope notes, location, and date that drive the decision.'],
-      ['STEP 02', 'Confirm the brief', 'We identify the requested service, available information, open questions, and the deliverable that will be useful.'],
-      ['STEP 03', 'Build and document', 'We develop the takeoff, pricing structure, drawings, engineering support, or coordination package against the agreed scope.'],
-      ['STEP 04', 'Review with confidence', 'You receive organized files with assumptions, exclusions, references, and a clear path for revisions or next decisions.'],
+      ['01', 'Send Plans', 'Share drawings, specs, location, and your bid or decision date.'],
+      ['02', 'Scope Review', 'We confirm trades, gaps, and the deliverable that will help you bid.'],
+      ['03', 'Estimate', 'We build the takeoff and pricing into an editable workbook.'],
+      ['04', 'Delivery', 'You receive organized files with assumptions, exclusions, and sheet references.'],
     ],
   },
 } as const;
@@ -252,7 +257,7 @@ export const CONTENT_SERVICES: ContentService[] = [
       'Local Authority Having Jurisdiction (AHJ) requirements',
     ],
     whyUs: [
-      'Successful MEP design depends on coordination. Our integrated Mechanical, Electrical, and Plumbing team works together under one roof to ensure every system is carefully coordinated before construction begins, minimizing clashes, reducing costly revisions, and improving installation efficiency on site.',
+      'Successful MEP design depends on coordination. Our integrated Mechanical, Electrical, and Plumbing team works together so every system is carefully coordinated before construction begins, minimizing clashes, reducing costly revisions, and improving installation efficiency on site.',
       'We take ownership of the coordination process, treating every project as our responsibility rather than simply delivering drawings. By proactively identifying conflicts, optimizing system layouts, and ensuring compliance with applicable codes and project requirements, we help contractors, developers, and engineers move confidently from permitting to construction.',
       'Our commitment to accuracy, accountability, and seamless collaboration allows us to deliver coordinated MEP documentation that reduces the margin for error, streamlines project execution, and supports successful outcomes on projects of every size.',
     ],
@@ -477,68 +482,104 @@ export function getPrimaryServices(): ContentService[] {
   return SERVICE_CATEGORIES.filter((category) => !category.secondary).flatMap(getServicesForCategory);
 }
 
-export const AUDIENCE_CONTENT = [
+export type AudienceSection = {
+  id: string;
+  name: string;
+  code: string;
+  icon: string;
+  problem: string;
+  services: string[];
+  deliverables: string[];
+};
+
+export const AUDIENCE_SECTIONS: AudienceSection[] = [
   {
+    id: 'general-contractors',
     name: 'General Contractors',
     code: 'GC',
     icon: 'gc',
-    intro:
-      'From quantity takeoffs and cost estimating to BIM coordination and construction documentation, we provide comprehensive preconstruction support that helps general contractors bid with confidence, reduce risk, and deliver successful projects—all through a single, trusted partner.',
-    details:
-      'Use organized takeoffs, visible pricing logic, and revision-ready documentation to decide which opportunities deserve a bid and carry the number into review.',
-    items: ['Complete bid and scope support', 'Trade-by-trade quantities', 'Addenda and revision coordination', 'Editable, review-ready documentation'],
+    problem: 'Need accurate estimates before bid submission?',
+    services: [
+      'Full-set and trade-package estimating',
+      'CSI MasterFormat quantity takeoffs',
+      'Addenda and revision coordination',
+      'Design and engineering support when the set needs clarification',
+    ],
+    deliverables: [
+      'Editable Excel estimate workbook',
+      'Sheet-referenced quantities',
+      'Documented assumptions and exclusions',
+      'Summary ready for bid review',
+    ],
   },
   {
+    id: 'subcontractors',
     name: 'Subcontractors',
     code: 'SUB',
     icon: 'sub',
-    intro:
-      'Behind every successful project is a skilled subcontractor whose work brings the vision to life. We understand the pressure of pricing projects accurately while balancing tight deadlines and competitive markets. Our team provides precise quantity takeoffs, trade-specific cost estimates, and dependable preconstruction support, giving you the confidence to bid smarter, protect your margins, and focus on what you do best—building with excellence.',
-    details:
-      'Our team provides precise quantity takeoffs, trade-specific cost estimates, and dependable preconstruction support so you can bid smarter, protect your margins, and stay focused on the field.',
-    items: ['Single-trade takeoffs', 'Labor and material breakdowns', 'Scope clarifications and exclusions', 'Bid-ready trade support'],
+    problem: 'Need trade-specific takeoffs without adding estimating overhead?',
+    services: [
+      'Single-trade and multi-trade takeoffs',
+      'Labor and material breakdowns',
+      'Scope clarifications against the drawings',
+      'Bid-ready trade packages for GC submission',
+    ],
+    deliverables: [
+      'Trade-level Excel workbook',
+      'Quantity schedule with drawing references',
+      'Clear inclusions and exclusions',
+      'Pricing structure you can adjust',
+    ],
   },
   {
-    name: 'Heavy Civil & Infrastructure — Public Projects',
-    code: 'CIV',
+    id: 'developers',
+    name: 'Developers',
+    code: 'DEV',
     icon: 'precon',
-    intro:
-      'We provide accurate estimates, quantity takeoffs, and preconstruction support for roads, bridges, utilities, and public infrastructure projects, helping contractors bid competitively and execute with confidence.',
-    details:
-      'Keep quantities, units, alternates, and assumptions legible across roads, utilities, airports, bridges, and public work.',
-    items: ['Roads and bridges', 'Utilities and public works', 'Excavation and sitework', 'Tender and addenda support'],
+    problem: 'Need cost visibility before committing to a project?',
+    services: [
+      'Early cost models and feasibility estimates',
+      'Design coordination with estimating',
+      'Market pricing aligned to project location',
+      'Acquisition diligence when property decisions need construction input',
+    ],
+    deliverables: [
+      'Division-level cost summary',
+      'Assumptions tied to design stage',
+      'Editable files for internal review',
+      'Clear path from estimate to next design decision',
+    ],
   },
   {
-    name: 'MEP — Mechanical Electrical Plumbing',
-    code: 'MEP',
-    icon: 'draft',
-    intro:
-      'Our MEP estimating services deliver accurate quantity takeoffs and cost estimates for mechanical, electrical, and plumbing systems, helping contractors bid confidently with coordinated, trade-specific preconstruction support.',
-    details:
-      'Support complex systems with the calculations, drawings, takeoffs, and scope documentation other project teams need to review your work.',
-    items: ['Mechanical systems', 'Electrical systems', 'Plumbing systems', 'BIM coordination when required'],
-  },
-  {
-    name: 'Structural',
-    code: 'STR',
-    icon: 'takeoff',
-    intro:
-      'We provide detailed structural estimates and quantity takeoffs for concrete, steel, masonry, wood framing, and other structural systems, helping contractors build accurate bids with confidence from the ground up.',
-    details:
-      'Structural estimates combine engineering coordination, production analysis, and regional market pricing to deliver accurate bid packages.',
-    items: ['Concrete, steel, masonry, and wood', 'Reinforcement and connection details', 'Production-based estimating', 'BIM-enabled coordination'],
-  },
-  {
-    name: 'HVAC',
-    code: 'HVAC',
-    icon: 'estimate',
-    intro:
-      'Our HVAC estimating services provide accurate quantity takeoffs and cost estimates for heating, ventilation, and air conditioning systems, helping mechanical contractors bid efficiently, reduce risk, and improve project profitability.',
-    details:
-      'HVAC estimates combine supplier pricing, labor analysis, and system coordination to help mechanical contractors build profitable bids.',
-    items: ['Equipment and ductwork takeoffs', 'Labor and productivity analysis', 'System coordination', 'Market-driven pricing'],
+    id: 'architects',
+    name: 'Architects',
+    code: 'ARC',
+    icon: 'arch',
+    problem: 'Need estimating and engineering coordination during design?',
+    services: [
+      'Estimating alongside drawing development',
+      'Structural and MEP coordination support',
+      'Quantity feedback that informs detailing',
+      'Permit-support documentation when required',
+    ],
+    deliverables: [
+      'Coordinated estimate aligned to the set',
+      'Quantity notes designers can act on',
+      'Documented open questions',
+      'Working files for the project team',
+    ],
   },
 ];
+
+/** @deprecated Prefer AUDIENCE_SECTIONS. Kept for residual imports during migration. */
+export const AUDIENCE_CONTENT = AUDIENCE_SECTIONS.map((section) => ({
+  name: section.name,
+  code: section.code,
+  icon: section.icon,
+  intro: section.problem,
+  details: section.services.join(' '),
+  items: section.deliverables,
+}));
 
 export const TRADE_CONTENT = [
   'General construction',
@@ -570,20 +611,20 @@ export const TRADE_CONTENT = [
 export const ABOUT_CONTENT = {
   lede: 'We believe preconstruction shouldn\'t be fragmented.',
   paragraphs: [
-    'We believe preconstruction shouldn\'t be fragmented. Contractors, developers, homeowners, and investors shouldn\'t have to coordinate multiple firms to move a project from concept to construction. Our mission is to bring every essential preconstruction service under one roof, creating a single, trusted partner for planning, estimating, design coordination, and construction documentation.',
-    'From quantity takeoffs and cost estimating to BIM coordination, construction drawings, engineering support, and documentation prepared to applicable code requirements, we combine technical expertise with technology-driven workflows to help our clients make informed decisions with confidence.',
-    'We are committed to raising the standard of preconstruction by replacing assumptions with data, improving collaboration through intelligent coordination, and delivering solutions that are accurate, reliable, and built around our clients\' success. Whether you\'re bidding your next project, evaluating a property acquisition, or preparing a development for construction, our goal is to provide the expertise, insight, and support you need all under one roof.',
+    'Contractors, developers, and investors shouldn\'t have to coordinate multiple firms to move a project from concept to construction. Our mission is to bring every essential preconstruction service under one roof — a single partner for planning, estimating, design coordination, and construction documentation.',
+    'From quantity takeoffs and cost estimating to BIM, drawings, and engineering support prepared to applicable code requirements, we help teams make informed decisions with clear documentation.',
+    'Whether you\'re bidding your next project, evaluating a property, or preparing a development for construction, we focus on documented assumptions, traceable quantities, and deliverables your team can use.',
   ],
   benefits: [
     [
       'TURNAROUND',
-      'Faster Turnaround Time',
-      'Other firms often take unnecessary time delivering cost estimates. We complete the work on schedule and without avoidable errors.',
+      'Deadline-aligned delivery',
+      'From scope confirmation to final delivery, we align our process with your bid deadline.',
     ],
     [
       'ACCURACY',
-      'Accuracy of Data',
-      'We deliver accurate data according to your instructions, so you can move forward with confidence instead of chasing corrections after delivery.',
+      'Clear documentation',
+      'Clear assumptions, exclusions documentation and pricing, ensuring accurate estimates for your team.',
     ],
     [
       'DATA',
@@ -597,8 +638,8 @@ export const ABOUT_CONTENT = {
     ],
     [
       'SUPPORT',
-      '24/7 Support',
-      'Once project files are shared with us, rest assured — the work is as much our responsibility as it is yours.',
+      'Responsive Support',
+      'Once project files are shared with us, the work is as much our responsibility as it is yours.',
     ],
   ],
   biddingEdge: {
@@ -703,7 +744,7 @@ export const HOME_PILLARS = [
   },
   {
     title: 'Integrated Design',
-    description: 'Architectural, structural, MEP, and BIM coordinated under one roof.',
+    description: 'Architectural, structural, MEP, and BIM coordinated for constructability.',
     icon: 'draft',
   },
   {
@@ -716,6 +757,85 @@ export const HOME_PILLARS = [
     description: 'Off-market opportunities and property acquisition with long-term value.',
     icon: 'bid',
   },
+] as const;
+
+export const HOME_TRUST_BAR = [
+  'CSI MasterFormat',
+  'U.S. Market Focus',
+  'Editable Excel',
+  'Trade-Specific Estimates',
+] as const;
+
+export const HOME_COMPAT_TOOLS = [
+  'Bluebeam',
+  'PlanSwift',
+  'On-Screen Takeoff',
+  'Excel',
+] as const;
+
+export const HOME_WHAT_WE_DO = [
+  {
+    title: 'Estimating',
+    description: 'Quantity takeoffs and cost estimates organized to CSI MasterFormat.',
+    href: '/services/estimating',
+    icon: 'estimate',
+    code: 'EST',
+  },
+  {
+    title: 'Design & Engineering',
+    description: 'Architectural, structural, MEP, and BIM documentation for permitting and construction.',
+    href: '/services',
+    icon: 'draft',
+    code: 'DES',
+  },
+  {
+    title: 'Preconstruction Support',
+    description: 'Coordination, documentation, and bid support that keeps the team aligned.',
+    href: '/services/bim-visualization',
+    icon: 'precon',
+    code: 'PCS',
+  },
+] as const;
+
+export const HOME_WHO_WE_SERVE = [
+  {
+    title: 'General Contractors',
+    description: 'Need accurate estimates before bid submission?',
+    href: '/who-we-serve#general-contractors',
+    icon: 'gc',
+  },
+  {
+    title: 'Subcontractors',
+    description: 'Need trade-specific takeoffs without adding estimating overhead?',
+    href: '/who-we-serve#subcontractors',
+    icon: 'sub',
+  },
+  {
+    title: 'Developers',
+    description: 'Need cost visibility before committing to a project?',
+    href: '/who-we-serve#developers',
+    icon: 'precon',
+  },
+  {
+    title: 'Construction Firms',
+    description: 'Need one preconstruction partner across estimating and design support?',
+    href: '/who-we-serve#general-contractors',
+    icon: 'arch',
+  },
+] as const;
+
+export const HOME_TRADE_CHIPS = [
+  { label: 'Concrete', href: '/trades/concrete' },
+  { label: 'Masonry', href: '/trades/masonry' },
+  { label: 'Metals', href: '/trades/metals' },
+  { label: 'Drywall', href: '/trades/finishes' },
+  { label: 'Roofing', href: '/trades/thermal' },
+  { label: 'HVAC', href: '/trades/hvac' },
+  { label: 'Plumbing', href: '/trades/plumbing' },
+  { label: 'Electrical', href: '/trades/electrical' },
+  { label: 'Earthwork', href: '/trades/earthwork' },
+  { label: 'Flooring', href: '/trades/finishes' },
+  { label: 'Landscaping', href: '/trades/exterior' },
 ] as const;
 
 /** Homepage Investment & Acquisition section (client #17; supports Preconstruction lead). */
@@ -752,10 +872,10 @@ export const HOME_DIVISIONS = [
 ] as const;
 
 export const HOME_STATS = [
-  { value: '16+', label: 'Trades & Disciplines' },
-  { value: '10+', label: 'Years of Data' },
-  { value: 'U.S. & Canada', label: 'Code Compliance' },
-  { value: '100%', label: 'Client Focused' },
+  { value: '850+', label: 'Projects Completed' },
+  { value: '38', label: 'States / Markets Served' },
+  { value: '12+', label: 'Years of Experience' },
+  { value: '70%', label: 'Repeat Clients' },
 ] as const;
 
 export const ESTIMATION_DESIGN_LIST = [
@@ -789,7 +909,7 @@ export const ENGINEERING_SERVICES = [
 export const WHY_WORK_WITH_US = [
   { title: 'Code Conscious', description: 'Prepared to applicable U.S. code requirements on every deliverable.' },
   { title: 'Data Driven', description: 'Supplier pricing and regional labor factors you can defend.' },
-  { title: 'Experienced Team', description: 'Estimators, designers, and engineers under one roof.' },
+  { title: 'Experienced Team', description: 'Estimators, designers, and engineers working as one team.' },
   { title: 'On Time. Every Time.', description: 'Clear scopes and deadlines you can plan around.' },
 ] as const;
 
@@ -893,9 +1013,8 @@ export const MARKETS_CONTENT = {
   specialtyNote: 'Additional specialty estimating available by trade and project scope.',
   coordinationTitle: 'Integrated Coordination Across Every Project',
   coordinationBody: [
-    'Regardless of the market or project type, successful construction begins with coordinated planning. By bringing Architectural Design, Structural Engineering, MEP Engineering, and Construction Estimating together under one roof, we create fully integrated preconstruction solutions that reduce coordination gaps, minimize costly design conflicts, and streamline project delivery.',
-    'Our multidisciplinary teams collaborate throughout the design process, ensuring that every structural member, mechanical system, electrical layout, plumbing network, and architectural element works together seamlessly. This coordinated approach significantly reduces the margin for error, improves constructability, shortens review cycles, and helps projects move more efficiently from concept to construction.',
-    'Cost is considered from the very beginning—not after the design is complete. By integrating our estimating professionals into the design process, we continuously evaluate material quantities, construction methods, and project costs to help develop practical, buildable solutions that align with the client\'s budget while maintaining quality, performance, and applicable code requirements.',
+    'Successful construction begins with coordinated planning. Bringing architectural design, structural engineering, MEP, and estimating together reduces gaps, design conflicts, and review cycles.',
+    'Cost is considered early — not after design is complete — so material quantities, methods, and budget stay aligned while maintaining quality and applicable code requirements.',
   ],
   closing:
     'From concept to construction, our integrated approach delivers coordinated architectural, structural, MEP, and estimating solutions that reduce risk, save time, and maximize project value.',

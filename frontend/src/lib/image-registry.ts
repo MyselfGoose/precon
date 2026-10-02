@@ -12,7 +12,7 @@ export type ImagePlacement = {
 
 export const IMAGE_REGISTRY: ImagePlacement[] = [
   // Home
-  { path: '/images/hero/home-hero.jpg', route: '/', role: 'hero', alt: 'American suburban home with wraparound porch and lawn' },
+  { path: '/images/hero/home-hero.jpg', route: '/', role: 'hero', alt: 'Commercial construction jobsite with steel framing for contractor estimating' },
   { path: '/images/properties/commercial.jpg', route: '/', role: 'card', alt: 'Commercial building facade for Estimation & Design division' },
   { path: '/images/divisions/property-acquisition.jpg', route: '/', role: 'card', alt: 'Property acquisition opportunity' },
   { path: '/images/markets/home-industrial.jpg', route: '/', role: 'markets', alt: 'Industrial facility project' },

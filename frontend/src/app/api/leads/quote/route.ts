@@ -4,6 +4,7 @@ import {
   clientIp,
   collectAttachments,
   sendLeadEmail,
+  sendQuoteAutoReply,
   validateQuoteFields,
 } from '@/lib/leads';
 
@@ -51,6 +52,13 @@ export async function POST(request: Request): Promise<Response> {
   if (!result.ok) {
     return Response.json({ ok: false, message: result.message, errors: result.errors }, { status: result.status });
   }
+
+  // Best-effort confirmation to the submitter; do not fail the request if this secondary send fails.
+  void sendQuoteAutoReply({
+    to: payload.email,
+    name: payload.name,
+    website: payload.website,
+  });
 
   return Response.json({ ok: true, id: result.id });
 }

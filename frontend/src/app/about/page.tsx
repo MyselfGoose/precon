@@ -7,7 +7,7 @@ import { MotionItem, MotionReveal, MotionStagger } from '../motion';
 export const metadata = createMetadata({
   title: 'About',
   description:
-    'Learn how QuantSult brings every essential preconstruction service under one roof: estimating, design coordination, and construction documentation.',
+    'Learn how QuantSult brings estimating, design coordination, and construction documentation together for contractors and developers.',
   path: '/about',
 });
 
@@ -21,7 +21,7 @@ export default function About() {
         eyebrow={`About ${BRAND.name}`}
         title={
           <>
-            Preconstruction, under one <span className="accent-word">roof.</span>
+            Preconstruction, clearly <span className="accent-word">organized.</span>
           </>
         }
         lede={ABOUT_CONTENT.lede}

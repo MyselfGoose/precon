@@ -2,21 +2,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { TRADES } from '@/lib/data';
 import { ICO } from '@/lib/illustrations';
-import { Button, CTA, DarkProcess, FAQ, Photo, TradeTile, TrustReasons, Workbook } from './components';
+import { Button, CTA, DarkProcess, FAQ, Photo, Workbook } from './components';
 import {
-  ABOUT_CONTENT,
   BRAND,
-  FEATURED_PROJECTS,
-  getPrimaryServices,
+  HOME_COMPAT_TOOLS,
   HOME_INVESTMENT_ACQUISITION,
-  HOME_PILLARS,
   HOME_STATS,
-  MARKETS_CONTENT,
+  HOME_TRADE_CHIPS,
+  HOME_TRUST_BAR,
+  HOME_WHAT_WE_DO,
+  HOME_WHO_WE_SERVE,
   SAMPLE_ESTIMATE_SUMMARY,
   SITE_COPY,
 } from '@/lib/content';
 import { createMetadata } from '@/lib/metadata';
-import { MotionHeroItem, MotionItem, MotionReveal, MotionStagger, CountUp } from './motion';
+import { CountUp, MotionHeroItem, MotionItem, MotionReveal, MotionStagger } from './motion';
 
 export const metadata = createMetadata({
   title: BRAND.name,
@@ -52,8 +52,6 @@ const homeFaq: [string, string][] = [
   ],
 ];
 
-const primaryServices = getPrimaryServices();
-
 export default function Home() {
   return (
     <>
@@ -74,15 +72,15 @@ export default function Home() {
             </MotionHeroItem>
             <MotionHeroItem delay={0.22}>
               <p className="lede">
-                Accurate takeoffs, bid-ready estimates, and design coordination for contractors and
-                developers who need clear numbers before the deadline.
+                Construction estimating and preconstruction built for contractors, subcontractors, and developers who
+                need clear numbers before the deadline.
               </p>
             </MotionHeroItem>
             <MotionHeroItem delay={0.3}>
               <div className="btn-row">
                 <Button href="/quote">{SITE_COPY.cta.primary} →</Button>
                 <Link className="btn btn-ghost" href="/services">
-                  Our Services
+                  Explore Services
                 </Link>
               </div>
             </MotionHeroItem>
@@ -90,7 +88,7 @@ export default function Home() {
           <MotionHeroItem className="hero-art media hero-photo" delay={0.18} y={18} x={24} scale={0.97}>
             <Photo
               src="/images/hero/home-hero.jpg"
-              alt="American suburban home with wraparound porch and lawn"
+              alt="Commercial construction jobsite with steel framing for contractor estimating"
               fill
               priority
               sizes="(max-width: 1000px) 100vw, 55vw"
@@ -99,42 +97,22 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band">
-        <div className="wrap">
-          <MotionStagger className="pillars">
-            {HOME_PILLARS.map((pillar) => (
-              <MotionItem className="pillar" key={pillar.title}>
-                <div className="ico" dangerouslySetInnerHTML={{ __html: ICO[pillar.icon as keyof typeof ICO] }} />
-                <h3>{pillar.title}</h3>
-                <p>{pillar.description}</p>
+      <section className="band band-ground trust-compat-band">
+        <div className="wrap stack">
+          <MotionStagger className="trust-bar">
+            {HOME_TRUST_BAR.map((item) => (
+              <MotionItem className="trust-bar-item" key={item}>
+                {item}
               </MotionItem>
             ))}
           </MotionStagger>
-        </div>
-      </section>
-
-      <section className="band band-ground">
-        <div className="wrap stack-lg">
-          <MotionReveal className="stack" y={16}>
-            <div className="eyebrow">Experience</div>
-            <h2>Built on Experience.</h2>
-          </MotionReveal>
-          <div className="stats-light">
-            {HOME_STATS.map((stat, index) => {
-              const numericMatch = /^(\d+)([+%]?)$/.exec(stat.value);
-              return (
-                <MotionReveal className="stat" key={stat.label} delay={index * 0.08} y={16}>
-                  <b>
-                    {numericMatch ? (
-                      <CountUp value={Number(numericMatch[1])} suffix={numericMatch[2]} label={stat.value} />
-                    ) : (
-                      stat.value
-                    )}
-                  </b>
-                  <small>{stat.label}</small>
-                </MotionReveal>
-              );
-            })}
+          <div className="compat-strip">
+            <span className="compat-label">Compatible with</span>
+            <ul className="compat-list">
+              {HOME_COMPAT_TOOLS.map((tool) => (
+                <li key={tool}>{tool}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -142,21 +120,20 @@ export default function Home() {
       <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
-            <div className="eyebrow">Preconstruction services</div>
-            <h2>What we bring together</h2>
-            <p className="prose">
-              Estimating, quantity takeoffs, drawings, engineering, and visualization — the preconstruction
-              support contractors and developers need before construction starts.
-            </p>
+            <div className="eyebrow">What we do</div>
+            <h2>Preconstruction support that helps you bid</h2>
           </div>
           <MotionStagger className="grid-3">
-            {primaryServices.map((s) => (
-              <MotionItem className="motion-fill" key={s.slug}>
-                <Link className="card card-link" href={`/services/${s.slug}`}>
-                  <div className="ico" dangerouslySetInnerHTML={{ __html: ICO[s.ico as keyof typeof ICO] }} />
-                  <div className="code">{s.code}</div>
-                  <h3>{s.name}</h3>
-                  <p>{s.summary}</p>
+            {HOME_WHAT_WE_DO.map((item) => (
+              <MotionItem className="motion-fill" key={item.title}>
+                <Link className="card card-link card-lg" href={item.href}>
+                  <div
+                    className="ico"
+                    dangerouslySetInnerHTML={{ __html: ICO[item.icon as keyof typeof ICO] }}
+                  />
+                  <div className="code">{item.code}</div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
                 </Link>
               </MotionItem>
             ))}
@@ -164,73 +141,34 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band band-dark on-dark investment-band">
-        <div className="wrap investment-grid">
-          <MotionReveal className="investment-copy" y={18}>
-            <div className="eyebrow">{HOME_INVESTMENT_ACQUISITION.eyebrow}</div>
-            <h2>{HOME_INVESTMENT_ACQUISITION.title}</h2>
-            <p className="prose" style={{ color: 'rgba(255,255,255,.86)' }}>
-              {HOME_INVESTMENT_ACQUISITION.body}
-            </p>
-            <p className="supporting" style={{ color: 'rgba(255,255,255,.78)' }}>
-              {HOME_INVESTMENT_ACQUISITION.supporting}
-            </p>
-            <div className="btn-row">
-              <Button href={HOME_INVESTMENT_ACQUISITION.href}>
-                {HOME_INVESTMENT_ACQUISITION.cta} →
-              </Button>
-            </div>
-          </MotionReveal>
-          <MotionReveal className="investment-media" y={24} delay={0.08}>
-            <Image
-              src={HOME_INVESTMENT_ACQUISITION.image}
-              alt={HOME_INVESTMENT_ACQUISITION.imageAlt}
-              fill
-              sizes="(max-width: 1000px) 100vw, 45vw"
-              style={{ objectFit: 'cover' }}
-            />
-          </MotionReveal>
-        </div>
-      </section>
-
-      <DarkProcess teaser />
-
       <section className="band band-ground">
         <div className="wrap stack-lg">
           <div className="stack">
-            <div className="eyebrow">Markets we support</div>
-            <h2>Built across the projects that shape communities</h2>
-            <p className="prose">{MARKETS_CONTENT.lede}</p>
+            <div className="eyebrow">Who we serve</div>
+            <h2>Built around your role in the bid</h2>
           </div>
-          <MotionStagger className="grid-4 markets-grid">
-            {FEATURED_PROJECTS.map((project) => (
-              <MotionItem className="motion-fill" key={project.title}>
-                <div className="project-card">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw"
-                    style={{ objectFit: 'cover' }}
+          <MotionStagger className="grid-4">
+            {HOME_WHO_WE_SERVE.map((item) => (
+              <MotionItem className="motion-fill" key={item.title}>
+                <Link className="card card-link" href={item.href}>
+                  <div
+                    className="ico"
+                    dangerouslySetInnerHTML={{ __html: ICO[item.icon as keyof typeof ICO] }}
                   />
-                  <span className="label">{project.title}</span>
-                </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </Link>
               </MotionItem>
             ))}
           </MotionStagger>
-          <p className="prose">{MARKETS_CONTENT.specialtyNote}</p>
-          <p className="prose">
-            See how we support each market on{' '}
-            <Link href="/who-we-serve#markets">Who We Serve</Link>.
-          </p>
         </div>
       </section>
 
       <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
-            <div className="eyebrow">See What You Receive</div>
-            <h2>A deliverable your team can use immediately.</h2>
+            <div className="eyebrow">The deliverable</div>
+            <h2>Your estimate isn&apos;t just a number. It&apos;s a working bid document.</h2>
             <p className="prose">
               A line-item workbook you can open, edit, and hand to a project manager — not a locked PDF.
             </p>
@@ -289,77 +227,66 @@ export default function Home() {
               ))}
             </ul>
           </div>
-          <div className="grid-2">
-            <div className="stack">
-              <h3>Every line traces back</h3>
-              <p className="prose">{SAMPLE_ESTIMATE_SUMMARY.tracesBack}</p>
-            </div>
-            <div className="stack">
-              <h3>Fits the tools you already use</h3>
-              <p className="prose">{SAMPLE_ESTIMATE_SUMMARY.toolCompatibility}</p>
-            </div>
-          </div>
-          <p>
+          <div className="btn-row">
             <a className="btn btn-ghost" href={SAMPLE_ESTIMATE_SUMMARY.downloadHref} download>
               {SAMPLE_ESTIMATE_SUMMARY.downloadLabel} →
             </a>
-          </p>
+            <Link className="btn btn-ghost" href="/quote#plans">
+              {SITE_COPY.cta.uploadPlans} →
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section className="band band-ground">
-        <div className="wrap stack-lg">
-          <div className="stack">
-            <div className="eyebrow">Trust</div>
-            <h2>Why Contractors Trust {BRAND.name}</h2>
-            <p className="prose">
-              Clear organization, traceable quantities, and editable deliverables — built for teams that need to defend
-              a number under bid pressure.
-            </p>
-          </div>
-          <TrustReasons />
-        </div>
-      </section>
+      <DarkProcess teaser />
 
       <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">Trades</div>
             <h2>Estimating by division</h2>
-            <p className="prose">
-              Twelve CSI divisions, each with its own page covering exactly what we measure, in what units, and what we
-              exclude by default.
-            </p>
+            <p className="prose">Trade-level takeoffs across the scopes contractors bid most often.</p>
           </div>
-          <MotionStagger className="trades">
-            {TRADES.map((t) => (
-              <TradeTile trade={t} key={t.slug} />
+          <MotionStagger className="trade-chip-grid">
+            {HOME_TRADE_CHIPS.map((chip) => (
+              <MotionItem key={chip.label}>
+                <Link className="trade-chip trade-chip-link" href={chip.href}>
+                  {chip.label}
+                </Link>
+              </MotionItem>
             ))}
           </MotionStagger>
+          <p>
+            <Link className="process-link" href="/trades">
+              View All Trades →
+            </Link>
+          </p>
         </div>
       </section>
 
       <section className="band band-ground">
         <div className="wrap stack-lg">
-          <div className="stack">
-            <div className="eyebrow">Why {BRAND.name}</div>
-            <h2>{ABOUT_CONTENT.lede}</h2>
-            <p className="prose">{ABOUT_CONTENT.paragraphs[0]}</p>
+          <MotionReveal className="stack" y={16}>
+            <div className="eyebrow">Proof</div>
+            <h2>Built on experience.</h2>
+          </MotionReveal>
+          <div className="stats-light">
+            {HOME_STATS.map((stat, index) => {
+              const numericMatch = /^(\d+)([+%]?)$/.exec(stat.value);
+              return (
+                <MotionReveal className="stat" key={stat.label} delay={index * 0.08} y={16}>
+                  <b>
+                    {numericMatch ? (
+                      <CountUp value={Number(numericMatch[1])} suffix={numericMatch[2]} label={stat.value} />
+                    ) : (
+                      stat.value
+                    )}
+                  </b>
+                  <small>{stat.label}</small>
+                </MotionReveal>
+              );
+            })}
           </div>
-          <div className="grid-3">
-            {ABOUT_CONTENT.benefits.slice(0, 3).map(([code, title, text]) => (
-              <div className="card" key={code} style={{ boxShadow: 'none' }}>
-                <div className="code">{code}</div>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </div>
-            ))}
-          </div>
-          <p className="prose">
-            See all five advantages on our <Link href="/about">About</Link> page, explore{' '}
-            <Link href="/services/estimating">estimating by project type and trade</Link>, or review{' '}
-            <Link href="/who-we-serve#markets">markets we serve</Link>.
-          </p>
         </div>
       </section>
 
@@ -373,15 +300,39 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="tagline-band">
-        <div className="wrap">
-          <h2>Design. Build. Invest.</h2>
+      <section className="band band-dark on-dark investment-band">
+        <div className="wrap investment-grid">
+          <MotionReveal className="investment-copy" y={18}>
+            <div className="eyebrow">{HOME_INVESTMENT_ACQUISITION.eyebrow}</div>
+            <h2>{HOME_INVESTMENT_ACQUISITION.title}</h2>
+            <p className="prose" style={{ color: 'rgba(255,255,255,.86)' }}>
+              {HOME_INVESTMENT_ACQUISITION.body}
+            </p>
+            <p className="supporting" style={{ color: 'rgba(255,255,255,.78)' }}>
+              {HOME_INVESTMENT_ACQUISITION.supporting}
+            </p>
+            <div className="btn-row">
+              <Button href={HOME_INVESTMENT_ACQUISITION.href}>
+                {HOME_INVESTMENT_ACQUISITION.cta} →
+              </Button>
+            </div>
+          </MotionReveal>
+          <MotionReveal className="investment-media" y={24} delay={0.08}>
+            <Image
+              src={HOME_INVESTMENT_ACQUISITION.image}
+              alt={HOME_INVESTMENT_ACQUISITION.imageAlt}
+              fill
+              sizes="(max-width: 1000px) 100vw, 45vw"
+              style={{ objectFit: 'cover' }}
+            />
+          </MotionReveal>
         </div>
       </section>
 
       <CTA
-        title="Ready to move your project forward?"
-        text={`Share your plans with ${BRAND.name}. We will help identify the right next step for your estimate or design package.`}
+        title="Have a project to bid?"
+        text="Upload your plans. Tell us the bid date. We'll take it from there."
+        uploadSecondary
       />
     </>
   );

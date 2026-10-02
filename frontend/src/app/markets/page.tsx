@@ -68,7 +68,6 @@ export default function MarketsPage() {
             <h2>{MARKETS_CONTENT.coordinationTitle}</h2>
             <p className="prose">{MARKETS_CONTENT.coordinationBody[0]}</p>
             <p className="prose">{MARKETS_CONTENT.coordinationBody[1]}</p>
-            <p className="prose">{MARKETS_CONTENT.coordinationBody[2]}</p>
             <div className="note">
               <b>One accountable team.</b> {MARKETS_CONTENT.closing}
             </div>

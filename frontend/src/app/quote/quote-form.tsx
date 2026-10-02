@@ -191,7 +191,11 @@ function formatDueDate(value: string): string {
   return date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
-export default function QuoteForm() {
+export default function QuoteForm({
+  submitLabel = 'Submit request',
+}: {
+  submitLabel?: string;
+}) {
   const formRef = useRef<HTMLFormElement>(null);
   const baseId = useId();
 
@@ -204,6 +208,7 @@ export default function QuoteForm() {
 
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState<number | null>(null);
   const [step, setStep] = useState<WizardStep>(0);
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -261,6 +266,20 @@ export default function QuoteForm() {
     const heading = form.querySelector<HTMLElement>(`.wizard-step.is-active .wizard-step-heading h3`);
     heading?.focus({ preventScroll: true });
   }, [step]);
+
+  useEffect(() => {
+    const openPlans = (): void => {
+      if (typeof window === 'undefined') return;
+      if (window.location.hash !== '#plans') return;
+      goToStep(2);
+      window.setTimeout(() => {
+        document.getElementById('plans')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    };
+    openPlans();
+    window.addEventListener('hashchange', openPlans);
+    return () => window.removeEventListener('hashchange', openPlans);
+  }, [goToStep]);
 
   const groupCounts = useMemo(() => {
     const counts: Record<TradeGroupId, number> = { services: 0, hubs: 0, trades: 0, divisions: 0 };
@@ -324,12 +343,36 @@ export default function QuoteForm() {
     }
 
     setSubmitting(true);
+    setUploadProgress(selectedFiles.length ? 0 : null);
     setSubmitError(null);
     try {
       const body = new FormData(form);
-      const response = await fetch('/api/leads/quote', { method: 'POST', body });
-      const payload = (await response.json().catch(() => null)) as ApiErrorBody | null;
-      if (!response.ok || !payload?.ok) {
+      const payload = await new Promise<ApiErrorBody>((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/api/leads/quote');
+        xhr.upload.onprogress = (event) => {
+          if (!event.lengthComputable) {
+            setUploadProgress(null);
+            return;
+          }
+          setUploadProgress(Math.round((event.loaded / event.total) * 100));
+        };
+        xhr.onload = () => {
+          try {
+            const parsed = JSON.parse(xhr.responseText) as ApiErrorBody;
+            if (xhr.status >= 400) {
+              resolve({ ...parsed, ok: false });
+              return;
+            }
+            resolve(parsed);
+          } catch {
+            reject(new Error('Invalid response'));
+          }
+        };
+        xhr.onerror = () => reject(new Error('Network error'));
+        xhr.send(body);
+      });
+      if (!payload?.ok) {
         if (payload?.errors) {
           setErrors(payload.errors);
           const errorKeys = Object.keys(payload.errors);
@@ -350,6 +393,7 @@ export default function QuoteForm() {
       setSubmitError('Network error. Check your connection and try again, or call us directly.');
     } finally {
       setSubmitting(false);
+      setUploadProgress(null);
     }
   }
 
@@ -361,8 +405,8 @@ export default function QuoteForm() {
         </div>
         <h2>Your request has been sent.</h2>
         <p>
-          Our team received your project brief and will follow up shortly. If the scope is easier to explain out loud, call{' '}
-          <a href={`tel:${BRAND.phoneRaw}`}>{BRAND.phoneDisplay}</a>.
+          Our team received your project brief and a confirmation email is on the way. If the scope is easier to explain
+          out loud, call <a href={`tel:${BRAND.phoneRaw}`}>{BRAND.phoneDisplay}</a>.
         </p>
         <Link className="btn btn-primary" href="/">
           Back to home
@@ -772,7 +816,7 @@ export default function QuoteForm() {
             )}
           </div>
 
-          <div className="field full">
+          <div className="field full" id="plans">
             <label htmlFor="q-files">
               Project files <span className="optional">(optional)</span>
             </label>
@@ -973,6 +1017,18 @@ export default function QuoteForm() {
               {submitError ?? 'Review the highlighted fields before continuing.'}
             </p>
           )}
+          {submitting && (
+            <div
+              className={`upload-progress${uploadProgress === null ? ' is-indeterminate' : ''}`}
+              role="progressbar"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={uploadProgress ?? undefined}
+              aria-label="Upload progress"
+            >
+              <span style={{ ['--upload-progress' as string]: `${uploadProgress ?? 0}%` }} />
+            </div>
+          )}
         </div>
 
         <div className="wizard-nav">
@@ -989,7 +1045,7 @@ export default function QuoteForm() {
             </button>
           ) : (
             <button className="btn btn-primary" type="submit" disabled={submitting}>
-              {submitting ? 'Sending…' : 'Submit request'}
+              {submitting ? 'Sending…' : submitLabel}
             </button>
           )}
         </div>
