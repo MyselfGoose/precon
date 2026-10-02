@@ -11,9 +11,9 @@ import { createMetadata } from '@/lib/metadata';
 import { MotionItem, MotionReveal, MotionStagger } from '../motion';
 
 export const metadata = createMetadata({
-  title: 'Services',
+  title: 'Construction Estimating & Design Services',
   description:
-    'Preconstruction estimating, quantity takeoffs, design and engineering coordination, and visualization support for contractors and developers.',
+    'Preconstruction estimating, quantity takeoffs, design and engineering coordination, and visualization support for U.S. contractors and developers.',
   path: '/services',
 });
 

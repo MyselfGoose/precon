@@ -2,7 +2,7 @@
 
 import { FormEvent, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { CONTENT_SERVICES, BRAND } from '@/lib/content';
+import { CONTENT_SERVICES, BRAND, SITE_COPY } from '@/lib/content';
 import { TRADES } from '@/lib/data';
 import { TRADE_ESTIMATION_PAGES } from '@/lib/estimation';
 import {
@@ -389,6 +389,11 @@ export default function QuoteForm({
         return;
       }
       setSent(true);
+      const { trackEvent } = await import('@/lib/analytics');
+      trackEvent('quote_form_submit');
+      if (selectedFiles.length > 0) {
+        trackEvent('quote_form_with_plans', { fileCount: selectedFiles.length });
+      }
     } catch {
       setSubmitError('Network error. Check your connection and try again, or call us directly.');
     } finally {
@@ -983,6 +988,9 @@ export default function QuoteForm({
                   <b>Send me occasional updates</b> about estimating, preconstruction, and project resources.
                 </label>
               </div>
+              <p className="consent-fine">
+                {SITE_COPY.confidentiality}
+              </p>
               <p className="consent-fine">
                 By submitting you agree to our <Link href="/privacy">Privacy Policy</Link> and{' '}
                 <Link href="/terms">Terms of Service</Link>. Your request is emailed to our team.

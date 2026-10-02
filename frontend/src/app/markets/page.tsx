@@ -5,9 +5,9 @@ import { MARKETS_CONTENT, MARKET_SECTORS } from '@/lib/content';
 import { MotionItem, MotionStagger } from '../motion';
 
 export const metadata = createMetadata({
-  title: 'Markets We Serve',
+  title: 'Construction Markets We Serve',
   description:
-    'QuantSult delivers coordinated architectural, structural, MEP, and estimating solutions across commercial, residential, industrial, and public markets.',
+    'QuantSult delivers coordinated architectural, structural, MEP, and estimating solutions across commercial, residential, industrial, and public markets in the United States.',
   path: '/markets',
 });
 

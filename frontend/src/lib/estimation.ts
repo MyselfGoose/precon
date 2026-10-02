@@ -194,7 +194,7 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
       {
         name: 'Tenant Improvements / Fit-Outs',
         description:
-          'TI and interior fit-out packages for commercial spaces — partitions, ceilings, flooring, MEP revisions, and finish scopes coordinated for fast turnaround bids.',
+          'TI and interior fit-out packages for commercial spaces — partitions, ceilings, flooring, MEP revisions, and finish scopes coordinated for deadline-aligned bids.',
         imageSrc: '/images/estimation/com-ti.jpg',
         imageAlt: 'Commercial tenant improvement interior fit-out',
         watermark: 'Tenant Improvements',
@@ -573,7 +573,7 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
       'Every estimate is informed by current supplier and labor market data, combining supplier pricing, regional labor trends, historical project data, and market intelligence. The result is a bid package that helps you price competitively, protect your margins, and win more work with confidence.',
     ],
     whyUs:
-      'Estimating isn\'t just about quantities — it\'s about intelligence. Nearly a decade of historical project data is combined with current supplier and labor market data, regional labor costs, and regional market conditions to produce CSI MasterFormat-compliant estimates that go beyond the numbers. Every takeoff is built to help trade contractors price competitively, protect their margins, and bid with confidence. By combining data-driven insights with fast turnaround times and uncompromising accuracy, we don\'t just help you win more work, we help you win the right work at the right price. So the better question isn\'t "Why us?" it\'s "Why not us?"',
+      'Estimating isn\'t just about quantities — it\'s about intelligence. Nearly a decade of historical project data is combined with current supplier and labor market data, regional labor costs, and regional market conditions to produce CSI MasterFormat-compliant estimates that go beyond the numbers. Every takeoff is built to help trade contractors price competitively, protect their margins, and bid with confidence. By combining data-driven insights with deadline-aligned delivery and documented assumptions, we don\'t just help you win more work, we help you win the right work at the right price. So the better question isn\'t "Why us?" it\'s "Why not us?"',
   },
 ];
 
@@ -581,7 +581,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
   {
     slug: 'remodeling',
     name: 'Remodeling Estimation Services',
-    headline: 'Build Smarter. Renovate with Confidence.',
+    headline: 'Estimate Smarter. Renovate with Confidence.',
     lede:
       'Whether you\'re pricing a tenant improvement, commercial renovation, residential remodel, or adaptive reuse project, our remodeling estimating services provide the accuracy and market intelligence needed to bid competitively without sacrificing profitability.',
     intro: [
@@ -650,7 +650,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
     name: 'ADU Estimation Services',
     headline: 'Accessory Dwelling Estimates That Fit the Lot.',
     lede:
-      'ADU and accessory dwelling estimating for detached studios, garage conversions, and attached units. Accurate quantities for compact footprints and full MEP packages.',
+      'ADU and accessory dwelling estimating for detached studios, garage conversions, and attached units. Traceable quantities for compact footprints and full MEP packages.',
     intro: [
       'Accessory dwelling units demand careful takeoffs for foundations, framing, envelope, and complete living systems in a smaller footprint. We prepare CSI Format estimates that help contractors price ADUs competitively without missing critical scope.',
     ],
@@ -707,7 +707,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
       'BIM Estimating',
     ],
     whyUs:
-      'Restoration projects often involve hidden conditions, evolving scopes, and strict code requirements. Our estimators account for repair sequencing, specialty materials, and project complexities to deliver accurate estimates that reduce risk and protect your margins. By combining nearly a decade of historical pricing data with regional market intelligence, we help restoration contractors bid with confidence and maximize profitability.',
+      'Restoration projects often involve hidden conditions, evolving scopes, and strict code requirements. Our estimators account for repair sequencing, specialty materials, and project complexities to deliver reviewable estimates with documented assumptions that help protect your margins. By combining nearly a decade of historical pricing data with regional market intelligence, we help restoration contractors bid with confidence.',
     ctaTitle: 'Request Your Restoration Estimate',
     ctaText:
       'From historic restorations to insurance repairs, our team provides the estimating expertise and data-driven insights you need to secure more restoration projects with confidence.',
@@ -750,7 +750,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
   {
     slug: 'paving',
     name: 'Paving Estimation Services',
-    headline: 'Accurate Estimates Built for Every Mile',
+    headline: 'Traceable Estimates Built for Every Mile',
     lede:
       'Our paving estimating services combine detailed quantity takeoffs, production-based calculations, and regional market pricing to help contractors submit competitive, profitable bids.',
     intro: [
@@ -786,7 +786,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
   {
     slug: 'roofing',
     name: 'Roofing Estimation Services',
-    headline: 'Accurate Roofing Estimates. Profitable Bids.',
+    headline: 'CSI Roofing Estimates. Competitive Bids.',
     lede:
       'Our roofing estimating services combine detailed quantity takeoffs with current supplier and labor market data to help contractors submit competitive, profitable bids.',
     intro: [
@@ -849,7 +849,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
       'BIM Estimating',
     ],
     whyUs:
-      'Metal framing requires precise material counts, framing layouts, and labor planning. Our estimators account for studs, tracks, connectors, bracing, framing accessories, and project-specific requirements to deliver accurate estimates that minimize waste, protect your margins, and help you bid with confidence.',
+      'Metal framing requires precise material counts, framing layouts, and labor planning. Our estimators account for studs, tracks, connectors, bracing, framing accessories, and project-specific requirements to deliver traceable estimates that help control waste, protect your margins, and support confident bidding.',
     ctaTitle: 'Request Your Metal Framing Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you secure more metal framing projects.',
@@ -857,7 +857,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
   {
     slug: 'hvac',
     name: 'HVAC Estimation Services',
-    headline: 'Accurate HVAC Estimates. Smarter Mechanical Bids.',
+    headline: 'CSI HVAC Estimates. Clearer Mechanical Bids.',
     lede:
       'Our HVAC estimating services combine detailed quantity takeoffs with current supplier and labor market data and labor analysis to help mechanical contractors submit competitive, profitable bids.',
     intro: [
@@ -929,7 +929,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
   {
     slug: 'masonry',
     name: 'Masonry Estimating Services',
-    headline: 'Accurate Masonry Estimates Built for Stronger Bids',
+    headline: 'CSI Masonry Estimates Built for Stronger Bids',
     lede:
       'Our masonry estimating services combine detailed quantity takeoffs with current supplier and labor market data to help masonry contractors submit competitive, profitable bids.',
     intro: [
@@ -965,7 +965,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
   {
     slug: 'concrete',
     name: 'Concrete Estimating Services',
-    headline: 'Accurate Concrete Estimates. Stronger Foundations for Better Bids.',
+    headline: 'CSI Concrete Estimates. Clearer Foundations for Better Bids.',
     lede:
       'Our concrete estimating services combine detailed quantity takeoffs, production-based calculations, current supplier and labor market data to help concrete contractors submit competitive, profitable bids.',
     intro: [
@@ -1003,7 +1003,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
   {
     slug: 'insulation',
     name: 'Insulation Estimation Services',
-    headline: 'Accurate Insulation Estimates. Smarter, More Profitable Bids.',
+    headline: 'CSI Insulation Estimates. Clearer, More Competitive Bids.',
     lede:
       'Our insulation estimating services combine detailed quantity takeoffs with current supplier and labor market data to help insulation contractors submit competitive, profitable bids.',
     intro: [
@@ -1030,7 +1030,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
       'BIM Estimating',
     ],
     whyUs:
-      'Insulation projects require precise material calculations, coverage analysis, and labor planning. Our estimators account for thermal performance, acoustic requirements, fire ratings, insulation thicknesses, and installation methods to deliver accurate estimates that reduce waste, protect your margins, and help you bid with confidence.',
+      'Insulation projects require precise material calculations, coverage analysis, and labor planning. Our estimators account for thermal performance, acoustic requirements, fire ratings, insulation thicknesses, and installation methods to deliver traceable estimates that help control waste, protect your margins, and support confident bidding.',
     ctaTitle: 'Request Your Insulation Estimate',
     ctaText:
       'Partner with a team that delivers accurate takeoffs, market-driven pricing, and professional bid proposals to help you secure more insulation projects.',
@@ -1075,7 +1075,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
   {
     slug: 'sitework-earthwork',
     name: 'Sitework & Earthwork Estimation Services',
-    headline: 'Accurate Sitework Estimates from the Ground Up',
+    headline: 'CSI Sitework Estimates from the Ground Up',
     lede:
       'Our sitework and earthwork estimating services combine detailed quantity takeoffs, terrain analysis, production-based calculations, and current supplier and labor market data to help civil contractors submit competitive, profitable bids.',
     intro: [
@@ -1113,7 +1113,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
   {
     slug: 'flooring',
     name: 'Flooring Estimation Services',
-    headline: 'Accurate Flooring Estimates for Competitive Bids',
+    headline: 'CSI Flooring Estimates for Competitive Bids',
     lede:
       'Our flooring estimating services combine detailed quantity takeoffs with current supplier and labor market data to help flooring contractors submit competitive, profitable bids.',
     intro: [
@@ -1227,7 +1227,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
   {
     slug: 'demolition',
     name: 'Demolition Estimation Services',
-    headline: 'Accurate Demolition Takeoffs for Safer, Clearer Bids.',
+    headline: 'CSI Demolition Takeoffs for Clearer Bids.',
     lede:
       'Selective demolition, gut-outs, and structural removal demand careful sequencing and quantity clarity. Our demolition estimates quantify what comes out, what stays protected, and how the work is staged so contractors can price risk and productivity with confidence.',
     intro: [
@@ -1455,7 +1455,7 @@ export const TRADE_BUBBLE_SUMMARIES: { slug: string; name: string; summary: stri
     slug: 'bath-tile',
     name: 'Bath & Tile Estimation Services',
     summary:
-      'Accurate tile estimates help contractors reduce waste, improve planning, and submit competitive proposals.',
+      'Traceable tile estimates help contractors plan material, improve planning, and submit competitive proposals.',
   },
   {
     slug: 'lumber-woodwork',

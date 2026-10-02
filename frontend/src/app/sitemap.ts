@@ -13,8 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
     '/',
     '/services',
+    '/estimation',
     '/estimation/trades',
     '/trades',
+    '/markets',
     '/how-it-works',
     '/who-we-serve',
     '/about',

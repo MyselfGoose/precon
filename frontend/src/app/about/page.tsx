@@ -5,9 +5,9 @@ import { ABOUT_CONTENT, BRAND } from '@/lib/content';
 import { MotionItem, MotionReveal, MotionStagger } from '../motion';
 
 export const metadata = createMetadata({
-  title: 'About',
+  title: 'About QuantSult Preconstruction',
   description:
-    'Learn how QuantSult brings estimating, design coordination, and construction documentation together for contractors and developers.',
+    'Learn how QuantSult brings estimating, design coordination, and construction documentation together for U.S. contractors and developers.',
   path: '/about',
 });
 

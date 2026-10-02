@@ -63,7 +63,7 @@ export function PhoneLink({
   style?: React.CSSProperties;
 }) {
   return (
-    <a className={className} href={`tel:${BRAND.phoneRaw}`} style={style}>
+    <a className={className} href={`tel:${BRAND.phoneRaw}`} style={style} data-analytics="phone_click">
       {children ?? BRAND.phoneDisplay}
     </a>
   );
@@ -84,7 +84,14 @@ export function WhatsAppLink({
     ? `https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(message)}`
     : `https://wa.me/${BRAND.whatsapp}`;
   return (
-    <a className={className} href={url} target="_blank" rel="noopener noreferrer" style={style}>
+    <a
+      className={className}
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={style}
+      data-analytics="whatsapp_click"
+    >
       {children ?? (
         <>
           <span aria-hidden="true" style={{ display: 'inline-flex', width: 18, height: 18 }}>
@@ -105,13 +112,22 @@ export function WhatsAppFab() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Chat on WhatsApp at ${BRAND.phoneDisplay}`}
+      data-analytics="whatsapp_click"
+      data-analytics-source="fab"
     >
       {WHATSAPP_ICON}
     </a>
   );
 }
 
+function isPlaceholderUrl(value: string): boolean {
+  return value.startsWith('[PLACEHOLDER') || value === '#';
+}
+
 export function Footer() {
+  const googleUrl = BRAND.social.googleBusiness;
+  const linkedInUrl = BRAND.social.linkedIn;
+
   return (
     <footer className="site-foot">
       <div className="wrap">
@@ -119,8 +135,14 @@ export function Footer() {
           <div>
             <div className="foot-brand">{BRAND.shortName}</div>
             <p className="foot-sub">{BRAND.descriptor}</p>
+            <p className="foot-legal-name" style={{ marginTop: 10 }}>
+              {BRAND.legalName}
+            </p>
             <p className="foot-description" style={{ marginTop: 14 }}>
               {BRAND.description}
+            </p>
+            <p className="mono" style={{ marginTop: 12 }}>
+              {BRAND.serviceAreaLine}
             </p>
             <p className="mono foot-phone" style={{ marginTop: 14 }}>
               <PhoneLink>{BRAND.phoneDisplay}</PhoneLink>
@@ -128,13 +150,49 @@ export function Footer() {
             <p className="mono" style={{ marginTop: 6 }}>
               <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>
             </p>
-            <div className="foot-social" aria-label="Contact">
+            <p className="foot-hours" style={{ marginTop: 12 }}>
+              {SITE_COPY.contact.hours}
+            </p>
+            <p className="foot-response" style={{ marginTop: 4 }}>
+              {SITE_COPY.contact.responseTime}
+            </p>
+            <div className="foot-social" aria-label="Contact and profiles">
               <WhatsAppLink className="wa-link">
                 <span style={{ width: 20, height: 20, display: 'inline-flex' }} aria-hidden="true">
                   {WHATSAPP_ICON}
                 </span>
                 <span className="sr-only">WhatsApp</span>
               </WhatsAppLink>
+              {isPlaceholderUrl(googleUrl) ? (
+                <span className="foot-social-placeholder" title={googleUrl}>
+                  Google [PLACEHOLDER]
+                </span>
+              ) : (
+                <a
+                  href={googleUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-analytics="social_link_click"
+                  data-analytics-network="google"
+                >
+                  Google
+                </a>
+              )}
+              {isPlaceholderUrl(linkedInUrl) ? (
+                <span className="foot-social-placeholder" title={linkedInUrl}>
+                  LinkedIn [PLACEHOLDER]
+                </span>
+              ) : (
+                <a
+                  href={linkedInUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-analytics="social_link_click"
+                  data-analytics-network="linkedin"
+                >
+                  LinkedIn
+                </a>
+              )}
             </div>
           </div>
           <div>
@@ -195,11 +253,13 @@ export function Footer() {
           </div>
         </div>
         <div className="foot-bottom">
-          <span>© {new Date().getFullYear()} {BRAND.name}. All rights reserved.</span>
+          <span>
+            © {new Date().getFullYear()} {BRAND.name}. All rights reserved.
+          </span>
           <span>
             <Link href="/privacy">Privacy Policy</Link> · <Link href="/terms">Terms of Service</Link>
           </span>
-          <span>Design. Build. Invest.</span>
+          <span>{BRAND.tagline}</span>
         </div>
         <p className="foot-licensing">{SITE_COPY.licensing}</p>
       </div>
@@ -389,7 +449,7 @@ export function TradeTile({ trade }: { trade: Trade }) {
     <MotionItem className="motion-fill">
       <Link className="tile" href={`/trades/${trade.slug}`}>
         <div className="thumb">
-          <div className="thumb-diagram">
+          <div className="thumb-diagram" aria-hidden="true">
             <Svg markup={D[trade.slug]()} />
           </div>
         </div>
@@ -571,6 +631,7 @@ export function Photo({
   height,
   sizes,
   priority = false,
+  quality = 75,
   className,
 }: {
   src: string;
@@ -580,6 +641,7 @@ export function Photo({
   height?: number;
   sizes?: string;
   priority?: boolean;
+  quality?: number;
   className?: string;
 }) {
   if (fill) {
@@ -591,6 +653,7 @@ export function Photo({
         fill
         sizes={sizes ?? '100vw'}
         priority={priority}
+        quality={quality}
         style={{ objectFit: 'cover' }}
       />
     );
@@ -604,6 +667,7 @@ export function Photo({
       height={height ?? 800}
       sizes={sizes}
       priority={priority}
+      quality={quality}
       style={{ width: '100%', height: 'auto' }}
     />
   );

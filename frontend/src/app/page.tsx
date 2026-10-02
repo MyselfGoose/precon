@@ -5,7 +5,9 @@ import { ICO } from '@/lib/illustrations';
 import { Button, CTA, DarkProcess, FAQ, Photo, Workbook } from './components';
 import {
   BRAND,
+  HOME_CASE_STUDIES,
   HOME_COMPAT_TOOLS,
+  HOME_FAQ,
   HOME_INVESTMENT_ACQUISITION,
   HOME_STATS,
   HOME_TRADE_CHIPS,
@@ -16,45 +18,23 @@ import {
   SITE_COPY,
 } from '@/lib/content';
 import { createMetadata } from '@/lib/metadata';
+import { faqPageJsonLd } from '@/lib/json-ld';
 import { CountUp, MotionHeroItem, MotionItem, MotionReveal, MotionStagger } from './motion';
 
 export const metadata = createMetadata({
-  title: BRAND.name,
+  title: 'Construction Estimating Services',
   description:
-    'Preconstruction and construction estimation services for contractors and developers — takeoffs, bid support, and design coordination that help you bid with confidence.',
+    'Preconstruction and construction estimation services for U.S. contractors and developers — CSI Format takeoffs, bid support, and design coordination with documented assumptions.',
   path: '/',
 });
-
-const homeFaq: [string, string][] = [
-  [
-    'How do you make an estimate defensible?',
-    'Every quantity is tied to a drawing, scale, or stated assumption. Exclusions and open questions are visible in the deliverable, so your team can explain the number instead of guessing when a bid is reviewed.',
-  ],
-  [
-    'What do I need to send you?',
-    'Start with the PDF plan set and specifications you have. Include the trades, project location, and important date. If the set is incomplete, say so. We will identify what needs to be confirmed.',
-  ],
-  [
-    'How quickly can you help?',
-    'Timing depends on the size and completeness of the set. Share the bid or decision date in your request and we will confirm a practical next step after reviewing the scope.',
-  ],
-  [
-    'How do you price the work?',
-    'We scope the work from your files and explain the fee before anything starts. You get a clear engagement rather than an open-ended subscription or software commitment.',
-  ],
-  [
-    'What if the drawings change?',
-    'Addenda and revisions during the bid period can be coordinated with the original scope. A redesign or materially changed project after award is reviewed as new work.',
-  ],
-  [
-    'How are project files handled?',
-    'We use the information you share to understand and respond to your request, then coordinate the agreed work. Do not send information that is not needed for the project conversation.',
-  ],
-];
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd()) }}
+      />
       <section className="hero">
         <div className="wrap hero-grid">
           <div className="stack">
@@ -91,6 +71,7 @@ export default function Home() {
               alt="Commercial construction jobsite with steel framing for contractor estimating"
               fill
               priority
+              quality={75}
               sizes="(max-width: 1000px) 100vw, 55vw"
             />
           </MotionHeroItem>
@@ -228,7 +209,12 @@ export default function Home() {
             </ul>
           </div>
           <div className="btn-row">
-            <a className="btn btn-ghost" href={SAMPLE_ESTIMATE_SUMMARY.downloadHref} download>
+            <a
+              className="btn btn-ghost"
+              href={SAMPLE_ESTIMATE_SUMMARY.downloadHref}
+              download
+              data-analytics="sample_download"
+            >
               {SAMPLE_ESTIMATE_SUMMARY.downloadLabel} →
             </a>
             <Link className="btn btn-ghost" href="/quote#plans">
@@ -269,6 +255,9 @@ export default function Home() {
           <MotionReveal className="stack" y={16}>
             <div className="eyebrow">Proof</div>
             <h2>Built on experience.</h2>
+            <p className="supporting">
+              Figures below are labeled placeholders until the owner verifies each statistic.
+            </p>
           </MotionReveal>
           <div className="stats-light">
             {HOME_STATS.map((stat, index) => {
@@ -292,11 +281,32 @@ export default function Home() {
 
       <section className="band">
         <div className="wrap stack-lg">
+          <MotionReveal className="stack" y={16}>
+            <div className="eyebrow">Results</div>
+            <h2>Project outcomes worth reviewing.</h2>
+            <p className="supporting">
+              Anonymised case-study shells — replace with owner-approved examples before launch.
+            </p>
+          </MotionReveal>
+          <MotionStagger className="case-study-grid">
+            {HOME_CASE_STUDIES.map((study) => (
+              <MotionItem className="case-study" key={study.projectType}>
+                <p className="case-study-type">{study.projectType}</p>
+                <p className="case-study-size mono">{study.size}</p>
+                <p className="case-study-result">{study.result}</p>
+              </MotionItem>
+            ))}
+          </MotionStagger>
+        </div>
+      </section>
+
+      <section className="band band-ground">
+        <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">Common questions</div>
             <h2>Before you send a set</h2>
           </div>
-          <FAQ items={homeFaq} />
+          <FAQ items={[...HOME_FAQ]} />
         </div>
       </section>
 

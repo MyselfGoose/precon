@@ -5,9 +5,9 @@ import { BRAND, SITE_COPY } from '@/lib/content';
 import { createMetadata } from '@/lib/metadata';
 
 export const metadata = createMetadata({
-  title: 'Send Your Plans',
+  title: 'Request a Construction Estimate',
   description:
-    'Share the project type, location, scope, timing, and files needed for a focused QuantSult conversation.',
+    'Upload plans and request a construction estimate from QuantSult. Share project type, location, scope, and timing for a focused preconstruction conversation.',
   path: '/quote',
 });
 

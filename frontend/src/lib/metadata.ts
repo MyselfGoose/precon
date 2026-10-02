@@ -15,13 +15,18 @@ const DEFAULT_OG_IMAGE =
   IMAGE_REGISTRY[0]?.path ??
   '';
 
+const isStaging = process.env.NEXT_PUBLIC_SITE_ENV === 'staging';
+
 export function createMetadata({ title, description, path, image = DEFAULT_OG_IMAGE }: RouteMetadata): Metadata {
   const fullTitle = title === BRAND.name ? title : `${title} | ${BRAND.name}`;
-  const images = image ? [{ url: image, alt: `${BRAND.name} — ${title}` }] : undefined;
+  const imageAlt =
+    title === BRAND.name ? `${BRAND.name} — ${BRAND.descriptor}` : `${BRAND.name} — ${title}`;
+  const images = image ? [{ url: image, alt: imageAlt }] : undefined;
   return {
     title: fullTitle,
     description,
     alternates: { canonical: path },
+    ...(isStaging ? { robots: { index: false, follow: false } } : {}),
     openGraph: {
       type: 'website',
       siteName: BRAND.name,

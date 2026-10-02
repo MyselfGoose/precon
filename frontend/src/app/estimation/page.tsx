@@ -6,9 +6,9 @@ import { SITE_COPY } from '@/lib/content';
 import { MotionItem, MotionStagger } from '../motion';
 
 export const metadata = createMetadata({
-  title: 'Estimation Services',
+  title: 'CSI Format Estimation Services',
   description:
-    'CSI Format estimating for general construction, industrial projects, public work, and trade contractors, informed by current supplier and labor market data.',
+    'CSI Format estimating for general construction, industrial projects, public work, and trade contractors across the United States, informed by current supplier and labor market data.',
   path: '/estimation',
 });
 

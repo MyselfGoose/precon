@@ -13,6 +13,7 @@
     "whereami": "bash -lc 'echo ROOT=$(git rev-parse --show-toplevel); git status -sb; git worktree list'"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "framer-motion": "^13.4.0",
     "next": "16.3.5",
     "react": "19.2.8",

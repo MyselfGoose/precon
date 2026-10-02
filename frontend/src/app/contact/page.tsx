@@ -5,8 +5,8 @@ import { createMetadata } from '@/lib/metadata';
 import QuoteForm from '../quote/quote-form';
 
 export const metadata = createMetadata({
-  title: 'Contact',
-  description: `Call or WhatsApp ${BRAND.phoneDisplay}, or submit a project request to QuantSult.`,
+  title: 'Contact Construction Estimating Team',
+  description: `Call or WhatsApp ${BRAND.phoneDisplay}, or submit a project request to QuantSult. Serving project teams across the United States.`,
   path: '/contact',
 });
 
@@ -30,6 +30,11 @@ export default function Contact() {
           <div className="grid-2" style={{ gap: 44, alignItems: 'start' }}>
             <QuoteForm submitLabel="Submit Project" />
             <aside className="contact-aside">
+              <div className="contact-block">
+                <span className="k">Legal name</span>
+                <span className="v">{BRAND.legalName}</span>
+                <span className="hint">{BRAND.serviceAreaLine}</span>
+              </div>
               <div className="contact-block">
                 <span className="k">Phone</span>
                 <PhoneLink className="v">{BRAND.phoneDisplay}</PhoneLink>

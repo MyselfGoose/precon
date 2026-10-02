@@ -1,16 +1,40 @@
 export const BRAND = {
   name: 'QuantSult',
   shortName: 'QUANTSULT',
+  /** [PLACEHOLDER — replace with owner-verified legal entity name] */
+  legalName: '[PLACEHOLDER — legal entity name]',
   descriptor: 'Preconstruction · Estimating · Design Support',
+  tagline: 'Estimate. Design. Invest.',
   description:
     'Preconstruction estimating, takeoffs, and design coordination for contractors and developers — with investment and acquisition support when property decisions need construction intelligence.',
+  serviceArea: 'United States',
+  serviceAreaLine: 'Serving project teams across the United States',
   phone: '(227) 204-9141',
   phoneDisplay: '+1 (227) 204-9141',
   phoneRaw: '+12272049141',
   whatsapp: '12272049141',
   email: 'hello@csianddesign.com',
   website: 'https://csianddesign.com',
+  social: {
+    /** [PLACEHOLDER — replace with live Google Business Profile URL] */
+    googleBusiness: '[PLACEHOLDER — Google Business Profile URL]',
+    /** [PLACEHOLDER — replace with live LinkedIn company page URL] */
+    linkedIn: '[PLACEHOLDER — LinkedIn company page URL]',
+  },
 };
+
+/**
+ * Owner-supplied values still required before launch claims can be treated as verified.
+ * Swap placeholders in BRAND, HOME_STATS, HOME_CASE_STUDIES, HOME_FAQ, and social URLs.
+ */
+export const OWNER_PLACEHOLDERS = [
+  'BRAND.legalName — registered legal entity name',
+  'BRAND.social.googleBusiness / linkedIn — live profile URLs',
+  'HOME_STATS — projects, states, years, repeat-client figures',
+  'HOME_CASE_STUDIES — anonymised project type, size, result',
+  'HOME_FAQ turnaround ranges and indicative starting price',
+  'License jurisdictions for sealing professionals (spoken for by SITE_COPY.licensing)',
+] as const;
 
 export const SITE_COPY = {
   cta: {
@@ -27,6 +51,8 @@ export const SITE_COPY = {
     hours: 'Monday–Friday, 8:00 AM–6:00 PM Eastern',
     responseTime: 'Typical response within one business day',
   },
+  confidentiality:
+    'Plans and project files are handled securely for the purpose of scoping and delivering your request. An NDA is available on request.',
   licensing:
     'Final engineering certification/sealing is provided by appropriately licensed professionals where required.',
   process: {
@@ -83,10 +109,10 @@ export const CONTENT_SERVICES: ContentService[] = [
     ico: 'estimate',
     name: 'Estimating & quantity takeoffs',
     summary:
-      'Accurate quantity takeoffs and cost estimates prepared in accordance with CSI MasterFormat, tailored to each trade and market.',
+      'Traceable quantity takeoffs and cost estimates prepared in accordance with CSI MasterFormat, tailored to each trade and market.',
     supportsTitle: 'CSI Trade Expertise',
     details:
-      'Every project is unique, and every trade comes with its own scope, materials, labor requirements, and construction methods. Our estimating team understands the importance of trade-specific expertise and prepares detailed quantity takeoffs and cost estimates tailored to each discipline. Whether you\'re a general contractor assembling a complete bid or a specialty subcontractor pricing a single scope of work, we provide accurate, organized, and reliable estimates that help you bid with confidence. Our estimates are prepared in accordance with CSI MasterFormat, ensuring clear organization, consistency, and professional documentation across every project.',
+      'Every project is unique, and every trade comes with its own scope, materials, labor requirements, and construction methods. Our estimating team understands the importance of trade-specific expertise and prepares detailed quantity takeoffs and cost estimates tailored to each discipline. Whether you\'re a general contractor assembling a complete bid or a specialty subcontractor pricing a single scope of work, we provide organized, reviewable estimates with documented assumptions that help you bid with confidence. Our estimates are prepared in accordance with CSI MasterFormat for clear organization, consistency, and professional documentation across every project.',
     points: [
       'CSI MasterFormat-organized quantity takeoffs',
       'Trade-specific cost estimates with regional market pricing',
@@ -270,10 +296,10 @@ export const CONTENT_SERVICES: ContentService[] = [
     ico: 'takeoff',
     name: 'Structural engineering',
     summary:
-      'Safe, efficient structural engineering prepared to applicable code requirements — from concept development through analysis, systems design, and calculations.',
+      'Structural engineering prepared to applicable code requirements — from concept development through analysis, systems design, and calculations.',
     supportsTitle: 'Structural Drawings & Calculations',
     details:
-      'Our structural engineering services combine innovative design with precise engineering calculations to deliver safe, efficient structural solutions prepared to applicable code requirements for projects across the United States. From concept development to permit-support engineering documentation, we design structural systems that optimize performance, constructability, and material efficiency while meeting industry standards. Whether your project involves reinforced concrete, structural steel, wood framing, cold-formed steel, masonry, post-tensioned concrete, precast concrete, or hybrid structural systems, our engineers develop tailored solutions based on project-specific loading conditions, site requirements, and applicable building codes. Every design is supported by comprehensive structural analysis and engineering calculations to ensure the integrity, stability, and long-term performance of the structure. Every structural design and engineering calculation is developed in accordance with nationally recognized building codes and engineering standards to support safety, durability, structural integrity, and regulatory review. Our work adheres to the International Building Code (IBC), International Residential Code (IRC), ASCE 7, ACI 318, AISC Steel Construction Manual, NDS for Wood Construction, TMS Masonry Code, and applicable state and local building regulations, delivering permit-support structural documentation you can build with confidence.',
+      'Our structural engineering services combine careful design with engineering calculations to deliver structural solutions prepared to applicable code requirements for projects across the United States. From concept development to permit-support engineering documentation, we design structural systems that optimize performance, constructability, and material efficiency while meeting industry standards. Whether your project involves reinforced concrete, structural steel, wood framing, cold-formed steel, masonry, post-tensioned concrete, precast concrete, or hybrid structural systems, our engineers develop tailored solutions based on project-specific loading conditions, site requirements, and applicable building codes. Every design is supported by comprehensive structural analysis and engineering calculations documenting the basis of design. Every structural design and engineering calculation is developed in accordance with nationally recognized building codes and engineering standards to support durability, structural integrity, and regulatory review. Our work adheres to the International Building Code (IBC), International Residential Code (IRC), ASCE 7, ACI 318, AISC Steel Construction Manual, NDS for Wood Construction, TMS Masonry Code, and applicable state and local building regulations, delivering permit-support structural documentation coordinated for construction. Final engineering certification/sealing is provided by appropriately licensed professionals where required.',
     points: [
       'Comprehensive structural analysis and engineering calculations',
       'Support for concrete, steel, wood, masonry, and hybrid systems',
@@ -498,7 +524,7 @@ export const AUDIENCE_SECTIONS: AudienceSection[] = [
     name: 'General Contractors',
     code: 'GC',
     icon: 'gc',
-    problem: 'Need accurate estimates before bid submission?',
+    problem: 'Need traceable estimates before bid submission?',
     services: [
       'Full-set and trade-package estimating',
       'CSI MasterFormat quantity takeoffs',
@@ -624,7 +650,7 @@ export const ABOUT_CONTENT = {
     [
       'ACCURACY',
       'Clear documentation',
-      'Clear assumptions, exclusions documentation and pricing, ensuring accurate estimates for your team.',
+      'Clear assumptions, exclusions, and pricing documentation your team can review and defend.',
     ],
     [
       'DATA',
@@ -738,7 +764,7 @@ export const ACQUISITION_CONTENT = {
 
 export const HOME_PILLARS = [
   {
-    title: 'Accurate Estimates',
+    title: 'Traceable Estimates',
     description: 'CSI MasterFormat takeoffs and cost estimates built from current supplier and labor market data.',
     icon: 'estimate',
   },
@@ -800,7 +826,7 @@ export const HOME_WHAT_WE_DO = [
 export const HOME_WHO_WE_SERVE = [
   {
     title: 'General Contractors',
-    description: 'Need accurate estimates before bid submission?',
+    description: 'Need traceable estimates before bid submission?',
     href: '/who-we-serve#general-contractors',
     icon: 'gc',
   },
@@ -871,12 +897,63 @@ export const HOME_DIVISIONS = [
   },
 ] as const;
 
+/** [PLACEHOLDER — replace with owner-verified figures before treating as public claims] */
 export const HOME_STATS = [
-  { value: '850+', label: 'Projects Completed' },
-  { value: '38', label: 'States / Markets Served' },
-  { value: '12+', label: 'Years of Experience' },
-  { value: '70%', label: 'Repeat Clients' },
+  { value: '850+', label: 'Projects Completed [PLACEHOLDER]' },
+  { value: '38', label: 'States / Markets Served [PLACEHOLDER]' },
+  { value: '12+', label: 'Years of Experience [PLACEHOLDER]' },
+  { value: '70%', label: 'Repeat Clients [PLACEHOLDER]' },
 ] as const;
+
+/** [PLACEHOLDER — replace with owner-approved anonymised case studies or testimonials] */
+export const HOME_CASE_STUDIES = [
+  {
+    projectType: '[PLACEHOLDER] Multi-family renovation — Southeast U.S.',
+    size: '[PLACEHOLDER] ~45,000 SF',
+    result:
+      '[PLACEHOLDER] CSI-format takeoff with documented exclusions delivered ahead of the bid deadline.',
+  },
+  {
+    projectType: '[PLACEHOLDER] Commercial TI package — Midwest',
+    size: '[PLACEHOLDER] Single-trade MEP',
+    result:
+      '[PLACEHOLDER] Trade-level workbook with sheet references used for GC bid submission.',
+  },
+  {
+    projectType: '[PLACEHOLDER] Light industrial shell — Southwest',
+    size: '[PLACEHOLDER] Multi-trade estimate',
+    result:
+      '[PLACEHOLDER] Assumptions and alternates documented so the owner team could compare scenarios.',
+  },
+] as const;
+
+/** Homepage FAQ — turnaround/pricing figures are placeholders until the owner confirms. */
+export const HOME_FAQ: [string, string][] = [
+  [
+    'How do you make an estimate defensible?',
+    'Every quantity is tied to a drawing, scale, or stated assumption. Exclusions and open questions are visible in the deliverable, so your team can explain the number instead of guessing when a bid is reviewed.',
+  ],
+  [
+    'What do I need to send you?',
+    'Start with the PDF plan set and specifications you have. Include the trades, project location, and important date. If the set is incomplete, say so. We will identify what needs to be confirmed.',
+  ],
+  [
+    'How quickly can you help?',
+    'Typical turnaround after scope confirmation (illustrative — [PLACEHOLDER — confirm with owner]): small / single-trade sets [PLACEHOLDER: 2–4 business days]; multi-trade / mid-size [PLACEHOLDER: 5–10 business days]; large or multi-building packages are scoped after review. Rush service is available on request when capacity allows ([PLACEHOLDER — rush fee/terms]). Share your bid or decision date and we will confirm a practical schedule.',
+  ],
+  [
+    'How does pricing work?',
+    'Fees are scoped from your files and explained before work starts — typically per project, per trade, or per SF depending on the package. Indicative starting range: [PLACEHOLDER: e.g. from $X — replace with owner figure]. You get a clear engagement rather than an open-ended subscription.',
+  ],
+  [
+    'What if the drawings change?',
+    'Addenda and revisions during the bid period can be coordinated with the original scope. A redesign or materially changed project after award is reviewed as new work.',
+  ],
+  [
+    'How are project files handled?',
+    'Plans and project files are handled securely for the purpose of scoping and delivering your request. An NDA is available on request. We use what you share to understand and respond to the work — do not send information that is not needed for the project conversation.',
+  ],
+];
 
 export const ESTIMATION_DESIGN_LIST = [
   'Cost Estimation',
@@ -903,14 +980,14 @@ export const ENGINEERING_SERVICES = [
   { title: 'MEP Drafting', icon: 'precon' },
   { title: 'BIM Coordination & Modeling', icon: 'draft' },
   { title: 'Renderings & Walkthroughs', icon: 'estimate' },
-  { title: 'Code Compliance (USA & Canada)', icon: 'bid' },
+  { title: 'U.S. Code Alignment', icon: 'bid' },
 ] as const;
 
 export const WHY_WORK_WITH_US = [
   { title: 'Code Conscious', description: 'Prepared to applicable U.S. code requirements on every deliverable.' },
   { title: 'Data Driven', description: 'Supplier pricing and regional labor factors you can defend.' },
   { title: 'Experienced Team', description: 'Estimators, designers, and engineers working as one team.' },
-  { title: 'On Time. Every Time.', description: 'Clear scopes and deadlines you can plan around.' },
+  { title: 'Deadline Aligned', description: 'Clear scopes and schedules you can plan around.' },
 ] as const;
 
 export const TRUST_REASONS = [
@@ -1030,7 +1107,7 @@ export type LegalSection = {
   subsections?: { title: string; paragraphs?: string[]; bullets?: string[] }[];
 };
 
-export const PRIVACY_EFFECTIVE_DATE = 'September 18, 2026';
+export const PRIVACY_EFFECTIVE_DATE = 'October 3, 2026';
 
 export const PRIVACY_SECTIONS: LegalSection[] = [
   {
@@ -1116,7 +1193,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     id: 'cookies',
     title: '4. Cookies & Tracking Technologies',
     paragraphs: [
-      'Our Site may use essential cookies and similar technologies required for basic operation, security, and session management. We do not currently run third-party analytics or advertising trackers on the Site.',
+      'Our Site may use essential cookies and similar technologies required for basic operation, security, and session management. We also use first-party analytics (Vercel Analytics) to understand aggregate traffic and conversion events such as form submissions and contact link clicks. We do not run advertising trackers on the Site.',
     ],
     subsections: [
       {
@@ -1136,7 +1213,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     bullets: [
       'Website hosting and related infrastructure for serving the Site',
       'Email delivery for project quote and property acquisition requests',
-      'We do not currently use Google Analytics or similar visitor-analytics platforms',
+      'Vercel Analytics for privacy-oriented, cookieless (or first-party) measurement of page views and conversion events such as estimate requests, phone taps, WhatsApp taps, and plan uploads',
     ],
   },
   {
@@ -1162,10 +1239,17 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     ],
     bullets: [
       'Quote and acquisition requests — retained for up to 3 years to support ongoing client relationships and project references',
+      'Uploaded plan sets and project files — retained with the related request for up to 3 years, or deleted earlier on verified request when no longer needed for the engagement or legal obligations',
       'Email correspondence — retained for the duration of the business relationship plus a reasonable archival period',
-      'Essential cookie and session data — retained according to each cookie\'s designated lifespan (session cookies are deleted when you close your browser)',
+      'Essential cookie, session, and analytics event data — retained according to each technology\'s designated lifespan (session cookies are deleted when you close your browser)',
     ],
     subsections: [
+      {
+        title: 'File uploads and confidentiality',
+        paragraphs: [
+          'Files you upload (including drawings and specifications) are used only to scope, price, and deliver the requested work, or to respond to your inquiry. Plans are handled with access limited to personnel involved in the request. An NDA is available on request. To request deletion of uploaded files, contact us at the email below.',
+        ],
+      },
       {
         title: '',
         paragraphs: [
@@ -1262,7 +1346,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
   },
 ];
 
-export const TERMS_EFFECTIVE_DATE = 'September 18, 2026';
+export const TERMS_EFFECTIVE_DATE = 'October 3, 2026';
 
 export const TERMS_SECTIONS: LegalSection[] = [
   {
@@ -1285,7 +1369,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     id: 'services',
     title: '2. Services Overview',
     paragraphs: [
-      'QuantSult provides professional construction support services to contractors, architects, engineers, and developers across the United States and Canada. Our services include:',
+      'QuantSult provides professional construction support services to contractors, architects, engineers, and developers across the United States. Our services include:',
     ],
     bullets: [
       'Construction cost estimating and quantity takeoffs across CSI divisions',
@@ -1301,6 +1385,12 @@ export const TERMS_SECTIONS: LegalSection[] = [
         title: 'Informational Purposes',
         paragraphs: [
           'All information presented on this Site is for general informational purposes only and does not constitute a binding offer, contract, or guarantee of services. Specific service agreements are governed by separate written contracts between QuantSult and the client.',
+        ],
+      },
+      {
+        title: 'Nature of Estimates',
+        paragraphs: [
+          'Estimates, quantity takeoffs, and pricing information prepared by QuantSult are based on the drawings, specifications, and other information you provide, together with stated assumptions, exclusions, and market data available at the time of preparation. They are tools for bidding and decision-making — not a guaranteed construction cost, not a formal bid on our behalf, and not a warranty that actual project costs, quantities, or outcomes will match the estimate. Clients remain responsible for verifying quantities, pricing, and scope against their own means and methods before relying on any figure.',
         ],
       },
       {
@@ -1404,6 +1494,12 @@ export const TERMS_SECTIONS: LegalSection[] = [
         title: 'No Professional Advice',
         paragraphs: [
           'Content on this Site is for informational purposes and does not constitute professional advice, a bid, or a guarantee of project outcomes. Formal engagements are governed by separate written agreements. Final engineering certification/sealing is provided by appropriately licensed professionals where required.',
+        ],
+      },
+      {
+        title: 'Estimate Accuracy Disclaimer',
+        paragraphs: [
+          'Any sample workbooks, illustrative pricing, or marketing descriptions of estimating services are examples only. Delivered estimates reflect documented assumptions and the information available at the time of preparation. QuantSult does not warrant that estimates are free from error or that actual costs will match estimated amounts.',
         ],
       },
     ],
