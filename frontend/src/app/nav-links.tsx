@@ -98,39 +98,58 @@ export default function NavLinks() {
             onMouseEnter={openServices}
             onMouseLeave={scheduleClose}
           >
-            {SERVICE_CATEGORIES.map((category) => {
-              const services = getServicesForCategory(category);
-              return (
-                <div
-                  key={category.id}
-                  className={`nav-dropdown-group${category.secondary ? ' is-secondary' : ''}`}
-                  role="none"
-                >
-                  <p className="nav-dropdown-heading">{category.label}</p>
-                  <ul>
-                    {category.href && services.length <= 1 ? (
-                      <li role="none">
-                        <Link
-                          role="menuitem"
-                          href={category.href}
-                          onClick={() => setServicesOpen(false)}
-                        >
-                          {services[0]?.name ?? category.label}
-                        </Link>
-                      </li>
-                    ) : (
-                      services.map((service) => (
-                        <li key={service.slug} role="none">
+            <div className="nav-dropdown-primary">
+              {SERVICE_CATEGORIES.filter((category) => !category.secondary).map((category) => {
+                const services = getServicesForCategory(category);
+                return (
+                  <div key={category.id} className="nav-dropdown-group" role="none">
+                    <p className="nav-dropdown-heading">{category.label}</p>
+                    <ul>
+                      {category.href && services.length <= 1 ? (
+                        <li role="none">
                           <Link
                             role="menuitem"
-                            href={`/services/${service.slug}`}
+                            href={category.href}
                             onClick={() => setServicesOpen(false)}
                           >
-                            {service.name}
+                            {services[0]?.name ?? category.label}
                           </Link>
                         </li>
-                      ))
-                    )}
+                      ) : (
+                        services.map((service) => (
+                          <li key={service.slug} role="none">
+                            <Link
+                              role="menuitem"
+                              href={`/services/${service.slug}`}
+                              onClick={() => setServicesOpen(false)}
+                            >
+                              {service.name}
+                            </Link>
+                          </li>
+                        ))
+                      )}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
+            {SERVICE_CATEGORIES.filter((category) => category.secondary).map((category) => {
+              const services = getServicesForCategory(category);
+              const href = category.href ?? `/services/${services[0]?.slug ?? ''}`;
+              const label = services[0]?.name ?? category.label;
+              return (
+                <div key={category.id} className="nav-dropdown-group is-secondary" role="none">
+                  <p className="nav-dropdown-heading">{category.label}</p>
+                  <ul>
+                    <li role="none">
+                      <Link
+                        role="menuitem"
+                        href={href}
+                        onClick={() => setServicesOpen(false)}
+                      >
+                        {label}
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               );
