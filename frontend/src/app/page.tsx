@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { TRADES } from '@/lib/data';
 import { ICO } from '@/lib/illustrations';
-import { Button, CTA, DarkProcess, FAQ, Photo, TradeTile, Workbook } from './components';
+import { Button, CTA, DarkProcess, FAQ, Photo, TradeTile, TrustReasons, Workbook } from './components';
 import {
   ABOUT_CONTENT,
   BRAND,
@@ -12,6 +12,7 @@ import {
   HOME_PILLARS,
   HOME_STATS,
   MARKETS_CONTENT,
+  SAMPLE_ESTIMATE_SUMMARY,
   SITE_COPY,
 } from '@/lib/content';
 import { createMetadata } from '@/lib/metadata';
@@ -201,7 +202,7 @@ export default function Home() {
             <h2>Built across the projects that shape communities</h2>
             <p className="prose">{MARKETS_CONTENT.lede}</p>
           </div>
-          <MotionStagger className="grid-3">
+          <MotionStagger className="grid-4 markets-grid">
             {FEATURED_PROJECTS.map((project) => (
               <MotionItem className="motion-fill" key={project.title}>
                 <div className="project-card">
@@ -209,7 +210,7 @@ export default function Home() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    sizes="(max-width: 1000px) 100vw, 33vw"
+                    sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw"
                     style={{ objectFit: 'cover' }}
                   />
                   <span className="label">{project.title}</span>
@@ -217,6 +218,7 @@ export default function Home() {
               </MotionItem>
             ))}
           </MotionStagger>
+          <p className="prose">{MARKETS_CONTENT.specialtyNote}</p>
           <p className="prose">
             See how we support each market on{' '}
             <Link href="/who-we-serve#markets">Who We Serve</Link>.
@@ -227,37 +229,99 @@ export default function Home() {
       <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
-            <div className="eyebrow">What you receive</div>
+            <div className="eyebrow">See What You Receive</div>
             <h2>A deliverable your team can use immediately.</h2>
             <p className="prose">
-              A line-item workbook you can open, edit, review, and hand to a project manager.
-              Organized around the way your team makes decisions.
+              A line-item workbook you can open, edit, and hand to a project manager — not a locked PDF.
             </p>
           </div>
-          <Workbook
-            sample={TRADES[0].sample}
-            tabs={['Summary', 'Div 03', 'Div 04', 'Div 05', 'Div 09', 'Exclusions']}
-          />
+          <div className="deliverable-layout">
+            <Workbook
+              sample={TRADES[0].sample}
+              tabs={['Summary', 'Div 03', 'Div 04', 'Div 05', 'Div 09', 'Exclusions']}
+            />
+            <div className="estimate-summary">
+              <div className="estimate-summary-head">
+                <div className="code">Estimate Summary</div>
+                <span className="sample-badge">{SAMPLE_ESTIMATE_SUMMARY.label}</span>
+              </div>
+              <p className="estimate-summary-meta">
+                {SAMPLE_ESTIMATE_SUMMARY.project} · {SAMPLE_ESTIMATE_SUMMARY.filename}
+              </p>
+              <div className="table-scroll">
+                <table>
+                  <caption className="sr-only">Sample estimate summary by division</caption>
+                  <thead>
+                    <tr>
+                      {SAMPLE_ESTIMATE_SUMMARY.columns.map((col) => (
+                        <th className={col === 'Division' ? '' : 'n'} key={col} scope="col">
+                          {col}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {SAMPLE_ESTIMATE_SUMMARY.rows.map((row) => (
+                      <tr key={row[0]}>
+                        {row.map((cell, i) => (
+                          <td className={i === 0 ? '' : 'n'} key={`${row[0]}-${i}`}>
+                            {cell}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                    <tr className="total">
+                      <th scope="row">{SAMPLE_ESTIMATE_SUMMARY.total[0]}</th>
+                      <td className="n">{SAMPLE_ESTIMATE_SUMMARY.total[1]}</td>
+                      <td className="n">{SAMPLE_ESTIMATE_SUMMARY.total[2]}</td>
+                      <td className="n">{SAMPLE_ESTIMATE_SUMMARY.total[3]}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div className="stack">
+            <h3>Included in every estimate</h3>
+            <ul className="estimate-checklist">
+              {SAMPLE_ESTIMATE_SUMMARY.included.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
           <div className="grid-2">
             <div className="stack">
               <h3>Every line traces back</h3>
-              <p className="prose">
-                Quantities reference the sheet they came from, so a number questioned in a bid review takes a minute to
-                verify rather than an afternoon.
-              </p>
+              <p className="prose">{SAMPLE_ESTIMATE_SUMMARY.tracesBack}</p>
             </div>
             <div className="stack">
               <h3>Fits the tools you already use</h3>
-              <p className="prose">
-                Takeoffs in Bluebeam Revu, Planswift and On-Screen Takeoff. Estimates arrive as editable Excel workbooks
-                with formulas intact, ready for your review, not locked away.
-              </p>
+              <p className="prose">{SAMPLE_ESTIMATE_SUMMARY.toolCompatibility}</p>
             </div>
           </div>
+          <p>
+            <a className="btn btn-ghost" href={SAMPLE_ESTIMATE_SUMMARY.downloadHref} download>
+              {SAMPLE_ESTIMATE_SUMMARY.downloadLabel} →
+            </a>
+          </p>
         </div>
       </section>
 
       <section className="band band-ground">
+        <div className="wrap stack-lg">
+          <div className="stack">
+            <div className="eyebrow">Trust</div>
+            <h2>Why Contractors Trust {BRAND.name}</h2>
+            <p className="prose">
+              Clear organization, traceable quantities, and editable deliverables — built for teams that need to defend
+              a number under bid pressure.
+            </p>
+          </div>
+          <TrustReasons />
+        </div>
+      </section>
+
+      <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">Trades</div>
@@ -275,7 +339,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band">
+      <section className="band band-ground">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">Why {BRAND.name}</div>
@@ -299,7 +363,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band band-ground">
+      <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">Common questions</div>

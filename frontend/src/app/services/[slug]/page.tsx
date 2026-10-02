@@ -273,6 +273,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const isBim = content.slug === 'bim-visualization';
   const heroTitle = content.catchphrase ?? content.supportsTitle ?? content.name;
   const heroLede = content.summary;
+  const showLicensing =
+    content.slug === 'mep-engineering' ||
+    content.slug === 'structural-engineering' ||
+    content.slug === 'permit-support-structural-drawings';
 
   return (
       <>
@@ -301,6 +305,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <div className="code">{content.code}</div>
               <h2 style={{ fontSize: 'var(--s2)' }}>{content.name}</h2>
               <p className="prose">{content.details}</p>
+              {showLicensing ? <p className="note licensing-note">{SITE_COPY.licensing}</p> : null}
             </div>
             {isBim && (
               <div className="stack-lg">

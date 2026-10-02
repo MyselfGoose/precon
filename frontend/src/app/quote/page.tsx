@@ -1,7 +1,7 @@
 import { CTA, PageHead, PhoneLink, WhatsAppLink, Svg } from '../components';
 import QuoteForm from './quote-form';
 import { D } from '@/lib/illustrations';
-import { BRAND } from '@/lib/content';
+import { BRAND, SITE_COPY } from '@/lib/content';
 import { createMetadata } from '@/lib/metadata';
 
 export const metadata = createMetadata({
@@ -15,7 +15,7 @@ export default function Quote() {
   return (
     <>
       <PageHead
-        eyebrow="Request an Estimate"
+        eyebrow={SITE_COPY.cta.primary}
         title="A clear brief. A useful next step."
         lede="Four short steps: who you are, what you need, the scope you know, and a quick review. We use the brief to organize the conversation — formal work starts only with a written agreement."
         image="/images/hero/quote.jpg"

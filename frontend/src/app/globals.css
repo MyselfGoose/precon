@@ -249,8 +249,32 @@
 
   /* grids */
   .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
   .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
   .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+
+  .deliverable-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start;}
+  .estimate-summary{background:var(--paper);border:1px solid var(--rule);border-radius:16px;box-shadow:var(--shadow);padding:22px 20px 18px;display:flex;flex-direction:column;gap:12px;}
+  .estimate-summary-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .estimate-summary-meta{margin:0;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.04em;color:var(--muted);}
+  .sample-badge{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cherry);border:1px solid color-mix(in srgb, var(--cherry) 35%, transparent);padding:5px 9px;border-radius:3px;white-space:nowrap;}
+  .estimate-summary table{width:100%;border-collapse:collapse;font-size:.88rem;}
+  .estimate-summary th,.estimate-summary td{padding:8px 6px;border-bottom:1px solid var(--rule);text-align:left;}
+  .estimate-summary th.n,.estimate-summary td.n{text-align:right;font-variant-numeric:tabular-nums;font-family:"IBM Plex Mono",monospace;font-size:.8rem;}
+  .estimate-summary tr.total th,.estimate-summary tr.total td{border-bottom:0;font-weight:700;padding-top:12px;}
+  .estimate-checklist{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px;}
+  .estimate-checklist li{position:relative;padding-left:1.4rem;color:var(--ink-2);font-size:.95rem;}
+  .estimate-checklist li::before{content:"✓";position:absolute;left:0;color:var(--cherry);font-weight:700;}
+
+  .trust-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;}
+  .trust-grid-compact{gap:14px;}
+  .trust-card{background:var(--paper);border:1px solid var(--rule);border-radius:14px;padding:22px 18px;display:flex;flex-direction:column;gap:10px;}
+  .trust-card .ico{width:42px;height:42px;color:var(--ebony);}
+  .trust-card .ico svg{width:100%;height:100%;display:block;}
+  .trust-card h3{margin:0;font-size:1.05rem;}
+  .trust-card p{margin:0;color:var(--ink-2);font-size:.92rem;line-height:1.55;}
+  .licensing-note{margin-top:4px;}
+  .foot-licensing{margin:14px 0 0;font-size:.78rem;line-height:1.5;color:#8A7A74;max-width:52rem;}
 
   /* cards */
   .card{background:var(--paper);border:1px solid var(--rule);border-radius:16px;box-shadow:var(--shadow);padding:26px 24px 28px;display:flex;flex-direction:column;gap:12px;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease,background-color .25s ease;scroll-margin-top:96px;}
@@ -581,7 +605,9 @@
     .page-head-photo{min-height:280px;}
     .page-head.page-head-dark{padding-block:72px 64px;}
     .audience-row,.audience-row-reverse{grid-template-columns:1fr;direction:ltr;}
-    .grid-3,.reasons,.who,.tp-grid{grid-template-columns:1fr 1fr;}
+    .grid-3,.grid-4,.reasons,.who,.tp-grid{grid-template-columns:1fr 1fr;}
+    .trust-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .deliverable-layout{grid-template-columns:1fr;}
     .steps,.process-teaser .steps{grid-template-columns:1fr 1fr;}
     .step{border-left:0;border-top:1px solid rgba(255,255,255,.14);}
     .trades{grid-template-columns:repeat(2,1fr);}
@@ -605,7 +631,8 @@
     .hero .btn-row{width:100%;}
     .stat-strip,.stat-strip.acquisition-steps{grid-template-columns:1fr 1fr;}
     .stat{border-left:0;border-top:1px solid rgba(255,255,255,.14);}
-    .grid-3,.grid-2,.reasons,.who,.steps,.process-teaser .steps,.tp-grid,.trades{grid-template-columns:1fr;}
+    .grid-3,.grid-4,.grid-2,.reasons,.who,.steps,.process-teaser .steps,.tp-grid,.trades,.trust-grid{grid-template-columns:1fr;}
+    .estimate-checklist{grid-template-columns:1fr;}
     .form{grid-template-columns:1fr;padding:18px;border-radius:8px;}
     .form.wizard{padding:0;}
     .wizard-body{padding:20px 18px 18px;}

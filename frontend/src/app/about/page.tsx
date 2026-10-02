@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CTA, PageHead } from '../components';
+import { CTA, PageHead, TrustReasons } from '../components';
 import { createMetadata } from '@/lib/metadata';
 import { ABOUT_CONTENT, BRAND } from '@/lib/content';
 import { MotionItem, MotionReveal, MotionStagger } from '../motion';
@@ -12,7 +12,7 @@ export const metadata = createMetadata({
 });
 
 export default function About() {
-  const otherBenefits = ABOUT_CONTENT.benefits.filter(([code]) => code !== 'BID EDGE');
+  const otherBenefits = ABOUT_CONTENT.benefits.filter(([code]) => code !== 'DATA');
   const { biddingEdge } = ABOUT_CONTENT;
 
   return (
@@ -51,6 +51,15 @@ export default function About() {
               <p>{biddingEdge.body}</p>
             </div>
           </MotionReveal>
+
+          <div className="stack">
+            <div className="eyebrow">Trust</div>
+            <h2>Why Contractors Trust {BRAND.name}</h2>
+            <p className="prose">
+              The same standards that make an estimate reviewable under bid pressure.
+            </p>
+          </div>
+          <TrustReasons compact />
 
           <div className="stack">
             <div className="eyebrow">Why choose us</div>

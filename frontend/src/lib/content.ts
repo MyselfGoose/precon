@@ -22,6 +22,8 @@ export const SITE_COPY = {
     viewEstimation: 'View estimation details →',
     viewDetails: 'View details →',
   },
+  licensing:
+    'Final engineering certification/sealing is provided by appropriately licensed professionals where required.',
   process: {
     eyebrow: 'How it works',
     title: 'A coordinated path from project information to action',
@@ -82,8 +84,8 @@ export const CONTENT_SERVICES: ContentService[] = [
       'Every project is unique, and every trade comes with its own scope, materials, labor requirements, and construction methods. Our estimating team understands the importance of trade-specific expertise and prepares detailed quantity takeoffs and cost estimates tailored to each discipline. Whether you\'re a general contractor assembling a complete bid or a specialty subcontractor pricing a single scope of work, we provide accurate, organized, and reliable estimates that help you bid with confidence. Our estimates are prepared in accordance with CSI MasterFormat, ensuring clear organization, consistency, and professional documentation across every project.',
     points: [
       'CSI MasterFormat-organized quantity takeoffs',
-      'Trade-specific cost estimates with market intelligence',
-      'Real-time material pricing and regional labor trends',
+      'Trade-specific cost estimates with regional market pricing',
+      'Current supplier and labor market data',
       'Professional bid proposals and editable workbooks',
     ],
     relatedMode: 'trades',
@@ -156,13 +158,13 @@ export const CONTENT_SERVICES: ContentService[] = [
     ico: 'precon',
     name: 'MEP drafting & engineering',
     summary:
-      'Coordinated Mechanical, Electrical & Plumbing drawings for efficient, code-compliant construction across the United States.',
+      'Coordinated Mechanical, Electrical & Plumbing drawings prepared to applicable code requirements for construction across the United States.',
     supportsTitle: 'MEP Drawings',
-    catchphrase: 'Coordinated Mechanical, Electrical & Plumbing Drawings for Efficient, Code-Compliant Construction',
+    catchphrase: 'Coordinated Mechanical, Electrical & Plumbing Drawings Prepared to Applicable Code Requirements',
     details:
-      'Our MEP drafting services deliver accurate, coordinated, and construction-ready Mechanical, Electrical, and Plumbing drawings for projects across the United States. From permit-ready documentation and multidisciplinary coordination to engineering calculations and energy compliance, we provide comprehensive solutions that support every stage of the construction process. Whether your project requires California Title 24 compliance, HVAC load calculations, electrical load analysis, plumbing calculations, or jurisdiction-specific code documentation, our team develops precise MEP packages tailored to local regulations and project requirements. Every drawing is prepared to improve constructability, streamline coordination between trades, accelerate permit approvals, and ensure efficient project execution.',
+      'Our MEP drafting services deliver accurate, coordinated, and construction-ready Mechanical, Electrical, and Plumbing drawings for projects across the United States. From permit-support documentation and multidisciplinary coordination to engineering calculations and energy compliance, we provide comprehensive solutions that support every stage of the construction process. Whether your project requires California Title 24 compliance, HVAC load calculations, electrical load analysis, plumbing calculations, or jurisdiction-specific code documentation, our team develops precise MEP packages tailored to local regulations and project requirements. Every drawing is prepared to improve constructability, streamline coordination between trades, support permit approvals, and ensure efficient project execution.',
     points: [
-      'Permit-ready MEP documentation and trade coordination',
+      'Permit-support MEP documentation and trade coordination',
       'California Title 24 and energy compliance support',
       'HVAC, electrical, and plumbing engineering calculations',
       'Codes & standards aligned with IBC, NEC, IMC, IPC, ASHRAE, and ACCA',
@@ -263,10 +265,10 @@ export const CONTENT_SERVICES: ContentService[] = [
     ico: 'takeoff',
     name: 'Structural engineering',
     summary:
-      'Safe, efficient, and code-compliant structural engineering from concept development through analysis, systems design, and calculations.',
+      'Safe, efficient structural engineering prepared to applicable code requirements — from concept development through analysis, systems design, and calculations.',
     supportsTitle: 'Structural Drawings & Calculations',
     details:
-      'Our structural engineering services combine innovative design with precise engineering calculations to deliver safe, efficient, and code-compliant structural solutions for projects across the United States. From concept development to permit-ready engineering documentation, we design structural systems that optimize performance, constructability, and material efficiency while meeting the highest industry standards. Whether your project involves reinforced concrete, structural steel, wood framing, cold-formed steel, masonry, post-tensioned concrete, precast concrete, or hybrid structural systems, our engineers develop tailored solutions based on project-specific loading conditions, site requirements, and applicable building codes. Every design is supported by comprehensive structural analysis and engineering calculations to ensure the integrity, stability, and long-term performance of the structure. Every structural design and engineering calculation is developed in accordance with nationally recognized building codes and engineering standards to ensure safety, durability, structural integrity, and regulatory compliance. Our work adheres to the International Building Code (IBC), International Residential Code (IRC), ASCE 7, ACI 318, AISC Steel Construction Manual, NDS for Wood Construction, TMS Masonry Code, and all applicable state and local building regulations, delivering permit-ready structural documentation you can build with confidence.',
+      'Our structural engineering services combine innovative design with precise engineering calculations to deliver safe, efficient structural solutions prepared to applicable code requirements for projects across the United States. From concept development to permit-support engineering documentation, we design structural systems that optimize performance, constructability, and material efficiency while meeting industry standards. Whether your project involves reinforced concrete, structural steel, wood framing, cold-formed steel, masonry, post-tensioned concrete, precast concrete, or hybrid structural systems, our engineers develop tailored solutions based on project-specific loading conditions, site requirements, and applicable building codes. Every design is supported by comprehensive structural analysis and engineering calculations to ensure the integrity, stability, and long-term performance of the structure. Every structural design and engineering calculation is developed in accordance with nationally recognized building codes and engineering standards to support safety, durability, structural integrity, and regulatory review. Our work adheres to the International Building Code (IBC), International Residential Code (IRC), ASCE 7, ACI 318, AISC Steel Construction Manual, NDS for Wood Construction, TMS Masonry Code, and applicable state and local building regulations, delivering permit-support structural documentation you can build with confidence.',
     points: [
       'Comprehensive structural analysis and engineering calculations',
       'Support for concrete, steel, wood, masonry, and hybrid systems',
@@ -303,17 +305,17 @@ export const CONTENT_SERVICES: ContentService[] = [
     ctaText: 'Share the structural system, loading conditions, and jurisdiction so we can define the right engineering package.',
   },
   {
-    slug: 'permit-ready-structural-drawings',
+    slug: 'permit-support-structural-drawings',
     code: 'PSD',
     ico: 'draft',
-    name: 'Permit-ready structural drawings',
+    name: 'Permit-support structural drawings',
     summary:
-      'Permit-ready structural plans, sections, details, and foundation drawings coordinated with engineering calculations and local AHJ requirements.',
-    supportsTitle: 'Drawings ready for the building department',
+      'Permit-support structural plans, sections, details, and foundation drawings coordinated with engineering calculations and local AHJ requirements.',
+    supportsTitle: 'Drawings prepared for plan review coordination',
     details:
-      'Our permit-ready structural drawing packages translate engineering intent into clear construction documents. We prepare structural plans, sections, details, foundation drawings, and notes that support plan review and field execution. Every sheet is coordinated with applicable codes and jurisdiction-specific requirements so contractors and owners can move from design into permitting with confidence. Working alongside our structural engineers and estimators, we keep drawings buildable, consistent, and aligned with the calculations that support them.',
+      'Our permit-support structural drawing packages translate engineering intent into clear construction documents. We prepare structural plans, sections, details, foundation drawings, and notes that support plan review and field execution. Every sheet is coordinated with applicable codes and jurisdiction-specific requirements so contractors and owners can move from design into permitting with confidence. Working alongside our structural engineers and estimators, we keep drawings buildable, consistent, and aligned with the calculations that support them. Final engineering certification/sealing is provided by appropriately licensed professionals where required.',
     points: [
-      'Permit-ready structural plans, sections, and details',
+      'Permit-support structural plans, sections, and details',
       'Foundation plans, schedules, and connection details',
       'Drawing packages coordinated with structural calculations',
       'Documentation prepared for AHJ plan review and field use',
@@ -335,13 +337,13 @@ export const CONTENT_SERVICES: ContentService[] = [
       },
       {
         title: 'Permit Coordination',
-        items: ['Code-referenced documentation', 'AHJ-ready drawing sets', 'Revision-ready markups', 'Field clarification support'],
+        items: ['Code-referenced documentation', 'AHJ plan-review sets', 'Revision-ready markups', 'Field clarification support'],
       },
     ],
     sectionsEyebrow: 'Deliverables',
     sectionsTitle: 'What we produce for permitting',
-    ctaTitle: 'Discuss permit-ready structural drawings',
-    ctaText: 'Share the structural system, jurisdiction, and any existing calculations so we can define a permit-ready drawing package.',
+    ctaTitle: 'Discuss permit-support structural drawings',
+    ctaText: 'Share the structural system, jurisdiction, and any existing calculations so we can define a permit-support drawing package.',
   },
   {
     slug: 'bim-visualization',
@@ -446,7 +448,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
       'architectural-drawings',
       'mep-engineering',
       'structural-engineering',
-      'permit-ready-structural-drawings',
+      'permit-support-structural-drawings',
     ],
   },
   {
@@ -523,7 +525,7 @@ export const AUDIENCE_CONTENT = [
     intro:
       'We provide detailed structural estimates and quantity takeoffs for concrete, steel, masonry, wood framing, and other structural systems, helping contractors build accurate bids with confidence from the ground up.',
     details:
-      'Structural estimates combine engineering coordination, production analysis, and real-time pricing to deliver accurate bid packages.',
+      'Structural estimates combine engineering coordination, production analysis, and regional market pricing to deliver accurate bid packages.',
     items: ['Concrete, steel, masonry, and wood', 'Reinforcement and connection details', 'Production-based estimating', 'BIM-enabled coordination'],
   },
   {
@@ -569,7 +571,7 @@ export const ABOUT_CONTENT = {
   lede: 'We believe preconstruction shouldn\'t be fragmented.',
   paragraphs: [
     'We believe preconstruction shouldn\'t be fragmented. Contractors, developers, homeowners, and investors shouldn\'t have to coordinate multiple firms to move a project from concept to construction. Our mission is to bring every essential preconstruction service under one roof, creating a single, trusted partner for planning, estimating, design coordination, and construction documentation.',
-    'From quantity takeoffs and cost estimating to BIM coordination, construction drawings, engineering support, and code-compliant documentation, we combine technical expertise with technology-driven workflows to help our clients make informed decisions with confidence.',
+    'From quantity takeoffs and cost estimating to BIM coordination, construction drawings, engineering support, and documentation prepared to applicable code requirements, we combine technical expertise with technology-driven workflows to help our clients make informed decisions with confidence.',
     'We are committed to raising the standard of preconstruction by replacing assumptions with data, improving collaboration through intelligent coordination, and delivering solutions that are accurate, reliable, and built around our clients\' success. Whether you\'re bidding your next project, evaluating a property acquisition, or preparing a development for construction, our goal is to provide the expertise, insight, and support you need all under one roof.',
   ],
   benefits: [
@@ -584,9 +586,9 @@ export const ABOUT_CONTENT = {
       'We deliver accurate data according to your instructions, so you can move forward with confidence instead of chasing corrections after delivery.',
     ],
     [
-      'BID EDGE',
-      'Bidding Edge',
-      'With our Market Analytical Proprietary Technology, estimates are powered by market trends — helping push the bid in the final rounds.',
+      'DATA',
+      'Data-driven estimating',
+      'We provide project-specific estimates by using supplier pricing, regional labor rates, historical project data and market research.',
     ],
     [
       'DEDICATED',
@@ -600,10 +602,10 @@ export const ABOUT_CONTENT = {
     ],
   ],
   biddingEdge: {
-    code: 'BID EDGE',
-    title: 'Bidding Edge',
-    lede: 'Market intelligence that moves the bid when it matters most.',
-    body: 'With our Market Analytical Proprietary Technology, QuantSult estimates are powered by live market trends — giving you a sharper position in the final rounds of competitive bidding.',
+    code: 'DATA',
+    title: 'Data-driven estimating',
+    lede: 'Project-specific estimates grounded in supplier, labor, and market research.',
+    body: 'We provide project-specific estimates by using supplier pricing, regional labor rates, historical project data and market research.',
   },
 };
 
@@ -696,7 +698,7 @@ export const ACQUISITION_CONTENT = {
 export const HOME_PILLARS = [
   {
     title: 'Accurate Estimates',
-    description: 'CSI MasterFormat takeoffs and cost estimates grounded in real market data.',
+    description: 'CSI MasterFormat takeoffs and cost estimates built from current supplier and labor market data.',
     icon: 'estimate',
   },
   {
@@ -706,7 +708,7 @@ export const HOME_PILLARS = [
   },
   {
     title: 'Construction Intelligence',
-    description: 'Labor, material, and market insight that strengthens every decision.',
+    description: 'Labor, material, and regional market insight that strengthens every decision.',
     icon: 'precon',
   },
   {
@@ -785,30 +787,90 @@ export const ENGINEERING_SERVICES = [
 ] as const;
 
 export const WHY_WORK_WITH_US = [
-  { title: 'Code Compliant', description: 'U.S. and Canada standards built into every deliverable.' },
-  { title: 'Data Driven', description: 'Market pricing and production factors you can defend.' },
+  { title: 'Code Conscious', description: 'Prepared to applicable U.S. code requirements on every deliverable.' },
+  { title: 'Data Driven', description: 'Supplier pricing and regional labor factors you can defend.' },
   { title: 'Experienced Team', description: 'Estimators, designers, and engineers under one roof.' },
   { title: 'On Time. Every Time.', description: 'Clear scopes and deadlines you can plan around.' },
 ] as const;
 
+export const TRUST_REASONS = [
+  {
+    title: 'CSI MasterFormat',
+    description: 'Organized according to industry-standard divisions.',
+    icon: 'estimate',
+  },
+  {
+    title: 'Traceable Quantities',
+    description: 'Every major quantity can be traced back to drawings and sheets.',
+    icon: 'takeoff',
+  },
+  {
+    title: 'Editable Excel Deliverables',
+    description: 'Your team receives working files, not locked PDFs.',
+    icon: 'bid',
+  },
+  {
+    title: 'Trade-Level Expertise',
+    description: 'Dedicated estimating across individual construction trades.',
+    icon: 'sub',
+  },
+  {
+    title: 'U.S. Market Focus',
+    description: 'Pricing and project assumptions aligned to the project location.',
+    icon: 'precon',
+  },
+] as const;
+
+export const SAMPLE_ESTIMATE_SUMMARY = {
+  label: 'Sample – illustrative pricing',
+  project: 'Warehouse shell · 18,650 SF',
+  filename: 'estimate.xlsx',
+  downloadHref: '/samples/sample-estimate.xlsx',
+  downloadLabel: 'Download sample estimate',
+  columns: ['Division', 'Material', 'Labor', 'Total'] as const,
+  rows: [
+    ['03 Concrete', '$142,800', '$96,400', '$239,200'],
+    ['04 Masonry', '$48,600', '$61,200', '$109,800'],
+    ['05 Metals', '$86,400', '$54,900', '$141,300'],
+    ['06 Wood & Plastics', '$22,100', '$31,500', '$53,600'],
+    ['07 Thermal & Moisture', '$38,750', '$29,400', '$68,150'],
+    ['09 Finishes', '$41,200', '$52,800', '$94,000'],
+  ] as const,
+  total: ['Sample total', '$380,850', '$326,200', '$707,050'] as const,
+  included: [
+    'Quantity takeoffs',
+    'Material & labor pricing',
+    'Drawing references',
+    'Assumptions',
+    'Exclusions',
+    'Summary sheet',
+    'Editable Excel workbook',
+  ] as const,
+  tracesBack:
+    'Every major quantity references the sheet it came from, so a number questioned in bid review is quick to verify.',
+  toolCompatibility:
+    'Takeoffs in Bluebeam Revu, PlanSwift, and On-Screen Takeoff. Estimates arrive as editable Excel workbooks with formulas intact.',
+} as const;
+
 export const FEATURED_PROJECTS = [
+  { title: 'Commercial', image: '/images/markets/home-commercial.jpg' },
+  { title: 'Residential', image: '/images/markets/home-residential-commercial.jpg' },
   { title: 'Industrial', image: '/images/markets/home-industrial.jpg' },
-  { title: 'Residential & Commercial', image: '/images/markets/home-residential-commercial.jpg' },
-  { title: 'Public / Institutional', image: '/images/markets/home-public-institutional.jpg' },
+  { title: 'Public', image: '/images/markets/home-public-institutional.jpg' },
 ] as const;
 
 export const MARKET_SECTORS = [
-  {
-    slug: 'residential',
-    name: 'Residential',
-    summary:
-      'Coordinated architectural, structural, MEP, and estimating support for homes, multi-family, and residential developments.',
-  },
   {
     slug: 'commercial',
     name: 'Commercial',
     summary:
       'Integrated preconstruction solutions for offices, retail, mixed-use, and commercial renovations.',
+  },
+  {
+    slug: 'residential',
+    name: 'Residential',
+    summary:
+      'Coordinated architectural, structural, MEP, and estimating support for homes, multi-family, and residential developments.',
   },
   {
     slug: 'industrial',
@@ -817,34 +879,23 @@ export const MARKET_SECTORS = [
       'Technical coordination for manufacturing, warehouses, processing plants, and industrial facilities.',
   },
   {
-    slug: 'government-public',
-    name: 'Government & Public',
+    slug: 'public',
+    name: 'Public',
     summary:
-      'Compliant estimating and documentation for municipal, educational, healthcare, and public facilities.',
-  },
-  {
-    slug: 'infrastructure-civil',
-    name: 'Infrastructure & Civil',
-    summary:
-      'Civil estimating for roads, highways, bridges, utilities, airports, marine, rail, and related public infrastructure — quantity takeoffs and bid support built for competitive public work.',
-  },
-  {
-    slug: 'hospitality-recreation',
-    name: 'Hospitality & Recreation',
-    summary:
-      'Design and estimating support for hospitality, recreation, and experience-driven facilities.',
+      'Estimating and documentation support for municipal, educational, healthcare, and public facilities.',
   },
 ] as const;
 
 export const MARKETS_CONTENT = {
   title: 'Markets We Serve',
   lede:
-    'Our multidisciplinary expertise extends across a diverse range of industries and building sectors throughout the United States. Whether supporting a new development, renovation, expansion, or infrastructure project, we deliver coordinated preconstruction solutions tailored to the unique technical and operational requirements of each market.',
+    'We focus on the project types where coordinated estimating and design support matter most: commercial, residential, industrial, and public work throughout the United States.',
+  specialtyNote: 'Additional specialty estimating available by trade and project scope.',
   coordinationTitle: 'Integrated Coordination Across Every Project',
   coordinationBody: [
     'Regardless of the market or project type, successful construction begins with coordinated planning. By bringing Architectural Design, Structural Engineering, MEP Engineering, and Construction Estimating together under one roof, we create fully integrated preconstruction solutions that reduce coordination gaps, minimize costly design conflicts, and streamline project delivery.',
     'Our multidisciplinary teams collaborate throughout the design process, ensuring that every structural member, mechanical system, electrical layout, plumbing network, and architectural element works together seamlessly. This coordinated approach significantly reduces the margin for error, improves constructability, shortens review cycles, and helps projects move more efficiently from concept to construction.',
-    'Cost is considered from the very beginning—not after the design is complete. By integrating our estimating professionals into the design process, we continuously evaluate material quantities, construction methods, and project costs to help develop practical, buildable solutions that align with the client\'s budget while maintaining quality, performance, and code compliance.',
+    'Cost is considered from the very beginning—not after the design is complete. By integrating our estimating professionals into the design process, we continuously evaluate material quantities, construction methods, and project costs to help develop practical, buildable solutions that align with the client\'s budget while maintaining quality, performance, and applicable code requirements.',
   ],
   closing:
     'From concept to construction, our integrated approach delivers coordinated architectural, structural, MEP, and estimating solutions that reduce risk, save time, and maximize project value.',
@@ -1121,7 +1172,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
       'Construction cost estimating and quantity takeoffs across CSI divisions',
       'Architectural drafting and construction documentation',
       'MEP engineering drawings, calculations, and energy compliance support',
-      'Structural engineering and permit-ready structural drawings',
+      'Structural engineering and permit-support structural drawings',
       'BIM modeling, rendering, and visualization',
       'Rehabilitation property acquisition and development support',
       'Pre-construction coordination and project support',
@@ -1131,6 +1182,12 @@ export const TERMS_SECTIONS: LegalSection[] = [
         title: 'Informational Purposes',
         paragraphs: [
           'All information presented on this Site is for general informational purposes only and does not constitute a binding offer, contract, or guarantee of services. Specific service agreements are governed by separate written contracts between QuantSult and the client.',
+        ],
+      },
+      {
+        title: 'Professional Licensing',
+        paragraphs: [
+          'Final engineering certification/sealing is provided by appropriately licensed professionals where required.',
         ],
       },
     ],
@@ -1227,7 +1284,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
       {
         title: 'No Professional Advice',
         paragraphs: [
-          'Content on this Site is for informational purposes and does not constitute professional advice, a bid, or a guarantee of project outcomes. Formal engagements are governed by separate written agreements.',
+          'Content on this Site is for informational purposes and does not constitute professional advice, a bid, or a guarantee of project outcomes. Formal engagements are governed by separate written agreements. Final engineering certification/sealing is provided by appropriately licensed professionals where required.',
         ],
       },
     ],

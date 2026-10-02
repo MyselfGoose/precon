@@ -16,15 +16,10 @@ const SECTOR_LINKS: Record<string, { href: string; label: string }> = {
   residential: { href: '/estimation/residential', label: 'Residential estimating' },
   commercial: { href: '/estimation/commercial', label: 'Commercial estimating' },
   industrial: { href: '/estimation/industrial', label: 'Industrial estimating' },
-  'government-public': {
-    href: '/estimation/public-projects#public-facilities',
+  public: {
+    href: '/estimation/public-projects',
     label: 'Public project estimating',
   },
-  'infrastructure-civil': {
-    href: '/estimation/public-projects#infrastructure-civil',
-    label: 'Civil & infrastructure estimating',
-  },
-  'hospitality-recreation': { href: '/services', label: 'Design & estimating services' },
 };
 
 export default function Who() {
@@ -72,7 +67,7 @@ export default function Who() {
             <h2>{MARKETS_CONTENT.title}</h2>
             <p className="prose">{MARKETS_CONTENT.lede}</p>
           </MotionReveal>
-          <MotionStagger className="grid-3">
+          <MotionStagger className="grid-4 markets-grid">
             {MARKET_SECTORS.map((sector) => {
               const link = SECTOR_LINKS[sector.slug];
               return (
@@ -95,6 +90,7 @@ export default function Who() {
               );
             })}
           </MotionStagger>
+          <p className="prose">{MARKETS_CONTENT.specialtyNote}</p>
           <div className="note">
             <b>One accountable team.</b> {MARKETS_CONTENT.closing} Looking for trade-specific
             estimating? Explore <Link href="/services/estimating">estimating services</Link> or{' '}

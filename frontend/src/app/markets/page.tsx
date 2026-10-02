@@ -7,7 +7,7 @@ import { MotionItem, MotionStagger } from '../motion';
 export const metadata = createMetadata({
   title: 'Markets We Serve',
   description:
-    'QuantSult delivers coordinated architectural, structural, MEP, and estimating solutions across residential, commercial, industrial, government, infrastructure, and hospitality markets.',
+    'QuantSult delivers coordinated architectural, structural, MEP, and estimating solutions across commercial, residential, industrial, and public markets.',
   path: '/markets',
 });
 
@@ -15,9 +15,7 @@ const SECTOR_LINKS: Record<string, { href: string; label: string }> = {
   residential: { href: '/estimation/residential', label: 'Residential estimating' },
   commercial: { href: '/estimation/commercial', label: 'Commercial estimating' },
   industrial: { href: '/estimation/industrial', label: 'Industrial estimating' },
-  'government-public': { href: '/estimation/public-projects#public-facilities', label: 'Public project estimating' },
-  'infrastructure-civil': { href: '/estimation/public-projects#infrastructure-civil', label: 'Civil & infrastructure estimating' },
-  'hospitality-recreation': { href: '/services', label: 'Design & estimating services' },
+  public: { href: '/estimation/public-projects', label: 'Public project estimating' },
 };
 
 export default function MarketsPage() {
@@ -37,7 +35,7 @@ export default function MarketsPage() {
       />
       <section className="band">
         <div className="wrap stack-lg">
-          <MotionStagger className="grid-3">
+          <MotionStagger className="grid-4 markets-grid">
             {MARKET_SECTORS.map((sector) => {
               const link = SECTOR_LINKS[sector.slug];
               return (
@@ -60,6 +58,7 @@ export default function MarketsPage() {
               );
             })}
           </MotionStagger>
+          <p className="prose">{MARKETS_CONTENT.specialtyNote}</p>
         </div>
       </section>
       <section className="band band-ground">

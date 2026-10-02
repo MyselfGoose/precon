@@ -16,7 +16,8 @@ export const IMAGE_REGISTRY: ImagePlacement[] = [
   { path: '/images/properties/commercial.jpg', route: '/', role: 'card', alt: 'Commercial building facade for Estimation & Design division' },
   { path: '/images/divisions/property-acquisition.jpg', route: '/', role: 'card', alt: 'Property acquisition opportunity' },
   { path: '/images/markets/home-industrial.jpg', route: '/', role: 'markets', alt: 'Industrial facility project' },
-  { path: '/images/markets/home-residential-commercial.jpg', route: '/', role: 'markets', alt: 'Residential and commercial project' },
+  { path: '/images/markets/home-commercial.jpg', route: '/', role: 'markets', alt: 'Commercial office building project' },
+  { path: '/images/markets/home-residential-commercial.jpg', route: '/', role: 'markets', alt: 'Residential project' },
   { path: '/images/markets/home-public-institutional.jpg', route: '/', role: 'markets', alt: 'Public institutional building project' },
 
   // Marketing hubs
@@ -35,7 +36,7 @@ export const IMAGE_REGISTRY: ImagePlacement[] = [
   { path: '/images/services/architectural-building.jpg', route: '/services/architectural-drawings', role: 'hero', alt: 'Landmark contemporary architecture' },
   { path: '/images/services/mep-engineer-jobsite.jpg', route: '/services/mep-engineering', role: 'hero', alt: 'Engineer reviewing systems on a job site' },
   { path: '/images/services/structural-steel.jpg', route: '/services/structural-engineering', role: 'hero', alt: 'Structural steel frame under construction' },
-  { path: '/images/services/structural-wood.jpg', route: '/services/permit-ready-structural-drawings', role: 'hero', alt: 'Wood and steel structural framing' },
+  { path: '/images/services/structural-wood.jpg', route: '/services/permit-support-structural-drawings', role: 'hero', alt: 'Wood and steel structural framing' },
   { path: '/images/services/bim/exterior-render.jpg', route: '/services/bim-visualization', role: 'hero', alt: 'Photorealistic architectural exterior rendering' },
   { path: '/images/hero/acquisition-hero.jpg', route: '/services/acquisitions-investments', role: 'hero', alt: 'Malibu beachfront homes representing property acquisition' },
 

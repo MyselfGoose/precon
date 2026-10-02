@@ -7,6 +7,7 @@ import {
   getServicesForCategory,
   SERVICE_CATEGORIES,
   SITE_COPY,
+  TRUST_REASONS,
 } from '@/lib/content';
 import { MotionButton, MotionItem, MotionReveal, MotionStagger } from './motion';
 import Link from 'next/link';
@@ -197,6 +198,7 @@ export function Footer() {
           </span>
           <span>Design. Build. Invest.</span>
         </div>
+        <p className="foot-licensing">{SITE_COPY.licensing}</p>
       </div>
     </footer>
   );
@@ -448,6 +450,23 @@ export function Workbook({
         <strong>Basis:</strong> {sample.basis}
       </div>
     </MotionReveal>
+  );
+}
+
+export function TrustReasons({ compact = false }: { compact?: boolean }) {
+  return (
+    <MotionStagger className={compact ? 'trust-grid trust-grid-compact' : 'trust-grid'}>
+      {TRUST_REASONS.map((reason) => (
+        <MotionItem className="trust-card" key={reason.title}>
+          <div
+            className="ico"
+            dangerouslySetInnerHTML={{ __html: ICO[reason.icon as keyof typeof ICO] }}
+          />
+          <h3>{reason.title}</h3>
+          <p>{reason.description}</p>
+        </MotionItem>
+      ))}
+    </MotionStagger>
   );
 }
 

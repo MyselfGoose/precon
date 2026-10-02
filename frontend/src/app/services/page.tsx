@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import {
+  BRAND,
   getServicesForCategory,
   SERVICE_CATEGORIES,
   SITE_COPY,
 } from '@/lib/content';
 import { ICO } from '@/lib/illustrations';
-import { CTA, PageHead } from '../components';
+import { CTA, PageHead, TrustReasons } from '../components';
 import { createMetadata } from '@/lib/metadata';
 import { MotionItem, MotionReveal, MotionStagger } from '../motion';
 
@@ -115,6 +116,15 @@ export default function ServicesPage() {
             <Link href="/services/estimating">Estimating</Link> or browse{' '}
             <Link href="/estimation/trades">CSI trade estimation</Link>.
           </div>
+
+          <div className="stack">
+            <div className="eyebrow">Trust</div>
+            <h2>Why Contractors Trust {BRAND.name}</h2>
+            <p className="prose">
+              Industry-standard organization, traceable quantities, and editable Excel deliverables.
+            </p>
+          </div>
+          <TrustReasons compact />
         </div>
       </section>
       <CTA
