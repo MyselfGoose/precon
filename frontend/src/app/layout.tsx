@@ -1,10 +1,30 @@
-/* eslint-disable @next/next/no-page-custom-font */
 import type { Metadata } from 'next';
+import { Barlow_Condensed, IBM_Plex_Mono, Inter } from 'next/font/google';
 import './globals.css';
 import { Header, Footer, WhatsAppFab } from './components';
 import { SiteAnalytics } from './site-analytics';
 import { createMetadata } from '@/lib/metadata';
 import { organizationJsonLd, servicesJsonLd, websiteJsonLd } from '@/lib/json-ld';
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  variable: '--font-barlow-condensed',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-ibm-plex-mono',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   ...createMetadata({
@@ -18,15 +38,12 @@ export const metadata: Metadata = {
 
 const structuredData = [organizationJsonLd(), websiteJsonLd(), ...servicesJsonLd()];
 
+const fontVariables = `${barlowCondensed.variable} ${inter.variable} ${ibmPlexMono.variable}`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={fontVariables}>
       <head>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
