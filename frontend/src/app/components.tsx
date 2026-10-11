@@ -33,10 +33,10 @@ function BrandMark({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
         y="23"
         textAnchor="middle"
         fill={letters}
-        fontFamily="Barlow Condensed, Arial Narrow, sans-serif"
-        fontSize="15"
-        fontWeight="700"
-        letterSpacing="0.5"
+        fontFamily="Archivo, Helvetica Neue, Arial, sans-serif"
+        fontSize="14"
+        fontWeight="800"
+        letterSpacing="0.4"
       >
         QS
       </text>
