@@ -1,3 +1,5 @@
+import { getWarehouseSummaryDisplay } from './sample-estimate';
+
 export const BRAND = {
   /** Trading / display name — Steel & Safety brand addendum (Concept A). */
   name: 'QuantSult',
@@ -14,16 +16,12 @@ export const BRAND = {
     'Preconstruction estimating, takeoffs, and design coordination for contractors and developers — with investment and acquisition support when property decisions need construction intelligence.',
   serviceArea: 'United States',
   serviceAreaLine: 'Serving project teams across the United States',
-  /**
-   * Operational contact host. QuantSult is the trading name; email and site
-   * currently use csianddesign.com until a QuantSult domain/mailbox is provisioned.
-   */
   phone: '(227) 204-9141',
   phoneDisplay: '+1 (227) 204-9141',
   phoneRaw: '+12272049141',
   whatsapp: '12272049141',
-  email: 'hello@csianddesign.com',
-  website: 'https://csianddesign.com',
+  email: 'hello@quantsult.com',
+  website: 'https://quantsult.com',
   social: {
     /** Leave empty until live Google Business Profile URL is approved. */
     googleBusiness: '',
@@ -40,17 +38,15 @@ export function isUnsetBrandValue(value: string): boolean {
 
 /**
  * Owner-supplied values still required before launch claims can be treated as verified.
- * Brand system (Steel & Safety + Concept A) is locked; trading name is QuantSult.
- * Fill the items below when the owner confirms — do not invent client logos or stats.
+ * Brand system (Steel & Safety + Concept A) is locked; trading name and host are QuantSult.
+ * Homepage proof uses clearly labeled illustrative / anonymized content until real figures arrive.
  */
 export const OWNER_PLACEHOLDERS = [
   'BRAND.legalName — registered legal entity name',
-  'Optional QuantSult domain / mailbox (until then csianddesign.com remains the operational host)',
+  'DNS / mailbox / Vercel NEXT_PUBLIC_SITE_URL + LEAD_* for quantsult.com (code defaults updated)',
   'BRAND.social.googleBusiness / linkedIn — live profile URLs',
-  'HOME_STATS — projects, states, years, repeat-client figures (homepage Proof section)',
-  'HOME_CASE_STUDIES — anonymised project type, size, result (homepage Results section)',
+  'Replace illustrative HOME_STATS / HOME_CASE_STUDIES with verified owner figures',
   'TEAM_SECTION.members — founder + key roles with photos and bios (About page)',
-  'Optional FAQ turnaround ranges and indicative starting price once owner confirms',
   'License jurisdictions for sealing professionals (spoken for by SITE_COPY.licensing)',
 ] as const;
 
@@ -466,7 +462,7 @@ export const CONTENT_SERVICES: ContentService[] = [
 export type ServiceCategoryId =
   | 'estimating'
   | 'design-engineering'
-  | 'preconstruction-support'
+  | 'bim-visualization'
   | 'investment-acquisition';
 
 export type ServiceCategory = {
@@ -501,9 +497,10 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    id: 'preconstruction-support',
-    label: 'Preconstruction Support',
+    id: 'bim-visualization',
+    label: 'BIM & Visualization',
     description: 'BIM modeling, coordination, rendering, and walkthroughs that keep the team aligned.',
+    href: '/services/bim-visualization',
     serviceSlugs: ['bim-visualization'],
   },
   {
@@ -716,8 +713,8 @@ export type TeamMember = {
 };
 
 /**
- * Meet the Team (DOCX #20). Publish members only after the owner supplies
- * verified names, bios, photos, and outsourcing disclosures.
+ * Meet the Team. Named headshots stay empty until the owner supplies verified bios.
+ * Homepage uses HOME_ROLES for an anonymized capability strip instead of fake faces.
  */
 export const TEAM_SECTION = {
   eyebrow: 'Meet the Team',
@@ -728,6 +725,22 @@ export const TEAM_SECTION = {
     'Owner action required: publish at least the Founder / Managing Director with photo, short biography, years of experience, location, and market expertise. Add Senior Estimator, Architect/Engineer, or Project Coordinator profiles when available. If any technical work is delivered through partner firms, state that structure transparently rather than implying everyone is in-house.',
   members: [] as TeamMember[],
 };
+
+/** Anonymized capability roles for the homepage real-people layer (no invented names). */
+export const HOME_ROLES = [
+  {
+    title: 'Lead estimator',
+    description: 'CSI MasterFormat takeoffs, sheet-referenced quantities, and bid-package assembly.',
+  },
+  {
+    title: 'Design coordination',
+    description: 'Architectural and engineering documentation aligned to the estimate assumptions.',
+  },
+  {
+    title: 'Bid support',
+    description: 'Scope checks, addenda tracking, and delivery timed to your bid or decision date.',
+  },
+] as const;
 
 export const ACQUISITION_CONTENT = {
   eyebrow: 'Property Acquisition',
@@ -852,19 +865,29 @@ export const HOME_COMPAT_TOOLS = [
   'Excel',
 ] as const;
 
-export const HOME_WHAT_WE_DO = [
-  {
-    title: 'Estimating',
-    description: 'Quantity takeoffs and cost estimates by CSI division.',
-    href: '/services/estimating',
-    icon: 'estimate',
-    code: 'EST',
-    image: '/images/home/estimating.jpg',
-    imageAlt: 'Construction estimating and design coordination on active plans',
-  },
+/** Full-width Estimating lead section on the homepage. */
+export const HOME_ESTIMATING = {
+  eyebrow: 'Core service',
+  title: 'Estimating & quantity takeoffs',
+  lede:
+    'This is what we lead with: CSI MasterFormat takeoffs and cost estimates delivered as editable Excel workbooks with sheet references, assumptions, and exclusions you can defend in bid review.',
+  href: '/services/estimating',
+  quoteHref: '/quote',
+  image: '/images/home/estimating.jpg',
+  imageAlt: 'Construction estimating and design coordination on active plans',
+  points: [
+    'Trade-level and full-set packages',
+    'Material and labor columns you can override',
+    'Drawing references on every major quantity',
+    'Assumptions and exclusions stated in the file',
+  ],
+} as const;
+
+/** Supporting services — visibly secondary to Estimating. */
+export const HOME_SUPPORTING_SERVICES = [
   {
     title: 'Design & Engineering',
-    description: 'Architectural, structural and MEP documentation.',
+    description: 'Architectural, structural, and MEP documentation that stays coordinated with the estimate.',
     href: '/services',
     icon: 'draft',
     code: 'DES',
@@ -872,14 +895,28 @@ export const HOME_WHAT_WE_DO = [
     imageAlt: 'Architectural building documentation for permitting and construction',
   },
   {
-    title: 'Preconstruction Support',
-    description: 'Coordination and bid support that keeps teams aligned.',
+    title: 'BIM & Visualization',
+    description: 'BIM modeling, coordination, rendering, and walkthroughs for design reviews and stakeholder alignment.',
     href: '/services/bim-visualization',
     icon: 'precon',
-    code: 'PCS',
+    code: 'BIM',
     image: '/images/home/preconstruction.jpg',
-    imageAlt: 'BIM visualization and preconstruction coordination rendering',
+    imageAlt: 'BIM visualization and coordination rendering',
   },
+] as const;
+
+/** @deprecated Prefer HOME_ESTIMATING + HOME_SUPPORTING_SERVICES. */
+export const HOME_WHAT_WE_DO = [
+  {
+    title: HOME_ESTIMATING.title,
+    description: 'Quantity takeoffs and cost estimates by CSI division.',
+    href: HOME_ESTIMATING.href,
+    icon: 'estimate',
+    code: 'EST',
+    image: HOME_ESTIMATING.image,
+    imageAlt: HOME_ESTIMATING.imageAlt,
+  },
+  ...HOME_SUPPORTING_SERVICES,
 ] as const;
 
 export const HOME_WHO_WE_SERVE = [
@@ -917,18 +954,30 @@ export const HOME_WHO_WE_SERVE = [
   },
 ] as const;
 
+/** Labels match destination page titles (CSI division pages). */
 export const HOME_TRADE_CHIPS = [
   { label: 'Concrete', href: '/trades/concrete' },
   { label: 'Masonry', href: '/trades/masonry' },
   { label: 'Metals', href: '/trades/metals' },
-  { label: 'Drywall', href: '/trades/finishes' },
-  { label: 'Roofing', href: '/trades/thermal' },
+  { label: 'Wood & Plastics', href: '/trades/wood' },
+  { label: 'Thermal & Moisture', href: '/trades/thermal' },
+  { label: 'Finishes', href: '/trades/finishes' },
   { label: 'HVAC', href: '/trades/hvac' },
   { label: 'Plumbing', href: '/trades/plumbing' },
   { label: 'Electrical', href: '/trades/electrical' },
   { label: 'Earthwork', href: '/trades/earthwork' },
-  { label: 'Flooring', href: '/trades/finishes' },
-  { label: 'Landscaping', href: '/trades/exterior' },
+  { label: 'Exterior Improvements', href: '/trades/exterior' },
+  { label: 'Utilities', href: '/trades/utilities' },
+] as const;
+
+/** Featured CSI divisions under Estimating in the Services dropdown. */
+export const NAV_ESTIMATING_TRADES = [
+  { label: 'Estimating overview', href: '/services/estimating' },
+  { label: 'Concrete', href: '/trades/concrete' },
+  { label: 'Metals', href: '/trades/metals' },
+  { label: 'Finishes', href: '/trades/finishes' },
+  { label: 'All CSI trades', href: '/trades' },
+  { label: 'Specialty trade estimating', href: '/estimation/trades' },
 ] as const;
 
 /** Homepage Investment & Acquisition section (client #17; supports Preconstruction lead). */
@@ -965,22 +1014,51 @@ export const HOME_DIVISIONS = [
 ] as const;
 
 /**
- * Homepage proof stats. Keep empty until the owner verifies every figure.
- * When non-empty, the homepage Proof section renders automatically.
+ * Illustrative proof stats — labeled as such on the homepage until the owner verifies figures.
  */
-export const HOME_STATS: readonly { value: string; label: string }[] = [];
+export const HOME_STATS: readonly { value: string; label: string }[] = [
+  { value: '2–4', label: 'Typical days · single-trade package*' },
+  { value: '5–10', label: 'Typical days · multi-trade / shell*' },
+  { value: 'CSI', label: 'MasterFormat organization' },
+  { value: 'Excel', label: 'Editable workbook deliverable' },
+];
+
+export const HOME_STATS_NOTE =
+  '*Illustrative turnaround ranges after scope confirmation. Final schedule is confirmed before work starts.';
 
 /**
- * Homepage case studies / testimonials. Keep empty until the owner approves
- * anonymised project type, size, and result for each entry.
+ * Anonymized / illustrative outcomes — no client names.
  */
 export const HOME_CASE_STUDIES: readonly {
   projectType: string;
   size: string;
   result: string;
-}[] = [];
+  disclaimer?: string;
+}[] = [
+  {
+    projectType: 'Warehouse shell takeoff',
+    size: 'Illustrative · ~15–25k SF',
+    result:
+      'Division-level workbook with sheet references returned before bid review, so the GC could reprice labor without rebuilding quantities.',
+    disclaimer: 'Anonymized example',
+  },
+  {
+    projectType: 'Multi-trade commercial package',
+    size: 'Illustrative · mid-size shell',
+    result:
+      'Concrete, metals, and finishes packaged as separate CSI tabs with exclusions listed up front — fewer scope gaps during buyout.',
+    disclaimer: 'Anonymized example',
+  },
+  {
+    projectType: 'Design-coordinated estimate',
+    size: 'Illustrative · tenant improvement',
+    result:
+      'Estimate assumptions aligned to the architectural set so value-engineering options stayed tied to measurable quantities.',
+    disclaimer: 'Anonymized example',
+  },
+];
 
-/** Homepage FAQ — turnaround and pricing stay qualitative until the owner confirms numbers. */
+/** Homepage FAQ — includes typical turnaround and starting-fee ranges (confirmed at scoping). */
 export const HOME_FAQ: [string, string][] = [
   [
     'How do you make an estimate defensible?',
@@ -988,15 +1066,15 @@ export const HOME_FAQ: [string, string][] = [
   ],
   [
     'What do I need to send you?',
-    'Start with the PDF plan set and specifications you have. Include the trades, project location, and important date. If the set is incomplete, say so. We will identify what needs to be confirmed.',
+    'Start with the PDF plan set and specifications you have. Include the trades, project location, and important date. If the set is incomplete, say so. We will identify what needs to be confirmed. Accepted uploads: PDF, ZIP, or DWG up to 3.5 MB each (4 MB total), or paste a plan-room link for larger sets.',
   ],
   [
     'How quickly can you help?',
-    'Timing depends on the size and completeness of the set. After we confirm scope, we align delivery to your bid or decision date. Rush service is available on request when capacity allows. Share your deadline with the plans and we will confirm a practical schedule before work starts.',
+    'Typical turnaround after scope confirmation: single-trade packages often 2–4 business days; multi-trade or full-set shells 5–10 business days; larger or incomplete sets are scheduled to your bid date. Rush capacity is available when the calendar allows. We confirm a practical schedule before work starts.',
   ],
   [
     'How does pricing work?',
-    'Fees are scoped from your files and explained before work starts — typically per project, per trade, or per SF depending on the package. You receive a clear engagement rather than an open-ended subscription. Ask for a fee outline when you send the set.',
+    'Fees are scoped from your files and explained before work starts. As a guide, single-trade takeoffs often start around $350–$750; multi-trade packages from about $1,200; full-set commercial shells are quoted from the set. Per-SF or per-trade pricing may apply depending on scope. You receive a clear engagement rather than an open-ended subscription.',
   ],
   [
     'What if the drawings change?',
@@ -1071,36 +1149,8 @@ export const TRUST_REASONS = [
   },
 ] as const;
 
-export const SAMPLE_ESTIMATE_SUMMARY = {
-  label: 'Sample – illustrative pricing',
-  project: 'Warehouse shell · 18,650 SF',
-  filename: 'estimate.xlsx',
-  downloadHref: '/samples/sample-estimate.xlsx',
-  downloadLabel: 'Download sample estimate',
-  columns: ['Division', 'Material', 'Labor', 'Total'] as const,
-  rows: [
-    ['03 Concrete', '$153,140', '$167,005', '$320,145'],
-    ['04 Masonry', '$48,600', '$61,200', '$109,800'],
-    ['05 Metals', '$86,400', '$54,900', '$141,300'],
-    ['06 Wood & Plastics', '$22,100', '$31,500', '$53,600'],
-    ['07 Thermal & Moisture', '$38,750', '$29,400', '$68,150'],
-    ['09 Finishes', '$41,200', '$52,800', '$94,000'],
-  ] as const,
-  total: ['Sample total', '$390,190', '$396,805', '$786,995'] as const,
-  included: [
-    'Quantity takeoffs',
-    'Material & labor pricing',
-    'Drawing references',
-    'Assumptions',
-    'Exclusions',
-    'Summary sheet',
-    'Editable Excel workbook',
-  ] as const,
-  tracesBack:
-    'Every major quantity references the sheet it came from, so a number questioned in bid review is quick to verify.',
-  toolCompatibility:
-    'Takeoffs in Bluebeam Revu, PlanSwift, and On-Screen Takeoff. Estimates arrive as editable Excel workbooks with formulas intact.',
-} as const;
+/** Homepage sample estimate summary — derived from `lib/sample-estimate.ts`. */
+export const SAMPLE_ESTIMATE_SUMMARY = getWarehouseSummaryDisplay();
 
 export const FEATURED_PROJECTS = [
   { title: 'Commercial', image: '/images/markets/home-commercial.jpg' },

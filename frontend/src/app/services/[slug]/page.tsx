@@ -274,6 +274,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const heroTitle = content.catchphrase ?? content.supportsTitle ?? content.name;
   const heroLede = content.summary;
   const showLicensing =
+    content.slug === 'architectural-drawings' ||
     content.slug === 'mep-engineering' ||
     content.slug === 'structural-engineering' ||
     content.slug === 'permit-support-structural-drawings';

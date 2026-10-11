@@ -36,21 +36,24 @@ export default function Quote() {
                 </p>
               </div>
               <div className="stack">
-                <div className="eyebrow">Prefer to talk?</div>
+                <div className="eyebrow">Prefer email or a call?</div>
+                <a className="btn btn-ghost" href={`mailto:${BRAND.email}`} style={{ alignSelf: 'flex-start' }}>
+                  {BRAND.email}
+                </a>
                 <PhoneLink className="btn btn-ghost" style={{ alignSelf: 'flex-start' }}>
                   Call {BRAND.phoneDisplay}
                 </PhoneLink>
                 <WhatsAppLink className="btn btn-ghost" style={{ alignSelf: 'flex-start' }}>
-                  WhatsApp {BRAND.phoneDisplay} →
+                  WhatsApp (optional) →
                 </WhatsAppLink>
                 <p className="prose">
-                  If the scope is easier to explain out loud, call or message us. We will take notes and tell you what
-                  to send next.
+                  The form with plan upload is the fastest path. Email and phone are equally welcome. WhatsApp remains
+                  available if you prefer it.
                 </p>
               </div>
               <div className="note">
-                <b>Have a complex scope?</b> Include drawings, specifications, property information, or a plan-room
-                link when you reach the files step.
+                <b>Files we accept.</b> PDF, ZIP, or DWG up to 3.5 MB each (4 MB total). For larger sets, paste a
+                plan-room or cloud link in the notes field on the files step.
               </div>
               <div className="draw">
                 <Svg markup={D.concrete()} />

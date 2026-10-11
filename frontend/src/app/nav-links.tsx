@@ -7,6 +7,7 @@ import { NAV_ITEMS } from '@/lib/data';
 import {
   BRAND,
   getServicesForCategory,
+  NAV_ESTIMATING_TRADES,
   SERVICE_CATEGORIES,
   SITE_COPY,
 } from '@/lib/content';
@@ -101,33 +102,49 @@ export default function NavLinks() {
             <div className="nav-dropdown-primary">
               {SERVICE_CATEGORIES.filter((category) => !category.secondary).map((category) => {
                 const services = getServicesForCategory(category);
+                const estimatingLinks =
+                  category.id === 'estimating'
+                    ? NAV_ESTIMATING_TRADES
+                    : null;
                 return (
                   <div key={category.id} className="nav-dropdown-group" role="none">
                     <p className="nav-dropdown-heading">{category.label}</p>
                     <ul>
-                      {category.href && services.length <= 1 ? (
-                        <li role="none">
-                          <Link
-                            role="menuitem"
-                            href={category.href}
-                            onClick={() => setServicesOpen(false)}
-                          >
-                            {services[0]?.name ?? category.label}
-                          </Link>
-                        </li>
-                      ) : (
-                        services.map((service) => (
-                          <li key={service.slug} role="none">
-                            <Link
-                              role="menuitem"
-                              href={`/services/${service.slug}`}
-                              onClick={() => setServicesOpen(false)}
-                            >
-                              {service.name}
-                            </Link>
-                          </li>
-                        ))
-                      )}
+                      {estimatingLinks
+                        ? estimatingLinks.map((link) => (
+                            <li key={link.href + link.label} role="none">
+                              <Link
+                                role="menuitem"
+                                href={link.href}
+                                onClick={() => setServicesOpen(false)}
+                              >
+                                {link.label}
+                              </Link>
+                            </li>
+                          ))
+                        : category.href && services.length <= 1 ? (
+                            <li role="none">
+                              <Link
+                                role="menuitem"
+                                href={category.href}
+                                onClick={() => setServicesOpen(false)}
+                              >
+                                {services[0]?.name ?? category.label}
+                              </Link>
+                            </li>
+                          ) : (
+                            services.map((service) => (
+                              <li key={service.slug} role="none">
+                                <Link
+                                  role="menuitem"
+                                  href={`/services/${service.slug}`}
+                                  onClick={() => setServicesOpen(false)}
+                                >
+                                  {service.name}
+                                </Link>
+                              </li>
+                            ))
+                          )}
                     </ul>
                   </div>
                 );
@@ -174,6 +191,9 @@ export default function NavLinks() {
         ))}
       </div>
       <div className="nav-actions" aria-label="Contact actions">
+        <a className="nav-email" href={`mailto:${BRAND.email}`}>
+          {BRAND.email}
+        </a>
         <a className="nav-tel" href={`tel:${BRAND.phoneRaw}`}>
           {BRAND.phoneDisplay}
         </a>

@@ -7,6 +7,7 @@ import { NAV_ITEMS } from '@/lib/data';
 import {
   BRAND,
   getServicesForCategory,
+  NAV_ESTIMATING_TRADES,
   SERVICE_CATEGORIES,
   SITE_COPY,
 } from '@/lib/content';
@@ -263,24 +264,32 @@ export default function MobileNav() {
                   <div id="mobile-services-groups" className="mobile-nav-service-groups">
                     {SERVICE_CATEGORIES.map((category) => {
                       const services = getServicesForCategory(category);
+                      const estimatingLinks =
+                        category.id === 'estimating' ? NAV_ESTIMATING_TRADES : null;
                       return (
                         <div key={category.id} className="mobile-nav-service-group">
                           <p className="mobile-nav-service-heading">{category.label}</p>
-                          {category.href && services.length <= 1 ? (
-                            <Link href={category.href} onClick={closeMenu}>
-                              {services[0]?.name ?? category.label}
-                            </Link>
-                          ) : (
-                            services.map((service) => (
-                              <Link
-                                key={service.slug}
-                                href={`/services/${service.slug}`}
-                                onClick={closeMenu}
-                              >
-                                {service.name}
-                              </Link>
-                            ))
-                          )}
+                          {estimatingLinks
+                            ? estimatingLinks.map((link) => (
+                                <Link key={link.href + link.label} href={link.href} onClick={closeMenu}>
+                                  {link.label}
+                                </Link>
+                              ))
+                            : category.href && services.length <= 1 ? (
+                                <Link href={category.href} onClick={closeMenu}>
+                                  {services[0]?.name ?? category.label}
+                                </Link>
+                              ) : (
+                                services.map((service) => (
+                                  <Link
+                                    key={service.slug}
+                                    href={`/services/${service.slug}`}
+                                    onClick={closeMenu}
+                                  >
+                                    {service.name}
+                                  </Link>
+                                ))
+                              )}
                         </div>
                       );
                     })}
@@ -299,9 +308,15 @@ export default function MobileNav() {
                   </Link>
                 </motion.div>
               ))}
+              <a className="nav-email" href={`mailto:${BRAND.email}`} onClick={() => setOpen(false)}>
+                Email {BRAND.email}
+              </a>
               <a className="nav-tel" href={`tel:${BRAND.phoneRaw}`} onClick={() => setOpen(false)}>
                 Call {BRAND.phoneDisplay}
               </a>
+              <Link href="/quote" onClick={closeMenu}>
+                {SITE_COPY.cta.primary}
+              </Link>
               <a
                 className="nav-wa"
                 href={`https://wa.me/${BRAND.whatsapp}`}
@@ -309,7 +324,7 @@ export default function MobileNav() {
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
               >
-                WhatsApp us
+                WhatsApp (optional)
               </a>
             </motion.nav>
           )}

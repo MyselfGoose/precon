@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://csianddesign.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://quantsult.com';
 /** Set NEXT_PUBLIC_SITE_ENV=staging on preview/staging hosts so crawlers are blocked until launch. */
 const isStaging = process.env.NEXT_PUBLIC_SITE_ENV === 'staging';
 

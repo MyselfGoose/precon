@@ -1,3 +1,5 @@
+import { getWarehouseDiv03Sample } from './sample-estimate';
+
 export type MeasureGroup = { group: string; unit: string; items: [string, string][] };
 export type Sample = { title: string; cols: string[]; rows: string[][]; total: string[]; basis: string };
 export type Trade = { slug: string; art: string; noun: string; div: string; name: string; short: string; lede: string; intro: [string,string]; sheets: string; measure: MeasureGroup[]; sample: Sample; exclusions: string[]; faq: [string,string][] };
@@ -84,9 +86,7 @@ export const TRADES: Trade[] =
     {group:'Reinforcing',unit:'LB · TON · SF',items:[['Rebar by bar size, with laps and hooks','LB / TON'],['Welded wire fabric by gauge','SF'],['Dowels, corner bars and hairpins','EA / LB'],['Chairs, bolsters and accessories','allowance'],['Fiber reinforcement in mix','CY'],['Post-tension tendons where shown','LF / LB']]},
     {group:'Placement & finish',unit:'CY · SF',items:[['Placement by method: chute, pump, crane','CY'],['Finishing by type: trowel, broom, float','SF'],['Control and construction joints, saw cut','LF'],['Curing compound or wet cure','SF'],['Sealers, hardeners and densifiers','SF'],['Pump and vibrator equipment time','HR / DAY']]},
     {group:'Embeds & misc.',unit:'EA · LF',items:[['Anchor bolts and embed plates','EA'],['Waterstop at cold joints','LF'],['Expansion joint material','LF'],['Weld plates and column base plates','EA'],['Housekeeping pads and curbs','EA / LF'],['Concrete washout and testing allowance','LS']]}],
-  sample:{title:'Warehouse shell, 18,650 SF',cols:['Description','Qty','Unit','Sheet','Material','Labor','Total'],rows:[
-    ['Continuous footings, 24"x12"','1,240','LF','S-101','18,600','14,880','33,480'],['Foundation walls, 8" CIP','3,420','SF','S-102','27,360','30,780','58,140'],['Wall formwork, two sides','6,840','SFCA','S-102','10,260','27,360','37,620'],['Slab on grade, 5" w/ 6x6 WWF','18,650','SF','S-103','74,600','46,625','121,225'],['Reinforcing steel, #5, laps incl.','24,800','LB','S-105','22,320','14,880','37,200'],['Placement, finish & cure','464','CY','-','-','32,480','32,480']],
-    total:['Division 03 subtotal','153,140','167,005','320,145'],basis:'Quantities measured from sheets S-101 through S-108 in the issued plan set. Placement CY is the sum of footing, wall, and slab volumes shown above (~92 + 84 + 288 CY). Pricing is illustrative and should be aligned to the project location. 4,000 PSI mix per Spec 03 30 00.'},
+  sample: getWarehouseDiv03Sample(),
   exclusions:['Testing and special inspection','Dewatering, shoring and underpinning','Winter protection and heated enclosures','Precast concrete (Division 03 40 00)','Sitework concrete beyond the building line (Division 32)','Permit and impact fees'],
   faq:[['Do you include laps, hooks and waste in the rebar weight?','Yes. Reinforcing is reported by weight with laps, hooks and bends calculated in per ACI 318 and the structural general notes, so the tonnage matches what a fabricator will quote rather than the theoretical bar length on the schedule. A stated waste percentage is applied to WWF and stock bar.'],
        ['Can you price to my own crew productivity?','Send your production rates and we build labor around them. Labor is carried in its own column precisely so your numbers can be substituted without touching the quantities.'],

@@ -171,12 +171,9 @@ export function Footer() {
               {SITE_COPY.contact.responseTime}
             </p>
             <div className="foot-social" aria-label="Contact and profiles">
-              <WhatsAppLink className="wa-link">
-                <span style={{ width: 20, height: 20, display: 'inline-flex' }} aria-hidden="true">
-                  {WHATSAPP_ICON}
-                </span>
-                <span className="sr-only">WhatsApp</span>
-              </WhatsAppLink>
+              <Link className="btn btn-primary btn-sm" href="/quote">
+                {SITE_COPY.cta.primary}
+              </Link>
               {showGoogle ? (
                 <a
                   href={googleUrl}
@@ -241,19 +238,22 @@ export function Footer() {
             <h5>Contact</h5>
             <ul>
               <li>
-                <PhoneLink>Call {BRAND.phoneDisplay}</PhoneLink>
+                <Link href="/quote">{SITE_COPY.cta.primary} →</Link>
               </li>
               <li>
-                <WhatsAppLink>WhatsApp us</WhatsAppLink>
+                <Link href="/quote#plans">{SITE_COPY.cta.uploadPlans} →</Link>
+              </li>
+              <li>
+                <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>
+              </li>
+              <li>
+                <PhoneLink>Call {BRAND.phoneDisplay}</PhoneLink>
               </li>
               <li>
                 <Link href="/contact">Contact</Link>
               </li>
               <li>
-                <Link href="/quote">{SITE_COPY.cta.primary} →</Link>
-              </li>
-              <li>
-                <Link href="/quote#plans">{SITE_COPY.cta.uploadPlans} →</Link>
+                <WhatsAppLink>WhatsApp (optional)</WhatsAppLink>
               </li>
             </ul>
           </div>
@@ -418,6 +418,11 @@ export function CTA({
               </MotionButton>
             )
           )}
+          <MotionButton className="motion-inline">
+            <a className="btn btn-on-dark" href={`mailto:${BRAND.email}`}>
+              Email {BRAND.email}
+            </a>
+          </MotionButton>
         </div>
       </MotionReveal>
     </section>

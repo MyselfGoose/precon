@@ -23,8 +23,8 @@ Set these on the Production environment for project `precon` (`rootDirectory`: `
 | --- | --- | --- |
 | `RESEND_API_KEY` | Yes | Without it, quote and acquisition forms return 503 |
 | `LEAD_FROM_EMAIL` | Yes | Must use a **verified** Resend domain (not `onboarding@resend.dev`) |
-| `LEAD_TO_EMAIL` | Recommended | Defaults to `hello@csianddesign.com` |
-| `NEXT_PUBLIC_SITE_URL` | Recommended | Defaults to `https://csianddesign.com` |
+| `LEAD_TO_EMAIL` | Recommended | Defaults to `hello@quantsult.com` |
+| `NEXT_PUBLIC_SITE_URL` | Recommended | Defaults to `https://quantsult.com` |
 
 Copy `.env.example` for local keys. After deploy, smoke-test:
 
@@ -34,4 +34,4 @@ Copy `.env.example` for local keys. After deploy, smoke-test:
 ### Brand contacts
 
 - Phone / WhatsApp: +1 (227) 204-9141 (`tel:+12272049141`, `https://wa.me/12272049141`)
-- Email: hello@csianddesign.com
+- Email: hello@quantsult.com

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
       'Preconstruction estimating, takeoffs, and design coordination for contractors and developers across the United States. Bid with confidence.',
     path: '/',
   }),
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://csianddesign.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://quantsult.com'),
 };
 
 const structuredData = [organizationJsonLd(), websiteJsonLd(), ...servicesJsonLd()];

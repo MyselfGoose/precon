@@ -2,19 +2,23 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { TRADES } from '@/lib/data';
 import { ICO } from '@/lib/illustrations';
-import { Button, CTA, DarkProcess, FAQ, Photo, TradeTile, TrustReasons, Workbook } from './components';
+import { Button, CTA, DarkProcess, FAQ, TradeTile, TrustReasons, Workbook } from './components';
 import {
   ABOUT_CONTENT,
   BRAND,
   FEATURED_PROJECTS,
   HOME_CASE_STUDIES,
   HOME_COMPAT_TOOLS,
+  HOME_ESTIMATING,
   HOME_FAQ,
   HOME_INVESTMENT_ACQUISITION,
   HOME_PILLARS,
+  HOME_ROLES,
   HOME_STATS,
+  HOME_STATS_NOTE,
+  HOME_SUPPORTING_SERVICES,
+  HOME_TRADE_CHIPS,
   HOME_TRUST_BAR,
-  HOME_WHAT_WE_DO,
   HOME_WHO_WE_SERVE,
   MARKETS_CONTENT,
   SAMPLE_ESTIMATE_SUMMARY,
@@ -41,11 +45,11 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd()) }}
       />
-      <section className="hero">
+      <section className="hero hero-deliverable">
         <div className="wrap hero-grid">
           <div className="stack">
             <MotionHeroItem delay={0}>
-              <div className="eyebrow">{BRAND.descriptor}</div>
+              <div className="eyebrow">CSI MasterFormat takeoffs</div>
             </MotionHeroItem>
             <MotionHeroItem delay={0.1}>
               <h1>
@@ -62,24 +66,31 @@ export default function Home() {
             <MotionHeroItem delay={0.26}>
               <div className="btn-row">
                 <Button href="/quote">{SITE_COPY.cta.primary} →</Button>
-                <Link className="btn btn-ghost" href="/services">
-                  Explore Services
+                <Link className="btn btn-ghost" href="#sample-estimate">
+                  See the sample workbook
                 </Link>
               </div>
             </MotionHeroItem>
+            <MotionHeroItem delay={0.32}>
+              <p className="hero-contact-line">
+                <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>
+                <span aria-hidden="true"> · </span>
+                <a href={`tel:${BRAND.phoneRaw}`}>{BRAND.phoneDisplay}</a>
+              </p>
+            </MotionHeroItem>
           </div>
-          <MotionHeroItem className="hero-art media hero-photo" delay={0.18} y={18} x={24} scale={0.97}>
-            <Photo
-              src="/images/hero/home-hero.jpg"
-              alt="Commercial construction jobsite with steel framing for contractor estimating"
-              fill
-              priority
-              quality={75}
-              sizes="(max-width: 1000px) 100vw, 55vw"
+          <MotionHeroItem className="hero-workbook" delay={0.18} y={18} x={24} scale={0.97}>
+            <Workbook
+              sample={TRADES[0].sample}
+              tabs={['Summary', 'Div 03', 'Div 04', 'Div 05', 'Div 09', 'Exclusions']}
             />
           </MotionHeroItem>
         </div>
       </section>
+
+      <div className="dimension-rule" aria-hidden="true">
+        <span />
+      </div>
 
       <section className="band band-ground trust-compat-band">
         <div className="wrap stack">
@@ -115,25 +126,67 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band band-ground">
+      <section className="band band-ground estimating-lead">
+        <div className="wrap stack-lg">
+          <div className="estimating-lead-grid">
+            <div className="stack">
+              <div className="eyebrow">{HOME_ESTIMATING.eyebrow}</div>
+              <h2>{HOME_ESTIMATING.title}</h2>
+              <p className="prose">{HOME_ESTIMATING.lede}</p>
+              <ul className="estimate-checklist">
+                {HOME_ESTIMATING.points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+              <div className="btn-row">
+                <Button href={HOME_ESTIMATING.quoteHref}>{SITE_COPY.cta.primary} →</Button>
+                <Link className="btn btn-ghost" href={HOME_ESTIMATING.href}>
+                  Estimating services →
+                </Link>
+              </div>
+            </div>
+            <div className="estimating-lead-media media">
+              <Image
+                src={HOME_ESTIMATING.image}
+                alt={HOME_ESTIMATING.imageAlt}
+                fill
+                sizes="(max-width: 1000px) 100vw, 45vw"
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+          </div>
+          <div className="stack">
+            <h3>Trades we estimate</h3>
+            <div className="trade-chip-grid">
+              {HOME_TRADE_CHIPS.map((chip) => (
+                <Link className="trade-chip trade-chip-link" href={chip.href} key={chip.href + chip.label}>
+                  {chip.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
-            <div className="eyebrow">What we do</div>
-            <h2>Preconstruction support that helps you bid</h2>
+            <div className="eyebrow">Supporting services</div>
+            <h2>Design, engineering, and BIM when the set needs them</h2>
+            <p className="prose">
+              Secondary to estimating — available when drawings, coordination, or visualization support the bid.
+            </p>
           </div>
-          <MotionStagger className="grid-3">
-            {HOME_WHAT_WE_DO.map((item, index) => (
+          <MotionStagger className="grid-2 supporting-services">
+            {HOME_SUPPORTING_SERVICES.map((item) => (
               <MotionItem className="motion-fill" key={item.title}>
-                <Link
-                  className={`card card-link card-media card-lg ${index === 0 ? 'card-accent-primary' : 'card-accent-secondary'}`}
-                  href={item.href}
-                >
-                  <div className="card-media-frame">
+                <Link className="card card-link card-media card-accent-secondary" href={item.href}>
+                  <div className="card-media-frame card-media-frame-sm">
                     <Image
                       src={item.image}
                       alt={item.imageAlt}
                       fill
-                      sizes="(max-width: 900px) 100vw, 33vw"
+                      sizes="(max-width: 900px) 100vw, 50vw"
                       style={{ objectFit: 'cover' }}
                     />
                   </div>
@@ -153,7 +206,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band">
+      <section className="band band-ground">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">Who we serve</div>
@@ -187,7 +240,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band band-ground">
+      <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">Markets we support</div>
@@ -217,7 +270,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band" id="sample-estimate">
+      <div className="dimension-rule" aria-hidden="true">
+        <span />
+      </div>
+
+      <section className="band band-ground" id="sample-estimate">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">The deliverable</div>
@@ -299,7 +356,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band band-ground">
+      <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">Trust</div>
@@ -362,12 +419,34 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="band">
+        <div className="wrap stack-lg">
+          <MotionReveal className="stack" y={16}>
+            <div className="eyebrow">The team behind the work</div>
+            <h2>Roles on every estimate</h2>
+            <p className="prose">
+              Named profiles and headshots publish on About once the owner approves them. Until then, here is how the
+              work is staffed — without inventing faces.
+            </p>
+          </MotionReveal>
+          <MotionStagger className="roles-grid">
+            {HOME_ROLES.map((role) => (
+              <MotionItem className="role-card" key={role.title}>
+                <h3>{role.title}</h3>
+                <p>{role.description}</p>
+              </MotionItem>
+            ))}
+          </MotionStagger>
+        </div>
+      </section>
+
       {showProofStats ? (
-        <section className="band">
+        <section className="band band-ground">
           <div className="wrap stack-lg">
             <MotionReveal className="stack" y={16}>
               <div className="eyebrow">Proof</div>
-              <h2>Built on experience.</h2>
+              <h2>What you can expect.</h2>
+              <p className="prose supporting">{HOME_STATS_NOTE}</p>
             </MotionReveal>
             <div className="stats-light">
               {HOME_STATS.map((stat, index) => {
@@ -391,15 +470,19 @@ export default function Home() {
       ) : null}
 
       {showCaseStudies ? (
-        <section className="band band-ground">
+        <section className="band">
           <div className="wrap stack-lg">
             <MotionReveal className="stack" y={16}>
               <div className="eyebrow">Results</div>
-              <h2>Project outcomes worth reviewing.</h2>
+              <h2>Illustrative project outcomes.</h2>
+              <p className="prose">
+                Anonymized examples of the kind of bid, scope, and result we deliver. Not client testimonials.
+              </p>
             </MotionReveal>
             <MotionStagger className="case-study-grid">
               {HOME_CASE_STUDIES.map((study) => (
                 <MotionItem className="case-study" key={study.projectType}>
+                  {study.disclaimer ? <p className="case-study-disclaimer">{study.disclaimer}</p> : null}
                   <p className="case-study-type">{study.projectType}</p>
                   <p className="case-study-size mono">{study.size}</p>
                   <p className="case-study-result">{study.result}</p>
@@ -410,7 +493,7 @@ export default function Home() {
         </section>
       ) : null}
 
-      <section className="band">
+      <section className="band band-ground">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">Common questions</div>
@@ -457,7 +540,7 @@ export default function Home() {
 
       <CTA
         title="Have a project to bid?"
-        text="Upload your plans. Tell us the bid date. We'll take it from there."
+        text="Upload your plans by email or the quote form. Tell us the bid date. We'll take it from there."
         uploadSecondary
       />
     </>

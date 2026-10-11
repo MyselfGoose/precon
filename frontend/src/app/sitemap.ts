@@ -3,7 +3,7 @@ import { CONTENT_SERVICES } from '@/lib/content';
 import { TRADES } from '@/lib/data';
 import { ESTIMATION_HUBS, TRADE_ESTIMATION_PAGES } from '@/lib/estimation';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://csianddesign.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://quantsult.com';
 
 function url(path: string): string {
   return new URL(path, SITE_URL).toString();
