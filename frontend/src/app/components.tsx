@@ -19,29 +19,13 @@ const WHATSAPP_ICON = (
   </svg>
 );
 
-/** Concept A monogram — Steel & Safety (dark chrome / footer). */
+/** Concept A monogram — Steel & Safety. `dark` = on dark chrome; `light` = on light surfaces. */
 function BrandMark({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
-  const isDark = variant === 'dark';
-  const square = isDark ? '#F26A1B' : '#1F2933';
-  const letters = isDark ? '#1F2933' : '#FFFFFF';
-  const bar = isDark ? '#1F2933' : '#F26A1B';
+  const src = variant === 'dark' ? '/brand/logo-mark-dark.svg' : '/brand/logo-mark-light.svg';
   return (
-    <svg className="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
-      <rect x="1" y="1" width="38" height="38" rx="4" fill={square} />
-      <text
-        x="20"
-        y="23"
-        textAnchor="middle"
-        fill={letters}
-        fontFamily="Barlow Condensed, Arial Narrow, sans-serif"
-        fontSize="14"
-        fontWeight="700"
-        letterSpacing="0.4"
-      >
-        QS
-      </text>
-      <rect x="8" y="29" width="24" height="3.5" rx="0.5" fill={bar} />
-    </svg>
+    // Decorative; parent Brand link provides the accessible name.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img className="brand-mark" src={src} alt="" width={40} height={40} decoding="async" />
   );
 }
 

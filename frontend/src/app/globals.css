@@ -70,16 +70,19 @@
   /* nav */
   .site-nav{position:sticky;top:0;z-index:60;background:rgba(18,24,32,.88);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 10px 30px -24px rgba(0,0,0,.55);}
   .nav-inner{display:flex;align-items:center;gap:20px;min-height:76px;}
-  .brand{display:flex;align-items:center;gap:12px;font-family:var(--font-heading);font-weight:700;font-size:1.05rem;letter-spacing:.04em;color:#fff;text-decoration:none;line-height:1;flex-shrink:0;text-transform:uppercase;}
-  .brand-mark{width:38px;height:38px;flex-shrink:0;display:block;filter:drop-shadow(0 4px 10px rgba(242,106,27,.28));}
-  .brand-lockup{display:flex;flex-direction:column;gap:4px;min-width:0;}
+  /* Concept A lockup — mark + QUANTSULT + tagline (matches brand/logo-lockup-*.svg) */
+  .brand{display:flex;align-items:center;gap:14px;font-family:var(--font-heading);font-weight:700;font-size:1.12rem;letter-spacing:.03em;color:#fff;text-decoration:none;line-height:1;flex-shrink:0;text-transform:uppercase;}
+  .brand-mark{width:40px;height:40px;flex-shrink:0;display:block;}
+  .brand-lockup{display:flex;flex-direction:column;gap:5px;min-width:0;justify-content:center;}
   .brand-name{display:block;color:#fff;white-space:nowrap;}
-  .brand-tagline{display:block;font-family:var(--font-body);font-size:.62rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.62);white-space:nowrap;}
+  .brand-tagline{display:block;font-family:var(--font-body);font-size:.58rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#9BA6B2;white-space:nowrap;}
+  .brand-light{color:var(--graphite);}
+  .brand-light .brand-name{color:var(--graphite);}
+  .brand-light .brand-tagline{color:#7E8B9A;}
   @media (max-width:520px){.brand-tagline{display:none;}}
   .site-foot .brand{margin-bottom:4px;}
   .site-foot .brand-name{color:#fff;}
-  .site-foot .brand-tagline{color:rgba(255,255,255,.65);}
-  .site-foot .brand-mark{filter:none;}
+  .site-foot .brand-tagline{color:#9BA6B2;}
   .nav-links{display:flex;align-items:center;gap:8px;margin-left:auto;flex-wrap:nowrap;min-width:0;}
   .nav-primary{display:flex;align-items:center;gap:2px;flex-wrap:nowrap;}
   .nav-actions{display:flex;align-items:center;gap:12px;flex-shrink:0;padding-left:16px;margin-left:8px;border-left:1px solid rgba(255,255,255,.14);}
