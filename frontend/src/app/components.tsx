@@ -19,7 +19,7 @@ const WHATSAPP_ICON = (
   </svg>
 );
 
-/** Concept A monogram — Steel & Safety. `dark` = on dark chrome; `light` = on light surfaces. */
+/** Concept B takeoff grid — Blueprint. `dark` = on dark chrome; `light` = on light surfaces. */
 function BrandMark({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
   const src = variant === 'dark' ? '/brand/logo-mark-dark.svg' : '/brand/logo-mark-light.svg';
   return (
@@ -30,11 +30,17 @@ function BrandMark({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
 }
 
 export function Brand({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
+  const name = BRAND.shortName;
+  const accentLetter = name.slice(0, 1);
+  const restOfName = name.slice(1);
   return (
     <Link className={`brand brand-${variant}`} href="/" aria-label={`${BRAND.name} home`}>
       <BrandMark variant={variant} />
       <span className="brand-lockup">
-        <span className="brand-name">{BRAND.shortName}</span>
+        <span className="brand-name">
+          <span className="brand-name-accent">{accentLetter}</span>
+          {restOfName}
+        </span>
         <span className="brand-tagline">Preconstruction · Estimating</span>
       </span>
     </Link>

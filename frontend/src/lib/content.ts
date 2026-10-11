@@ -1,7 +1,7 @@
 import { getWarehouseSummaryDisplay } from './sample-estimate';
 
 export const BRAND = {
-  /** Trading / display name — Steel & Safety brand addendum (Concept A). */
+  /** Trading / display name — Blueprint brand system (Concept B). */
   name: 'QuantSult',
   shortName: 'QUANTSULT',
   /**
@@ -38,7 +38,7 @@ export function isUnsetBrandValue(value: string): boolean {
 
 /**
  * Owner-supplied values still required before launch claims can be treated as verified.
- * Brand system (Steel & Safety + Concept A) is locked; trading name and host are QuantSult.
+ * Brand system (Blueprint + Concept B) is locked; trading name and host are QuantSult.
  * Homepage proof uses clearly labeled illustrative / anonymized content until real figures arrive.
  */
 export const OWNER_PLACEHOLDERS = [
