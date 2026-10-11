@@ -2,7 +2,7 @@ export type MeasureGroup = { group: string; unit: string; items: [string, string
 export type Sample = { title: string; cols: string[]; rows: string[][]; total: string[]; basis: string };
 export type Trade = { slug: string; art: string; noun: string; div: string; name: string; short: string; lede: string; intro: [string,string]; sheets: string; measure: MeasureGroup[]; sample: Sample; exclusions: string[]; faq: [string,string][] };
 
-/** Real-world photos for dark heroes on /trades/[slug]. TradeTile thumbs are diagram-only. */
+/** Real-world photos for dark heroes on /trades/[slug]. */
 export const DIVISION_IMAGES: Record<string, { src: string; alt: string }> = {
   concrete: {
     src: '/images/divisions/concrete.jpg',
@@ -52,6 +52,22 @@ export const DIVISION_IMAGES: Record<string, { src: string; alt: string }> = {
     src: '/images/divisions/utilities.jpg',
     alt: 'Underground utility pipe laid in a prepared trench',
   },
+};
+
+/** Dedicated TradeTile thumb photos (unique paths; heroes stay on /trades/[slug]). */
+export const TILE_IMAGES: Record<string, { src: string; alt: string }> = {
+  concrete: { src: '/images/tiles/concrete.jpg', alt: 'Concrete trade estimating' },
+  masonry: { src: '/images/tiles/masonry.jpg', alt: 'Masonry trade estimating' },
+  metals: { src: '/images/tiles/metals.jpg', alt: 'Metals trade estimating' },
+  wood: { src: '/images/tiles/wood.jpg', alt: 'Wood trade estimating' },
+  thermal: { src: '/images/tiles/thermal.jpg', alt: 'Thermal and moisture trade estimating' },
+  finishes: { src: '/images/tiles/finishes.jpg', alt: 'Finishes trade estimating' },
+  plumbing: { src: '/images/tiles/plumbing.jpg', alt: 'Plumbing trade estimating' },
+  hvac: { src: '/images/tiles/hvac.jpg', alt: 'HVAC trade estimating' },
+  electrical: { src: '/images/tiles/electrical.jpg', alt: 'Electrical trade estimating' },
+  earthwork: { src: '/images/tiles/earthwork.jpg', alt: 'Earthwork trade estimating' },
+  exterior: { src: '/images/tiles/exterior.jpg', alt: 'Exterior improvements trade estimating' },
+  utilities: { src: '/images/tiles/utilities.jpg', alt: 'Utilities trade estimating' },
 };
 
 export const TRADES: Trade[] =

@@ -1,6 +1,6 @@
 /**
  * Canonical photograph inventory — each path has exactly one allowed placement.
- * TradeTile CSI thumbs are diagram-only (no photos).
+ * TradeTile thumbs use /images/tiles/*; trade heroes use /images/divisions/*.
  * Keep in sync with public/images and scripts/check-image-uniqueness.mjs.
  */
 export type ImagePlacement = {
@@ -13,6 +13,13 @@ export type ImagePlacement = {
 export const IMAGE_REGISTRY: ImagePlacement[] = [
   // Home
   { path: '/images/hero/home-hero.jpg', route: '/', role: 'hero', alt: 'Commercial construction jobsite with steel framing for contractor estimating' },
+  { path: '/images/home/estimating.jpg', route: '/', role: 'card', alt: 'Construction estimating and design coordination on active plans' },
+  { path: '/images/home/design-engineering.jpg', route: '/', role: 'card', alt: 'Architectural building documentation for permitting and construction' },
+  { path: '/images/home/preconstruction.jpg', route: '/', role: 'card', alt: 'BIM visualization and preconstruction coordination rendering' },
+  { path: '/images/home/general-contractors.jpg', route: '/', role: 'card', alt: 'Commercial jobsite support for general contractors' },
+  { path: '/images/home/subcontractors.jpg', route: '/', role: 'card', alt: 'Trade work on site for subcontractor estimating' },
+  { path: '/images/home/developers.jpg', route: '/', role: 'card', alt: 'Development site evaluated with construction cost insight' },
+  { path: '/images/home/architects.jpg', route: '/', role: 'card', alt: 'Structural coordination during architectural design' },
   { path: '/images/properties/commercial.jpg', route: '/', role: 'card', alt: 'Commercial building facade for Estimation & Design division' },
   { path: '/images/divisions/property-acquisition.jpg', route: '/', role: 'card', alt: 'Property acquisition opportunity' },
   { path: '/images/markets/home-industrial.jpg', route: '/', role: 'markets', alt: 'Industrial facility project' },
@@ -28,7 +35,27 @@ export const IMAGE_REGISTRY: ImagePlacement[] = [
   { path: '/images/projects/residential-commercial.jpg', route: '/estimation', role: 'hero', alt: 'Residential and commercial estimation work' },
   { path: '/images/hero/contact.jpg', route: '/contact', role: 'hero', alt: 'Contact QuantSult' },
   { path: '/images/hero/who-we-serve.jpg', route: '/who-we-serve', role: 'hero', alt: 'Clients and partners we serve' },
+  { path: '/images/audience/general-contractors.jpg', route: '/who-we-serve', role: 'card', alt: 'General contractor jobsite support for bid-ready estimating' },
+  { path: '/images/audience/subcontractors.jpg', route: '/who-we-serve', role: 'card', alt: 'Trade framing work for subcontractor takeoffs' },
+  { path: '/images/audience/developers.jpg', route: '/who-we-serve', role: 'card', alt: 'Commercial development evaluated with construction cost insight' },
+  { path: '/images/audience/architects.jpg', route: '/who-we-serve', role: 'card', alt: 'Structural steel coordination during architectural design' },
+  { path: '/images/markets/who-commercial.jpg', route: '/who-we-serve', role: 'markets', alt: 'Commercial office and mixed-use construction' },
+  { path: '/images/markets/who-residential.jpg', route: '/who-we-serve', role: 'markets', alt: 'Residential and multi-family construction' },
+  { path: '/images/markets/who-industrial.jpg', route: '/who-we-serve', role: 'markets', alt: 'Industrial facility construction' },
+  { path: '/images/markets/who-public.jpg', route: '/who-we-serve', role: 'markets', alt: 'Public and institutional construction' },
   { path: '/images/hero/trades-hub.jpg', route: '/trades', role: 'hero', alt: 'CSI trade estimating expertise' },
+  { path: '/images/tiles/concrete.jpg', route: '/trades', role: 'card', alt: 'Concrete trade estimating' },
+  { path: '/images/tiles/masonry.jpg', route: '/trades', role: 'card', alt: 'Masonry trade estimating' },
+  { path: '/images/tiles/metals.jpg', route: '/trades', role: 'card', alt: 'Metals trade estimating' },
+  { path: '/images/tiles/wood.jpg', route: '/trades', role: 'card', alt: 'Wood trade estimating' },
+  { path: '/images/tiles/thermal.jpg', route: '/trades', role: 'card', alt: 'Thermal and moisture trade estimating' },
+  { path: '/images/tiles/finishes.jpg', route: '/trades', role: 'card', alt: 'Finishes trade estimating' },
+  { path: '/images/tiles/plumbing.jpg', route: '/trades', role: 'card', alt: 'Plumbing trade estimating' },
+  { path: '/images/tiles/hvac.jpg', route: '/trades', role: 'card', alt: 'HVAC trade estimating' },
+  { path: '/images/tiles/electrical.jpg', route: '/trades', role: 'card', alt: 'Electrical trade estimating' },
+  { path: '/images/tiles/earthwork.jpg', route: '/trades', role: 'card', alt: 'Earthwork trade estimating' },
+  { path: '/images/tiles/exterior.jpg', route: '/trades', role: 'card', alt: 'Exterior improvements trade estimating' },
+  { path: '/images/tiles/utilities.jpg', route: '/trades', role: 'card', alt: 'Utilities trade estimating' },
   { path: '/images/hero/quote.jpg', route: '/quote', role: 'hero', alt: 'Request a quote for estimation or design' },
 
   // Service detail heroes

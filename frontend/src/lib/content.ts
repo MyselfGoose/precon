@@ -534,6 +534,8 @@ export type AudienceSection = {
   problem: string;
   services: string[];
   deliverables: string[];
+  image: string;
+  imageAlt: string;
 };
 
 export const AUDIENCE_SECTIONS: AudienceSection[] = [
@@ -555,6 +557,8 @@ export const AUDIENCE_SECTIONS: AudienceSection[] = [
       'Documented assumptions and exclusions',
       'Summary ready for bid review',
     ],
+    image: '/images/audience/general-contractors.jpg',
+    imageAlt: 'General contractor jobsite support for bid-ready estimating',
   },
   {
     id: 'subcontractors',
@@ -574,6 +578,8 @@ export const AUDIENCE_SECTIONS: AudienceSection[] = [
       'Clear inclusions and exclusions',
       'Pricing structure you can adjust',
     ],
+    image: '/images/audience/subcontractors.jpg',
+    imageAlt: 'Trade framing work for subcontractor takeoffs',
   },
   {
     id: 'developers',
@@ -593,6 +599,8 @@ export const AUDIENCE_SECTIONS: AudienceSection[] = [
       'Editable files for internal review',
       'Clear path from estimate to next design decision',
     ],
+    image: '/images/audience/developers.jpg',
+    imageAlt: 'Commercial development evaluated with construction cost insight',
   },
   {
     id: 'architects',
@@ -612,6 +620,8 @@ export const AUDIENCE_SECTIONS: AudienceSection[] = [
       'Documented open questions',
       'Working files for the project team',
     ],
+    image: '/images/audience/architects.jpg',
+    imageAlt: 'Structural steel coordination during architectural design',
   },
 ];
 
@@ -849,6 +859,8 @@ export const HOME_WHAT_WE_DO = [
     href: '/services/estimating',
     icon: 'estimate',
     code: 'EST',
+    image: '/images/home/estimating.jpg',
+    imageAlt: 'Construction estimating and design coordination on active plans',
   },
   {
     title: 'Design & Engineering',
@@ -856,6 +868,8 @@ export const HOME_WHAT_WE_DO = [
     href: '/services',
     icon: 'draft',
     code: 'DES',
+    image: '/images/home/design-engineering.jpg',
+    imageAlt: 'Architectural building documentation for permitting and construction',
   },
   {
     title: 'Preconstruction Support',
@@ -863,6 +877,8 @@ export const HOME_WHAT_WE_DO = [
     href: '/services/bim-visualization',
     icon: 'precon',
     code: 'PCS',
+    image: '/images/home/preconstruction.jpg',
+    imageAlt: 'BIM visualization and preconstruction coordination rendering',
   },
 ] as const;
 
@@ -872,24 +888,32 @@ export const HOME_WHO_WE_SERVE = [
     description: 'Need traceable estimates before bid submission?',
     href: '/who-we-serve#general-contractors',
     icon: 'gc',
+    image: '/images/home/general-contractors.jpg',
+    imageAlt: 'Commercial jobsite support for general contractors',
   },
   {
     title: 'Subcontractors',
     description: 'Need trade-specific takeoffs without adding estimating overhead?',
     href: '/who-we-serve#subcontractors',
     icon: 'sub',
+    image: '/images/home/subcontractors.jpg',
+    imageAlt: 'Trade work on site for subcontractor estimating',
   },
   {
     title: 'Developers',
     description: 'Need cost visibility before committing to a project?',
     href: '/who-we-serve#developers',
     icon: 'precon',
+    image: '/images/home/developers.jpg',
+    imageAlt: 'Development site evaluated with construction cost insight',
   },
   {
     title: 'Architects',
     description: 'Need estimating and engineering coordination during design?',
     href: '/who-we-serve#architects',
     icon: 'arch',
+    image: '/images/home/architects.jpg',
+    imageAlt: 'Structural coordination during architectural design',
   },
 ] as const;
 
@@ -1091,24 +1115,32 @@ export const MARKET_SECTORS = [
     name: 'Commercial',
     summary:
       'Integrated preconstruction solutions for offices, retail, mixed-use, and commercial renovations.',
+    image: '/images/markets/who-commercial.jpg',
+    imageAlt: 'Commercial office and mixed-use construction',
   },
   {
     slug: 'residential',
     name: 'Residential',
     summary:
       'Coordinated architectural, structural, MEP, and estimating support for homes, multi-family, and residential developments.',
+    image: '/images/markets/who-residential.jpg',
+    imageAlt: 'Residential and multi-family construction',
   },
   {
     slug: 'industrial',
     name: 'Industrial',
     summary:
       'Technical coordination for manufacturing, warehouses, processing plants, and industrial facilities.',
+    image: '/images/markets/who-industrial.jpg',
+    imageAlt: 'Industrial facility construction',
   },
   {
     slug: 'public',
     name: 'Public',
     summary:
       'Estimating and documentation support for municipal, educational, healthcare, and public facilities.',
+    image: '/images/markets/who-public.jpg',
+    imageAlt: 'Public and institutional construction',
   },
 ] as const;
 

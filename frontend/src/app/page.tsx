@@ -2,18 +2,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { TRADES } from '@/lib/data';
 import { ICO } from '@/lib/illustrations';
-import { Button, CTA, DarkProcess, FAQ, Photo, TrustReasons, Workbook } from './components';
+import { Button, CTA, DarkProcess, FAQ, Photo, TradeTile, TrustReasons, Workbook } from './components';
 import {
+  ABOUT_CONTENT,
   BRAND,
+  FEATURED_PROJECTS,
   HOME_CASE_STUDIES,
   HOME_COMPAT_TOOLS,
   HOME_FAQ,
   HOME_INVESTMENT_ACQUISITION,
+  HOME_PILLARS,
   HOME_STATS,
-  HOME_TRADE_CHIPS,
   HOME_TRUST_BAR,
   HOME_WHAT_WE_DO,
   HOME_WHO_WE_SERVE,
+  MARKETS_CONTENT,
   SAMPLE_ESTIMATE_SUMMARY,
   SITE_COPY,
 } from '@/lib/content';
@@ -99,6 +102,20 @@ export default function Home() {
       </section>
 
       <section className="band">
+        <div className="wrap">
+          <MotionStagger className="pillars">
+            {HOME_PILLARS.map((pillar) => (
+              <MotionItem className="pillar" key={pillar.title}>
+                <div className="ico" dangerouslySetInnerHTML={{ __html: ICO[pillar.icon as keyof typeof ICO] }} />
+                <h3>{pillar.title}</h3>
+                <p>{pillar.description}</p>
+              </MotionItem>
+            ))}
+          </MotionStagger>
+        </div>
+      </section>
+
+      <section className="band band-ground">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">What we do</div>
@@ -108,16 +125,61 @@ export default function Home() {
             {HOME_WHAT_WE_DO.map((item, index) => (
               <MotionItem className="motion-fill" key={item.title}>
                 <Link
-                  className={`card card-link card-lg ${index === 0 ? 'card-accent-primary' : 'card-accent-secondary'}`}
+                  className={`card card-link card-media card-lg ${index === 0 ? 'card-accent-primary' : 'card-accent-secondary'}`}
                   href={item.href}
                 >
-                  <div
-                    className="ico"
-                    dangerouslySetInnerHTML={{ __html: ICO[item.icon as keyof typeof ICO] }}
-                  />
-                  <div className="code">{item.code}</div>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
+                  <div className="card-media-frame">
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt}
+                      fill
+                      sizes="(max-width: 900px) 100vw, 33vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                  <div className="card-media-body">
+                    <div
+                      className="ico"
+                      dangerouslySetInnerHTML={{ __html: ICO[item.icon as keyof typeof ICO] }}
+                    />
+                    <div className="code">{item.code}</div>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </div>
+                </Link>
+              </MotionItem>
+            ))}
+          </MotionStagger>
+        </div>
+      </section>
+
+      <section className="band">
+        <div className="wrap stack-lg">
+          <div className="stack">
+            <div className="eyebrow">Who we serve</div>
+            <h2>Built around your role in the bid</h2>
+          </div>
+          <MotionStagger className="grid-4">
+            {HOME_WHO_WE_SERVE.map((item) => (
+              <MotionItem className="motion-fill" key={item.title}>
+                <Link className="card card-link card-media card-accent-secondary" href={item.href}>
+                  <div className="card-media-frame card-media-frame-sm">
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt}
+                      fill
+                      sizes="(max-width: 900px) 100vw, 25vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                  <div className="card-media-body">
+                    <div
+                      className="ico"
+                      dangerouslySetInnerHTML={{ __html: ICO[item.icon as keyof typeof ICO] }}
+                    />
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </div>
                 </Link>
               </MotionItem>
             ))}
@@ -128,23 +190,30 @@ export default function Home() {
       <section className="band band-ground">
         <div className="wrap stack-lg">
           <div className="stack">
-            <div className="eyebrow">Who we serve</div>
-            <h2>Built around your role in the bid</h2>
+            <div className="eyebrow">Markets we support</div>
+            <h2>Built across the projects that shape communities</h2>
+            <p className="prose">{MARKETS_CONTENT.lede}</p>
           </div>
-          <MotionStagger className="grid-4">
-            {HOME_WHO_WE_SERVE.map((item) => (
-              <MotionItem className="motion-fill" key={item.title}>
-                <Link className="card card-link" href={item.href}>
-                  <div
-                    className="ico"
-                    dangerouslySetInnerHTML={{ __html: ICO[item.icon as keyof typeof ICO] }}
+          <MotionStagger className="grid-4 markets-grid">
+            {FEATURED_PROJECTS.map((project) => (
+              <MotionItem className="motion-fill" key={project.title}>
+                <Link className="project-card" href="/who-we-serve#markets">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw"
+                    style={{ objectFit: 'cover' }}
                   />
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
+                  <span className="label">{project.title}</span>
                 </Link>
               </MotionItem>
             ))}
           </MotionStagger>
+          <p className="prose">{MARKETS_CONTENT.specialtyNote}</p>
+          <p className="prose">
+            See how we support each market on <Link href="/who-we-serve#markets">Who We Serve</Link>.
+          </p>
         </div>
       </section>
 
@@ -237,8 +306,7 @@ export default function Home() {
             <h2>Why Contractors Trust {BRAND.name}</h2>
             <p className="prose">
               Reviewable standards under bid pressure — demonstrated in the{' '}
-              <a href="#sample-estimate">sample estimate</a> above. Named clients, case studies, and team photos
-              publish when confirmed by the owner.
+              <a href="#sample-estimate">sample estimate</a> above.
             </p>
           </div>
           <TrustReasons />
@@ -252,27 +320,50 @@ export default function Home() {
           <div className="stack">
             <div className="eyebrow">Trades</div>
             <h2>Estimating by division</h2>
-            <p className="prose">Trade-level takeoffs across the scopes contractors bid most often.</p>
+            <p className="prose">
+              CSI divisions with their own pages covering what we measure, in what units, and what we exclude by
+              default.
+            </p>
           </div>
-          <MotionStagger className="trade-chip-grid">
-            {HOME_TRADE_CHIPS.map((chip) => (
-              <MotionItem key={chip.label}>
-                <Link className="trade-chip trade-chip-link" href={chip.href}>
-                  {chip.label}
-                </Link>
-              </MotionItem>
+          <MotionStagger className="trades">
+            {TRADES.map((t) => (
+              <TradeTile trade={t} key={t.slug} />
             ))}
           </MotionStagger>
           <p>
-            <Link className="process-link" href="/trades">
+            <Link className="btn btn-ghost" href="/trades">
               View All Trades →
             </Link>
           </p>
         </div>
       </section>
 
+      <section className="band band-ground">
+        <div className="wrap stack-lg">
+          <div className="stack">
+            <div className="eyebrow">Why {BRAND.name}</div>
+            <h2>{ABOUT_CONTENT.lede}</h2>
+            <p className="prose">{ABOUT_CONTENT.paragraphs[0]}</p>
+          </div>
+          <div className="grid-3">
+            {ABOUT_CONTENT.benefits.slice(0, 3).map(([code, title, text]) => (
+              <div className="card card-accent-secondary" key={code}>
+                <div className="code">{code}</div>
+                <h3>{title}</h3>
+                <p>{text}</p>
+              </div>
+            ))}
+          </div>
+          <p className="prose">
+            See the full story on our <Link href="/about">About</Link> page, explore{' '}
+            <Link href="/services/estimating">estimating by project type and trade</Link>, or review{' '}
+            <Link href="/who-we-serve#markets">markets we serve</Link>.
+          </p>
+        </div>
+      </section>
+
       {showProofStats ? (
-        <section className="band band-ground">
+        <section className="band">
           <div className="wrap stack-lg">
             <MotionReveal className="stack" y={16}>
               <div className="eyebrow">Proof</div>
@@ -300,7 +391,7 @@ export default function Home() {
       ) : null}
 
       {showCaseStudies ? (
-        <section className="band">
+        <section className="band band-ground">
           <div className="wrap stack-lg">
             <MotionReveal className="stack" y={16}>
               <div className="eyebrow">Results</div>
@@ -319,7 +410,7 @@ export default function Home() {
         </section>
       ) : null}
 
-      <section className="band band-ground">
+      <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">Common questions</div>
@@ -355,6 +446,12 @@ export default function Home() {
               style={{ objectFit: 'cover' }}
             />
           </MotionReveal>
+        </div>
+      </section>
+
+      <section className="tagline-band">
+        <div className="wrap">
+          <h2>{BRAND.tagline}</h2>
         </div>
       </section>
 

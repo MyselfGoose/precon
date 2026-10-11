@@ -1,4 +1,4 @@
-import { FOOTER_COMPANY_ITEMS, type Trade, type Sample } from '@/lib/data';
+import { FOOTER_COMPANY_ITEMS, TILE_IMAGES, type Trade, type Sample } from '@/lib/data';
 import { D, ICO, flowArt } from '@/lib/illustrations';
 import MobileNav from './mobile-nav';
 import NavLinks from './nav-links';
@@ -467,10 +467,16 @@ export function ServiceCard({
 }
 
 export function TradeTile({ trade }: { trade: Trade }) {
+  const photo = TILE_IMAGES[trade.slug];
   return (
     <MotionItem className="motion-fill">
       <Link className="tile" href={`/trades/${trade.slug}`}>
         <div className="thumb">
+          {photo ? (
+            <div className="thumb-photo" aria-hidden="true">
+              <Image src={photo.src} alt="" fill sizes="(max-width: 700px) 100vw, 33vw" />
+            </div>
+          ) : null}
           <div className="thumb-diagram" aria-hidden="true">
             <Svg markup={D[trade.slug]()} />
           </div>
