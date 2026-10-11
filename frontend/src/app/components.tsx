@@ -19,24 +19,40 @@ const WHATSAPP_ICON = (
   </svg>
 );
 
-export function Brand() {
+/** Concept A monogram — Steel & Safety (dark chrome / footer). */
+function BrandMark({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
+  const isDark = variant === 'dark';
+  const square = isDark ? '#F26A1B' : '#1F2933';
+  const letters = isDark ? '#1F2933' : '#FFFFFF';
+  const bar = isDark ? '#1F2933' : '#F26A1B';
   return (
-    <Link className="brand" href="/" aria-label={`${BRAND.name} home`}>
-      <svg className="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
-        <circle cx="20" cy="20" r="19" fill="#8B2635" />
-        <text
-          x="20"
-          y="24"
-          textAnchor="middle"
-          fill="#F5F0E6"
-          fontFamily="Playfair Display, Georgia, serif"
-          fontSize="12"
-          fontWeight="700"
-        >
-          QS
-        </text>
-      </svg>
-      <span className="brand-name">{BRAND.shortName}</span>
+    <svg className="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+      <rect x="1" y="1" width="38" height="38" rx="4" fill={square} />
+      <text
+        x="20"
+        y="23"
+        textAnchor="middle"
+        fill={letters}
+        fontFamily="Barlow Condensed, Arial Narrow, sans-serif"
+        fontSize="15"
+        fontWeight="700"
+        letterSpacing="0.5"
+      >
+        QS
+      </text>
+      <rect x="8" y="29" width="24" height="3.5" rx="0.5" fill={bar} />
+    </svg>
+  );
+}
+
+export function Brand({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
+  return (
+    <Link className={`brand brand-${variant}`} href="/" aria-label={`${BRAND.name} home`}>
+      <BrandMark variant={variant} />
+      <span className="brand-lockup">
+        <span className="brand-name">{BRAND.shortName}</span>
+        <span className="brand-tagline">Preconstruction · Estimating</span>
+      </span>
     </Link>
   );
 }
@@ -137,13 +153,21 @@ export function Footer() {
       <div className="wrap">
         <div className="foot-grid">
           <div>
-            <div className="foot-brand">{BRAND.shortName}</div>
-            <p className="foot-sub">{BRAND.descriptor}</p>
+            <Brand variant="dark" />
+            <p className="foot-sub" style={{ marginTop: 12 }}>
+              {BRAND.descriptor}
+            </p>
             {showLegalName ? (
               <p className="foot-legal-name" style={{ marginTop: 10 }}>
                 {BRAND.legalName}
               </p>
             ) : null}
+            <p className="foot-domain">
+              {BRAND.name} operates at{' '}
+              <a href={BRAND.website} rel="noopener noreferrer">
+                {BRAND.website.replace(/^https?:\/\//, '')}
+              </a>
+            </p>
             <p className="foot-description" style={{ marginTop: 14 }}>
               {BRAND.description}
             </p>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-label="QuantSult">
+  <rect x="1" y="1" width="38" height="38" rx="4" fill="#1F2933"/>
+  <text x="20" y="23" text-anchor="middle" fill="#FFFFFF" font-family="Arial Narrow, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="0.5">QS</text>
+  <rect x="8" y="29" width="24" height="3.5" rx="0.5" fill="#F26A1B"/>
+</svg>

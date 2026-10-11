@@ -1,4 +1,5 @@
 export const BRAND = {
+  /** Trading / display name — Steel & Safety brand addendum (Concept A). */
   name: 'QuantSult',
   shortName: 'QUANTSULT',
   /**
@@ -13,6 +14,10 @@ export const BRAND = {
     'Preconstruction estimating, takeoffs, and design coordination for contractors and developers — with investment and acquisition support when property decisions need construction intelligence.',
   serviceArea: 'United States',
   serviceAreaLine: 'Serving project teams across the United States',
+  /**
+   * Operational contact host. QuantSult is the trading name; email and site
+   * currently use csianddesign.com until a QuantSult domain/mailbox is provisioned.
+   */
   phone: '(227) 204-9141',
   phoneDisplay: '+1 (227) 204-9141',
   phoneRaw: '+12272049141',
@@ -35,11 +40,12 @@ export function isUnsetBrandValue(value: string): boolean {
 
 /**
  * Owner-supplied values still required before launch claims can be treated as verified.
- * Fill BRAND.legalName, BRAND.social URLs, HOME_STATS, HOME_CASE_STUDIES, TEAM_SECTION.members,
- * and optional FAQ turnaround/pricing numbers when the owner confirms them.
+ * Brand system (Steel & Safety + Concept A) is locked; trading name is QuantSult.
+ * Fill the items below when the owner confirms — do not invent client logos or stats.
  */
 export const OWNER_PLACEHOLDERS = [
   'BRAND.legalName — registered legal entity name',
+  'Optional QuantSult domain / mailbox (until then csianddesign.com remains the operational host)',
   'BRAND.social.googleBusiness / linkedIn — live profile URLs',
   'HOME_STATS — projects, states, years, repeat-client figures (homepage Proof section)',
   'HOME_CASE_STUDIES — anonymised project type, size, result (homepage Results section)',
@@ -839,21 +845,21 @@ export const HOME_COMPAT_TOOLS = [
 export const HOME_WHAT_WE_DO = [
   {
     title: 'Estimating',
-    description: 'Quantity takeoffs and cost estimates organized to CSI MasterFormat.',
+    description: 'Quantity takeoffs and cost estimates by CSI division.',
     href: '/services/estimating',
     icon: 'estimate',
     code: 'EST',
   },
   {
     title: 'Design & Engineering',
-    description: 'Architectural, structural, MEP, and BIM documentation for permitting and construction.',
+    description: 'Architectural, structural and MEP documentation.',
     href: '/services',
     icon: 'draft',
     code: 'DES',
   },
   {
     title: 'Preconstruction Support',
-    description: 'Coordination, documentation, and bid support that keeps the team aligned.',
+    description: 'Coordination and bid support that keeps teams aligned.',
     href: '/services/bim-visualization',
     icon: 'precon',
     code: 'PCS',
@@ -1049,14 +1055,14 @@ export const SAMPLE_ESTIMATE_SUMMARY = {
   downloadLabel: 'Download sample estimate',
   columns: ['Division', 'Material', 'Labor', 'Total'] as const,
   rows: [
-    ['03 Concrete', '$142,800', '$96,400', '$239,200'],
+    ['03 Concrete', '$153,140', '$167,005', '$320,145'],
     ['04 Masonry', '$48,600', '$61,200', '$109,800'],
     ['05 Metals', '$86,400', '$54,900', '$141,300'],
     ['06 Wood & Plastics', '$22,100', '$31,500', '$53,600'],
     ['07 Thermal & Moisture', '$38,750', '$29,400', '$68,150'],
     ['09 Finishes', '$41,200', '$52,800', '$94,000'],
   ] as const,
-  total: ['Sample total', '$380,850', '$326,200', '$707,050'] as const,
+  total: ['Sample total', '$390,190', '$396,805', '$786,995'] as const,
   included: [
     'Quantity takeoffs',
     'Material & labor pricing',

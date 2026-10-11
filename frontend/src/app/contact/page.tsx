@@ -60,7 +60,9 @@ export default function Contact() {
                 <a className="v" href={`mailto:${BRAND.email}`}>
                   {BRAND.email}
                 </a>
-                <span className="hint">Project teams across the United States</span>
+                <span className="hint">
+                  {BRAND.name} operates at {BRAND.website.replace(/^https?:\/\//, '')}
+                </span>
               </div>
               <div className="contact-meta">
                 <b>Business hours</b>

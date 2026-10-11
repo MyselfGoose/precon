@@ -1,6 +1,6 @@
 /* eslint-disable */
 // @ts-nocheck
-export const C = { navy:'#2B1F1F', line:'#8B2635', copper:'#8B2635', mark:'#F5F0E6', paper:'#FAF7F2', grid:'#E0D6CC', ink:'#2B1F1F', earth:'#8C7A5B', steel:'#2F4A63', wood:'#C99A5B', white:'#FFFFFF' };
+export const C = { navy:'#1F2933', line:'#F26A1B', copper:'#F26A1B', mark:'#EEEBE6', paper:'#FFFFFF', grid:'#D5D0C8', ink:'#1F2933', earth:'#8C7A5B', steel:'#3E5C76', wood:'#C99A5B', white:'#FFFFFF' };
 let _uid = 0;
 function defs(id){
  return `<defs>
@@ -459,24 +459,24 @@ D.utilities = () => { const id=++_uid, W=480, H=320; let s=paper(W,H,id);
 
 
 export const ICO = {
- takeoff: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="6" y="8" width="30" height="34" rx="2"/><path d="M12 16h18M12 22h18M12 28h10"/><rect x="24" y="30" width="16" height="10" fill="#F5D253" stroke="currentColor"/><path d="M28 30v3M32 30v3M36 30v3"/></svg>`,
- estimate: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="6" width="36" height="36" rx="2"/><path d="M6 16h36M6 26h36M6 36h36M18 6v36M30 6v36"/><rect x="30" y="36" width="12" height="6" fill="#B65A22" stroke="none"/></svg>`,
- bid: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M10 4h20l8 8v32H10z"/><path d="M30 4v8h8"/><path d="M16 22h16M16 28h16M16 34h10"/><circle cx="34" cy="36" r="7" fill="#F5D253"/><path d="M31 36l2 2 4-4"/></svg>`,
- precon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 42h36M6 42V10"/><rect x="12" y="30" width="6" height="12" fill="#8B2635" stroke="none"/><rect x="22" y="22" width="6" height="20" fill="currentColor" stroke="none"/><rect x="32" y="14" width="6" height="28" fill="#5A3E42" stroke="currentColor"/><path d="M10 26l10-8 10 4 12-14" stroke-dasharray="3 2"/></svg>`,
- draft: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 12h36v6H6z"/><path d="M22 18v24h6V18"/><path d="M12 40l12-14 12 14z" fill="#F5D253"/><path d="M16 12V8M32 12V8"/></svg>`,
+ takeoff: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="6" y="8" width="30" height="34" rx="2"/><path d="M12 16h18M12 22h18M12 28h10"/><rect x="24" y="30" width="16" height="10" fill="#F26A1B" stroke="currentColor"/><path d="M28 30v3M32 30v3M36 30v3"/></svg>`,
+ estimate: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="6" width="36" height="36" rx="2"/><path d="M6 16h36M6 26h36M6 36h36M18 6v36M30 6v36"/><rect x="30" y="36" width="12" height="6" fill="#F26A1B" stroke="none"/></svg>`,
+ bid: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M10 4h20l8 8v32H10z"/><path d="M30 4v8h8"/><path d="M16 22h16M16 28h16M16 34h10"/><circle cx="34" cy="36" r="7" fill="#F26A1B"/><path d="M31 36l2 2 4-4" stroke="#1F2933"/></svg>`,
+ precon: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 42h36M6 42V10"/><rect x="12" y="30" width="6" height="12" fill="#F26A1B" stroke="none"/><rect x="22" y="22" width="6" height="20" fill="currentColor" stroke="none"/><rect x="32" y="14" width="6" height="28" fill="#3E5C76" stroke="currentColor"/><path d="M10 26l10-8 10 4 12-14" stroke-dasharray="3 2"/></svg>`,
+ draft: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 12h36v6H6z"/><path d="M22 18v24h6V18"/><path d="M12 40l12-14 12 14z" fill="#3E5C76"/><path d="M16 12V8M32 12V8"/></svg>`,
  headcount: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="18" cy="16" r="7"/><path d="M6 40c0-8 5-13 12-13s12 5 12 13"/><path d="M32 12h10M32 18h10M32 24h6" stroke-dasharray="2 2"/><path d="M34 32l10 10M44 32L34 42"/></svg>`,
- volume: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="28" width="8" height="14"/><rect x="18" y="20" width="8" height="22"/><rect x="30" y="10" width="8" height="32" fill="#F5D253"/><path d="M6 8l10 6 10-4 14 8" stroke-dasharray="3 2"/><path d="M36 14l4 4 4-4"/></svg>`,
+ volume: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="28" width="8" height="14"/><rect x="18" y="20" width="8" height="22"/><rect x="30" y="10" width="8" height="32" fill="#F26A1B"/><path d="M6 8l10 6 10-4 14 8" stroke-dasharray="3 2"/><path d="M36 14l4 4 4-4"/></svg>`,
  risk: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M24 4l18 8v12c0 10-8 17-18 20C14 41 6 34 6 24V12z"/><path d="M16 24l6 6 10-12"/></svg>`,
  gc: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="14" width="36" height="28"/><path d="M6 24h36M6 34h36M18 14v28M30 14v28"/><path d="M14 14V6h20v8"/></svg>`,
- sub: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="14" width="36" height="28"/><path d="M6 24h36M6 34h36M18 14v28M30 14v28"/><rect x="18" y="24" width="12" height="10" fill="#F5D253"/></svg>`,
- supplier: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 36h36v6H6z"/><rect x="10" y="26" width="12" height="10"/><rect x="26" y="26" width="12" height="10"/><rect x="18" y="16" width="12" height="10" fill="#F5D253"/></svg>`,
+ sub: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="14" width="36" height="28"/><path d="M6 24h36M6 34h36M18 14v28M30 14v28"/><rect x="18" y="24" width="12" height="10" fill="#F26A1B"/></svg>`,
+ supplier: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 36h36v6H6z"/><rect x="10" y="26" width="12" height="10"/><rect x="26" y="26" width="12" height="10"/><rect x="18" y="16" width="12" height="10" fill="#F26A1B"/></svg>`,
  arch: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M8 40L24 8l16 32z"/><path d="M16 40l8-16 8 16"/><path d="M6 40h36"/></svg>`,
 };
 
 
 export function flowArt(){
  const id=++_uid, W=920, H=150; let s='';
- const panel='#3A2A2A', panelDeep='#2B1F1F', stroke='#E8DFD8', muted='#B7A9A1';
+ const panel='#2A3644', panelDeep='#1F2933', stroke='#D8DEE4', muted='#A8B0B8';
  const doc=(x,y,label,inner)=>`<g transform="translate(${x} ${y})">${inner}${t(0,66,label,{a:'middle',f:9,w:600,c:stroke})}</g>`;
  const sheets=`<rect x="-26" y="-4" width="44" height="54" fill="${panelDeep}" stroke="${muted}" stroke-width="1.2"/><rect x="-20" y="-10" width="44" height="54" fill="${panelDeep}" stroke="${muted}" stroke-width="1.2"/><rect x="-14" y="-16" width="44" height="54" fill="${panel}" stroke="${stroke}" stroke-width="1.4"/><path d="M-6 -2h28M-6 6h28M-6 14h18" stroke="${muted}"/><path d="M-6 22h22v10h-22z" fill="${C.line}"/>`;
  const quote=`<rect x="-22" y="-16" width="44" height="54" fill="${panel}" stroke="${stroke}" stroke-width="1.4"/><path d="M-14 -4h28M-14 4h28M-14 12h16" stroke="${muted}"/><rect x="-14" y="18" width="28" height="12" fill="${C.line}"/><text x="0" y="27" font-family="IBM Plex Mono" font-size="7" font-weight="600" fill="#fff" text-anchor="middle">$ FIXED</text>`;

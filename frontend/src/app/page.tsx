@@ -44,22 +44,19 @@ export default function Home() {
             <MotionHeroItem delay={0}>
               <div className="eyebrow">{BRAND.descriptor}</div>
             </MotionHeroItem>
-            <MotionHeroItem delay={0.08}>
-              <p className="brand-hero-name">{BRAND.shortName}</p>
-            </MotionHeroItem>
-            <MotionHeroItem delay={0.15}>
+            <MotionHeroItem delay={0.1}>
               <h1>
-                Preconstruction and Construction Estimation Services that help you bid with{' '}
-                <span className="accent-word">confidence.</span>
+                Estimates you can defend in{' '}
+                <span className="accent-word">bid review.</span>
               </h1>
             </MotionHeroItem>
-            <MotionHeroItem delay={0.22}>
+            <MotionHeroItem delay={0.18}>
               <p className="lede">
-                Construction estimating and preconstruction built for contractors, subcontractors, and developers who
-                need clear numbers before the deadline.
+                Quantity takeoffs and cost estimates organized to CSI MasterFormat, delivered as editable Excel
+                workbooks for contractors and developers across the United States.
               </p>
             </MotionHeroItem>
-            <MotionHeroItem delay={0.3}>
+            <MotionHeroItem delay={0.26}>
               <div className="btn-row">
                 <Button href="/quote">{SITE_COPY.cta.primary} →</Button>
                 <Link className="btn btn-ghost" href="/services">
@@ -108,9 +105,12 @@ export default function Home() {
             <h2>Preconstruction support that helps you bid</h2>
           </div>
           <MotionStagger className="grid-3">
-            {HOME_WHAT_WE_DO.map((item) => (
+            {HOME_WHAT_WE_DO.map((item, index) => (
               <MotionItem className="motion-fill" key={item.title}>
-                <Link className="card card-link card-lg" href={item.href}>
+                <Link
+                  className={`card card-link card-lg ${index === 0 ? 'card-accent-primary' : 'card-accent-secondary'}`}
+                  href={item.href}
+                >
                   <div
                     className="ico"
                     dangerouslySetInnerHTML={{ __html: ICO[item.icon as keyof typeof ICO] }}
@@ -148,13 +148,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band">
+      <section className="band" id="sample-estimate">
         <div className="wrap stack-lg">
           <div className="stack">
-            <div className="eyebrow">See What You Receive</div>
-            <h2>Your estimate isn&apos;t just a number. It&apos;s a working bid document.</h2>
+            <div className="eyebrow">The deliverable</div>
+            <h2>Real estimate structure — numbers you can open and check.</h2>
             <p className="prose">
-              A line-item workbook you can open, edit, and hand to a project manager — not a locked PDF.
+              A CSI MasterFormat workbook with sheet references, material and labor columns, and live totals. This is
+              the work product: editable Excel, not a locked PDF.
             </p>
           </div>
           <div className="deliverable-layout">
@@ -235,7 +236,9 @@ export default function Home() {
             <div className="eyebrow">Trust</div>
             <h2>Why Contractors Trust {BRAND.name}</h2>
             <p className="prose">
-              The standards that make an estimate reviewable under bid pressure.
+              Reviewable standards under bid pressure — demonstrated in the{' '}
+              <a href="#sample-estimate">sample estimate</a> above. Named clients, case studies, and team photos
+              publish when confirmed by the owner.
             </p>
           </div>
           <TrustReasons />
