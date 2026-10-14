@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useId, useRef, useState } from 'react';
 import { NAV_ITEMS } from '@/lib/data';
 import {
-  BRAND,
   getServicesForCategory,
   NAV_ESTIMATING_TRADES,
   SERVICE_CATEGORIES,
@@ -190,13 +189,7 @@ export default function NavLinks() {
           </Link>
         ))}
       </div>
-      <div className="nav-actions" aria-label="Contact actions">
-        <a className="nav-email" href={`mailto:${BRAND.email}`}>
-          {BRAND.email}
-        </a>
-        <a className="nav-tel" href={`tel:${BRAND.phoneRaw}`}>
-          {BRAND.phoneDisplay}
-        </a>
+      <div className="nav-actions" aria-label="Primary action">
         <Link className="btn btn-primary btn-sm" href="/quote">
           {SITE_COPY.cta.primary}
         </Link>

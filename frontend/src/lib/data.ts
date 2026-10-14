@@ -330,12 +330,10 @@ export const NAV_ITEMS: NavLinkItem[] = [
 /** @deprecated Use NAV_ITEMS — same destinations for the floating mobile panel. */
 export const MOBILE_NAV_ITEMS = NAV_ITEMS;
 
-/** Company column in the trimmed footer. */
+/** Company column in the trimmed footer (Services / Company / Contact / legal). */
 export const FOOTER_COMPANY_ITEMS: NavLinkItem[] = [
   { label: 'About', href: '/about' },
   { label: 'Who We Serve', href: '/who-we-serve' },
-  { label: 'Markets', href: '/who-we-serve#markets' },
-  { label: 'Trades', href: '/trades' },
   { label: 'How It Works', href: '/how-it-works' },
 ];
 

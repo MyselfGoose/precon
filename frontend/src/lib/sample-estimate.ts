@@ -147,7 +147,7 @@ export const WAREHOUSE_SAMPLE = {
   projectLabel: 'Warehouse shell · 18,650 SF',
   filename: 'estimate.xlsx',
   downloadHref: '/samples/sample-estimate.xlsx',
-  downloadLabel: 'Download sample estimate',
+  downloadLabel: 'Download sample estimate (illustrative pricing)',
   label: 'Sample – illustrative pricing',
   placementCy: 464,
   placementBasis:

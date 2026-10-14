@@ -27,7 +27,7 @@ export default function About() {
         }
         lede={ABOUT_CONTENT.lede}
         image="/images/approach/building.jpg"
-        imageAlt="American Colonial-style home: QuantSult preconstruction partnership"
+        imageAlt="Commercial construction coordination for QuantSult preconstruction partnership"
         priority
       />
       <section className="band">

@@ -177,9 +177,6 @@ export function Footer() {
               {SITE_COPY.contact.responseTime}
             </p>
             <div className="foot-social" aria-label="Contact and profiles">
-              <Link className="btn btn-primary btn-sm" href="/quote">
-                {SITE_COPY.cta.primary}
-              </Link>
               {showGoogle ? (
                 <a
                   href={googleUrl}

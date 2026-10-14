@@ -46,7 +46,7 @@ export const OWNER_PLACEHOLDERS = [
   'DNS / mailbox / Vercel NEXT_PUBLIC_SITE_URL + LEAD_* for quantsult.com (code defaults updated)',
   'BRAND.social.googleBusiness / linkedIn — live profile URLs',
   'Replace illustrative HOME_STATS / HOME_CASE_STUDIES with verified owner figures',
-  'TEAM_SECTION.members — founder + key roles with photos and bios (About page)',
+  'TEAM_SECTION.members — replace leadership profile with named founder photo + bio (About page)',
   'License jurisdictions for sealing professionals (spoken for by SITE_COPY.licensing)',
 ] as const;
 
@@ -433,6 +433,68 @@ export const CONTENT_SERVICES: ContentService[] = [
     ctaText: 'Share drawings, models, or concept materials and we will define the right visualization package.',
   },
   {
+    slug: 'preconstruction-support',
+    code: 'PCS',
+    ico: 'precon',
+    name: 'Preconstruction Support',
+    summary:
+      'Coordination, documentation, and bid support that keep estimating, drawings, and trade packages aligned through the bid period.',
+    supportsTitle: 'Coordination, documentation & bid support',
+    details:
+      'Preconstruction Support covers the work that sits beside the estimate: BIM coordination, clash review, document control, and bid-day support. When drawings, models, and trade packages need to stay aligned under a deadline, we help contractors and developers close the gaps before they become change orders.',
+    points: [
+      'BIM coordination and clash review against the bid set',
+      'Document control for addenda, RFIs, and revision tracking',
+      'Bid-day support timed to your submission deadline',
+      'Coordination between estimating, architecture, and engineering',
+    ],
+    photoSrc: '/images/home/preconstruction.jpg',
+    photoAlt: 'Preconstruction coordination on drawings and bid documents',
+    sectionsEyebrow: 'What we support',
+    sectionsTitle: 'How preconstruction support shows up on a bid',
+    sections: [
+      {
+        title: 'BIM coordination',
+        items: [
+          'Model-based coordination against architectural and engineering sets',
+          'Clash identification before fabrication and buyout',
+          'Quantity feedback that stays tied to the estimate workbook',
+        ],
+      },
+      {
+        title: 'Clash review',
+        items: [
+          'Cross-trade conflict checks on critical systems',
+          'Documented open issues for the project team',
+          'Follow-up on revisions that affect scope or cost',
+        ],
+      },
+      {
+        title: 'Bid-day support',
+        items: [
+          'Scope clarifications while the bid clock is running',
+          'Addenda and revision coordination against the takeoff',
+          'Summary packages your team can defend in review',
+        ],
+      },
+      {
+        title: 'Document control',
+        items: [
+          'Organized drawing and specification references',
+          'Assumption and exclusion tracking across revisions',
+          'Clear handoff between estimating and design support',
+        ],
+      },
+    ],
+    whyUs: [
+      'Estimating is the core deliverable. Preconstruction Support is the layer that keeps the set, the model, and the bid package consistent when drawings change mid-cycle.',
+      'BIM modeling, rendering, and walkthroughs remain available as a focused visualization service when stakeholders need to see the project before construction begins.',
+    ],
+    ctaTitle: 'Discuss preconstruction support',
+    ctaText:
+      'Share your bid date, drawing set, and whether you need coordination, documentation, or bid-day support alongside the estimate.',
+  },
+  {
     slug: 'acquisitions-investments',
     code: 'INV',
     ico: 'bid',
@@ -462,7 +524,7 @@ export const CONTENT_SERVICES: ContentService[] = [
 export type ServiceCategoryId =
   | 'estimating'
   | 'design-engineering'
-  | 'bim-visualization'
+  | 'preconstruction-support'
   | 'investment-acquisition';
 
 export type ServiceCategory = {
@@ -497,11 +559,11 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     ],
   },
   {
-    id: 'bim-visualization',
-    label: 'BIM & Visualization',
-    description: 'BIM modeling, coordination, rendering, and walkthroughs that keep the team aligned.',
-    href: '/services/bim-visualization',
-    serviceSlugs: ['bim-visualization'],
+    id: 'preconstruction-support',
+    label: 'Preconstruction Support',
+    description: 'Coordination, documentation, bid support, and BIM visualization when the set needs them.',
+    href: '/services/preconstruction-support',
+    serviceSlugs: ['preconstruction-support', 'bim-visualization'],
   },
   {
     id: 'investment-acquisition',
@@ -601,7 +663,7 @@ export const AUDIENCE_SECTIONS: AudienceSection[] = [
   },
   {
     id: 'architects',
-    name: 'Architects',
+    name: 'Architects / Designers',
     code: 'ARC',
     icon: 'arch',
     problem: 'Need estimating and engineering coordination during design?',
@@ -662,9 +724,9 @@ export const TRADE_CONTENT = [
 export const ABOUT_CONTENT = {
   lede: 'We believe preconstruction shouldn\'t be fragmented.',
   paragraphs: [
-    'Contractors, developers, and investors shouldn\'t have to coordinate multiple firms to move a project from concept to construction. Our mission is to bring every essential preconstruction service under one roof — a single partner for planning, estimating, design coordination, and construction documentation.',
-    'From quantity takeoffs and cost estimating to BIM, drawings, and engineering support prepared to applicable code requirements, we help teams make informed decisions with clear documentation.',
-    'Whether you\'re bidding your next project, evaluating a property, or preparing a development for construction, we focus on documented assumptions, traceable quantities, and deliverables your team can use.',
+    'Contractors, developers, and investors shouldn\'t have to coordinate multiple firms to move a project from concept to construction. Our mission is to bring every essential preconstruction service under one roof, creating a single, trusted partner for planning, estimating, design coordination, and construction documentation.',
+    'From quantity takeoffs and cost estimating to BIM coordination, construction drawings, engineering support, and documentation prepared to applicable code requirements, we combine technical expertise with technology-driven workflows to help our clients make informed decisions with confidence.',
+    'We are committed to raising the standard of preconstruction by replacing assumptions with data, improving collaboration through intelligent coordination, and delivering solutions that are reliable and built around our clients\' success. Whether you\'re bidding your next project, evaluating a property acquisition, or preparing a development for construction, our goal is to provide the expertise, insight, and support you need all under one roof.',
   ],
   benefits: [
     [
@@ -713,17 +775,25 @@ export type TeamMember = {
 };
 
 /**
- * Meet the Team. Named headshots stay empty until the owner supplies verified bios.
- * Homepage uses HOME_ROLES for an anonymized capability strip instead of fake faces.
+ * Meet the Team. Leadership profile is honest and unnamed until the owner supplies
+ * a verified photo and biography. Homepage keeps HOME_ROLES as a capability strip.
  */
 export const TEAM_SECTION = {
   eyebrow: 'Meet the Team',
   title: 'The people behind the takeoff.',
   lede:
-    'Estimators, designers, and coordinators who treat your bid deadline as their own. Named profiles will appear here once the owner approves biographies and headshots.',
+    'Estimators, designers, and coordinators who treat your bid deadline as their own. Swap this leadership profile for a named founder headshot and biography when ready.',
   pendingNote:
-    'Owner action required: publish at least the Founder / Managing Director with photo, short biography, years of experience, location, and market expertise. Add Senior Estimator, Architect/Engineer, or Project Coordinator profiles when available. If any technical work is delivered through partner firms, state that structure transparently rather than implying everyone is in-house.',
-  members: [] as TeamMember[],
+    'Owner action: replace the leadership profile with the Founder / Managing Director name, photo, short biography, years of experience, location, and market expertise. Add Senior Estimator, Architect/Engineer, or Project Coordinator profiles when available. If any technical work is delivered through partner firms, state that structure transparently.',
+  members: [
+    {
+      name: 'Leadership',
+      role: 'Founder / Managing Director',
+      bio: `Leads ${BRAND.name}'s preconstruction practice day to day — CSI MasterFormat takeoffs, cost estimates, and design coordination for U.S. contractors and developers. Focuses on scope review, editable Excel deliverables, and keeping work aligned to the bid or decision date. Contact the practice at ${BRAND.email} or ${BRAND.phoneDisplay}. Named biography and headshot will replace this profile when the owner publishes them.`,
+      location: BRAND.serviceArea,
+      expertise: 'Construction estimating · Design coordination · Bid support',
+    },
+  ] as TeamMember[],
 };
 
 /** Anonymized capability roles for the homepage real-people layer (no invented names). */
@@ -844,11 +914,6 @@ export const HOME_PILLARS = [
     description: 'Labor, material, and regional market insight that strengthens every decision.',
     icon: 'precon',
   },
-  {
-    title: 'Strategic Acquisitions',
-    description: 'Off-market opportunities and property acquisition with long-term value.',
-    icon: 'bid',
-  },
 ] as const;
 
 export const HOME_TRUST_BAR = [
@@ -895,28 +960,45 @@ export const HOME_SUPPORTING_SERVICES = [
     imageAlt: 'Architectural building documentation for permitting and construction',
   },
   {
-    title: 'BIM & Visualization',
-    description: 'BIM modeling, coordination, rendering, and walkthroughs for design reviews and stakeholder alignment.',
-    href: '/services/bim-visualization',
+    title: 'Preconstruction Support',
+    description: 'Coordination, documentation, and bid support — with BIM visualization when the set needs it.',
+    href: '/services/preconstruction-support',
     icon: 'precon',
-    code: 'BIM',
+    code: 'PCS',
     image: '/images/home/preconstruction.jpg',
-    imageAlt: 'BIM visualization and coordination rendering',
+    imageAlt: 'Preconstruction coordination on drawings and bid documents',
   },
 ] as const;
 
-/** @deprecated Prefer HOME_ESTIMATING + HOME_SUPPORTING_SERVICES. */
+/** Homepage What We Do — three equal cards matching client IA. */
 export const HOME_WHAT_WE_DO = [
   {
-    title: HOME_ESTIMATING.title,
-    description: 'Quantity takeoffs and cost estimates by CSI division.',
+    title: 'Estimating',
+    description: 'Quantity takeoffs and cost estimates organized to CSI MasterFormat.',
     href: HOME_ESTIMATING.href,
     icon: 'estimate',
     code: 'EST',
     image: HOME_ESTIMATING.image,
     imageAlt: HOME_ESTIMATING.imageAlt,
   },
-  ...HOME_SUPPORTING_SERVICES,
+  {
+    title: 'Design & Engineering',
+    description: 'Architectural, structural, and MEP documentation coordinated with the estimate.',
+    href: '/services',
+    icon: 'draft',
+    code: 'DES',
+    image: '/images/home/design-engineering.jpg',
+    imageAlt: 'Architectural building documentation for permitting and construction',
+  },
+  {
+    title: 'Preconstruction Support',
+    description: 'Coordination, documentation, and bid support for the teams running the set.',
+    href: '/services/preconstruction-support',
+    icon: 'precon',
+    code: 'PCS',
+    image: '/images/home/preconstruction.jpg',
+    imageAlt: 'Preconstruction coordination on drawings and bid documents',
+  },
 ] as const;
 
 export const HOME_WHO_WE_SERVE = [
@@ -945,7 +1027,7 @@ export const HOME_WHO_WE_SERVE = [
     imageAlt: 'Development site evaluated with construction cost insight',
   },
   {
-    title: 'Architects',
+    title: 'Architects / Designers',
     description: 'Need estimating and engineering coordination during design?',
     href: '/who-we-serve#architects',
     icon: 'arch',
@@ -953,6 +1035,53 @@ export const HOME_WHO_WE_SERVE = [
     imageAlt: 'Structural coordination during architectural design',
   },
 ] as const;
+
+/** CSI Trade Expertise PDF audience bubbles — client wording on Estimating. */
+export const ESTIMATING_AUDIENCE_BUBBLES = [
+  {
+    title: 'General Contractors',
+    body: 'From quantity takeoffs and cost estimating to BIM coordination and construction documentation, we provide comprehensive preconstruction support that helps general contractors bid with confidence, reduce risk, and deliver successful projects—all through a single, trusted partner.',
+  },
+  {
+    title: 'Subcontractors',
+    body: 'Behind every successful project is a skilled subcontractor whose work brings the vision to life. We understand the pressure of pricing projects accurately while balancing tight deadlines and competitive markets. Our team provides precise quantity takeoffs, trade-specific cost estimates, and dependable preconstruction support, giving you the confidence to bid smarter, protect your margins, and focus on what you do best—building with excellence.',
+  },
+  {
+    title: 'Heavy Civil & Infrastructure — Public Projects',
+    body: 'We provide accurate estimates, quantity takeoffs, and preconstruction support for roads, bridges, utilities, and public infrastructure projects, helping contractors bid competitively and execute with confidence.',
+  },
+  {
+    title: 'MEP — Mechanical Electrical Plumbing',
+    body: 'Our MEP estimating services deliver accurate quantity takeoffs and cost estimates for mechanical, electrical, and plumbing systems, helping contractors bid confidently with coordinated, trade-specific preconstruction support.',
+  },
+  {
+    title: 'Structural',
+    body: 'We provide detailed structural estimates and quantity takeoffs for concrete, steel, masonry, wood framing, and other structural systems, helping contractors build accurate bids with confidence from the ground up.',
+  },
+  {
+    title: 'HVAC',
+    body: 'Our HVAC estimating services provide accurate quantity takeoffs and cost estimates for heating, ventilation, and air conditioning systems, helping mechanical contractors bid efficiently, reduce risk, and improve project profitability.',
+  },
+] as const;
+
+/**
+ * Client-voice takeoff paragraphs from CSI Trade Expertise PDF.
+ * Flooring maps to the Finishes division page (`/trades/finishes`).
+ */
+export const TRADE_CLIENT_VOICE: Record<string, { title: string; body: string }> = {
+  masonry: {
+    title: 'Masonry Takeoff Estimating',
+    body: 'When performing masonry takeoff estimating jobs, we provide you with precise material takeoffs along with their zip codes on EXCEL sheets with marked-up plans. We have AACE and AIQS certified professional estimators that can make your construction process super easy by delivering a proper consultation for masonry.',
+  },
+  concrete: {
+    title: 'Concrete Takeoff Estimating',
+    body: 'We invite all of our trades to catch the success ray and get the estimation plan for sidewalks, driveways, and other sorts of concrete work, etc.',
+  },
+  finishes: {
+    title: 'Flooring Takeoff Estimating',
+    body: 'Keeping the vast variety of flooring available in the market, our estimators can help you identify which flooring options fit your project scope and budget.',
+  },
+};
 
 /** Labels match destination page titles (CSI division pages). */
 export const HOME_TRADE_CHIPS = [

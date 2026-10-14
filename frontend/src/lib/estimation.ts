@@ -105,7 +105,7 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
     lede:
       'We help General Contractors win more work with accurate quantity takeoffs, regional market pricing, and professionally prepared bid proposals.',
     intro: [
-      'Backed by market intelligence informed by current supplier and labor market data and regional cost analysis, our estimates reflect local labor conditions, material pricing trends, subcontractor availability, and current bidding activity in your market. The result is clear, competitive, and well-structured bids that give you the confidence to pursue more projects while protecting your margins and profitability.',
+      'Backed by market intelligence informed by current supplier and labor market data and regional cost analysis, our estimates reflect local labor conditions, subcontractor availability, and current bidding activity in your market. The result is clear, competitive, and well-structured bids that give you the confidence to pursue more projects while protecting your margins and profitability.',
       'General Construction covers the full GC bid package across commercial, residential, and industrial work — coordinated by trade in CSI Format, with specialty scopes available through our singular trade estimation pages.',
     ],
     imageSrc: '/images/estimation/general-construction.jpg',
@@ -115,7 +115,7 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
       {
         name: 'Commercial Projects',
         description:
-          'Our commercial estimating services are designed to help General Contractors win more bids with confidence. We combine accurate quantity takeoffs, professional bid proposals, and regional market analysis to deliver competitive pricing that aligns with current labor and material trends while protecting profitability. Prepared in CSI Format and coordinated by trade, every estimate supports a smoother bidding process, stronger subcontractor coverage, reduced risk, and a better chance of securing commercial projects.',
+          'Our commercial estimating services are designed to help General Contractors win more bids with confidence. We combine accurate quantity takeoffs, professional bid proposals, and regional market analysis to deliver competitive pricing that aligns with current supplier and labor market data while protecting profitability. Prepared in CSI Format and coordinated by trade, every estimate supports a smoother bidding process, stronger subcontractor coverage, reduced risk, and a better chance of securing commercial projects.',
         imageSrc: '/images/estimation/gc-commercial.jpg',
         imageAlt: 'Commercial streetscape for general construction commercial projects',
         watermark: 'Commercial Projects',
@@ -145,7 +145,7 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
     lede:
       'Our commercial estimating services are designed to help General Contractors win more bids with confidence.',
     intro: [
-      'We combine accurate quantity takeoffs, professional bid proposals, and regional market analysis to deliver competitive pricing that aligns with current labor and material trends while protecting profitability. Prepared in CSI Format and coordinated by trade, every estimate supports a smoother bidding process, stronger subcontractor coverage, reduced risk, and a better chance of securing commercial projects.',
+      'We combine accurate quantity takeoffs, professional bid proposals, and regional market analysis to deliver competitive pricing that aligns with current supplier and labor market data while protecting profitability. Prepared in CSI Format and coordinated by trade, every estimate supports a smoother bidding process, stronger subcontractor coverage, reduced risk, and a better chance of securing commercial projects.',
     ],
     imageSrc: '/images/estimation/commercial.jpg',
     imageAlt: 'Commercial office building for commercial project estimating',
@@ -560,7 +560,7 @@ export const ESTIMATION_HUBS: EstimationHub[] = [
       },
     ],
     whyUs:
-      'Public work demands precision, and we deliver it through CSI Format-compliant estimates, professional bid proposals, informed by current supplier and labor market data, and advanced BIM estimating that improves quantity accuracy, coordination, and scope clarity. By analyzing historical project data alongside current market conditions, we develop competitive solutions for every bid, helping you win public contracts with confidence while protecting your profitability.',
+      'Public work demands precision, and we deliver it through CSI Format-compliant estimates, professional bid proposals, informed by current supplier and labor market data, and BIM-assisted quantity coordination that improves quantity accuracy, coordination, and scope clarity. By analyzing historical project data alongside current market conditions, we develop competitive solutions for every bid, helping you win public contracts with confidence while protecting your profitability.',
   },
   {
     slug: 'trades',
@@ -777,7 +777,7 @@ export const TRADE_ESTIMATION_PAGES: TradeEstimationPage[] = [
       'BIM Estimating',
     ],
     whyUs:
-      'Paving projects depend on accurate material quantities, production planning, and market-based pricing. Our estimators analyze current labor and material trends to deliver precise estimates that help you bid competitively, protect your margins, and execute projects with confidence.',
+      'Paving projects depend on accurate material quantities, production planning, and market-based pricing. Our estimators analyze current supplier and labor market data to deliver precise estimates that help you bid competitively, protect your margins, and execute projects with confidence.',
     ctaTitle: 'Request Your Paving Estimate',
     ctaText:
       'Win more paving projects with accurate takeoffs, data-driven pricing, and professional bid proposals tailored to your project.',

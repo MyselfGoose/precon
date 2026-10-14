@@ -9,7 +9,7 @@ import { MotionItem, MotionReveal, MotionStagger } from '../motion';
 export const metadata = createMetadata({
   title: 'Who We Serve',
   description:
-    'QuantSult supports general contractors, subcontractors, developers, and architects with trade-specific preconstruction estimating and design coordination.',
+    'QuantSult supports general contractors, subcontractors, developers, and architects / designers with trade-specific preconstruction estimating and design coordination.',
   path: '/who-we-serve',
 });
 
@@ -154,6 +154,14 @@ export default function Who() {
             })}
           </MotionStagger>
           <p className="prose">{MARKETS_CONTENT.specialtyNote}</p>
+          <MotionReveal className="stack" y={16}>
+            <h3>{MARKETS_CONTENT.coordinationTitle}</h3>
+            {MARKETS_CONTENT.coordinationBody.map((paragraph) => (
+              <p className="prose" key={paragraph.slice(0, 48)}>
+                {paragraph}
+              </p>
+            ))}
+          </MotionReveal>
           <div className="note">
             <b>One accountable team.</b> {MARKETS_CONTENT.closing} Looking for trade-specific
             estimating? Explore <Link href="/services/estimating">estimating services</Link> or{' '}

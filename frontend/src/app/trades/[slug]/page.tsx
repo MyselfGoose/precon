@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { DIVISION_IMAGES, TRADES } from '@/lib/data';
+import { TRADE_CLIENT_VOICE } from '@/lib/content';
 import { CTA, FAQ, PageHead, PhoneLink, Svg, Workbook } from '../../components';
 import { D } from '@/lib/illustrations';
 import { createMetadata } from '@/lib/metadata';
@@ -30,6 +31,7 @@ export default async function TradePage({ params }: { params: Promise<{ slug: st
   const next = TRADES[(idx + 1) % TRADES.length];
   const units = [...new Set(tr.measure.flatMap((m) => m.unit.split(' · ')))].join(' · ');
   const photo = DIVISION_IMAGES[tr.slug];
+  const clientVoice = TRADE_CLIENT_VOICE[tr.slug];
 
   return (
     <>
@@ -62,6 +64,11 @@ export default async function TradePage({ params }: { params: Promise<{ slug: st
 
       <section className="band">
         <div className="wrap stack-lg">
+          {clientVoice ? (
+            <div className="note">
+              <b>{clientVoice.title}.</b> {clientVoice.body}
+            </div>
+          ) : null}
           <div className="split" style={{ alignItems: 'start' }}>
             <div className="stack">
               <div className="eyebrow">Approach</div>

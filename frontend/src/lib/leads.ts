@@ -105,7 +105,7 @@ export function validateQuoteFields(data: FormData): { errors: FieldErrors; payl
     errors.due = 'Choose today or a future date.';
   }
   if (notes.length < 20) errors.notes = 'Add at least 20 characters describing the scope or decision.';
-  enforceTextLength(notes, MAX_NOTES_LENGTH, 'Scope notes', errors, 'notes');
+  enforceTextLength(notes, MAX_NOTES_LENGTH, 'Message', errors, 'notes');
   enforceTextLength(missing, MAX_MISSING_LENGTH, 'Known gaps', errors, 'missing');
   if (!contactConsent) errors['contact-consent'] = 'Consent is required before submitting.';
 
@@ -230,8 +230,8 @@ export function buildQuoteEmail(payload: QuoteLeadPayload, attachmentNames: stri
     ['Stage', payload.stage],
     ['Services / divisions', payload.trades.join(', ')],
     ['Location', payload.state],
-    ['Important date', payload.due],
-    ['Scope notes', payload.notes],
+    ['Bid Due Date', payload.due],
+    ['Message', payload.notes],
     ['Known gaps', payload.missing],
     ['Marketing consent', payload.marketingConsent ? 'Yes' : 'No'],
     ['Attachments', attachmentNames.length ? attachmentNames.join(', ') : 'None'],

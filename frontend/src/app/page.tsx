@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { TRADES } from '@/lib/data';
 import { ICO } from '@/lib/illustrations';
-import { Button, CTA, DarkProcess, FAQ, TradeTile, TrustReasons, Workbook } from './components';
+import { Button, CTA, DarkProcess, FAQ, TrustReasons, Workbook } from './components';
 import {
   ABOUT_CONTENT,
   BRAND,
@@ -16,9 +16,9 @@ import {
   HOME_ROLES,
   HOME_STATS,
   HOME_STATS_NOTE,
-  HOME_SUPPORTING_SERVICES,
   HOME_TRADE_CHIPS,
   HOME_TRUST_BAR,
+  HOME_WHAT_WE_DO,
   HOME_WHO_WE_SERVE,
   MARKETS_CONTENT,
   SAMPLE_ESTIMATE_SUMMARY,
@@ -49,12 +49,12 @@ export default function Home() {
         <div className="wrap hero-grid">
           <div className="stack">
             <MotionHeroItem delay={0}>
-              <div className="eyebrow">CSI MasterFormat takeoffs</div>
+              <div className="eyebrow">Preconstruction · Estimating · Design Support</div>
             </MotionHeroItem>
             <MotionHeroItem delay={0.1}>
               <h1>
-                Estimates you can defend in{' '}
-                <span className="accent-word">bid review.</span>
+                Preconstruction and Construction Estimation Services that help you{' '}
+                <span className="accent-word">bid with confidence.</span>
               </h1>
             </MotionHeroItem>
             <MotionHeroItem delay={0.18}>
@@ -66,8 +66,8 @@ export default function Home() {
             <MotionHeroItem delay={0.26}>
               <div className="btn-row">
                 <Button href="/quote">{SITE_COPY.cta.primary} →</Button>
-                <Link className="btn btn-ghost" href="#sample-estimate">
-                  See the sample workbook
+                <Link className="btn btn-ghost" href="/services">
+                  Our Services
                 </Link>
               </div>
             </MotionHeroItem>
@@ -113,7 +113,37 @@ export default function Home() {
       </section>
 
       <section className="band">
-        <div className="wrap">
+        <div className="wrap stack-lg">
+          <div className="stack">
+            <div className="eyebrow">What we do</div>
+            <h2>Preconstruction services built around the estimate</h2>
+          </div>
+          <MotionStagger className="grid-3">
+            {HOME_WHAT_WE_DO.map((item) => (
+              <MotionItem className="motion-fill" key={item.title}>
+                <Link className="card card-link card-media card-accent-secondary" href={item.href}>
+                  <div className="card-media-frame card-media-frame-sm">
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt}
+                      fill
+                      sizes="(max-width: 900px) 100vw, 33vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                  <div className="card-media-body">
+                    <div
+                      className="ico"
+                      dangerouslySetInnerHTML={{ __html: ICO[item.icon as keyof typeof ICO] }}
+                    />
+                    <div className="code">{item.code}</div>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </div>
+                </Link>
+              </MotionItem>
+            ))}
+          </MotionStagger>
           <MotionStagger className="pillars">
             {HOME_PILLARS.map((pillar) => (
               <MotionItem className="pillar" key={pillar.title}>
@@ -139,7 +169,6 @@ export default function Home() {
                 ))}
               </ul>
               <div className="btn-row">
-                <Button href={HOME_ESTIMATING.quoteHref}>{SITE_COPY.cta.primary} →</Button>
                 <Link className="btn btn-ghost" href={HOME_ESTIMATING.href}>
                   Estimating services →
                 </Link>
@@ -155,54 +184,6 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className="stack">
-            <h3>Trades we estimate</h3>
-            <div className="trade-chip-grid">
-              {HOME_TRADE_CHIPS.map((chip) => (
-                <Link className="trade-chip trade-chip-link" href={chip.href} key={chip.href + chip.label}>
-                  {chip.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="band">
-        <div className="wrap stack-lg">
-          <div className="stack">
-            <div className="eyebrow">Supporting services</div>
-            <h2>Design, engineering, and BIM when the set needs them</h2>
-            <p className="prose">
-              Secondary to estimating — available when drawings, coordination, or visualization support the bid.
-            </p>
-          </div>
-          <MotionStagger className="grid-2 supporting-services">
-            {HOME_SUPPORTING_SERVICES.map((item) => (
-              <MotionItem className="motion-fill" key={item.title}>
-                <Link className="card card-link card-media card-accent-secondary" href={item.href}>
-                  <div className="card-media-frame card-media-frame-sm">
-                    <Image
-                      src={item.image}
-                      alt={item.imageAlt}
-                      fill
-                      sizes="(max-width: 900px) 100vw, 50vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                  <div className="card-media-body">
-                    <div
-                      className="ico"
-                      dangerouslySetInnerHTML={{ __html: ICO[item.icon as keyof typeof ICO] }}
-                    />
-                    <div className="code">{item.code}</div>
-                    <h3>{item.title}</h3>
-                    <p>{item.description}</p>
-                  </div>
-                </Link>
-              </MotionItem>
-            ))}
-          </MotionStagger>
         </div>
       </section>
 
@@ -277,11 +258,11 @@ export default function Home() {
       <section className="band band-ground" id="sample-estimate">
         <div className="wrap stack-lg">
           <div className="stack">
-            <div className="eyebrow">The deliverable</div>
-            <h2>Real estimate structure — numbers you can open and check.</h2>
+            <div className="eyebrow">See What You Receive</div>
+            <h2>Your estimate isn&apos;t just a number. It&apos;s a working bid document.</h2>
             <p className="prose">
-              A CSI MasterFormat workbook with sheet references, material and labor columns, and live totals. This is
-              the work product: editable Excel, not a locked PDF.
+              A CSI MasterFormat workbook with sheet references, material and labor columns, and formula-driven
+              totals. This is the work product: editable Excel, not a locked PDF.
             </p>
           </div>
           <div className="deliverable-layout">
@@ -378,15 +359,17 @@ export default function Home() {
             <div className="eyebrow">Trades</div>
             <h2>Estimating by division</h2>
             <p className="prose">
-              CSI divisions with their own pages covering what we measure, in what units, and what we exclude by
+              CSI divisions with dedicated pages covering what we measure, in what units, and what we exclude by
               default.
             </p>
           </div>
-          <MotionStagger className="trades">
-            {TRADES.map((t) => (
-              <TradeTile trade={t} key={t.slug} />
+          <div className="trade-chip-grid">
+            {HOME_TRADE_CHIPS.map((chip) => (
+              <Link className="trade-chip trade-chip-link" href={chip.href} key={chip.href + chip.label}>
+                {chip.label}
+              </Link>
             ))}
-          </MotionStagger>
+          </div>
           <p>
             <Link className="btn btn-ghost" href="/trades">
               View All Trades →
@@ -529,12 +512,6 @@ export default function Home() {
               style={{ objectFit: 'cover' }}
             />
           </MotionReveal>
-        </div>
-      </section>
-
-      <section className="tagline-band">
-        <div className="wrap">
-          <h2>{BRAND.tagline}</h2>
         </div>
       </section>
 

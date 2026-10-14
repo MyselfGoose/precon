@@ -152,7 +152,7 @@ function validateStep(form: HTMLFormElement, step: WizardStep): FormErrors {
     const missing = String(data.get('missing') ?? '').trim();
     if (notes.length < 20) errors.notes = 'Add at least 20 characters describing the scope or decision.';
     if (notes.length > MAX_NOTES_LENGTH) {
-      errors.notes = `Scope notes must be ${MAX_NOTES_LENGTH.toLocaleString()} characters or fewer.`;
+      errors.notes = `Message must be ${MAX_NOTES_LENGTH.toLocaleString()} characters or fewer.`;
     }
     if (missing.length > MAX_MISSING_LENGTH) {
       errors.missing = `Known gaps must be ${MAX_MISSING_LENGTH.toLocaleString()} characters or fewer.`;
@@ -192,7 +192,7 @@ function formatDueDate(value: string): string {
 }
 
 export default function QuoteForm({
-  submitLabel = 'Submit request',
+  submitLabel = 'Submit Project',
 }: {
   submitLabel?: string;
 }) {
@@ -636,7 +636,7 @@ export default function QuoteForm({
                 )}
               </div>
               <div className="field">
-                <label htmlFor="q-due">Important date</label>
+                <label htmlFor="q-due">Bid Due Date</label>
                 <input
                   id="q-due"
                   name="due"
@@ -656,6 +656,9 @@ export default function QuoteForm({
               </div>
             </div>
           </div>
+          <p className="consent-fine" style={{ marginTop: 8 }}>
+            {SITE_COPY.confidentiality}
+          </p>
         </div>
 
         {/* Step 2: Services */}
@@ -785,7 +788,7 @@ export default function QuoteForm({
           </div>
 
           <div className="field full">
-            <label htmlFor="q-notes">Scope notes</label>
+            <label htmlFor="q-notes">Message</label>
             <textarea
               id="q-notes"
               name="notes"
@@ -823,7 +826,7 @@ export default function QuoteForm({
 
           <div className="field full" id="plans">
             <label htmlFor="q-files">
-              Project files <span className="optional">(optional)</span>
+              Upload Plans / Documents <span className="optional">(optional)</span>
             </label>
             <label className="dropzone" htmlFor="q-files">
               <b>Share your project files</b>
@@ -908,7 +911,7 @@ export default function QuoteForm({
                 <dd>{review?.stage || '—'}</dd>
                 <dt>Location</dt>
                 <dd>{review?.state || '—'}</dd>
-                <dt>Important date</dt>
+                <dt>Bid Due Date</dt>
                 <dd>{review?.due ? formatDueDate(review.due) : '—'}</dd>
               </dl>
             </div>

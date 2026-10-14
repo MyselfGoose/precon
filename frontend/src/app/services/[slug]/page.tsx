@@ -1,7 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { BRAND, CONTENT_SERVICES, ACQUISITION_CONTENT, SITE_COPY } from '@/lib/content';
+import {
+  BRAND,
+  CONTENT_SERVICES,
+  ACQUISITION_CONTENT,
+  ESTIMATING_AUDIENCE_BUBBLES,
+  SITE_COPY,
+} from '@/lib/content';
 import { ESTIMATION_HUBS, TRADE_BUBBLE_SUMMARIES } from '@/lib/estimation';
 import { ICO } from '@/lib/illustrations';
 import { Button, CTA, PageHead, PhoneLink, Photo, WhatsAppLink } from '../../components';
@@ -440,6 +446,18 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
             {content.showEstimationProjectTypes && (
               <div className="stack-lg">
+                <div className="stack">
+                  <div className="eyebrow">Who we support</div>
+                  <h2>Built for the teams assembling the bid</h2>
+                </div>
+                <MotionStagger className="grid-2">
+                  {ESTIMATING_AUDIENCE_BUBBLES.map((bubble) => (
+                    <MotionItem className="card card-accent-secondary" key={bubble.title}>
+                      <h3>{bubble.title}</h3>
+                      <p>{bubble.body}</p>
+                    </MotionItem>
+                  ))}
+                </MotionStagger>
                 <div className="stack">
                   <div className="eyebrow">By project type</div>
                   <h2>General contractor, commercial, residential, industrial &amp; public work</h2>
