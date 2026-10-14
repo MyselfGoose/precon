@@ -278,7 +278,7 @@ export default function Home() {
               <p className="estimate-summary-meta">
                 {SAMPLE_ESTIMATE_SUMMARY.project} · {SAMPLE_ESTIMATE_SUMMARY.filename}
               </p>
-              <div className="table-scroll">
+              <div className="table-scroll estimate-summary-scroll">
                 <table>
                   <caption className="sr-only">Sample estimate summary by division</caption>
                   <thead>
