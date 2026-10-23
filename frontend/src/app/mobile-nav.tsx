@@ -373,15 +373,6 @@ export default function MobileNav() {
               <Link href={floatingCtaHref} onClick={closeMenu}>
                 {floatingCtaLabel}
               </Link>
-              <a
-                className="nav-wa"
-                href={`https://wa.me/${BRAND.whatsapp}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
-              >
-                WhatsApp (optional)
-              </a>
             </motion.nav>
           )}
         </AnimatePresence>

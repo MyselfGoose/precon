@@ -87,7 +87,21 @@ export default function About() {
                     <div className="code">{member.role}</div>
                     <h3>{member.name}</h3>
                     {member.location ? <p className="team-meta mono">{member.location}</p> : null}
-                    {member.expertise ? <p className="team-meta">{member.expertise}</p> : null}
+                    {member.expertise && member.expertise.length > 0 ? (
+                      <p className="team-expertise">
+                        {member.expertise.map((tag, index) => (
+                          <span key={tag}>
+                            {index > 0 ? (
+                              <span className="team-expertise-sep" aria-hidden="true">
+                                {' '}
+                                ·{' '}
+                              </span>
+                            ) : null}
+                            <span className="team-expertise-tag">{tag}</span>
+                          </span>
+                        ))}
+                      </p>
+                    ) : null}
                     <p>{member.bio}</p>
                     {member.linkedIn ? (
                       <p>
@@ -106,7 +120,7 @@ export default function About() {
             )}
           </MotionReveal>
 
-          <p className="prose">
+          <p className="prose about-explore">
             Explore <Link href="/services/estimating">estimating</Link>, <Link href="/services">services</Link>, or{' '}
             <Link href="/how-it-works">how it works</Link>.
           </p>

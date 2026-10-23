@@ -408,8 +408,8 @@ export default function Home() {
             <div className="eyebrow">The team behind the work</div>
             <h2>Roles on every estimate</h2>
             <p className="prose">
-              Named profiles and headshots publish on About once the owner approves them. Until then, here is how the
-              work is staffed — without inventing faces.
+              Lead estimating, design coordination, and bid support on every package — the same roles detailed on{' '}
+              <Link href="/about#team">About</Link>.
             </p>
           </MotionReveal>
           <MotionStagger className="roles-grid">
