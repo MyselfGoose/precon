@@ -13,7 +13,6 @@ import {
   HOME_FAQ,
   HOME_INVESTMENT_ACQUISITION,
   HOME_PILLARS,
-  HOME_ROLES,
   HOME_STATS,
   HOME_STATS_NOTE,
   HOME_TRADE_CHIPS,
@@ -399,27 +398,6 @@ export default function Home() {
             <Link href="/services/estimating">estimating by project type and trade</Link>, or review{' '}
             <Link href="/who-we-serve#markets">markets we serve</Link>.
           </p>
-        </div>
-      </section>
-
-      <section className="band">
-        <div className="wrap stack-lg">
-          <MotionReveal className="stack" y={16}>
-            <div className="eyebrow">The team behind the work</div>
-            <h2>Roles on every estimate</h2>
-            <p className="prose">
-              Lead estimating, design coordination, and bid support on every package — so takeoffs, drawings, and bid-day
-              delivery stay aligned.
-            </p>
-          </MotionReveal>
-          <MotionStagger className="roles-grid">
-            {HOME_ROLES.map((role) => (
-              <MotionItem className="role-card" key={role.title}>
-                <h3>{role.title}</h3>
-                <p>{role.description}</p>
-              </MotionItem>
-            ))}
-          </MotionStagger>
         </div>
       </section>
 

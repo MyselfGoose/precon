@@ -426,19 +426,19 @@ export function CTA({
           <Button href={primaryHref}>{primaryLabel} →</Button>
           {uploadSecondary ? (
             <MotionButton className="motion-inline">
-              <Link className="btn btn-on-dark" href="/quote#plans">
+              <Link className="btn btn-ghost" href="/quote#plans">
                 {SITE_COPY.cta.uploadPlans} →
               </Link>
             </MotionButton>
           ) : (
             secondary && (
               <MotionButton className="motion-inline">
-                <PhoneLink className="btn btn-on-dark">{SITE_COPY.cta.secondary}</PhoneLink>
+                <PhoneLink className="btn btn-ghost">{SITE_COPY.cta.secondary}</PhoneLink>
               </MotionButton>
             )
           )}
           <MotionButton className="motion-inline">
-            <a className="btn btn-on-dark" href={`mailto:${BRAND.email}`}>
+            <a className="btn btn-ghost" href={`mailto:${BRAND.email}`}>
               Email {BRAND.email}
             </a>
           </MotionButton>

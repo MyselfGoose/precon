@@ -324,17 +324,13 @@
   .estimating-lead-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;}
   .estimating-lead-media{position:relative;min-height:320px;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--rule);box-shadow:var(--shadow);}
   .supporting-services .card{min-height:100%;}
-  .roles-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
-  .role-card{padding:22px 0;border-top:3px solid var(--steel);}
-  .role-card h3{margin:0 0 8px;font-size:1.25rem;}
-  .role-card p{margin:0;color:var(--ink-2);line-height:1.55;}
   .case-study-disclaimer{margin:0 0 6px;font-family:var(--font-heading);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
   .nav-email{font-family:var(--font-mono);font-size:.78rem;font-weight:500;text-decoration:none;color:rgba(255,255,255,.88);white-space:nowrap;padding:8px 4px;line-height:1;transition:color .18s ease;}
   .nav-email:hover{color:#fff;}
   .wa-fab{opacity:.72;transform:scale(.92);}
   .wa-fab:hover{opacity:1;}
   @media (max-width:1000px){
-    .estimating-lead-grid,.roles-grid{grid-template-columns:1fr;}
+    .estimating-lead-grid{grid-template-columns:1fr;}
     .nav-email{display:none;}
   }
 
@@ -547,10 +543,14 @@
   .excl ul{padding-left:18px;color:var(--ink-2);font-size:.93rem;line-height:1.7;}
 
   /* cta band */
-  .cta-band{background:var(--ebony-deep);color:#fff;padding-block:76px;background-image:radial-gradient(ellipse 60% 80% at 90% 20%,rgba(215,38,61,.18),transparent 55%),linear-gradient(120deg,#061628 0%,#0B2545 45%,#0E2F55 100%);}
+  /* Light sky CTA — contrasts dark investment/footer bands; avoids stacked-navy seams */
+  .cta-band{color:var(--ink);padding-block:76px;border-block:1px solid var(--rule);background:
+      radial-gradient(ellipse 70% 60% at 85% 15%,rgba(29,92,150,.12),transparent 55%),
+      radial-gradient(ellipse 50% 45% at 10% 90%,rgba(215,38,61,.05),transparent 50%),
+      linear-gradient(180deg,#E4EEF7 0%,var(--sky) 45%,var(--concrete) 100%);}
   .cta-band .inner{display:flex;flex-wrap:wrap;gap:30px;align-items:center;justify-content:space-between;}
-  .cta-band h2{max-width:18ch;color:#fff;}
-  .cta-band p{color:#B8C2CC;margin-top:12px;max-width:48ch;}
+  .cta-band h2{max-width:18ch;color:var(--ink);}
+  .cta-band p{color:var(--ink-2);margin-top:12px;max-width:48ch;}
   .cta-band .btn-primary{animation:cta-btn-pulse 3.2s ease-in-out infinite;}
 
   /* page head */

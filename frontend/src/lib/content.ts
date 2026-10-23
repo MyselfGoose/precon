@@ -780,22 +780,6 @@ export const ABOUT_CONTENT = {
   },
 };
 
-/** Anonymized capability roles for the homepage real-people layer (no invented names). */
-export const HOME_ROLES = [
-  {
-    title: 'Lead estimator',
-    description: 'CSI MasterFormat takeoffs, sheet-referenced quantities, and bid-package assembly.',
-  },
-  {
-    title: 'Design coordination',
-    description: 'Architectural and engineering documentation aligned to the estimate assumptions.',
-  },
-  {
-    title: 'Bid support',
-    description: 'Scope checks, addenda tracking, and delivery timed to your bid or decision date.',
-  },
-] as const;
-
 export const ACQUISITION_CONTENT = {
   eyebrow: 'Property Acquisition',
   title: 'Turning Property Opportunities Into Real Value',
