@@ -392,12 +392,16 @@ export function CTA({
   text,
   secondary = true,
   uploadSecondary = false,
+  primaryHref = '/quote',
+  primaryLabel = SITE_COPY.cta.primary,
 }: {
   title: string;
   text: string;
   secondary?: boolean;
   /** Prefer Upload Plans over phone as the secondary action. */
   uploadSecondary?: boolean;
+  primaryHref?: string;
+  primaryLabel?: string;
 }) {
   return (
     <section className="cta-band">
@@ -407,7 +411,7 @@ export function CTA({
           <p>{text}</p>
         </div>
         <div className="btn-row">
-          <Button href="/quote">{SITE_COPY.cta.primary} →</Button>
+          <Button href={primaryHref}>{primaryLabel} →</Button>
           {uploadSecondary ? (
             <MotionButton className="motion-inline">
               <Link className="btn btn-on-dark" href="/quote#plans">

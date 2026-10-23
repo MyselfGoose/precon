@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { NAV_ITEMS, NAV_TRADES_ITEMS } from '@/lib/data';
@@ -11,6 +12,8 @@ import {
   SERVICE_CATEGORIES,
   SITE_COPY,
 } from '@/lib/content';
+
+const ACQUISITION_PATH = '/services/acquisitions-investments';
 
 const STORAGE_KEY = 'csi-mobile-menu-position';
 const DEFAULT_CORNER = 'bottom-right' as const;
@@ -56,6 +59,10 @@ function cornerPosition(corner: Corner, width: number, height: number): Position
 }
 
 export default function MobileNav() {
+  const pathname = usePathname();
+  const onAcquisition = pathname === ACQUISITION_PATH;
+  const floatingCtaHref = onAcquisition ? `${ACQUISITION_PATH}#discuss-property` : '/quote';
+  const floatingCtaLabel = onAcquisition ? SITE_COPY.cta.discussProperty : SITE_COPY.cta.primary;
   const [open, setOpen] = useState(false);
   const [servicesExpanded, setServicesExpanded] = useState(false);
   const [tradesExpanded, setTradesExpanded] = useState(false);
@@ -363,8 +370,8 @@ export default function MobileNav() {
               <a className="nav-tel" href={`tel:${BRAND.phoneRaw}`} onClick={() => setOpen(false)}>
                 Call {BRAND.phoneDisplay}
               </a>
-              <Link href="/quote" onClick={closeMenu}>
-                {SITE_COPY.cta.primary}
+              <Link href={floatingCtaHref} onClick={closeMenu}>
+                {floatingCtaLabel}
               </Link>
               <a
                 className="nav-wa"
@@ -390,11 +397,11 @@ export default function MobileNav() {
         </a>
         <Link
           className="floating-nav-quote"
-          href="/quote"
+          href={floatingCtaHref}
           onClick={() => setOpen(false)}
-          aria-label={SITE_COPY.cta.primary}
+          aria-label={floatingCtaLabel}
         >
-          {SITE_COPY.cta.primary}
+          {floatingCtaLabel}
         </Link>
       <motion.button
         ref={toggleRef}

@@ -98,10 +98,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           variant="dark"
           actions={
             <>
-              <Button href="/quote">{SITE_COPY.cta.primary} →</Button>
-              <a className="btn btn-on-dark" href="#discuss-property">
-                Get in Touch →
-              </a>
+              <Button href="#discuss-property">{SITE_COPY.cta.discussProperty} →</Button>
               <a className="btn btn-on-dark" href="#approach">
                 See our approach →
               </a>
@@ -249,9 +246,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <h2>{ACQUISITION_CONTENT.ctaTitle}</h2>
               <p className="prose">{ACQUISITION_CONTENT.ctaText}</p>
               <div className="contact-actions">
-                <Link className="btn btn-primary" href="/quote">
-                  {SITE_COPY.cta.primary} →
-                </Link>
                 <PhoneLink className="btn btn-ghost">Call {BRAND.phoneDisplay}</PhoneLink>
                 <WhatsAppLink className="btn btn-ghost">WhatsApp Us →</WhatsAppLink>
               </div>
@@ -268,6 +262,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <CTA
           title={ACQUISITION_CONTENT.ctaTitle}
           text={ACQUISITION_CONTENT.ctaText}
+          primaryHref="#discuss-property"
+          primaryLabel={SITE_COPY.cta.discussProperty}
         />
       </>
     );

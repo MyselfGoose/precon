@@ -53,6 +53,7 @@ export const OWNER_PLACEHOLDERS = [
 export const SITE_COPY = {
   cta: {
     primary: 'Request an Estimate',
+    discussProperty: 'Discuss your Property',
     secondary: `Call ${BRAND.phoneDisplay}`,
     uploadPlans: 'Upload Plans',
     reviewTrade: 'Review this trade →',
