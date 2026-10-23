@@ -184,7 +184,6 @@ export function validateContactFields(data: FormData): {
   if (!name) errors.name = 'Enter your name.';
   if (!EMAIL_PATTERN.test(email)) errors.email = 'Enter a valid email address.';
   if (!type) errors.type = 'Select a project type.';
-  if (!due) errors.due = 'Add the bid due date.';
   if (due && new Date(`${due}T00:00:00`) < new Date(new Date().toDateString())) {
     errors.due = 'Choose today or a future date.';
   }

@@ -1042,15 +1042,15 @@ export const ESTIMATING_AUDIENCE_BUBBLES = [
 export const TRADE_CLIENT_VOICE: Record<string, { title: string; body: string }> = {
   masonry: {
     title: 'Masonry Takeoff Estimating',
-    body: 'When performing masonry takeoff estimating jobs, we provide you with precise material takeoffs along with their zip codes on EXCEL sheets with marked-up plans. We have AACE and AIQS certified professional estimators that can make your construction process super easy by delivering a proper consultation for masonry.',
+    body: 'Masonry takeoffs arrive as editable Excel with quantities tied to the sheets, unit costs organized for your zip code, and marked-up plans so your team can reprice under bid pressure.',
   },
   concrete: {
     title: 'Concrete Takeoff Estimating',
-    body: 'We invite all of our trades to catch the success ray and get the estimation plan for sidewalks, driveways, and other sorts of concrete work, etc.',
+    body: 'Concrete takeoffs cover footings, walls, slabs, sidewalks, driveways, and related cast-in-place work — measured from the structural and civil sheets with waste and mix assumptions stated in the workbook.',
   },
   finishes: {
     title: 'Flooring Takeoff Estimating',
-    body: 'Keeping the vast variety of flooring available in the market, our estimators can help you identify which flooring options fit your project scope and budget.',
+    body: 'Flooring and finishes takeoffs organize product, area, and waste by room or finish schedule so options stay tied to measurable quantities when the budget is challenged.',
   },
 };
 
@@ -1153,7 +1153,7 @@ export const HOME_FAQ: [string, string][] = [
   ],
   [
     'How does pricing work?',
-    'Fees are scoped from your files and explained before work starts. As a guide, single-trade takeoffs often start around $350–$750; multi-trade packages from about $1,200; full-set commercial shells are quoted from the set. Per-SF or per-trade pricing may apply depending on scope. You receive a clear engagement rather than an open-ended subscription.',
+    'Fees are scoped from your files and explained before work starts. Illustrative guide only (confirmed at scoping): single-trade takeoffs often start around $350–$750; multi-trade packages from about $1,200; full-set commercial shells are quoted from the set. Per-SF or per-trade pricing may apply depending on scope. You receive a clear engagement rather than an open-ended subscription.',
   ],
   [
     'What if the drawings change?',
@@ -1546,10 +1546,10 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
       ]
         .filter((part): part is string => Boolean(part))
         .join(' ') ||
-        `Trading as ${BRAND.name}. Registered legal entity name, business address, and jurisdiction will be published here once confirmed by the owner.`,
+        `Trading as ${BRAND.name}. Registered legal entity name, business address, and jurisdiction will be published here when operating entity details are finalized.`,
       !isUnsetBrandValue(BRAND.dataLocation)
         ? `Project files and related personal data submitted through this Site are handled in ${BRAND.dataLocation}.`
-        : 'Project files submitted through this Site are used to scope and deliver the requested work. The specific data-storage location will be published here once confirmed by the owner.',
+        : 'Project files submitted through this Site are used to scope and deliver the requested work. The specific data-storage location will be published here when finalized.',
       'Client plans and pricing are confidential and never used in our acquisition activity.',
     ],
   },

@@ -31,7 +31,7 @@ export const IMAGE_REGISTRY: ImagePlacement[] = [
   { path: '/images/hero/engineering-hero.jpg', route: '/services', role: 'hero', alt: 'Engineering and design coordination' },
   { path: '/images/approach/building.jpg', route: '/about', role: 'hero', alt: 'Building exterior representing our approach' },
   { path: '/images/hero/how-it-works.jpg', route: '/how-it-works', role: 'hero', alt: 'Construction professionals delivering coordinated project work' },
-  { path: '/images/projects/public-institutional.jpg', route: '/markets', role: 'hero', alt: 'Public and institutional project' },
+  { path: '/images/projects/public-institutional.jpg', route: '/who-we-serve', role: 'hero', alt: 'Public and institutional project' },
   { path: '/images/projects/residential-commercial.jpg', route: '/estimation', role: 'hero', alt: 'Residential and commercial estimation work' },
   { path: '/images/hero/contact.jpg', route: '/contact', role: 'hero', alt: 'Contact QuantSult' },
   { path: '/images/hero/who-we-serve.jpg', route: '/who-we-serve', role: 'hero', alt: 'Clients and partners we serve' },

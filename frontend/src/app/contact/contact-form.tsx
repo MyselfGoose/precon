@@ -44,8 +44,7 @@ function validate(form: HTMLFormElement): FormErrors {
   if (!String(data.get('name') ?? '').trim()) errors.name = 'Enter your name.';
   if (!EMAIL_PATTERN.test(email)) errors.email = 'Enter a valid email address.';
   if (!type) errors.type = 'Select a project type.';
-  if (!due) errors.due = 'Add the bid due date.';
-  else if (new Date(`${due}T00:00:00`) < new Date(new Date().toDateString())) {
+  if (due && new Date(`${due}T00:00:00`) < new Date(new Date().toDateString())) {
     errors.due = 'Choose today or a future date.';
   }
   const planRoomError = validatePlanRoomUrl(planRoomUrl);
@@ -182,8 +181,10 @@ export default function ContactForm() {
         {errors.type ? <span className="form-error">{errors.type}</span> : null}
       </div>
       <div className="field">
-        <label htmlFor="c-due">Bid due date</label>
-        <input id="c-due" name="due" type="date" required aria-invalid={Boolean(errors.due)} />
+        <label htmlFor="c-due">
+          Bid due date <span className="optional">(optional)</span>
+        </label>
+        <input id="c-due" name="due" type="date" aria-invalid={Boolean(errors.due)} />
         {errors.due ? <span className="form-error">{errors.due}</span> : null}
       </div>
       <div className="field full">

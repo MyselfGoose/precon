@@ -49,7 +49,7 @@ export default function Terms() {
         title="Terms of Service"
         lede={`These Terms of Service outline the rules and regulations for using the ${BRAND.name} website. By accessing this website, you agree to comply with these terms.`}
       />
-      <section className="band">
+      <section className="band band-ground">
         <div className="wrap legal">
           <p className="meta">Effective Date: {TERMS_EFFECTIVE_DATE}</p>
           <p>

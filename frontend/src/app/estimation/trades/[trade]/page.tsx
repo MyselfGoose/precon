@@ -50,7 +50,7 @@ export default async function TradeEstimationPage({ params }: { params: Promise<
         priority={Boolean(heroImage)}
         variant={heroImage ? 'dark' : 'split'}
       />
-      <section className="band">
+      <section className="band band-ground">
         <div className="wrap stack-lg">
           <div className="stack">
             <p className="prose">{page.lede}</p>

@@ -188,30 +188,32 @@ export function Footer() {
             <p className="foot-response" style={{ marginTop: 4 }}>
               {SITE_COPY.contact.responseTime}
             </p>
-            <div className="foot-social" aria-label="Contact and profiles">
-              {showGoogle ? (
-                <a
-                  href={googleUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-analytics="social_link_click"
-                  data-analytics-network="google"
-                >
-                  Google
-                </a>
-              ) : null}
-              {showLinkedIn ? (
-                <a
-                  href={linkedInUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-analytics="social_link_click"
-                  data-analytics-network="linkedin"
-                >
-                  LinkedIn
-                </a>
-              ) : null}
-            </div>
+            {showGoogle || showLinkedIn ? (
+              <div className="foot-social" aria-label="Profiles">
+                {showGoogle ? (
+                  <a
+                    href={googleUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-analytics="social_link_click"
+                    data-analytics-network="google"
+                  >
+                    Google
+                  </a>
+                ) : null}
+                {showLinkedIn ? (
+                  <a
+                    href={linkedInUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-analytics="social_link_click"
+                    data-analytics-network="linkedin"
+                  >
+                    LinkedIn
+                  </a>
+                ) : null}
+              </div>
+            ) : null}
           </div>
           <div>
             <h5>Services</h5>

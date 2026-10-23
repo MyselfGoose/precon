@@ -1,4 +1,4 @@
-import { CTA, PageHead, PhoneLink, WhatsAppLink, Svg } from '../components';
+import { PageHead, PhoneLink, WhatsAppLink, Svg } from '../components';
 import QuoteForm from './quote-form';
 import { D } from '@/lib/illustrations';
 import { BRAND, SITE_COPY } from '@/lib/content';
@@ -22,7 +22,7 @@ export default function Quote() {
         imageAlt="Project plans ready for a quote request"
         priority
       />
-      <section className="band">
+      <section className="band band-ground">
         <div className="wrap">
           <div className="grid-2" style={{ gap: 44, alignItems: 'start' }}>
             <QuoteForm />
@@ -67,10 +67,6 @@ export default function Quote() {
           </div>
         </div>
       </section>
-      <CTA
-        title="Need help before you fill this out?"
-        text="Talk through the scope first, then send the information that will make the follow-up useful."
-      />
     </>
   );
 }

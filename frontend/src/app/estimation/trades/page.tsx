@@ -33,7 +33,7 @@ export default function TradeEstimationIndex() {
         imageAlt="Specialty trade contractors coordinating framing and systems on a commercial jobsite"
         priority
       />
-      <section className="band">
+      <section className="band band-ground">
         <div className="wrap stack-lg">
           {hub?.intro.map((paragraph) => (
             <p className="prose" key={paragraph.slice(0, 48)}>

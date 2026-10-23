@@ -102,7 +102,7 @@ export default function HowItWorks() {
                 step.
               </p>
               <div className="btn-row" style={{ marginTop: 16 }}>
-                <Button href="/services/acquisitions-investments">Discuss a property →</Button>
+                <Button href="/services/acquisitions-investments">{SITE_COPY.cta.discussProperty} →</Button>
               </div>
             </div>
           </div>

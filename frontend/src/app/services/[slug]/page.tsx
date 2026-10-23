@@ -130,7 +130,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
 
-        <section className="band band-ground">
+        <section className="band">
           <div className="wrap stack-lg">
             <MotionReveal className="stack" y={16}>
               <div className="eyebrow">Key Property Types</div>
@@ -158,7 +158,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
 
-        <section className="band" id="special-cases">
+        <section className="band band-ground" id="special-cases">
           <div className="wrap stack-lg">
             <MotionReveal className="stack" y={16}>
               <div className="eyebrow">Special cases</div>
@@ -262,12 +262,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
         </section>
-        <CTA
-          title={ACQUISITION_CONTENT.ctaTitle}
-          text={ACQUISITION_CONTENT.ctaText}
-          primaryHref="#discuss-property"
-          primaryLabel={SITE_COPY.cta.discussProperty}
-        />
       </>
     );
   }
@@ -300,7 +294,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           priority={Boolean(photoSrc)}
           variant="dark"
         />
-        <section className="band">
+        <section className="band band-ground">
           <div className="wrap stack-lg">
             <div className="stack service-intro">
               <div

@@ -109,7 +109,7 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
           </>
         }
       />
-      <section className="band">
+      <section className="band band-ground">
         <div className="wrap stack-lg">
           {hub.imageSrc && (
             <div className="hub-hero-media media">

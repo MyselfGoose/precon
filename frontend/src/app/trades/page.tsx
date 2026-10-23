@@ -35,7 +35,7 @@ export default function TradesPage() {
         }
       />
 
-      <section className="band" id="divisions">
+      <section className="band band-ground" id="divisions">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">MasterFormat division takeoffs</div>

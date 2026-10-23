@@ -164,7 +164,7 @@ export default async function TradePage({ params }: { params: Promise<{ slug: st
         </div>
       </section>
 
-      <section className="band band-ground">
+      <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">{tr.name} questions</div>
@@ -174,7 +174,7 @@ export default async function TradePage({ params }: { params: Promise<{ slug: st
         </div>
       </section>
 
-      <section className="band trade-nav-band">
+      <section className="band band-ground trade-nav-band">
         <div className="wrap stack">
           <div className="eyebrow">All trades</div>
           <div className="trade-nav">

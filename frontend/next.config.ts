@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     return [
       { source: '/services/takeoffs', destination: '/services/estimating', permanent: true },
       { source: '/services/bid-prep', destination: '/services/estimating', permanent: true },
-      { source: '/services/precon', destination: '/services/estimating', permanent: true },
+      { source: '/services/precon', destination: '/services/preconstruction-support', permanent: true },
       { source: '/services/drafting', destination: '/services/architectural-drawings', permanent: true },
       {
         source: '/services/permit-ready-structural-drawings',

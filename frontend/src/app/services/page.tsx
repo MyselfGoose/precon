@@ -36,7 +36,7 @@ export default function ServicesPage() {
         imageAlt="Engineering and preconstruction coordination on an active jobsite"
         priority
       />
-      <section className="band">
+      <section className="band band-ground">
         <div className="wrap stack-lg">
           {primaryCategories.map((category) => {
             const services = getServicesForCategory(category);

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { CTA, PageHead } from '../components';
 import { createMetadata } from '@/lib/metadata';
 import { ABOUT_CONTENT, BRAND } from '@/lib/content';
-import { MotionItem, MotionReveal, MotionStagger } from '../motion';
+import { MotionReveal } from '../motion';
 
 export const metadata = createMetadata({
   title: 'About QuantSult Preconstruction',
@@ -12,7 +12,6 @@ export const metadata = createMetadata({
 });
 
 export default function About() {
-  const otherBenefits = ABOUT_CONTENT.benefits.filter(([code]) => code !== 'DATA');
   const { biddingEdge } = ABOUT_CONTENT;
 
   return (
@@ -29,7 +28,7 @@ export default function About() {
         imageAlt="Commercial construction coordination for QuantSult preconstruction partnership"
         priority
       />
-      <section className="band">
+      <section className="band band-ground">
         <div className="wrap stack-lg">
           <MotionReveal className="stack" y={16}>
             {ABOUT_CONTENT.paragraphs.map((paragraph) => (
@@ -52,26 +51,10 @@ export default function About() {
             </div>
           </MotionReveal>
 
-          <div className="stack">
-            <div className="eyebrow">Why choose us</div>
-            <h2>What sets our preconstruction support apart</h2>
-            <p className="prose">
-              The same standards that make an estimate reviewable under bid pressure — detailed on the homepage trust
-              section.
-            </p>
-          </div>
-          <MotionStagger className="reasons">
-            {otherBenefits.map(([code, title, text]) => (
-              <MotionItem className="reason" key={code}>
-                <div className="code">{code}</div>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </MotionItem>
-            ))}
-          </MotionStagger>
-
           <p className="prose about-explore">
-            Explore <Link href="/services/estimating">estimating</Link>, <Link href="/services">services</Link>, or{' '}
+            Review standards on the homepage{' '}
+            <Link href="/#why-trust">trust section</Link>, explore{' '}
+            <Link href="/services/estimating">estimating</Link>, <Link href="/services">services</Link>, or{' '}
             <Link href="/how-it-works">how it works</Link>.
           </p>
         </div>

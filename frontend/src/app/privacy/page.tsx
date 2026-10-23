@@ -49,7 +49,7 @@ export default function Privacy() {
         title="Privacy Policy"
         lede={`Your privacy matters to us. Learn how ${BRAND.name} collects, uses, and protects your personal information.`}
       />
-      <section className="band">
+      <section className="band band-ground">
         <div className="wrap legal">
           <p className="meta">Effective Date: {PRIVACY_EFFECTIVE_DATE}</p>
           <p>

@@ -27,7 +27,7 @@ export default function Contact() {
         imageAlt="Contact QuantSult about estimating, design, or acquisition"
         priority
       />
-      <section className="band">
+      <section className="band band-ground">
         <div className="wrap">
           <div className="grid-2" style={{ gap: 44, alignItems: 'start' }}>
             <ContactForm />
