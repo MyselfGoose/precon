@@ -327,9 +327,14 @@ export const NAV_ITEMS: NavLinkItem[] = [
 ];
 
 /** CSI MasterFormat division links for the dedicated Trades navbar dropdown. */
-export const NAV_TRADES_ITEMS: NavLinkItem[] = TRADES.map((trade) => ({
-  label: `Div ${trade.div} ${trade.name}`,
+export type NavTradeItem = NavLinkItem & {
+  div: string;
+};
+
+export const NAV_TRADES_ITEMS: NavTradeItem[] = TRADES.map((trade) => ({
+  label: trade.name,
   href: `/trades/${trade.slug}`,
+  div: trade.div,
 }));
 
 /** @deprecated Use NAV_ITEMS — same destinations for the floating mobile panel. */
