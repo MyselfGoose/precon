@@ -331,8 +331,15 @@ export type NavTradeItem = NavLinkItem & {
   div: string;
 };
 
+/** Shorter labels for long division names so the nav panel stays one line per row. */
+const NAV_TRADE_LABELS: Record<string, string> = {
+  thermal: 'Thermal & Moisture',
+  exterior: 'Exterior',
+  wood: 'Wood & Plastics',
+};
+
 export const NAV_TRADES_ITEMS: NavTradeItem[] = TRADES.map((trade) => ({
-  label: trade.name,
+  label: NAV_TRADE_LABELS[trade.slug] ?? trade.name,
   href: `/trades/${trade.slug}`,
   div: trade.div,
 }));

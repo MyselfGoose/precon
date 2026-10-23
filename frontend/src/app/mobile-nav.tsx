@@ -332,7 +332,7 @@ export default function MobileNav() {
                 {tradesExpanded && (
                   <div id="mobile-trades-groups" className="mobile-nav-service-groups">
                     <div className="mobile-nav-service-group">
-                      <p className="mobile-nav-service-heading">CSI MasterFormat divisions</p>
+                      <p className="mobile-nav-service-heading">CSI MasterFormat</p>
                       {NAV_TRADES_ITEMS.map((item) => (
                         <Link key={item.href} href={item.href} onClick={closeMenu}>
                           {item.label}

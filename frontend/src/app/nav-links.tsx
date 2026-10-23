@@ -234,7 +234,7 @@ export default function NavLinks() {
             onMouseEnter={() => openMenu('trades')}
             onMouseLeave={scheduleClose}
           >
-            <p className="nav-dropdown-heading">CSI MasterFormat divisions</p>
+            <p className="nav-dropdown-heading">CSI MasterFormat</p>
             <ul className="nav-trades-list">
               {NAV_TRADES_ITEMS.map((item) => (
                 <li key={item.href} role="none">
@@ -244,11 +244,12 @@ export default function NavLinks() {
                     href={item.href}
                     onClick={closeMenus}
                     aria-current={pathMatches(path, item.href) ? 'page' : undefined}
+                    aria-label={`Division ${item.div} ${item.label}`}
                   >
-                    <span className="nav-trade-name">{item.label}</span>
                     <span className="nav-trade-div" aria-hidden="true">
                       {item.div}
                     </span>
+                    <span className="nav-trade-name">{item.label}</span>
                   </Link>
                 </li>
               ))}
