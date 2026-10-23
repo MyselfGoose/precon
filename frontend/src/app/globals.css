@@ -259,20 +259,8 @@
   .foot-social a:hover{color:#fff;transform:translateY(-2px);}
   .foot-social-placeholder{font-size:.72rem;letter-spacing:.04em;color:rgba(245,240,230,.55);}
   .foot-legal-name,.foot-hours,.foot-response{font-size:.82rem;color:rgba(245,240,230,.72);margin:0;}
-  .team-section{scroll-margin-top:96px;}
-  .team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
-  .team-card{padding:22px;border:1px solid var(--rule);border-top:3px solid var(--steel);border-radius:var(--radius-lg);background:var(--paper);display:flex;flex-direction:column;gap:8px;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
-  .team-card h3{margin:0;font-size:1.2rem;line-height:1.25;}
-  .team-card > p{margin:0;font-size:1rem;line-height:1.55;color:var(--ink-2);}
-  .team-meta{margin:0;color:var(--muted);font-size:.875rem;font-weight:500;line-height:1.4;}
-  .team-expertise{margin:0;color:var(--muted);font-size:.875rem;font-weight:500;line-height:1.4;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
-  .team-expertise-tag,.team-expertise-sep{font-size:inherit;font-weight:inherit;line-height:inherit;}
-  .team-pending{max-width:72ch;}
   .about-explore{font-size:1rem;line-height:1.6;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
   .about-explore a{font-size:inherit;font-weight:600;line-height:inherit;}
-  @media (max-width:900px){
-    .team-grid{grid-template-columns:1fr;}
-  }
   .case-study-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
   .case-study{padding:22px 0;border-top:3px solid var(--steel);}
   .case-study-type{font-family:var(--font-heading);font-size:1.35rem;font-weight:600;margin:0 0 8px;color:var(--ink);}

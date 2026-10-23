@@ -408,8 +408,8 @@ export default function Home() {
             <div className="eyebrow">The team behind the work</div>
             <h2>Roles on every estimate</h2>
             <p className="prose">
-              Lead estimating, design coordination, and bid support on every package — the same roles detailed on{' '}
-              <Link href="/about#team">About</Link>.
+              Lead estimating, design coordination, and bid support on every package — so takeoffs, drawings, and bid-day
+              delivery stay aligned.
             </p>
           </MotionReveal>
           <MotionStagger className="roles-grid">

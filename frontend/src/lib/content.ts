@@ -54,7 +54,6 @@ export const OWNER_PLACEHOLDERS = [
   'DNS / mailbox / Vercel NEXT_PUBLIC_SITE_URL + LEAD_* + BLOB_READ_WRITE_TOKEN for quantsult.com',
   'BRAND.social.googleBusiness / linkedIn — live profile URLs',
   'Replace illustrative HOME_STATS / HOME_CASE_STUDIES with verified owner figures',
-  'TEAM_SECTION.members — optional named founder photos/bios when the owner publishes them',
   'License jurisdictions for sealing professionals (spoken for by SITE_COPY.licensingBlock)',
 ] as const;
 
@@ -779,55 +778,6 @@ export const ABOUT_CONTENT = {
     lede: 'Project-specific estimates grounded in supplier, labor, and market research.',
     body: 'We provide project-specific estimates by using supplier pricing, regional labor rates, historical project data and market research.',
   },
-};
-
-export type TeamMember = {
-  name: string;
-  role: string;
-  bio: string;
-  location?: string;
-  /** Capability tags shown under the role; rendered as separate spans for stable mobile type. */
-  expertise?: readonly string[];
-  photoSrc?: string;
-  photoAlt?: string;
-  linkedIn?: string;
-};
-
-/**
- * Meet the Team. Role-based profiles (no invented personal names). Homepage
- * HOME_ROLES stays a short capability strip; About carries the fuller bios.
- * Named founder headshots can replace or supplement these when the owner publishes them.
- */
-export const TEAM_SECTION = {
-  eyebrow: 'Meet the Team',
-  title: 'The people behind the takeoff.',
-  lede:
-    'Estimators, designers, and coordinators who treat your bid deadline as their own — from the first takeoff through bid-day support.',
-  pendingNote:
-    'Owner action: add named Founder / Managing Director, Senior Estimator, Architect/Engineer, or Project Coordinator profiles with photo and biography when available. If any technical work is delivered through partner firms, state that structure transparently.',
-  members: [
-    {
-      name: 'Lead Estimator',
-      role: 'Estimating',
-      bio: `Builds CSI MasterFormat quantity takeoffs and cost estimates from the working set. Major quantities stay tied to sheet references, assumptions and exclusions are written into the file, and deliverables arrive as editable Excel your team can reprice under bid pressure.`,
-      location: BRAND.serviceArea,
-      expertise: ['CSI MasterFormat', 'Quantity takeoffs', 'Editable Excel'],
-    },
-    {
-      name: 'Design Coordination',
-      role: 'Architecture & Engineering',
-      bio: `Keeps architectural, structural, and MEP documentation aligned with the estimate so drawings, quantities, and assumptions stay consistent. Supports permit-ready packages and constructability checks that reduce rework after the bid is won.`,
-      location: BRAND.serviceArea,
-      expertise: ['Architectural drawings', 'MEP coordination', 'Permit support'],
-    },
-    {
-      name: 'Bid Support',
-      role: 'Preconstruction',
-      bio: `Runs scope review, addenda tracking, and delivery timing against your bid or decision date. Keeps the takeoff, documentation, and open questions organized so the package you submit stays reviewable when numbers are challenged.`,
-      location: BRAND.serviceArea,
-      expertise: ['Scope review', 'Addenda tracking', 'Deadline delivery'],
-    },
-  ] as TeamMember[],
 };
 
 /** Anonymized capability roles for the homepage real-people layer (no invented names). */
