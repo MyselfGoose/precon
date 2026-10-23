@@ -4,22 +4,17 @@ import { TRADES } from '@/lib/data';
 import { ICO } from '@/lib/illustrations';
 import { Button, CTA, DarkProcess, FAQ, TrustReasons, Workbook } from './components';
 import {
-  ABOUT_CONTENT,
   BRAND,
-  FEATURED_PROJECTS,
-  HOME_CASE_STUDIES,
   HOME_COMPAT_TOOLS,
   HOME_ESTIMATING,
   HOME_FAQ,
   HOME_INVESTMENT_ACQUISITION,
-  HOME_PILLARS,
   HOME_STATS,
   HOME_STATS_NOTE,
   HOME_TRADE_CHIPS,
   HOME_TRUST_BAR,
   HOME_WHAT_WE_DO,
   HOME_WHO_WE_SERVE,
-  MARKETS_CONTENT,
   SAMPLE_ESTIMATE_SUMMARY,
   SITE_COPY,
 } from '@/lib/content';
@@ -36,7 +31,6 @@ export const metadata = createMetadata({
 
 export default function Home() {
   const showProofStats = HOME_STATS.length > 0;
-  const showCaseStudies = HOME_CASE_STUDIES.length > 0;
 
   return (
     <>
@@ -143,15 +137,6 @@ export default function Home() {
               </MotionItem>
             ))}
           </MotionStagger>
-          <MotionStagger className="pillars">
-            {HOME_PILLARS.map((pillar) => (
-              <MotionItem className="pillar" key={pillar.title}>
-                <div className="ico" dangerouslySetInnerHTML={{ __html: ICO[pillar.icon as keyof typeof ICO] }} />
-                <h3>{pillar.title}</h3>
-                <p>{pillar.description}</p>
-              </MotionItem>
-            ))}
-          </MotionStagger>
         </div>
       </section>
 
@@ -186,7 +171,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band band-ground">
+      <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">Who we serve</div>
@@ -217,35 +202,8 @@ export default function Home() {
               </MotionItem>
             ))}
           </MotionStagger>
-        </div>
-      </section>
-
-      <section className="band">
-        <div className="wrap stack-lg">
-          <div className="stack">
-            <div className="eyebrow">Markets we support</div>
-            <h2>Built across the projects that shape communities</h2>
-            <p className="prose">{MARKETS_CONTENT.lede}</p>
-          </div>
-          <MotionStagger className="grid-4 markets-grid">
-            {FEATURED_PROJECTS.map((project) => (
-              <MotionItem className="motion-fill" key={project.title}>
-                <Link className="project-card" href="/who-we-serve#markets">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 25vw"
-                    style={{ objectFit: 'cover' }}
-                  />
-                  <span className="label">{project.title}</span>
-                </Link>
-              </MotionItem>
-            ))}
-          </MotionStagger>
-          <p className="prose">{MARKETS_CONTENT.specialtyNote}</p>
           <p className="prose">
-            See how we support each market on <Link href="/who-we-serve#markets">Who We Serve</Link>.
+            Markets and roles in detail on <Link href="/who-we-serve">Who We Serve</Link>.
           </p>
         </div>
       </section>
@@ -377,30 +335,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="band band-ground">
-        <div className="wrap stack-lg">
-          <div className="stack">
-            <div className="eyebrow">Why {BRAND.name}</div>
-            <h2>{ABOUT_CONTENT.lede}</h2>
-            <p className="prose">{ABOUT_CONTENT.paragraphs[0]}</p>
-          </div>
-          <div className="grid-3">
-            {ABOUT_CONTENT.benefits.slice(0, 3).map(([code, title, text]) => (
-              <div className="card card-accent-secondary" key={code}>
-                <div className="code">{code}</div>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </div>
-            ))}
-          </div>
-          <p className="prose">
-            See the full story on our <Link href="/about">About</Link> page, explore{' '}
-            <Link href="/services/estimating">estimating by project type and trade</Link>, or review{' '}
-            <Link href="/who-we-serve#markets">markets we serve</Link>.
-          </p>
-        </div>
-      </section>
-
       {showProofStats ? (
         <section className="band band-ground">
           <div className="wrap stack-lg">
@@ -430,31 +364,7 @@ export default function Home() {
         </section>
       ) : null}
 
-      {showCaseStudies ? (
-        <section className="band">
-          <div className="wrap stack-lg">
-            <MotionReveal className="stack" y={16}>
-              <div className="eyebrow">Results</div>
-              <h2>Illustrative project outcomes.</h2>
-              <p className="prose">
-                Anonymized examples of the kind of bid, scope, and result we deliver. Not client testimonials.
-              </p>
-            </MotionReveal>
-            <MotionStagger className="case-study-grid">
-              {HOME_CASE_STUDIES.map((study) => (
-                <MotionItem className="case-study" key={study.projectType}>
-                  {study.disclaimer ? <p className="case-study-disclaimer">{study.disclaimer}</p> : null}
-                  <p className="case-study-type">{study.projectType}</p>
-                  <p className="case-study-size mono">{study.size}</p>
-                  <p className="case-study-result">{study.result}</p>
-                </MotionItem>
-              ))}
-            </MotionStagger>
-          </div>
-        </section>
-      ) : null}
-
-      <section className="band band-ground">
+      <section className="band">
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">Common questions</div>

@@ -543,11 +543,10 @@
   .excl ul{padding-left:18px;color:var(--ink-2);font-size:.93rem;line-height:1.7;}
 
   /* cta band */
-  /* Light sky CTA — contrasts dark investment/footer bands; avoids stacked-navy seams */
-  .cta-band{color:var(--ink);padding-block:76px;border-block:1px solid var(--rule);background:
-      radial-gradient(ellipse 70% 60% at 85% 15%,rgba(29,92,150,.12),transparent 55%),
-      radial-gradient(ellipse 50% 45% at 10% 90%,rgba(215,38,61,.05),transparent 50%),
-      linear-gradient(180deg,#E4EEF7 0%,var(--sky) 45%,var(--concrete) 100%);}
+  /* White CTA — contrasts navy investment/footer; not another ground/sky wash */
+  .cta-band{color:var(--ink);padding-block:76px;border-top:1px solid var(--rule);background:
+      radial-gradient(ellipse 55% 50% at 92% 0%,rgba(29,92,150,.08),transparent 55%),
+      linear-gradient(180deg,var(--paper) 0%,#FAFCFE 100%);}
   .cta-band .inner{display:flex;flex-wrap:wrap;gap:30px;align-items:center;justify-content:space-between;}
   .cta-band h2{max-width:18ch;color:var(--ink);}
   .cta-band p{color:var(--ink-2);margin-top:12px;max-width:48ch;}

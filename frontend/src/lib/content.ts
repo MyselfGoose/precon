@@ -53,7 +53,7 @@ export const OWNER_PLACEHOLDERS = [
   'BRAND.dataLocation — file handling / data storage location for Privacy',
   'DNS / mailbox / Vercel NEXT_PUBLIC_SITE_URL + LEAD_* + BLOB_READ_WRITE_TOKEN for quantsult.com',
   'BRAND.social.googleBusiness / linkedIn — live profile URLs',
-  'Replace illustrative HOME_STATS / HOME_CASE_STUDIES with verified owner figures',
+  'Replace illustrative HOME_STATS with verified owner figures; restore HOME_CASE_STUDIES when real outcomes exist',
   'License jurisdictions for sealing professionals (spoken for by SITE_COPY.licensingBlock)',
 ] as const;
 
@@ -1128,36 +1128,14 @@ export const HOME_STATS_NOTE =
   '*Illustrative turnaround ranges after scope confirmation. Final schedule is confirmed before work starts.';
 
 /**
- * Anonymized / illustrative outcomes — no client names.
+ * Anonymized / illustrative outcomes — empty until the owner publishes verified examples.
  */
 export const HOME_CASE_STUDIES: readonly {
   projectType: string;
   size: string;
   result: string;
   disclaimer?: string;
-}[] = [
-  {
-    projectType: 'Warehouse shell takeoff',
-    size: 'Illustrative · ~15–25k SF',
-    result:
-      'Division-level workbook with sheet references returned before bid review, so the GC could reprice labor without rebuilding quantities.',
-    disclaimer: 'Illustrative example',
-  },
-  {
-    projectType: 'Multi-trade commercial package',
-    size: 'Illustrative · mid-size shell',
-    result:
-      'Concrete, metals, and finishes packaged as separate CSI tabs with exclusions listed up front — fewer scope gaps during buyout.',
-    disclaimer: 'Illustrative example',
-  },
-  {
-    projectType: 'Design-coordinated estimate',
-    size: 'Illustrative · tenant improvement',
-    result:
-      'Estimate assumptions aligned to the architectural set so value-engineering options stayed tied to measurable quantities.',
-    disclaimer: 'Illustrative example',
-  },
-];
+}[] = [];
 
 /** Homepage FAQ — includes typical turnaround and starting-fee ranges (confirmed at scoping). */
 export const HOME_FAQ: [string, string][] = [
