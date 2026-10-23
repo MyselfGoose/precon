@@ -51,8 +51,8 @@ export default function EstimationPage() {
       <section className="band band-ground">
         <div className="wrap stack-lg">
           <div className="stack">
-            <div className="eyebrow">CSI Trade Expertise</div>
-            <h2>CSI Trades</h2>
+            <div className="eyebrow">CSI MasterFormat</div>
+            <h2>Specialty trade estimating</h2>
             <p className="prose">
               Detailed quantity takeoffs, trade-specific estimates, and market-driven pricing that help subcontractors bid faster, protect their margins, and secure more profitable work.
             </p>
@@ -71,6 +71,8 @@ export default function EstimationPage() {
           <div className="note">
             <b>Why us?</b> Estimating starts with quantities. Intelligence wins the bid. We help you win the right work at the right price.{' '}
             <Link href="/estimation/trades">View all trade estimation services →</Link>
+            {' '}For CSI MasterFormat division takeoffs, open the{' '}
+            <Link href="/trades#divisions">trade pull bar</Link>.
           </div>
         </div>
       </section>

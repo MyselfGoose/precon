@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useId, useRef, useState } from 'react';
-import { NAV_ITEMS } from '@/lib/data';
+import { NAV_ITEMS, NAV_TRADES_ITEMS } from '@/lib/data';
 import {
   getServicesForCategory,
   NAV_ESTIMATING_TRADES,
@@ -15,16 +15,21 @@ function pathMatches(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+type DropdownKind = 'services' | 'trades' | null;
+
 export default function NavLinks() {
   const path = usePathname();
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const menuId = useId();
-  const rootRef = useRef<HTMLDivElement>(null);
+  const [openDropdown, setOpenDropdown] = useState<DropdownKind>(null);
+  const servicesMenuId = useId();
+  const tradesMenuId = useId();
+  const servicesRootRef = useRef<HTMLDivElement>(null);
+  const tradesRootRef = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const servicesActive =
     pathMatches(path, '/services') ||
     path.startsWith('/estimation');
+  const tradesActive = pathMatches(path, '/trades');
 
   function clearCloseTimer() {
     if (closeTimer.current) {
@@ -33,26 +38,34 @@ export default function NavLinks() {
     }
   }
 
-  function openServices() {
+  function openMenu(kind: DropdownKind) {
     clearCloseTimer();
-    setServicesOpen(true);
+    setOpenDropdown(kind);
   }
 
   function scheduleClose() {
     clearCloseTimer();
-    closeTimer.current = setTimeout(() => setServicesOpen(false), 140);
+    closeTimer.current = setTimeout(() => setOpenDropdown(null), 140);
+  }
+
+  function closeMenus() {
+    clearCloseTimer();
+    setOpenDropdown(null);
   }
 
   useEffect(() => {
-    if (!servicesOpen) return;
+    if (!openDropdown) return;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        setServicesOpen(false);
+        setOpenDropdown(null);
       }
     };
     const onPointerDown = (event: MouseEvent) => {
-      if (!rootRef.current?.contains(event.target as Node)) {
-        setServicesOpen(false);
+      const target = event.target as Node;
+      const insideServices = servicesRootRef.current?.contains(target);
+      const insideTrades = tradesRootRef.current?.contains(target);
+      if (!insideServices && !insideTrades) {
+        setOpenDropdown(null);
       }
     };
     document.addEventListener('keydown', onKeyDown);
@@ -61,17 +74,20 @@ export default function NavLinks() {
       document.removeEventListener('keydown', onKeyDown);
       document.removeEventListener('mousedown', onPointerDown);
     };
-  }, [servicesOpen]);
+  }, [openDropdown]);
 
   useEffect(() => () => clearCloseTimer(), []);
+
+  const servicesOpen = openDropdown === 'services';
+  const tradesOpen = openDropdown === 'trades';
 
   return (
     <nav className="nav-links" aria-label="Main navigation">
       <div className="nav-primary">
         <div
-          ref={rootRef}
+          ref={servicesRootRef}
           className={`nav-dropdown${servicesOpen ? ' is-open' : ''}`}
-          onMouseEnter={openServices}
+          onMouseEnter={() => openMenu('services')}
           onMouseLeave={scheduleClose}
         >
           <Link
@@ -79,10 +95,10 @@ export default function NavLinks() {
             className="nav-link nav-dropdown-trigger"
             aria-expanded={servicesOpen}
             aria-haspopup="true"
-            aria-controls={menuId}
+            aria-controls={servicesMenuId}
             aria-current={servicesActive ? 'page' : undefined}
-            onFocus={openServices}
-            onClick={() => setServicesOpen(false)}
+            onFocus={() => openMenu('services')}
+            onClick={closeMenus}
           >
             Services
             <span className="nav-caret" aria-hidden="true">
@@ -90,12 +106,12 @@ export default function NavLinks() {
             </span>
           </Link>
           <div
-            id={menuId}
+            id={servicesMenuId}
             className="nav-dropdown-panel"
             role="menu"
             aria-label="Services categories"
             hidden={!servicesOpen}
-            onMouseEnter={openServices}
+            onMouseEnter={() => openMenu('services')}
             onMouseLeave={scheduleClose}
           >
             <div className="nav-dropdown-primary">
@@ -115,7 +131,7 @@ export default function NavLinks() {
                               <Link
                                 role="menuitem"
                                 href={link.href}
-                                onClick={() => setServicesOpen(false)}
+                                onClick={closeMenus}
                               >
                                 {link.label}
                               </Link>
@@ -126,7 +142,7 @@ export default function NavLinks() {
                               <Link
                                 role="menuitem"
                                 href={category.href}
-                                onClick={() => setServicesOpen(false)}
+                                onClick={closeMenus}
                               >
                                 {services[0]?.name ?? category.label}
                               </Link>
@@ -137,7 +153,7 @@ export default function NavLinks() {
                                 <Link
                                   role="menuitem"
                                   href={`/services/${service.slug}`}
-                                  onClick={() => setServicesOpen(false)}
+                                  onClick={closeMenus}
                                 >
                                   {service.name}
                                 </Link>
@@ -161,7 +177,7 @@ export default function NavLinks() {
                       <Link
                         role="menuitem"
                         href={href}
-                        onClick={() => setServicesOpen(false)}
+                        onClick={closeMenus}
                       >
                         {label}
                       </Link>
@@ -171,14 +187,79 @@ export default function NavLinks() {
               );
             })}
             <div className="nav-dropdown-footer">
-              <Link href="/services" onClick={() => setServicesOpen(false)}>
+              <Link href="/services" onClick={closeMenus}>
                 View all services →
               </Link>
             </div>
           </div>
         </div>
 
-        {NAV_ITEMS.map((item) => (
+        {NAV_ITEMS[0] ? (
+          <Link
+            href={NAV_ITEMS[0].href}
+            className="nav-link"
+            aria-current={pathMatches(path, NAV_ITEMS[0].href) ? 'page' : undefined}
+          >
+            {NAV_ITEMS[0].label}
+          </Link>
+        ) : null}
+
+        <div
+          ref={tradesRootRef}
+          className={`nav-dropdown nav-dropdown-trades${tradesOpen ? ' is-open' : ''}`}
+          onMouseEnter={() => openMenu('trades')}
+          onMouseLeave={scheduleClose}
+        >
+          <Link
+            href="/trades"
+            className="nav-link nav-dropdown-trigger"
+            aria-expanded={tradesOpen}
+            aria-haspopup="true"
+            aria-controls={tradesMenuId}
+            aria-current={tradesActive ? 'page' : undefined}
+            onFocus={() => openMenu('trades')}
+            onClick={closeMenus}
+          >
+            Trades
+            <span className="nav-caret" aria-hidden="true">
+              ▾
+            </span>
+          </Link>
+          <div
+            id={tradesMenuId}
+            className="nav-dropdown-panel nav-dropdown-panel-trades"
+            role="menu"
+            aria-label="CSI MasterFormat trades"
+            hidden={!tradesOpen}
+            onMouseEnter={() => openMenu('trades')}
+            onMouseLeave={scheduleClose}
+          >
+            <div className="nav-dropdown-group">
+              <p className="nav-dropdown-heading">CSI MasterFormat</p>
+              <ul className="nav-trades-list">
+                {NAV_TRADES_ITEMS.map((item) => (
+                  <li key={item.href} role="none">
+                    <Link
+                      role="menuitem"
+                      href={item.href}
+                      onClick={closeMenus}
+                      aria-current={pathMatches(path, item.href) ? 'page' : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="nav-dropdown-footer">
+              <Link href="/trades" onClick={closeMenus}>
+                View all trades →
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {NAV_ITEMS.slice(1).map((item) => (
           <Link
             key={item.href}
             href={item.href}

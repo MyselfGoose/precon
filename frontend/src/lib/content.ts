@@ -124,7 +124,7 @@ export const CONTENT_SERVICES: ContentService[] = [
     name: 'Estimating & quantity takeoffs',
     summary:
       'Traceable quantity takeoffs and cost estimates prepared in accordance with CSI MasterFormat, tailored to each trade and market.',
-    supportsTitle: 'CSI Trade Expertise',
+    supportsTitle: 'CSI MasterFormat',
     details:
       'Every project is unique, and every trade comes with its own scope, materials, labor requirements, and construction methods. Our estimating team understands the importance of trade-specific expertise and prepares detailed quantity takeoffs and cost estimates tailored to each discipline. Whether you\'re a general contractor assembling a complete bid or a specialty subcontractor pricing a single scope of work, we provide organized, reviewable estimates with documented assumptions that help you bid with confidence. Our estimates are prepared in accordance with CSI MasterFormat for clear organization, consistency, and professional documentation across every project.',
     points: [
@@ -1036,7 +1036,7 @@ export const HOME_WHO_WE_SERVE = [
   },
 ] as const;
 
-/** CSI Trade Expertise PDF audience bubbles — client wording on Estimating. */
+/** CSI MasterFormat audience bubbles — client wording on Estimating. */
 export const ESTIMATING_AUDIENCE_BUBBLES = [
   {
     title: 'General Contractors',
@@ -1065,7 +1065,7 @@ export const ESTIMATING_AUDIENCE_BUBBLES = [
 ] as const;
 
 /**
- * Client-voice takeoff paragraphs from CSI Trade Expertise PDF.
+ * Client-voice takeoff paragraphs from the CSI MasterFormat trade reference.
  * Flooring maps to the Finishes division page (`/trades/finishes`).
  */
 export const TRADE_CLIENT_VOICE: Record<string, { title: string; body: string }> = {
@@ -1099,14 +1099,15 @@ export const HOME_TRADE_CHIPS = [
   { label: 'Utilities', href: '/trades/utilities' },
 ] as const;
 
-/** Featured CSI divisions under Estimating in the Services dropdown. */
+/** Estimation destinations under Estimating in the Services dropdown (no Trades routes). */
 export const NAV_ESTIMATING_TRADES = [
   { label: 'Estimating overview', href: '/services/estimating' },
-  { label: 'Concrete', href: '/trades/concrete' },
-  { label: 'Metals', href: '/trades/metals' },
-  { label: 'Finishes', href: '/trades/finishes' },
-  { label: 'All CSI trades', href: '/trades' },
-  { label: 'Specialty trade estimating', href: '/estimation/trades' },
+  { label: 'General Construction', href: '/estimation/general-construction' },
+  { label: 'Commercial', href: '/estimation/commercial' },
+  { label: 'Residential', href: '/estimation/residential' },
+  { label: 'Industrial', href: '/estimation/industrial' },
+  { label: 'Public Projects', href: '/estimation/public-projects' },
+  { label: 'Specialty Trade Estimating', href: '/estimation/trades' },
 ] as const;
 
 /** Homepage Investment & Acquisition section (client #17; supports Preconstruction lead). */

@@ -318,14 +318,19 @@ export type NavLinkItem = {
   href: string;
 };
 
-/** Top-level links after Services dropdown (desktop + mobile). */
+/** Top-level links after Services and Trades dropdowns (desktop + mobile). */
 export const NAV_ITEMS: NavLinkItem[] = [
   { label: 'Who We Serve', href: '/who-we-serve' },
-  { label: 'Trades', href: '/trades' },
   { label: 'How It Works', href: '/how-it-works' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ];
+
+/** CSI MasterFormat division links for the dedicated Trades navbar dropdown. */
+export const NAV_TRADES_ITEMS: NavLinkItem[] = TRADES.map((trade) => ({
+  label: `Div ${trade.div} ${trade.name}`,
+  href: `/trades/${trade.slug}`,
+}));
 
 /** @deprecated Use NAV_ITEMS — same destinations for the floating mobile panel. */
 export const MOBILE_NAV_ITEMS = NAV_ITEMS;

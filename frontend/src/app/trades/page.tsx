@@ -1,27 +1,24 @@
 import Link from 'next/link';
-import { CSI_TRADE_LIST, TRADES } from '@/lib/data';
-import { getCsiTradeNavItems } from '@/lib/estimation';
+import { TRADES } from '@/lib/data';
 import { Button, CTA, PageHead, TradeTile } from '../components';
 import { createMetadata } from '@/lib/metadata';
 import { MotionStagger } from '../motion';
 
 export const metadata = createMetadata({
-  title: 'Trades',
+  title: 'CSI MasterFormat Trades',
   description:
-    'CSI trade expertise across general construction, remodeling, restoration, MEP, structural, HVAC, and specialty trades, with detailed division takeoff pages.',
+    'CSI MasterFormat division takeoffs across concrete, masonry, metals, finishes, MEP, earthwork, and related trades — with clear measure groups, samples, and exclusions.',
   path: '/trades',
 });
-
-const specialtyTrades = getCsiTradeNavItems(CSI_TRADE_LIST);
 
 export default function TradesPage() {
   return (
     <>
       <PageHead
-        eyebrow="CSI Trade Expertise"
+        eyebrow="CSI MasterFormat"
         title={
           <>
-            CSI trade expertise, every division <span className="accent-word">covered.</span>
+            CSI MasterFormat divisions, every division <span className="accent-word">covered.</span>
           </>
         }
         lede="Estimates prepared in CSI MasterFormat. Clear organization, consistency, and professional documentation whether you need one specialty scope or a full-building workbook."
@@ -30,33 +27,13 @@ export default function TradesPage() {
         priority
         actions={
           <>
-            <Button href="/estimation/trades">Browse specialty estimation →</Button>
-            <Link className="btn btn-ghost" href="#divisions">
-              Jump to division takeoffs
+            <Button href="/quote">Request an Estimate →</Button>
+            <Link className="btn btn-ghost" href="/estimation/trades">
+              Specialty trade estimating
             </Link>
           </>
         }
       />
-
-      <section className="band band-ground">
-        <div className="wrap stack-lg">
-          <div className="stack">
-            <div className="eyebrow">CSI specialty estimation</div>
-            <h2>Every trade in our expertise window</h2>
-            <p className="prose">
-              Each chip opens a dedicated estimation page or the matching public-project / general-construction category.
-              Infrastructure specialties deep-link into Public Projects categories where that content already lives.
-            </p>
-          </div>
-          <div className="trade-nav" aria-label="CSI specialty estimation trades">
-            {specialtyTrades.map((trade) => (
-              <Link key={trade.label} href={trade.href} className="trade-chip trade-chip-link" title={trade.label}>
-                {trade.shortLabel}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="band" id="divisions">
         <div className="wrap stack-lg">
@@ -64,8 +41,10 @@ export default function TradesPage() {
             <div className="eyebrow">MasterFormat division takeoffs</div>
             <h2>Detailed CSI division pages</h2>
             <p className="prose">
-              Separate from the specialty estimation pages above: each division page shows the work measured, the units
-              reported, the sheets typically used, a sample output, exclusions, and questions to resolve before pricing.
+              Each division page shows the work measured, the units reported, the sheets typically used, a sample
+              output, exclusions, and questions to resolve before pricing. For specialty trade marketing pages
+              (remodeling, glazing, roofing, and more), see{' '}
+              <Link href="/estimation/trades">specialty trade estimating</Link>.
             </p>
           </div>
           <MotionStagger className="trades">

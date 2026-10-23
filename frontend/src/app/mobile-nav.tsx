@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { NAV_ITEMS } from '@/lib/data';
+import { NAV_ITEMS, NAV_TRADES_ITEMS } from '@/lib/data';
 import {
   BRAND,
   getServicesForCategory,
@@ -58,6 +58,7 @@ function cornerPosition(corner: Corner, width: number, height: number): Position
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
   const [servicesExpanded, setServicesExpanded] = useState(false);
+  const [tradesExpanded, setTradesExpanded] = useState(false);
   const [corner, setCorner] = useState<Corner>(DEFAULT_CORNER);
   const [position, setPosition] = useState<Position | null>(null);
   const [dragging, setDragging] = useState(false);
@@ -173,6 +174,7 @@ export default function MobileNav() {
   function closeMenu() {
     setOpen(false);
     setServicesExpanded(false);
+    setTradesExpanded(false);
     requestAnimationFrame(() => toggleRef.current?.focus());
   }
 
@@ -296,12 +298,59 @@ export default function MobileNav() {
                   </div>
                 )}
               </motion.div>
-              {NAV_ITEMS.map((item, index) => (
+              {NAV_ITEMS[0] ? (
+                <motion.div
+                  initial={reduced ? false : { opacity: 0, x: 16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: reduced ? 0 : 0.1 }}
+                >
+                  <Link href={NAV_ITEMS[0].href} onClick={closeMenu}>
+                    {NAV_ITEMS[0].label}
+                  </Link>
+                </motion.div>
+              ) : null}
+              <motion.div
+                initial={reduced ? false : { opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: reduced ? 0 : 0.145 }}
+                className="mobile-nav-services"
+              >
+                <div className="mobile-nav-services-row">
+                  <Link href="/trades" onClick={closeMenu}>
+                    Trades
+                  </Link>
+                  <button
+                    type="button"
+                    className="mobile-nav-services-toggle"
+                    aria-expanded={tradesExpanded}
+                    aria-controls="mobile-trades-groups"
+                    onClick={() => setTradesExpanded((value) => !value)}
+                  >
+                    {tradesExpanded ? 'Hide' : 'Show'} divisions
+                  </button>
+                </div>
+                {tradesExpanded && (
+                  <div id="mobile-trades-groups" className="mobile-nav-service-groups">
+                    <div className="mobile-nav-service-group">
+                      <p className="mobile-nav-service-heading">CSI MasterFormat</p>
+                      {NAV_TRADES_ITEMS.map((item) => (
+                        <Link key={item.href} href={item.href} onClick={closeMenu}>
+                          {item.label}
+                        </Link>
+                      ))}
+                      <Link href="/trades" onClick={closeMenu}>
+                        View all trades →
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+              {NAV_ITEMS.slice(1).map((item, index) => (
                 <motion.div
                   key={item.href}
                   initial={reduced ? false : { opacity: 0, x: 16 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: reduced ? 0 : 0.1 + index * 0.045 }}
+                  transition={{ delay: reduced ? 0 : 0.19 + index * 0.045 }}
                 >
                   <Link href={item.href} onClick={closeMenu}>
                     {item.label}

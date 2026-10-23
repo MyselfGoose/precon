@@ -56,6 +56,11 @@ export default function TradeEstimationIndex() {
               <b>Why us?</b> {hub.whyUs}
             </div>
           )}
+          <div className="note">
+            <b>Need MasterFormat division takeoffs?</b> Open the{' '}
+            <Link href="/trades#divisions">CSI MasterFormat trade pull bar</Link> for concrete, metals, finishes, MEP,
+            and related division pages.
+          </div>
         </div>
       </section>
       <CTA title="Request a trade-specific estimate" text="Tell us your trade, project location, and bid date. Then send the sheets that matter." />

@@ -114,7 +114,7 @@ export default function ServicesPage() {
             <b>Markets and project types.</b> Commercial, residential, industrial, and public work are covered under{' '}
             <Link href="/who-we-serve">Who We Serve</Link>. For trade-by-trade estimating pages, open{' '}
             <Link href="/services/estimating">Estimating</Link> or browse{' '}
-            <Link href="/estimation/trades">CSI trade estimation</Link>.
+            <Link href="/estimation/trades">specialty trade estimating</Link>.
           </div>
 
           <div className="stack">

@@ -43,7 +43,7 @@ export const IMAGE_REGISTRY: ImagePlacement[] = [
   { path: '/images/markets/who-residential.jpg', route: '/who-we-serve', role: 'markets', alt: 'Residential and multi-family construction' },
   { path: '/images/markets/who-industrial.jpg', route: '/who-we-serve', role: 'markets', alt: 'Industrial facility construction' },
   { path: '/images/markets/who-public.jpg', route: '/who-we-serve', role: 'markets', alt: 'Public and institutional construction' },
-  { path: '/images/hero/trades-hub.jpg', route: '/trades', role: 'hero', alt: 'CSI trade estimating expertise' },
+  { path: '/images/hero/trades-hub.jpg', route: '/trades', role: 'hero', alt: 'CSI MasterFormat trade estimating' },
   { path: '/images/tiles/concrete.jpg', route: '/trades', role: 'card', alt: 'Concrete trade estimating' },
   { path: '/images/tiles/masonry.jpg', route: '/trades', role: 'card', alt: 'Masonry trade estimating' },
   { path: '/images/tiles/metals.jpg', route: '/trades', role: 'card', alt: 'Metals trade estimating' },
