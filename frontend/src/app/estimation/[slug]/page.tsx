@@ -145,7 +145,7 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
                 <h2>Commercial, residential, and industrial GC packages</h2>
                 <p className="prose">
                   General Construction estimating covers complete GC bid packages across the three primary building
-                  markets below. Each opens to a dedicated hub with CSI Format takeoffs, market-driven pricing, and
+                  markets below. Each opens to a dedicated hub with CSI MasterFormat takeoffs, market-driven pricing, and
                   trade coordination.
                 </p>
               </div>
@@ -170,7 +170,7 @@ export default async function EstimationHubPage({ params }: { params: Promise<{ 
                   <h2>Residential work we estimate</h2>
                   <p className="prose">
                     Single-family, duplex and two-family, townhomes, multi-family, affordable housing schemes, and custom
-                    homes — each with CSI Format takeoffs and market-driven pricing.
+                    homes — each with CSI MasterFormat takeoffs and market-driven pricing.
                   </p>
                 </div>
               )}

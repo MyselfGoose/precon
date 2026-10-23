@@ -133,7 +133,7 @@ export const TRADES: Trade[] =
        ['Do you count pieces as well as tonnage?','Yes. Piece count drives erection productivity and crane time. A building with many light members costs more to erect per ton than one with fewer heavy ones, and the estimate reflects that.'],
        ['Is deck included with the joists?','They are carried as separate lines because different suppliers usually furnish them and the erector prices deck by the square, not by the piece.']] },
 
-{ slug:'wood', art:'a', noun:'wood framing', div:'06', name:'Wood & Plastics', short:'Framing, sheathing, engineered lumber, trusses, millwork',
+{ slug:'wood', art:'a', noun:'wood framing', div:'06', name:'Wood, Plastics, and Composites', short:'Framing, sheathing, engineered lumber, trusses, millwork',
   lede:'Rough and finish carpentry takeoffs: framing lumber by board foot and piece, sheathing by sheet, engineered products by length, hardware by count.',
   intro:['Framing lumber is priced by the board foot but bought by the piece, so we report both. Studs, plates, headers, joists, rafters and blocking are listed by size and length with a stated waste factor, then rolled up to board feet for pricing and to piece counts for ordering.',
          'Engineered lumber, trusses, sheathing, hardware and fasteners each get their own lines. Finish carpentry and millwork are measured from the architectural details and schedules so casework and trim do not get lost in a per-square-foot allowance.'],
@@ -335,7 +335,7 @@ export type NavTradeItem = NavLinkItem & {
 const NAV_TRADE_LABELS: Record<string, string> = {
   thermal: 'Thermal & Moisture',
   exterior: 'Exterior',
-  wood: 'Wood & Plastics',
+  wood: 'Wood, Plastics, and Composites',
 };
 
 export const NAV_TRADES_ITEMS: NavTradeItem[] = TRADES.map((trade) => ({
@@ -356,29 +356,3 @@ export const FOOTER_COMPANY_ITEMS: NavLinkItem[] = [
 
 /** @deprecated Prefer FOOTER_COMPANY_ITEMS. */
 export const FOOTER_NAV_ITEMS = FOOTER_COMPANY_ITEMS;
-export const CSI_TRADE_LIST = [
-  'General Construction-GC',
-  'Remodeling',
-  'Restoration',
-  'Marine work',
-  'Glazing',
-  'Paving',
-  'Roofing',
-  'Metal framing',
-  'Government Infrastructure',
-  'HVAC-Heating cooling and ventilation',
-  'MEP-Mechanical Electrical Plumbing',
-  'Ceiling/drywall',
-  'Excavation',
-  'Insulation',
-  'Demolition',
-  'Structural',
-  'Landscaping',
-  'Bridge work',
-  'Airport construction',
-  'Roads & Tenders Governmental',
-  'Flooring',
-  'Bath & Tiles',
-  'Lumber wood work',
-  'Fencing',
-] as const;

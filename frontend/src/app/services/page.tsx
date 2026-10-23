@@ -6,7 +6,7 @@ import {
   SITE_COPY,
 } from '@/lib/content';
 import { ICO } from '@/lib/illustrations';
-import { CTA, PageHead, TrustReasons } from '../components';
+import { CTA, PageHead } from '../components';
 import { createMetadata } from '@/lib/metadata';
 import { MotionItem, MotionReveal, MotionStagger } from '../motion';
 
@@ -117,14 +117,10 @@ export default function ServicesPage() {
             <Link href="/estimation/trades">specialty trade estimating</Link>.
           </div>
 
-          <div className="stack">
-            <div className="eyebrow">Trust</div>
-            <h2>Why Contractors Trust {BRAND.name}</h2>
-            <p className="prose">
-              Industry-standard organization, traceable quantities, and editable Excel deliverables.
-            </p>
-          </div>
-          <TrustReasons compact />
+          <p className="prose">
+            Industry-standard organization, traceable quantities, and editable Excel deliverables — see{' '}
+            <Link href="/#why-trust">Why contractors trust {BRAND.name}</Link> on the homepage.
+          </p>
         </div>
       </section>
       <CTA

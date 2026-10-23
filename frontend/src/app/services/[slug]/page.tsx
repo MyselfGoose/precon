@@ -173,6 +173,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </MotionItem>
               ))}
             </MotionStagger>
+            <p className="note acquisition-disclosure" role="note">
+              {ACQUISITION_CONTENT.buyerDisclosure}
+            </p>
           </div>
         </section>
 
@@ -308,7 +311,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <div className="code">{content.code}</div>
               <h2 style={{ fontSize: 'var(--s2)' }}>{content.name}</h2>
               <p className="prose">{content.details}</p>
-              {showLicensing ? <p className="note licensing-note">{SITE_COPY.licensing}</p> : null}
+              {showLicensing ? (
+                <aside className="note licensing-note" aria-label={SITE_COPY.licensingBlock.title}>
+                  <b>{SITE_COPY.licensingBlock.title}</b>
+                  <p>{SITE_COPY.licensingBlock.body}</p>
+                </aside>
+              ) : null}
             </div>
             {isBim && (
               <div className="stack-lg">
@@ -535,6 +543,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             content.ctaText ??
             'Send the project information you have and we will define the useful scope, open questions, and next step.'
           }
+          primaryHref="/quote"
+          primaryLabel={showLicensing ? SITE_COPY.cta.requestQuote : SITE_COPY.cta.primary}
         />
       </>
   );

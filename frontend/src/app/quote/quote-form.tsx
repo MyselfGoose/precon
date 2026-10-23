@@ -13,6 +13,7 @@ import {
   PHONE_PATTERN,
   formatAttachmentLimitsHelp,
   validateAttachmentList,
+  validatePlanRoomUrl,
 } from '@/lib/lead-shared';
 
 type FormErrors = Record<string, string>;
@@ -137,7 +138,7 @@ function validateStep(form: HTMLFormElement, step: WizardStep): FormErrors {
     if (!EMAIL_PATTERN.test(email)) errors.email = 'Enter a valid email address.';
     if (phone && !PHONE_PATTERN.test(phone)) errors.phone = 'Enter a valid phone number or leave this field blank.';
     if (!location) errors.state = 'Add the project location.';
-    if (!date) errors.due = 'Add the important project date.';
+    if (!date) errors.due = 'Add the bid due date.';
     if (date && new Date(`${date}T00:00:00`) < new Date(new Date().toDateString())) {
       errors.due = 'Choose today or a future date.';
     }
@@ -154,6 +155,8 @@ function validateStep(form: HTMLFormElement, step: WizardStep): FormErrors {
     if (notes.length > MAX_NOTES_LENGTH) {
       errors.notes = `Message must be ${MAX_NOTES_LENGTH.toLocaleString()} characters or fewer.`;
     }
+    const planRoomError = validatePlanRoomUrl(String(data.get('planRoomUrl') ?? ''));
+    if (planRoomError) errors.planRoomUrl = planRoomError;
     if (missing.length > MAX_MISSING_LENGTH) {
       errors.missing = `Known gaps must be ${MAX_MISSING_LENGTH.toLocaleString()} characters or fewer.`;
     }
@@ -380,7 +383,7 @@ export default function QuoteForm({
             const key = errorKeys[0] ?? '';
             if (['name', 'email', 'phone', 'state', 'due', 'company', 'role', 'type', 'stage'].includes(key)) return 0;
             if (key === 'trade') return 1;
-            if (['notes', 'missing', 'files'].includes(key)) return 2;
+            if (['notes', 'missing', 'files', 'planRoomUrl'].includes(key)) return 2;
             return 3;
           })();
           goToStep(stepForError);
@@ -825,14 +828,32 @@ export default function QuoteForm({
           </div>
 
           <div className="field full" id="plans">
+            <label htmlFor="q-plan-room">
+              Plan-room link <span className="optional">(optional)</span>
+            </label>
+            <input
+              id="q-plan-room"
+              name="planRoomUrl"
+              type="url"
+              inputMode="url"
+              placeholder="https://…"
+              aria-invalid={Boolean(errors.planRoomUrl)}
+              aria-describedby={errors.planRoomUrl ? 'error-plan-room' : 'hint-plan-room'}
+            />
+            <span className="hint" id="hint-plan-room">
+              Prefer a plan-room or cloud link for large sets. {SITE_COPY.confidentiality}
+            </span>
+            {errors.planRoomUrl && (
+              <span className="form-error" id="error-plan-room">
+                {errors.planRoomUrl}
+              </span>
+            )}
             <label htmlFor="q-files">
               Upload Plans / Documents <span className="optional">(optional)</span>
             </label>
             <label className="dropzone" htmlFor="q-files">
               <b>Share your project files</b>
               {formatAttachmentLimitsHelp()}, or <u>browse files</u>
-              <br />
-              Paste a plan-room link in the notes for larger sets
             </label>
             <input
               id="q-files"

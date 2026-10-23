@@ -7,6 +7,7 @@ import {
   PHONE_PATTERN,
   fileExtension,
   validateAttachmentList,
+  validatePlanRoomUrl,
 } from '@/lib/lead-shared';
 
 export {
@@ -15,13 +16,17 @@ export {
   EMAIL_PATTERN,
   MAX_ATTACHMENT_BYTES,
   MAX_ATTACHMENT_MB_LABEL,
+  MAX_BLOB_UPLOAD_BYTES,
+  MAX_BLOB_UPLOAD_MB_LABEL,
   MAX_MISSING_LENGTH,
   MAX_NOTES_LENGTH,
   MAX_TOTAL_ATTACHMENT_BYTES,
   MAX_TOTAL_ATTACHMENT_MB_LABEL,
   PHONE_PATTERN,
+  PLAN_ROOM_URL_PATTERN,
   formatAttachmentLimitsHelp,
   validateAttachmentList,
+  validatePlanRoomUrl,
 } from '@/lib/lead-shared';
 
 export type FieldErrors = Record<string, string>;
@@ -45,8 +50,22 @@ export type QuoteLeadPayload = {
   due: string;
   notes: string;
   missing: string;
+  planRoomUrl: string;
+  blobUrls: string[];
   contactConsent: boolean;
   marketingConsent: boolean;
+  website: string;
+};
+
+export type ContactLeadPayload = {
+  name: string;
+  email: string;
+  type: string;
+  due: string;
+  planRoomUrl: string;
+  notes: string;
+  blobUrls: string[];
+  contactConsent: boolean;
   website: string;
 };
 
@@ -59,6 +78,8 @@ export type AcquisitionLeadPayload = {
   type: string;
   condition: string;
   notes: string;
+  planRoomUrl: string;
+  blobUrls: string[];
   contactConsent: boolean;
   website: string;
 };
@@ -90,8 +111,13 @@ export function validateQuoteFields(data: FormData): { errors: FieldErrors; payl
   const due = trim(data.get('due'));
   const notes = trim(data.get('notes'));
   const missing = trim(data.get('missing'));
+  const planRoomUrl = trim(data.get('planRoomUrl'));
   const website = trim(data.get('website'));
   const trades = data.getAll('trade').map((t) => String(t).trim()).filter(Boolean);
+  const blobUrls = data
+    .getAll('blobUrl')
+    .map((entry) => String(entry).trim())
+    .filter(Boolean);
   const contactConsent = isChecked(data.get('contact-consent'));
   const marketingConsent = isChecked(data.get('marketing-consent'));
 
@@ -100,13 +126,15 @@ export function validateQuoteFields(data: FormData): { errors: FieldErrors; payl
   if (phone && !PHONE_PATTERN.test(phone)) errors.phone = 'Enter a valid phone number or leave this field blank.';
   if (!trades.length) errors.trade = 'Select at least one service or division.';
   if (!state) errors.state = 'Add the project location.';
-  if (!due) errors.due = 'Add the important project date.';
+  if (!due) errors.due = 'Add the bid due date.';
   if (due && new Date(`${due}T00:00:00`) < new Date(new Date().toDateString())) {
     errors.due = 'Choose today or a future date.';
   }
   if (notes.length < 20) errors.notes = 'Add at least 20 characters describing the scope or decision.';
   enforceTextLength(notes, MAX_NOTES_LENGTH, 'Message', errors, 'notes');
   enforceTextLength(missing, MAX_MISSING_LENGTH, 'Known gaps', errors, 'missing');
+  const planRoomError = validatePlanRoomUrl(planRoomUrl);
+  if (planRoomError) errors.planRoomUrl = planRoomError;
   if (!contactConsent) errors['contact-consent'] = 'Consent is required before submitting.';
 
   if (Object.keys(errors).length) return { errors, payload: null };
@@ -126,8 +154,61 @@ export function validateQuoteFields(data: FormData): { errors: FieldErrors; payl
       due,
       notes,
       missing,
+      planRoomUrl,
+      blobUrls,
       contactConsent,
       marketingConsent,
+      website,
+    },
+  };
+}
+
+export function validateContactFields(data: FormData): {
+  errors: FieldErrors;
+  payload: ContactLeadPayload | null;
+} {
+  const errors: FieldErrors = {};
+  const name = trim(data.get('name'));
+  const email = trim(data.get('email'));
+  const type = trim(data.get('type'));
+  const due = trim(data.get('due'));
+  const planRoomUrl = trim(data.get('planRoomUrl'));
+  const notes = trim(data.get('notes'));
+  const website = trim(data.get('website'));
+  const blobUrls = data
+    .getAll('blobUrl')
+    .map((entry) => String(entry).trim())
+    .filter(Boolean);
+  const contactConsent = isChecked(data.get('contact-consent'));
+
+  if (!name) errors.name = 'Enter your name.';
+  if (!EMAIL_PATTERN.test(email)) errors.email = 'Enter a valid email address.';
+  if (!type) errors.type = 'Select a project type.';
+  if (!due) errors.due = 'Add the bid due date.';
+  if (due && new Date(`${due}T00:00:00`) < new Date(new Date().toDateString())) {
+    errors.due = 'Choose today or a future date.';
+  }
+  const planRoomError = validatePlanRoomUrl(planRoomUrl);
+  if (planRoomError) errors.planRoomUrl = planRoomError;
+  if (!planRoomUrl && !blobUrls.length && notes.length < 10) {
+    errors.planRoomUrl = 'Add a plan-room link, upload files, or a short note about the plans.';
+  }
+  enforceTextLength(notes, MAX_NOTES_LENGTH, 'Notes', errors, 'notes');
+  if (!contactConsent) errors['contact-consent'] = 'Consent is required before submitting.';
+
+  if (Object.keys(errors).length) return { errors, payload: null };
+
+  return {
+    errors,
+    payload: {
+      name,
+      email,
+      type,
+      due,
+      planRoomUrl,
+      notes,
+      blobUrls,
+      contactConsent,
       website,
     },
   };
@@ -146,7 +227,12 @@ export function validateAcquisitionFields(data: FormData): {
   const type = trim(data.get('type'));
   const condition = trim(data.get('condition'));
   const notes = trim(data.get('notes'));
+  const planRoomUrl = trim(data.get('planRoomUrl'));
   const website = trim(data.get('website'));
+  const blobUrls = data
+    .getAll('blobUrl')
+    .map((entry) => String(entry).trim())
+    .filter(Boolean);
   const contactConsent = isChecked(data.get('contact-consent'));
 
   if (!name) errors.name = 'Enter your name.';
@@ -155,6 +241,8 @@ export function validateAcquisitionFields(data: FormData): {
   if (!address) errors.address = 'Add the property address or location.';
   if (notes.length < 20) errors.notes = 'Add at least 20 characters describing the property and your situation.';
   enforceTextLength(notes, MAX_NOTES_LENGTH, 'Details', errors, 'notes');
+  const planRoomError = validatePlanRoomUrl(planRoomUrl);
+  if (planRoomError) errors.planRoomUrl = planRoomError;
   if (!contactConsent) errors['contact-consent'] = 'Consent is required before submitting.';
 
   if (Object.keys(errors).length) return { errors, payload: null };
@@ -170,6 +258,8 @@ export function validateAcquisitionFields(data: FormData): {
       type,
       condition,
       notes,
+      planRoomUrl,
+      blobUrls,
       contactConsent,
       website,
     },
@@ -233,6 +323,8 @@ export function buildQuoteEmail(payload: QuoteLeadPayload, attachmentNames: stri
     ['Bid Due Date', payload.due],
     ['Message', payload.notes],
     ['Known gaps', payload.missing],
+    ['Plan-room link', payload.planRoomUrl],
+    ['Uploaded file links', payload.blobUrls.join('\n')],
     ['Marketing consent', payload.marketingConsent ? 'Yes' : 'No'],
     ['Attachments', attachmentNames.length ? attachmentNames.join(', ') : 'None'],
   ];
@@ -241,6 +333,28 @@ export function buildQuoteEmail(payload: QuoteLeadPayload, attachmentNames: stri
     subject: `Quote request - ${payload.name}${payload.company ? ` (${payload.company})` : ''}`,
     html: `<div style="font-family:Georgia,serif;font-size:15px;line-height:1.5;color:#111;"><p>New project quote request from the website.</p><table>${rowsHtml(rows)}</table></div>`,
     text: `New project quote request from the website.\n\n${rowsText(rows)}`,
+  };
+}
+
+export function buildContactEmail(
+  payload: ContactLeadPayload,
+  attachmentNames: string[],
+): { subject: string; html: string; text: string } {
+  const rows: Array<[string, string]> = [
+    ['Name', payload.name],
+    ['Email', payload.email],
+    ['Project type', payload.type],
+    ['Bid Due Date', payload.due],
+    ['Plan-room link', payload.planRoomUrl],
+    ['Notes', payload.notes],
+    ['Uploaded file links', payload.blobUrls.join('\n')],
+    ['Attachments', attachmentNames.length ? attachmentNames.join(', ') : 'None'],
+  ];
+
+  return {
+    subject: `Contact inquiry - ${payload.name}`,
+    html: `<div style="font-family:Georgia,serif;font-size:15px;line-height:1.5;color:#111;"><p>New short contact inquiry from the website.</p><table>${rowsHtml(rows)}</table></div>`,
+    text: `New short contact inquiry from the website.\n\n${rowsText(rows)}`,
   };
 }
 
@@ -257,6 +371,8 @@ export function buildAcquisitionEmail(
     ['Property type', payload.type],
     ['Condition', payload.condition],
     ['Details', payload.notes],
+    ['Plan-room link', payload.planRoomUrl],
+    ['Uploaded file links', payload.blobUrls.join('\n')],
     ['Attachments', attachmentNames.length ? attachmentNames.join(', ') : 'None'],
   ];
 

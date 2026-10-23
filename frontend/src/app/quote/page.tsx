@@ -44,7 +44,7 @@ export default function Quote() {
                   Call {BRAND.phoneDisplay}
                 </PhoneLink>
                 <WhatsAppLink className="btn btn-ghost" style={{ alignSelf: 'flex-start' }}>
-                  WhatsApp (optional) →
+                  WhatsApp →
                 </WhatsAppLink>
                 <p className="prose">
                   The form with plan upload is the fastest path. Email and phone are equally welcome. WhatsApp remains
@@ -52,8 +52,9 @@ export default function Quote() {
                 </p>
               </div>
               <div className="note">
-                <b>Files we accept.</b> PDF, ZIP, or DWG up to 3.5 MB each (4 MB total). For larger sets, paste a
-                plan-room or cloud link in the notes field on the files step.
+                <b>Files we accept.</b> PDF, ZIP, or DWG up to 3.5 MB each (4 MB total). For larger sets, use the
+                plan-room link field on the files step (or direct upload up to 100 MB when storage is configured).
+                Client plans and pricing are confidential and never used in our acquisition activity.
               </div>
               <div className="draw">
                 <Svg markup={D.concrete()} />

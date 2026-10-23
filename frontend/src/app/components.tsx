@@ -135,6 +135,8 @@ export function Footer() {
   const googleUrl = BRAND.social.googleBusiness;
   const linkedInUrl = BRAND.social.linkedIn;
   const showLegalName = !isPlaceholderUrl(BRAND.legalName);
+  const showAddress = !isPlaceholderUrl(BRAND.address);
+  const showJurisdiction = !isPlaceholderUrl(BRAND.jurisdiction);
   const showGoogle = !isPlaceholderUrl(googleUrl);
   const showLinkedIn = !isPlaceholderUrl(linkedInUrl);
 
@@ -150,6 +152,16 @@ export function Footer() {
             {showLegalName ? (
               <p className="foot-legal-name" style={{ marginTop: 10 }}>
                 {BRAND.legalName}
+              </p>
+            ) : null}
+            {showAddress ? (
+              <p className="foot-legal-name" style={{ marginTop: 6 }}>
+                {BRAND.address}
+              </p>
+            ) : null}
+            {showJurisdiction ? (
+              <p className="foot-legal-name" style={{ marginTop: 4 }}>
+                {BRAND.jurisdiction}
               </p>
             ) : null}
             <p className="foot-domain">
@@ -256,7 +268,7 @@ export function Footer() {
                 <Link href="/contact">Contact</Link>
               </li>
               <li>
-                <WhatsAppLink>WhatsApp (optional)</WhatsAppLink>
+                <WhatsAppLink>WhatsApp</WhatsAppLink>
               </li>
             </ul>
           </div>

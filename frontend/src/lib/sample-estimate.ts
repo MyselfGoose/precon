@@ -83,8 +83,8 @@ const SUMMARY_DIVISIONS: readonly {
   { code: '03', name: 'Concrete', material: 153_140, labor: 167_005 },
   { code: '04', name: 'Masonry', material: 48_600, labor: 61_200 },
   { code: '05', name: 'Metals', material: 86_400, labor: 54_900 },
-  { code: '06', name: 'Wood & Plastics', material: 22_100, labor: 31_500 },
-  { code: '07', name: 'Thermal & Moisture', material: 38_750, labor: 29_400 },
+  { code: '06', name: 'Wood, Plastics, and Composites', material: 22_100, labor: 31_500 },
+  { code: '07', name: 'Thermal & Moisture Protection', material: 38_750, labor: 29_400 },
   { code: '09', name: 'Finishes', material: 41_200, labor: 52_800 },
 ];
 
@@ -151,7 +151,7 @@ export const WAREHOUSE_SAMPLE = {
   label: 'Sample – illustrative pricing',
   placementCy: 464,
   placementBasis:
-    'Quantities measured from sheets S-101 through S-108 in the issued plan set. Placement CY is the sum of footing, wall, and slab volumes shown above (~92 + 84 + 288 CY). Pricing is illustrative and should be aligned to the project location. 4,000 PSI mix per Spec 03 30 00.',
+    'Quantities measured from sheets S-101 through S-108 in the issued plan set. Placement CY is the sum of footing, wall, and slab volumes shown above (~92 + 84 + 288 CY). Slab on grade shown as 5" (owner may request a 6" alternate). Pricing is illustrative and should be aligned to the project location. 4,000 PSI mix per Spec 03 30 00. Division 08 Openings is omitted from this sample — divisions shown only.',
   columns: ['Division', 'Material', 'Labor', 'Total'] as const,
   detailColumns: ['Description', 'Qty', 'Unit', 'Sheet', 'Material', 'Labor', 'Total'] as const,
   div03Lines: DIV03_LINES,
@@ -233,7 +233,7 @@ export function getWarehouseSummaryDisplay(): {
         ] as const,
     ),
     total: [
-      'Sample total',
+      'Subtotal, divisions shown',
       formatUsd(WAREHOUSE_SAMPLE.summaryTotals[0]),
       formatUsd(WAREHOUSE_SAMPLE.summaryTotals[1]),
       formatUsd(WAREHOUSE_SAMPLE.summaryTotals[2]),

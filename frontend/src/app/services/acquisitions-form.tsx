@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from 'react';
 import Link from 'next/link';
-import { BRAND } from '@/lib/content';
+import { BRAND, SITE_COPY } from '@/lib/content';
 import {
   ALLOWED_FILE_ACCEPT,
   EMAIL_PATTERN,
@@ -10,6 +10,7 @@ import {
   PHONE_PATTERN,
   formatAttachmentLimitsHelp,
   validateAttachmentList,
+  validatePlanRoomUrl,
 } from '@/lib/lead-shared';
 
 type FormErrors = Record<string, string>;
@@ -35,6 +36,8 @@ function validate(form: HTMLFormElement): FormErrors {
   if (notes.length > MAX_NOTES_LENGTH) {
     errors.notes = `Details must be ${MAX_NOTES_LENGTH.toLocaleString()} characters or fewer.`;
   }
+  const planRoomError = validatePlanRoomUrl(String(data.get('planRoomUrl') ?? ''));
+  if (planRoomError) errors.planRoomUrl = planRoomError;
   if (!data.get('contact-consent')) errors['contact-consent'] = 'Consent is required before submitting.';
   const files = form.elements.namedItem('files') as HTMLInputElement | null;
   if (files?.files?.length) {
@@ -234,6 +237,20 @@ export default function PropertyForm() {
         )}
       </div>
       <div className="field full">
+        <label htmlFor="p-plan-room">
+          Plan-room or document link <span className="optional">(optional)</span>
+        </label>
+        <input
+          id="p-plan-room"
+          name="planRoomUrl"
+          type="url"
+          inputMode="url"
+          placeholder="https://…"
+          aria-invalid={Boolean(errors.planRoomUrl)}
+        />
+        {errors.planRoomUrl ? <span className="form-error">{errors.planRoomUrl}</span> : null}
+      </div>
+      <div className="field full">
         <label htmlFor="p-files">
           Supporting files <span className="optional">(optional)</span>
         </label>
@@ -304,8 +321,11 @@ export default function PropertyForm() {
           </p>
         )}
         <button className="btn btn-primary" type="submit" disabled={submitting} style={{ width: '100%' }}>
-          {submitting ? 'Sending…' : 'Submit property for evaluation'}
+          {submitting ? 'Sending…' : SITE_COPY.cta.discussProperty}
         </button>
+        <span className="hint" style={{ textAlign: 'center' }}>
+          {SITE_COPY.confidentiality}
+        </span>
         <span className="hint" style={{ textAlign: 'center' }}>
           We email your inquiry to {BRAND.email}. Or call {BRAND.phoneDisplay}.
         </span>

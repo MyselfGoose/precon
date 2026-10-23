@@ -8,7 +8,7 @@ import { MotionItem, MotionStagger } from '../../motion';
 export const metadata = createMetadata({
   title: 'Trade Contractor Estimation',
   description:
-    'Trade-specific CSI Format estimates for remodeling, restoration, glazing, paving, roofing, HVAC, MEP, masonry, concrete, and more.',
+    'Trade-specific CSI MasterFormat estimates for remodeling, restoration, glazing, paving, roofing, HVAC, MEP, masonry, concrete, and more.',
   path: '/estimation/trades',
 });
 

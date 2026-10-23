@@ -31,7 +31,7 @@ import { CountUp, MotionHeroItem, MotionItem, MotionReveal, MotionStagger } from
 export const metadata = createMetadata({
   title: 'Construction Estimating Services',
   description:
-    'Preconstruction and construction estimation services for U.S. contractors and developers — CSI Format takeoffs, bid support, and design coordination with documented assumptions.',
+    'Preconstruction and construction estimating services for U.S. contractors and developers — CSI MasterFormat takeoffs, bid support, and design coordination with documented assumptions.',
   path: '/',
 });
 
@@ -53,8 +53,8 @@ export default function Home() {
             </MotionHeroItem>
             <MotionHeroItem delay={0.1}>
               <h1>
-                Preconstruction and Construction Estimation Services that help you{' '}
-                <span className="accent-word">bid with confidence.</span>
+                Construction estimating you can{' '}
+                <span className="accent-word">defend in bid review.</span>
               </h1>
             </MotionHeroItem>
             <MotionHeroItem delay={0.18}>
@@ -82,7 +82,7 @@ export default function Home() {
           <MotionHeroItem className="hero-workbook" delay={0.18} y={18} x={24} scale={0.97}>
             <Workbook
               sample={TRADES[0].sample}
-              tabs={['Summary', 'Div 03', 'Div 04', 'Div 05', 'Div 09', 'Exclusions']}
+              tabs={['Summary', 'Div 03', 'Div 06', 'Div 07', 'Exclusions']}
             />
           </MotionHeroItem>
         </div>
@@ -268,7 +268,7 @@ export default function Home() {
           <div className="deliverable-layout">
             <Workbook
               sample={TRADES[0].sample}
-              tabs={['Summary', 'Div 03', 'Div 04', 'Div 05', 'Div 09', 'Exclusions']}
+              tabs={['Summary', 'Div 03', 'Div 06', 'Div 07', 'Exclusions']}
             />
             <div className="estimate-summary">
               <div className="estimate-summary-head">
@@ -341,7 +341,7 @@ export default function Home() {
         <div className="wrap stack-lg">
           <div className="stack">
             <div className="eyebrow">Trust</div>
-            <h2>Why Contractors Trust {BRAND.name}</h2>
+            <h2 id="why-trust">Why Contractors Trust {BRAND.name}</h2>
             <p className="prose">
               Reviewable standards under bid pressure — demonstrated in the{' '}
               <a href="#sample-estimate">sample estimate</a> above.

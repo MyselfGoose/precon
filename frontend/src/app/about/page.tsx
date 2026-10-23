@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { CTA, PageHead, TrustReasons } from '../components';
+import { CTA, PageHead } from '../components';
 import { createMetadata } from '@/lib/metadata';
 import { ABOUT_CONTENT, BRAND, TEAM_SECTION } from '@/lib/content';
 import { MotionItem, MotionReveal, MotionStagger } from '../motion';
@@ -54,17 +54,12 @@ export default function About() {
           </MotionReveal>
 
           <div className="stack">
-            <div className="eyebrow">Trust</div>
-            <h2>Why Contractors Trust {BRAND.name}</h2>
-            <p className="prose">
-              The same standards that make an estimate reviewable under bid pressure.
-            </p>
-          </div>
-          <TrustReasons compact />
-
-          <div className="stack">
             <div className="eyebrow">Why choose us</div>
             <h2>What sets our preconstruction support apart</h2>
+            <p className="prose">
+              The same standards that make an estimate reviewable under bid pressure — detailed on the homepage trust
+              section.
+            </p>
           </div>
           <MotionStagger className="reasons">
             {otherBenefits.map(([code, title, text]) => (

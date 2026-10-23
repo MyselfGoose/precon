@@ -25,8 +25,8 @@ const DIV03_LINES = [
 const SUMMARY_OTHER = [
   ['04 Masonry', 48600, 61200],
   ['05 Metals', 86400, 54900],
-  ['06 Wood & Plastics', 22100, 31500],
-  ['07 Thermal & Moisture', 38750, 29400],
+  ['06 Wood, Plastics, and Composites', 22100, 31500],
+  ['07 Thermal & Moisture Protection', 38750, 29400],
   ['09 Finishes', 41200, 52800],
 ];
 
@@ -79,11 +79,11 @@ function buildSummarySheet() {
   const labSum =
     div03Lab + SUMMARY_OTHER.reduce((s, row) => s + row[2], 0);
   rows.push(
-    `<row r="${r}">${cellRef('A', r, inlineStr('Sample total'))}${cellRef('B', r, formula(`SUM(B2:B${lastData})`, matSum))}${cellRef('C', r, formula(`SUM(C2:C${lastData})`, labSum))}${cellRef('D', r, formula(`SUM(D2:D${lastData})`, matSum + labSum))}</row>`,
+    `<row r="${r}">${cellRef('A', r, inlineStr('Subtotal, divisions shown'))}${cellRef('B', r, formula(`SUM(B2:B${lastData})`, matSum))}${cellRef('C', r, formula(`SUM(C2:C${lastData})`, labSum))}${cellRef('D', r, formula(`SUM(D2:D${lastData})`, matSum + labSum))}</row>`,
   );
   rows.push(`<row r="${r + 2}">${cellRef('A', r + 2, inlineStr('Project'))}${cellRef('B', r + 2, inlineStr('Warehouse shell · 18,650 SF'))}</row>`);
   rows.push(
-    `<row r="${r + 3}">${cellRef('A', r + 3, inlineStr('Note'))}${cellRef('B', r + 3, inlineStr('Illustrative sample. Div 03 totals are live formulas from the Div 03 sheet.'))}</row>`,
+    `<row r="${r + 3}">${cellRef('A', r + 3, inlineStr('Note'))}${cellRef('B', r + 3, inlineStr('Illustrative sample — divisions shown only. Div 08 Openings omitted. Div 03 totals are live formulas from the Div 03 sheet.'))}</row>`,
   );
 
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

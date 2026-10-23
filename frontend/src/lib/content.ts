@@ -10,6 +10,12 @@ export const BRAND = {
    * so placeholder text never reaches site visitors.
    */
   legalName: '',
+  /** Street / mailing address — omit from UI until owner confirms. */
+  address: '',
+  /** State or jurisdiction for legal notices — omit until owner confirms. */
+  jurisdiction: '',
+  /** Where project files are handled / stored — omit until owner confirms. */
+  dataLocation: '',
   descriptor: 'Preconstruction · Estimating · Design Support',
   tagline: 'Estimate. Design. Invest.',
   description:
@@ -43,23 +49,27 @@ export function isUnsetBrandValue(value: string): boolean {
  */
 export const OWNER_PLACEHOLDERS = [
   'BRAND.legalName — registered legal entity name',
-  'DNS / mailbox / Vercel NEXT_PUBLIC_SITE_URL + LEAD_* for quantsult.com (code defaults updated)',
+  'BRAND.address / BRAND.jurisdiction — business address and state',
+  'BRAND.dataLocation — file handling / data storage location for Privacy',
+  'DNS / mailbox / Vercel NEXT_PUBLIC_SITE_URL + LEAD_* + BLOB_READ_WRITE_TOKEN for quantsult.com',
   'BRAND.social.googleBusiness / linkedIn — live profile URLs',
   'Replace illustrative HOME_STATS / HOME_CASE_STUDIES with verified owner figures',
   'TEAM_SECTION.members — optional named founder photos/bios when the owner publishes them',
-  'License jurisdictions for sealing professionals (spoken for by SITE_COPY.licensing)',
+  'License jurisdictions for sealing professionals (spoken for by SITE_COPY.licensingBlock)',
 ] as const;
 
 export const SITE_COPY = {
   cta: {
     primary: 'Request an Estimate',
-    discussProperty: 'Discuss your Property',
+    /** Acquisition-only CTA — do not reuse on estimating/design pages. */
+    discussProperty: 'Submit a Property',
+    requestQuote: 'Request a Quote',
     secondary: `Call ${BRAND.phoneDisplay}`,
     uploadPlans: 'Upload Plans',
     reviewTrade: 'Review this trade →',
     reviewService: 'Review this service →',
     openTrade: 'Open trade page →',
-    viewEstimation: 'View estimation details →',
+    viewEstimation: 'View estimating details →',
     viewDetails: 'View details →',
   },
   contact: {
@@ -67,9 +77,16 @@ export const SITE_COPY = {
     responseTime: 'Typical response within one business day',
   },
   confidentiality:
-    'Plans and project files are handled securely for the purpose of scoping and delivering your request. An NDA is available on request.',
+    'Plans and project files are handled securely for the purpose of scoping and delivering your request. Client plans and pricing are confidential and never used in our acquisition activity. An NDA is available on request.',
   licensing:
     'Final engineering certification/sealing is provided by appropriately licensed professionals where required.',
+  licensingBlock: {
+    title: 'Licensing & sealing',
+    body:
+      'Structural, MEP, and architectural documentation is prepared with reference to nationally recognized codes and standards. Final engineering certification or sealing, where required by the authority having jurisdiction, is provided by appropriately licensed professionals. QuantSult does not represent that every team member is a licensed Professional Engineer or Registered Architect in every U.S. jurisdiction.',
+  },
+  acquisitionDisclosure:
+    'We are a buyer, not your agent or advisor. An offer is not an appraisal. Seek independent advice.',
   process: {
     eyebrow: 'How it works',
     title: 'From plans to a review-ready estimate',
@@ -137,7 +154,7 @@ export const CONTENT_SERVICES: ContentService[] = [
     relatedMode: 'trades',
     showEstimationProjectTypes: true,
     photoSrc: '/images/divisions/estimation-design.jpg',
-    photoAlt: 'Construction estimating and design coordination for CSI Format takeoffs',
+    photoAlt: 'Construction estimating and design coordination for CSI MasterFormat takeoffs',
     ctaTitle: 'Request your estimate',
     ctaText: 'Request an Estimate and tell us which trades or project type you need estimated.',
   },
@@ -314,7 +331,7 @@ export const CONTENT_SERVICES: ContentService[] = [
       'Structural engineering prepared to applicable code requirements — from concept development through analysis, systems design, and calculations.',
     supportsTitle: 'Structural Drawings & Calculations',
     details:
-      'Our structural engineering services combine careful design with engineering calculations to deliver structural solutions prepared to applicable code requirements for projects across the United States. From concept development to permit-support engineering documentation, we design structural systems that optimize performance, constructability, and material efficiency while meeting industry standards. Whether your project involves reinforced concrete, structural steel, wood framing, cold-formed steel, masonry, post-tensioned concrete, precast concrete, or hybrid structural systems, our engineers develop tailored solutions based on project-specific loading conditions, site requirements, and applicable building codes. Every design is supported by comprehensive structural analysis and engineering calculations documenting the basis of design. Every structural design and engineering calculation is developed in accordance with nationally recognized building codes and engineering standards to support durability, structural integrity, and regulatory review. Our work adheres to the International Building Code (IBC), International Residential Code (IRC), ASCE 7, ACI 318, AISC Steel Construction Manual, NDS for Wood Construction, TMS Masonry Code, and applicable state and local building regulations, delivering permit-support structural documentation coordinated for construction. Final engineering certification/sealing is provided by appropriately licensed professionals where required.',
+      'Our structural engineering services combine careful design with engineering calculations to deliver structural solutions prepared to applicable code requirements for projects across the United States. From concept development to permit-support engineering documentation, we design structural systems that optimize performance, constructability, and material efficiency while meeting industry standards. Whether your project involves reinforced concrete, structural steel, wood framing, cold-formed steel, masonry, post-tensioned concrete, precast concrete, or hybrid structural systems, our structural team develops tailored solutions based on project-specific loading conditions, site requirements, and applicable building codes. Every design is supported by comprehensive structural analysis and engineering calculations documenting the basis of design. Documentation is prepared with reference to nationally recognized building codes and engineering standards — including the International Building Code (IBC), International Residential Code (IRC), ASCE 7, ACI 318, AISC Steel Construction Manual, NDS for Wood Construction, TMS Masonry Code, and applicable state and local building regulations — to support durability, structural integrity, and regulatory review. Final engineering certification/sealing is provided by appropriately licensed professionals where required.',
     points: [
       'Comprehensive structural analysis and engineering calculations',
       'Support for concrete, steel, wood, masonry, and hybrid systems',
@@ -864,7 +881,7 @@ export const ACQUISITION_CONTENT = {
   ] as const,
   specialCasesTitle: 'Probate, Divorce & Special Situations',
   specialCasesIntro:
-    'Not every property opportunity comes from a conventional listing. Probate estates, divorce settlements, and other special circumstances often require a different kind of conversation — one grounded in privacy, fairness, and a clear understanding of the property\'s real condition and potential.',
+    'Not every property opportunity comes from a conventional listing. Probate estates, divorce settlements, and other special circumstances often require a discreet conversation grounded in the property\'s condition, renovation cost, and potential.',
   specialCases: [
     {
       title: 'Probate',
@@ -874,14 +891,17 @@ export const ACQUISITION_CONTENT = {
     {
       title: 'Divorce',
       description:
-        'Divorce-related property decisions often involve timing pressure and the need for a fair, well-documented valuation. We assess condition, renovation cost, and upside so both parties can consider a clear option based on fundamentals rather than speculation.',
+        'Divorce-related property decisions often involve timing pressure. We assess condition, renovation cost, and upside so decision-makers can consider a clear option based on fundamentals rather than speculation.',
     },
     {
       title: 'Other Special Circumstances',
       description:
-        'Inherited properties, distressed assets, off-market situations, and other unique circumstances each start the same way: understand the property first, then determine what makes sense for everyone involved.',
+        'Inherited properties, distressed assets, off-market situations, and other unique circumstances each start the same way: understand the property first, then determine whether a direct acquisition makes sense.',
     },
   ] as const,
+  /** Required buyer disclosure — counsel review recommended before launch claims. */
+  buyerDisclosure:
+    'We are a buyer, not your agent or advisor. An offer is not an appraisal. Seek independent advice.',
   values: [
     { title: 'Market Insight', description: 'Data-backed evaluation of condition, cost, and upside.' },
     { title: 'Trusted Network', description: 'Relationships that surface opportunities for thoughtful review.' },
@@ -909,10 +929,10 @@ export const ACQUISITION_CONTENT = {
   stepsTitle: 'From Acquisition to Transformation',
   steps: ['Evaluate', 'Acquire', 'Design', 'Renovate', 'Create Value'] as const,
   stepsBody:
-    'We look for properties where the right combination of acquisition discipline, construction expertise, and thoughtful design can transform an existing asset into something substantially better. That is where we see opportunity.',
-  ctaTitle: 'Have a Property to Discuss?',
+    'We look for properties where acquisition discipline, construction expertise, and thoughtful design can create meaningful value.',
+  ctaTitle: 'Have a property to submit?',
   ctaText:
-    'If you\'re considering your options for a property, we\'d be happy to take a look. Provide us with the available information, and our team will evaluate the property and its potential.',
+    'If you\'re considering your options for a property, share the information you have and our team will evaluate the property and its potential.',
 };
 
 export const HOME_PILLARS = [
@@ -952,7 +972,7 @@ export const HOME_ESTIMATING = {
   eyebrow: 'Core service',
   title: 'Estimating & quantity takeoffs',
   lede:
-    'This is what we lead with: CSI MasterFormat takeoffs and cost estimates delivered as editable Excel workbooks with sheet references, assumptions, and exclusions you can defend in bid review.',
+    'Construction estimating you can defend in bid review — CSI MasterFormat takeoffs and cost estimates delivered as editable Excel workbooks with sheet references, assumptions, and exclusions.',
   href: '/services/estimating',
   quoteHref: '/quote',
   image: '/images/home/estimating.jpg',
@@ -1105,7 +1125,7 @@ export const HOME_TRADE_CHIPS = [
   { label: 'Concrete', href: '/trades/concrete' },
   { label: 'Masonry', href: '/trades/masonry' },
   { label: 'Metals', href: '/trades/metals' },
-  { label: 'Wood & Plastics', href: '/trades/wood' },
+  { label: 'Wood, Plastics, and Composites', href: '/trades/wood' },
   { label: 'Thermal & Moisture', href: '/trades/thermal' },
   { label: 'Finishes', href: '/trades/finishes' },
   { label: 'HVAC', href: '/trades/hvac' },
@@ -1187,21 +1207,21 @@ export const HOME_CASE_STUDIES: readonly {
     size: 'Illustrative · ~15–25k SF',
     result:
       'Division-level workbook with sheet references returned before bid review, so the GC could reprice labor without rebuilding quantities.',
-    disclaimer: 'Anonymized example',
+    disclaimer: 'Illustrative example',
   },
   {
     projectType: 'Multi-trade commercial package',
     size: 'Illustrative · mid-size shell',
     result:
       'Concrete, metals, and finishes packaged as separate CSI tabs with exclusions listed up front — fewer scope gaps during buyout.',
-    disclaimer: 'Anonymized example',
+    disclaimer: 'Illustrative example',
   },
   {
     projectType: 'Design-coordinated estimate',
     size: 'Illustrative · tenant improvement',
     result:
       'Estimate assumptions aligned to the architectural set so value-engineering options stayed tied to measurable quantities.',
-    disclaimer: 'Anonymized example',
+    disclaimer: 'Illustrative example',
   },
 ];
 
@@ -1213,7 +1233,7 @@ export const HOME_FAQ: [string, string][] = [
   ],
   [
     'What do I need to send you?',
-    'Start with the PDF plan set and specifications you have. Include the trades, project location, and important date. If the set is incomplete, say so. We will identify what needs to be confirmed. Accepted uploads: PDF, ZIP, or DWG up to 3.5 MB each (4 MB total), or paste a plan-room link for larger sets.',
+    'Start with the PDF plan set and specifications you have. Include the trades, project location, and bid due date. If the set is incomplete, say so. We will identify what needs to be confirmed. Accepted uploads: PDF, ZIP, or DWG up to 3.5 MB each (4 MB total), or paste a plan-room link for larger sets (direct uploads up to 100 MB when storage is configured).',
   ],
   [
     'How quickly can you help?',
@@ -1534,7 +1554,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
       {
         title: 'Response Time',
         paragraphs: [
-          'We will acknowledge your request within 4 hours and provide a substantive response within 30 days. If additional time is needed, we will notify you of the reason and expected timeline.',
+          'We will acknowledge your request within approximately five (5) business days and provide a substantive response within 30 days. If additional time is needed, we will notify you of the reason and expected timeline.',
         ],
       },
     ],
@@ -1596,8 +1616,34 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     ],
   },
   {
+    id: 'us-state-rights',
+    title: '13. U.S. State Privacy Rights',
+    paragraphs: [
+      'Depending on the U.S. state where you reside, you may have additional rights under applicable state privacy laws (for example, access, deletion, correction, and appeal rights). To exercise these rights, contact us using the details below. We will not discriminate against you for exercising privacy rights available under applicable law.',
+      'The specific statutes that apply depend on your state of residence and how we process personal information. This section is informational and is not legal advice; counsel should confirm the applicable state-law disclosures once the operating entity and data practices are finalized.',
+    ],
+  },
+  {
+    id: 'company-and-data-location',
+    title: '14. Company Details & Data Location',
+    paragraphs: [
+      [
+        !isUnsetBrandValue(BRAND.legalName) ? `Legal entity: ${BRAND.legalName}.` : null,
+        !isUnsetBrandValue(BRAND.address) ? `Business address: ${BRAND.address}.` : null,
+        !isUnsetBrandValue(BRAND.jurisdiction) ? `Jurisdiction: ${BRAND.jurisdiction}.` : null,
+      ]
+        .filter((part): part is string => Boolean(part))
+        .join(' ') ||
+        `Trading as ${BRAND.name}. Registered legal entity name, business address, and jurisdiction will be published here once confirmed by the owner.`,
+      !isUnsetBrandValue(BRAND.dataLocation)
+        ? `Project files and related personal data submitted through this Site are handled in ${BRAND.dataLocation}.`
+        : 'Project files submitted through this Site are used to scope and deliver the requested work. The specific data-storage location will be published here once confirmed by the owner.',
+      'Client plans and pricing are confidential and never used in our acquisition activity.',
+    ],
+  },
+  {
     id: 'contact',
-    title: '13. Contact Information',
+    title: '15. Contact Information',
     paragraphs: [
       `If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us at ${BRAND.email} or by calling ${BRAND.phoneDisplay}.`,
     ],
@@ -1649,6 +1695,24 @@ export const TERMS_SECTIONS: LegalSection[] = [
         title: 'Nature of Estimates',
         paragraphs: [
           'Estimates, quantity takeoffs, and pricing information prepared by QuantSult are based on the drawings, specifications, and other information you provide, together with stated assumptions, exclusions, and market data available at the time of preparation. They are tools for bidding and decision-making — not a guaranteed construction cost, not a formal bid on our behalf, and not a warranty that actual project costs, quantities, or outcomes will match the estimate. Clients remain responsible for verifying quantities, pricing, and scope against their own means and methods before relying on any figure.',
+        ],
+      },
+      {
+        title: 'Ownership of Deliverables',
+        paragraphs: [
+          'Unless a written agreement states otherwise, QuantSult retains ownership of pre-existing methods, templates, and tools. Upon payment in full for the engagement, the client receives a license to use the project-specific deliverables for the stated project. Redistribution or reuse on other projects requires written permission.',
+        ],
+      },
+      {
+        title: 'Payment',
+        paragraphs: [
+          'Fees, deposits, and payment schedules are set out in the written proposal or engagement letter for each project. Work may be paused or deliverables withheld if invoices remain unpaid beyond the agreed terms. Formal payment terms override this summary.',
+        ],
+      },
+      {
+        title: 'Revisions',
+        paragraphs: [
+          'A reasonable number of revisions consistent with the agreed scope is included. Material drawing changes, expanded trades, or redesign after delivery may be scoped as additional work with updated fees and schedule.',
         ],
       },
       {

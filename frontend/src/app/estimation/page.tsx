@@ -6,9 +6,9 @@ import { SITE_COPY } from '@/lib/content';
 import { MotionItem, MotionStagger } from '../motion';
 
 export const metadata = createMetadata({
-  title: 'CSI Format Estimation Services',
+  title: 'CSI MasterFormat Estimating Services',
   description:
-    'CSI Format estimating for general construction, industrial projects, public work, and trade contractors across the United States, informed by current supplier and labor market data.',
+    'CSI MasterFormat estimating for general construction, industrial projects, public work, and trade contractors across the United States, informed by current supplier and labor market data.',
   path: '/estimation',
 });
 
@@ -17,15 +17,15 @@ export default function EstimationPage() {
   return (
     <>
       <PageHead
-        eyebrow="Estimation"
+        eyebrow="Estimating"
         title={
           <>
             Accurate takeoffs. Competitive bids. Protected <span className="accent-word">margins.</span>
           </>
         }
-        lede="We provide detailed quantity takeoffs, trade-specific estimates, and regional market pricing that help subcontractors bid faster, protect their margins, and secure more profitable work. Every estimate is prepared in CSI Format and informed by current supplier and labor market data."
+        lede="We provide detailed quantity takeoffs, trade-specific estimates, and regional market pricing that help subcontractors bid faster, protect their margins, and secure more profitable work. Every estimate is prepared in CSI MasterFormat and informed by current supplier and labor market data."
         image="/images/projects/residential-commercial.jpg"
-        imageAlt="Commercial and residential construction representing CSI Format estimating"
+        imageAlt="Commercial and residential construction representing CSI MasterFormat estimating"
         priority
       />
       <section className="band">
