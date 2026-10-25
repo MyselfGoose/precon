@@ -9,7 +9,6 @@ const EVENT_NAMES = new Set<AnalyticsEvent>([
   'quote_form_with_plans',
   'phone_click',
   'whatsapp_click',
-  'sample_download',
   'social_link_click',
 ]);
 

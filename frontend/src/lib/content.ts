@@ -1231,13 +1231,6 @@ export const TRUST_REASONS = [
 /** Homepage sample estimate summary — derived from `lib/sample-estimate.ts`. */
 export const SAMPLE_ESTIMATE_SUMMARY = getWarehouseSummaryDisplay();
 
-export const FEATURED_PROJECTS = [
-  { title: 'Commercial', image: '/images/markets/home-commercial.jpg' },
-  { title: 'Residential', image: '/images/markets/home-residential-commercial.jpg' },
-  { title: 'Industrial', image: '/images/markets/home-industrial.jpg' },
-  { title: 'Public', image: '/images/markets/home-public-institutional.jpg' },
-] as const;
-
 export const MARKET_SECTORS = [
   {
     slug: 'commercial',

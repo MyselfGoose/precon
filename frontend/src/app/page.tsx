@@ -279,14 +279,6 @@ export default function Home() {
             <p className="supporting">{SAMPLE_ESTIMATE_SUMMARY.toolCompatibility}</p>
           </div>
           <div className="btn-row">
-            <a
-              className="btn btn-ghost"
-              href={SAMPLE_ESTIMATE_SUMMARY.downloadHref}
-              download
-              data-analytics="sample_download"
-            >
-              {SAMPLE_ESTIMATE_SUMMARY.downloadLabel} →
-            </a>
             <Link className="btn btn-ghost" href="/quote#plans">
               {SITE_COPY.cta.uploadPlans} →
             </Link>

@@ -1,7 +1,6 @@
 /**
  * Single source of truth for the homepage warehouse sample estimate.
- * Div 03 line items, summary rollups, and the downloadable xlsx must stay in sync.
- * Run `node scripts/generate-sample-estimate.mjs` after changing figures.
+ * Div 03 line items and summary rollups must stay in sync for the on-page demo.
  */
 
 export type MoneyTriplet = readonly [material: number, labor: number, total: number];
@@ -146,8 +145,6 @@ export const WAREHOUSE_SAMPLE = {
   projectTitle: 'Warehouse shell, 18,650 SF',
   projectLabel: 'Warehouse shell · 18,650 SF',
   filename: 'estimate.xlsx',
-  downloadHref: '/samples/sample-estimate.xlsx',
-  downloadLabel: 'Download sample estimate (illustrative pricing)',
   label: 'Sample – illustrative pricing',
   placementCy: 464,
   placementBasis:
@@ -207,8 +204,6 @@ export function getWarehouseSummaryDisplay(): {
   label: string;
   project: string;
   filename: string;
-  downloadHref: string;
-  downloadLabel: string;
   columns: readonly ['Division', 'Material', 'Labor', 'Total'];
   rows: readonly (readonly [string, string, string, string])[];
   total: readonly [string, string, string, string];
@@ -220,8 +215,6 @@ export function getWarehouseSummaryDisplay(): {
     label: WAREHOUSE_SAMPLE.label,
     project: WAREHOUSE_SAMPLE.projectLabel,
     filename: WAREHOUSE_SAMPLE.filename,
-    downloadHref: WAREHOUSE_SAMPLE.downloadHref,
-    downloadLabel: WAREHOUSE_SAMPLE.downloadLabel,
     columns: WAREHOUSE_SAMPLE.columns,
     rows: WAREHOUSE_SAMPLE.summaryRows.map(
       (row) =>

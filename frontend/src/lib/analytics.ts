@@ -7,7 +7,6 @@ export type AnalyticsEvent =
   | 'quote_form_with_plans'
   | 'phone_click'
   | 'whatsapp_click'
-  | 'sample_download'
   | 'social_link_click';
 
 const analyticsEnabled = process.env.NEXT_PUBLIC_ANALYTICS_ENABLED !== 'false';
