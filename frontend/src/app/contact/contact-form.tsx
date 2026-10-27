@@ -8,7 +8,6 @@ import {
   ALLOWED_FILE_ACCEPT,
   EMAIL_PATTERN,
   MAX_ATTACHMENT_BYTES,
-  MAX_BLOB_UPLOAD_MB_LABEL,
   MAX_NOTES_LENGTH,
   formatAttachmentLimitsHelp,
   validateAttachmentList,
@@ -102,7 +101,7 @@ export default function ContactForm() {
           data.append('blobUrl', result.url);
         } catch {
           setSubmitError(
-            `“${file.name}” is larger than 3.5 MB and direct upload is unavailable. Paste a plan-room link instead (or ask us to enable uploads up to ${MAX_BLOB_UPLOAD_MB_LABEL} MB).`,
+            `“${file.name}” is larger than 3.5 MB. Paste a plan-room link instead, or attach a smaller file.`,
           );
           return;
         }
@@ -208,8 +207,7 @@ export default function ContactForm() {
         <label htmlFor="c-files">Or attach files</label>
         <label className="dropzone" htmlFor="c-files">
           <b>Upload plans</b>
-          {formatAttachmentLimitsHelp()} · larger files via plan-room link or direct upload when configured (up to{' '}
-          {MAX_BLOB_UPLOAD_MB_LABEL} MB)
+          {formatAttachmentLimitsHelp()}. For larger files, paste a plan-room or cloud link above.
         </label>
         <input
           id="c-files"

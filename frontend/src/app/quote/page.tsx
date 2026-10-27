@@ -53,7 +53,7 @@ export default function Quote() {
               </div>
               <div className="note">
                 <b>Files we accept.</b> PDF, ZIP, or DWG up to 3.5 MB each (4 MB total). For larger sets, use the
-                plan-room link field on the files step (or direct upload up to 100 MB when storage is configured).
+                plan-room link field on the files step.
                 Client plans and pricing are confidential and never used in our acquisition activity.
               </div>
               <div className="draw">

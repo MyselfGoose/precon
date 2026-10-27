@@ -1145,7 +1145,7 @@ export const HOME_FAQ: [string, string][] = [
   ],
   [
     'What do I need to send you?',
-    'Start with the PDF plan set and specifications you have. Include the trades, project location, and bid due date. If the set is incomplete, say so. We will identify what needs to be confirmed. Accepted uploads: PDF, ZIP, or DWG up to 3.5 MB each (4 MB total), or paste a plan-room link for larger sets (direct uploads up to 100 MB when storage is configured).',
+    'Start with the PDF plan set and specifications you have. Include the trades, project location, and bid due date. If the set is incomplete, say so. We will identify what needs to be confirmed. Accepted uploads: PDF, ZIP, or DWG up to 3.5 MB each (4 MB total). For larger files, paste a plan-room or cloud link.',
   ],
   [
     'How quickly can you help?',

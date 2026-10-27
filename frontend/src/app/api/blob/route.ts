@@ -19,7 +19,7 @@ export async function POST(request: Request): Promise<Response> {
       {
         ok: false,
         message:
-          'Large direct uploads are not configured. Use the plan-room link field or attach files under 3.5 MB.',
+          'Large file upload isn’t available right now. Paste a plan-room link or attach files under 3.5 MB.',
       },
       { status: 503 },
     );
